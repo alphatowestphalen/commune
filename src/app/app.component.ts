@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
+import { ThemeService } from './core/services/theme.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.sass']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'commune-frontend';
+  title = 'Etat Civil';
+
+  constructor(public themeService: ThemeService) { }
 }
