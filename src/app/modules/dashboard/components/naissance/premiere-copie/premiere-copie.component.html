@@ -28,101 +28,84 @@
     
 
       <div class="flex-col rounded-lg bg-white mt-5 px-8 py-8 dark:bg-night-700 sm:flex-row">
-        <div class="mb-4 flex items-center justify-between">
+        <div class="mb-1 flex items-center justify-between">
           <div class="flex-col items-center">
-            <h3 class="text-md font-bold text-gray-900 dark:text-night-50">Active Auctions</h3>
-            <span class="text-sm text-gray-400 dark:text-night-300">Updated 37 minutes ago</span>
+            <h3 class="text-md font-bold text-gray-900 dark:text-night-50">Liste Des Premières Copies effectués</h3>
           </div>
-          <button
-            class="flex-none rounded-md bg-gray-100 px-4 py-2.5 text-xs font-semibold text-gray-500 hover:bg-gray-200 dark:bg-night-600 dark:text-night-200 dark:hover:bg-night-500">
-            History
-          </button>
+     
+          <div class=" flex bg-white p-4">
+            <button class="inline-flex items-center px-4 py-2 bg-gray-200 hover:bg-gray-300 text-gray-800 text-sm font-medium rounded-md">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
+            </svg>
+          
+            Ajouter
+            </button>
+        
+          </div>
         </div>
       
-        <div class="relative overflow-x-auto">
-          <!-- <table class="w-full table-auto">
 
-            <thead class="text-xs uppercase text-gray-400 dark:text-night-300">
-              <tr>
-                <th class="py-3 text-left">Item</th>
-                <th class="py-3 text-right">Open Price</th>
-                <th class="py-3 text-right">Price $</th>
-                <th class="py-3 text-right">Recent Offer</th>
-                <th class="py-3 text-right">Time Left</th>
-                <th class="py-3 text-right">View</th>
-              </tr>
-            </thead>
-          
-            <tbody>
-              <tr
-                *ngFor="let auction of activeAuction"
-                [auction]="auction"
-                nft-auctions-table-item
-                class="border-b border-dashed border-gray-200 hover:bg-gray-100 dark:border-night-500 dark:hover:bg-night-600"></tr>
-            </tbody>
-           
-          </table> -->
-          <div class=" tableau mat-elevation-z8 mx-10">
-            <mat-table [dataSource]="dataSource" matSort>
-              <!-- ID Column -->
-              <ng-container matColumnDef="id">
-                <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
-                <mat-cell *matCellDef="let row"> {{ row.id }} </mat-cell>
-              </ng-container>
-          
-              <!-- Progress Column -->
-              <ng-container matColumnDef="datenaiss">
-                <mat-header-cell *matHeaderCellDef mat-sort-header>
-                  Date de Naissance
-                </mat-header-cell>
-                <mat-cell *matCellDef="let row"> {{ row.datenaiss }} </mat-cell>
-              </ng-container>
-          
-              <!-- Name Column -->
-              <ng-container matColumnDef="name">
-                <mat-header-cell *matHeaderCellDef mat-sort-header>
-                  Nom et Prènoms
-                </mat-header-cell>
-                <mat-cell *matCellDef="let row"> {{ row.name }} </mat-cell>
-              </ng-container>
-          
-              <!-- Color Column -->
-              <ng-container matColumnDef="dateenregistrement">
-                <mat-header-cell *matHeaderCellDef mat-sort-header>
-                  Date d'Enregistrement
-                </mat-header-cell>
-                <mat-cell *matCellDef="let row"> {{ row.dateenregitrement }} </mat-cell>
-              </ng-container>
-              <ng-container matColumnDef="actions">
-                <mat-header-cell *matHeaderCellDef> Actions</mat-header-cell>
-                <mat-cell *matCellDef="let row; let i = index">
-                  <label
-                    class="btn btn-sm font-normal lowercase modal-button text-xs bg-blue-600 px-4 py-2 text-white rounded-md mr-2"
-                    for="my-modal" *transloco="let t">
-                    {{ t("voir") }}
-                  </label>
-                  <button mat-icon-button
-                    class="btn btn-sm font-normal lowercase text-xs bg-green-600 px-4 py-2 text-white rounded-md mr-2"
-                    *transloco="let t">
-                    {{ t("editer") }}
-                  </button>
-                  <button mat-icon-button
-                    class="btn btn-sm font-normal lowercase text-xs bg-red-600 px-4 py-2 text-white rounded-md"
-                    *transloco="let t">
-                    {{ t("supprimer") }}
-                  </button>
-                </mat-cell>
-              </ng-container>
-          
-              <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-              <mat-row *matRowDef="let row; columns: displayedColumns"> </mat-row>
-            </mat-table>
-          
-            <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
-          </div>
-        </div>
-      </div>
+
+     
+        <mat-table [dataSource]="dataSource" matSort>
+          <!-- ID Column -->
+          <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{ row.id }} </mat-cell>
+          </ng-container>
       
-    </div>
+          <!-- Progress Column -->
+          <ng-container matColumnDef="datenaiss">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>
+              Date de Naissance
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{ row.datenaiss }} </mat-cell>
+          </ng-container>
+      
+          <!-- Name Column -->
+          <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>
+              Nom et Prènoms
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{ row.name }} </mat-cell>
+          </ng-container>
+      
+          <!-- Color Column -->
+          <ng-container matColumnDef="dateenregistrement">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>
+              Date d'Enregistrement
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{ row.dateenregitrement }} </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef> Actions</mat-header-cell>
+            <mat-cell *matCellDef="let row; let i = index">
+              <label
+                class="btn btn-sm font-normal lowercase modal-button text-xs bg-blue-600 px-4 py-2 text-white rounded-md mr-2"
+                for="my-modal" *transloco="let t">
+                {{ t("voir") }}
+              </label>
+              <button mat-icon-button
+                class="btn btn-sm font-normal lowercase text-xs bg-green-600 px-4 py-2 text-white rounded-md mr-2"
+                *transloco="let t">
+                {{ t("editer") }}
+              </button>
+              <button mat-icon-button
+                class="btn btn-sm font-normal lowercase text-xs bg-red-600 px-4 py-2 text-white rounded-md"
+                *transloco="let t">
+                {{ t("supprimer") }}
+              </button>
+            </mat-cell>
+          </ng-container>
+      
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns"> </mat-row>
+        </mat-table>
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+        </div>
+        </div>
+    
+
     
     

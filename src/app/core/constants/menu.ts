@@ -5,12 +5,13 @@ export class Menu {
     {
       group: ' Acte de Naissance',
       separator: false,
+      
       items: [
         {
           icon: 'assets/icons/outline/chart-pie.svg',
           label: 'Première Copie',
           route: '/dashboard',
-          children: [{ label: 'Création Copie', route: '/dashboard/nfts' }],
+          children: [{ label: 'Création Copie', route: '/dashboard/premiere-copie' }],
         },
         {
           icon: 'assets/icons/outline/lock-closed.svg',
