@@ -10,7 +10,9 @@ import { NftSingleCardComponent } from './components/nft/nft-single-card/nft-sin
 import { NftDualCardComponent } from './components/nft/nft-dual-card/nft-dual-card.component';
 import { NftChartCardComponent } from './components/nft/nft-chart-card/nft-chart-card.component';
 import { MatTableModule } from '@angular/material/table';
+import { MatStepperModule } from '@angular/material/stepper';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 import { NgApexchartsModule } from 'ng-apexcharts';
@@ -20,6 +22,7 @@ import { NftAuctionsTableComponent } from './components/nft/nft-auctions-table/n
 import { NftAuctionsTableItemComponent } from './components/nft/nft-auctions-table-item/nft-auctions-table-item.component';
 import { NaissanceHomeComponent } from './components/naissance/naissance-home/naissance-home.component';
 import { PremiereCopieComponent } from './components/naissance/premiere-copie/premiere-copie.component';
+import { NaissanceAddComponent } from './components/naissance-add/naissance-add.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +36,7 @@ import { PremiereCopieComponent } from './components/naissance/premiere-copie/pr
     NftAuctionsTableItemComponent,
     NaissanceHomeComponent,
     PremiereCopieComponent,
+    NaissanceAddComponent,
   ],
   imports: [
     CommonModule,
@@ -40,8 +44,11 @@ import { PremiereCopieComponent } from './components/naissance/premiere-copie/pr
     SharedModule,
     HttpClientModule,
     MatTableModule,
+    MatStepperModule,
     MatPaginatorModule,
     NgApexchartsModule,
+    FormsModule,
+    ReactiveFormsModule,
     AngularSvgIconModule.forRoot(),
   ],
 })

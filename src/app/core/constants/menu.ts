@@ -3,8 +3,9 @@ import { MenuItem } from '../models/menu.model';
 export class Menu {
   public static pages: MenuItem[] = [
     {
-      group: ' Acte de Naissance',
+      group: 'Acte de Naissance',
       separator: false,
+     
       
       items: [
         {

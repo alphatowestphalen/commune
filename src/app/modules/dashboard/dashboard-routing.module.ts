@@ -4,6 +4,7 @@ import { DashboardComponent } from './dashboard.component';
 import { NaissanceHomeComponent } from './components/naissance/naissance-home/naissance-home.component';
 import { NftComponent } from './pages/nft/nft.component';
 import { PremiereCopieComponent } from './components/naissance/premiere-copie/premiere-copie.component';
+import { NaissanceAddComponent } from './components/naissance-add/naissance-add.component';
 
 const routes: Routes = [
   {
@@ -14,6 +15,7 @@ const routes: Routes = [
       { path: 'premiere-copie', component: PremiereCopieComponent },
       { path: 'naissance', component: NaissanceHomeComponent },
       {path: 'nfts', component: NftComponent},
+      {path: 'add-naissance', component: NaissanceAddComponent},
       { path: '**', redirectTo: 'error/404' },
     ],
   },
