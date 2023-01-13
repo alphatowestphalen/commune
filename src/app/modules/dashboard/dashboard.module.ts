@@ -12,6 +12,8 @@ import { NftChartCardComponent } from './components/nft/nft-chart-card/nft-chart
 import { MatTableModule } from '@angular/material/table';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatInputModule } from '@angular/material/input';
+import { MatDialogModule } from '@angular/material/dialog';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
@@ -22,7 +24,10 @@ import { NftAuctionsTableComponent } from './components/nft/nft-auctions-table/n
 import { NftAuctionsTableItemComponent } from './components/nft/nft-auctions-table-item/nft-auctions-table-item.component';
 import { NaissanceHomeComponent } from './components/naissance/naissance-home/naissance-home.component';
 import { PremiereCopieComponent } from './components/naissance/premiere-copie/premiere-copie.component';
-import { NaissanceAddComponent } from './components/naissance-add/naissance-add.component';
+import { NaissanceAddComponent } from './components/naissance/naissance-add/naissance-add.component';
+import { AdoptionComponent } from './components/naissance/adoption/adoption.component';
+import { JugementComponent } from './components/naissance/jugement/jugement.component';
+import { ReconnaissanceComponent } from './components/naissance/reconnaissance/reconnaissance.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +42,9 @@ import { NaissanceAddComponent } from './components/naissance-add/naissance-add.
     NaissanceHomeComponent,
     PremiereCopieComponent,
     NaissanceAddComponent,
+    AdoptionComponent,
+    JugementComponent,
+    ReconnaissanceComponent,
   ],
   imports: [
     CommonModule,
@@ -46,8 +54,10 @@ import { NaissanceAddComponent } from './components/naissance-add/naissance-add.
     MatTableModule,
     MatStepperModule,
     MatPaginatorModule,
+    MatInputModule,
     NgApexchartsModule,
     FormsModule,
+    MatDialogModule,
     ReactiveFormsModule,
     AngularSvgIconModule.forRoot(),
   ],

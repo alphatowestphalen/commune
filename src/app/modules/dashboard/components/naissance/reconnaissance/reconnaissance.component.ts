@@ -6,11 +6,12 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Nft } from '../../../models/nft';
 
 @Component({
-  selector: 'app-premiere-copie',
-  templateUrl: './premiere-copie.component.html',
-  styleUrls: ['./premiere-copie.component.scss']
+  selector: 'app-reconnaissance',
+  templateUrl: './reconnaissance.component.html',
+  styleUrls: ['./reconnaissance.component.scss']
 })
-export class PremiereCopieComponent implements OnInit {
+export class ReconnaissanceComponent implements OnInit {
+
   public activeAuction: Nft[] = [];
   displayedColumns = [
     'id',
@@ -49,9 +50,6 @@ export class PremiereCopieComponent implements OnInit {
     filterValue = filterValue.trim(); // Remove whitespace
     filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
     this.dataSource.filter = filterValue;
-  }
-  openDialog(){
-    this.dialog.open(PremiereCopieComponent);
   }
 }
 

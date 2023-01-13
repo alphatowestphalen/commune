@@ -17,11 +17,11 @@ export class Menu {
         {
           icon: 'assets/icons/outline/lock-closed.svg',
           label: 'Service Général',
-          route: '/auth',
+          route: '/dashboard',
           children: [
-            { label: 'Adoption ', route: '/auth/sign-up' },
-            { label: 'Jugement', route: '/auth/sign-in' },
-            { label: 'Reconnaissance', route: '/auth/forgot-password' },
+            { label: 'Adoption ', route: '/dashboard/adoption-naissance' },
+            { label: 'Jugement', route: '/dashboard/jugement-naissance' },
+            { label: 'Reconnaissance', route: '/dashboard/reconnaissance-naissance' },
        
           ],
         },
