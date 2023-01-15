@@ -1,17 +1,30 @@
+
 <div class="mx-auto px-4 py-2 sm:px-8 lg:container">
   <div class="mb-2 flex justify-between">
     <div class="inline-block">
-        <button
-        routerLink="/dashboard/add-naissance"
-        class="shadow-md inline-flex items-center px-4 py-2 bg-red-200 hover:bg-orange-400 text-gray-800 text-sm font-medium rounded-md"
+        <button (click)="toggleModal()"
+        data-bs-toggle="modal" data-bs-target="#exampleModal"
+        class="shadow-md inline-flex items-center px-4 py-2 bg-red-200 hover:bg-red-600 text-gray-800 text-sm font-medium rounded-md"
       >
       <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" />
       </svg>
 
-    Cliquer pour télecharger la copie
+    Cliquer pour télecharger 
       </button>
     </div>
+    <div class="inline-block">
+      <button
+      routerLink="/dashboard/add-naissance"
+      class="shadow-md inline-flex items-center px-4 py-2 bg-green-400 hover:bg-teal-600 text-gray-800 text-sm font-medium rounded-md"
+    >
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
+    </svg>
+
+  Cliquer pour imprimer 
+    </button>
+  </div>
     <div class="inline-block space-x-2">
       <button
         class="flex-none rounded-md bg-white px-4 py-0.5 text-xs font-semibold text-gray-500 hover:text-primary-500 dark:bg-night-600 dark:text-night-200 dark:hover:bg-night-500"
@@ -264,50 +277,164 @@
   </dl>
 
 </div>
-<!-- component -->
-<!-- <a
-  class="relative block p-8 overflow-hidden border bg-white border-slate-100 rounded-lg ml-6 mr-6"
-  href=""
->
-  <span
-    class="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-green-300 via-blue-500 to-purple-600"
-  ></span>
+</div>
+</div>
+<div *ngIf="OpenCopie" class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+ 
 
-  <div class="justify-between sm:flex">
-    <div>
-      <h5 class="text-xl font-bold text-slate-900">
-        Building a beautiful product as a software developer
-      </h5>
-      <p class="mt-1 text-xs font-medium text-slate-600">By Ana Doe</p>
-    </div>
-
-    <div class="flex-shrink-0 hidden ml-3 sm:block">
-      <img
-        class="object-cover w-16 h-16 rounded-lg shadow-sm"
-        src="https://github.com/creativetimofficial/argon-design-system/blob/master/assets/img/faces/team-2.jpg?raw=true"
-        alt=""
-      />
+  <div class="fixed inset-0 bg-gray-700 bg-opacity-75 transition-opacity">
+ 
+  <div class="fixed overflow-y-auto inset-0 z-10 ">
+    <div class="flex h-full w-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+      <button class=" hover:bg-red-500 text-white font-bold py-2 px-4 rounded-full absolute  bg-red-700 lg:h-10 lg:max-w-[8%] right-2 top-2" (click)="toggleModal()">x</button>
+      <div class="relative transform overflow-auto rounded-lg bg-white text-left  lg:h-full lg:max-w-[75%] shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+        <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 mt-2">
+          <div class="page" id="htmlData">
+            <header>
+              <h1 class="heading">Teny midina faha-788-MJ/CAB <br> tamin'ny 29 Desambra 1961 nataon'ny <br> Ministry ny
+                Fitsarana sy ny Mpitahiry </h1>
+              <img class="repoblika" src="@/../../../../../../../assets/images/Repoblika.jpg" alt="">
+              <img class="bongolava" src="@/../../../../../../../assets/images/bongolava-logo.jpg" alt="">
+    
+            </header>
+    
+    
+            <main class="main">
+              <aside class="main__left">
+                <section class="section">
+    
+                  <img class="commune" src="@/../../../../../../../assets/images/FIANARANTSOA.png" alt="">
+    
+                  <p class="kaominina">Kaominina Andrenivohitra Fianarantsoa</p>
+    
+                  <p class="section__title my-5">Faha : 451</p>
+    
+                  <p class="section__title mt-5">Tamin'ny <br> <span class="ml-0 pr-10">04 Aprily 2002</span> </p>
+    
+                  <div class="section__content">
+                    <div class="section__entry">
+                      <div class="section_title">
+                        Fahaterahana
+    
+                      </div>
+                    </div>
+                    <div class="section__entry">
+                      <div class="section_content font-medium">
+                        SEHENONINAINA Amelia
+                      </div>
+                    </div>
+    
+                    <div class="section__entry">
+                      <div class="section_content ml-5 my-20">
+                        01 Aprily 2002
+                      </div>
+                    </div>
+    
+                  </div>
+                </section>
+    
+                <section class="section">
+    
+    
+                  <div class="section__content">
+                    <p class="section__entry">Tsy asiana hajia araka <br>
+                      ny and. 416-n'ny CGET</p>
+    
+                  </div>
+                </section>
+    
+                <section class="section">
+    
+    
+                  <div class="section__content">
+                    <p class="section__entry font-semibold">Soratra an-tsisiny</p>
+    
+                  </div>
+                </section>
+    
+              </aside>
+    
+              <div class="main__right">
+                <section class="section">
+                  <p class="faritra">FARITRA BONGOLAVA</p>
+                  <div class="timeline__title mt-10 ml-20">
+                    <span>KOPIAN'NY SORAM-PIANKOHONANA</span>
+                  </div>
+                  <div class="section__contentt">
+                    <div class="timeline">
+                      <div class="timeline__content">
+                        <p class="mb-5">
+                          <span class="pl-10">Nalaina tamin'ny bokim-pianakaviana , tamin'ny taona roa sy roa arivo
+                            ,</span>
+                          voatahiry ato amin'ny Kaominina Ambonivohitra Fianarantsoa izao soratra manaraka izao:
+                        </p>
+                      </div>
+                    </div>
+                    <div class="timeline">
+                      <div class="timeline__content ">
+                        <p class="mb-5">
+                          <span class="pl-10">Tamin'ny iray aprily roa arivo </span>, tamin'ny ira ora maraina sy efapolo
+                          minitra,
+                          no teraka tao Amin'ny Trano Fampiterahanan'i Fianarantsoa, SEHENONINAINA Amelia, zazavavy,
+                          zanak'i
+                          RANDRINASOLO Leon
+                          ,Gens de Maison, teraka tamin'ny enina amby ny roapolo febroary taona valopolo sy sivinjato sy
+                          arivo tao Fianarantsoa
+                          , sy RASEHENONIANA Marianna, Cuisinière, teraka tamin'ny enina marsa tao roa vaopolo sy
+                          sivinjato
+                          sy arivo tao Fianarantsoa
+                          , samy monina ao Andrainjato
+                        </p>
+    
+                      </div>
+                    </div>
+                    <div class="timeline">
+                      <div class="timeline__content ">
+                        <p class="mb-5">
+                          <span class="pl-10">Nosoratana androany roa aprily </span> taona roa sy roa arivo
+                          tamin'ny valo ora maraina sy folo minitra, araka ny fanamabarana nataon'i RAZANAMASY,
+                          Mampivelona,
+                          teraka
+                          tamin'ny efatra janoary taona telo amby fitopolo sy sivinjato sy arivo tao Antsirabe, monina ao
+                          Ambatomena, izay
+                          miaraka manao sonia aminay. RAKOTOZAFY Urbain, Ben 'ny Tanàna , mpiraikitra ny
+                          soram-piankohonana
+                          ao amin'ny
+                          Commune Urbaine de Fianarantsoa, rehefa novakiana ity soratra ity.
+                        </p>
+    
+                      </div>
+                    </div>
+                  </div>
+    
+                  <div class=" text-sm font-normal ml-48">
+                    <span>-MANARAKA NY SONIA-</span>
+                  </div>
+                  <div class="section__contentt">
+                    <div class="timeline">
+                      <div class="timeline__content">
+                        <p class="mb-5">
+                          <span class="pl-10">Kopia manontolo nadika tamin'ny boky androany telo aprily roa sy roa arivo
+                          </span>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+    
+                  <div class=" text-sm font-normal ml-20">
+                    <span>NY MPIANDRAIKITRA NY SORAM-PIANKOHONANA</span>
+                  </div>
+                </section>
+              </div>
+            </main>
+          </div>
+    
+    
+        </form>
+    
+      </div>
     </div>
   </div>
 
-  <div class="mt-2 sm:pr-8">
-    <p class="text-sm text-slate-500">
-      Open source Tailwind UI components and templates to
-bootstrap your new apps, projects or landing sites! Open source Tailwind UI.
-    </p>
-  </div>
-
-  <dl class="flex mt-6">
-    <div class="flex flex-col-reverse">
-      <dt class="text-sm font-medium text-slate-600">Published</dt>
-      <dd class="text-xs text-slate-500">31st June, 2022</dd>
-    </div>
-
-    <div class="flex flex-col-reverse ml-3 sm:ml-6">
-      <dt class="text-sm font-medium text-slate-600">Reading time</dt>
-      <dd class="text-xs text-slate-500">5 minutes</dd>
-    </div>
-  </dl>
-</a> -->
-  </div>
+</div>
 </div>
