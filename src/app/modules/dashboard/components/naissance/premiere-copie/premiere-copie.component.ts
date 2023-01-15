@@ -20,6 +20,7 @@ export class PremiereCopieComponent implements OnInit {
     'actions',
   ];
   dataSource: MatTableDataSource<UserData>;
+  showModal = false;
   constructor( public dialog: MatDialog) {
     const users: UserData[] = [];
     for (let i = 1; i <= 100; i++) {
@@ -52,6 +53,10 @@ export class PremiereCopieComponent implements OnInit {
   }
   openDialog(){
     this.dialog.open(PremiereCopieComponent);
+  }
+ 
+  toggleModal(){
+    this.showModal = !this.showModal;
   }
 }
 

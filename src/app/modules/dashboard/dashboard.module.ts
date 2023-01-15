@@ -14,6 +14,9 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCardModule } from '@angular/material/card';
+import { MatListModule } from '@angular/material/list';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
@@ -28,6 +31,7 @@ import { NaissanceAddComponent } from './components/naissance/naissance-add/nais
 import { AdoptionComponent } from './components/naissance/adoption/adoption.component';
 import { JugementComponent } from './components/naissance/jugement/jugement.component';
 import { ReconnaissanceComponent } from './components/naissance/reconnaissance/reconnaissance.component';
+import { PremiereCopieVoirComponent } from './components/naissance/premiere-copie-voir/premiere-copie-voir.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +49,7 @@ import { ReconnaissanceComponent } from './components/naissance/reconnaissance/r
     AdoptionComponent,
     JugementComponent,
     ReconnaissanceComponent,
+    PremiereCopieVoirComponent,
   ],
   imports: [
     CommonModule,
@@ -58,6 +63,9 @@ import { ReconnaissanceComponent } from './components/naissance/reconnaissance/r
     NgApexchartsModule,
     FormsModule,
     MatDialogModule,
+    MatGridListModule,
+    MatCardModule,
+    MatListModule,
     ReactiveFormsModule,
     AngularSvgIconModule.forRoot(),
   ],
