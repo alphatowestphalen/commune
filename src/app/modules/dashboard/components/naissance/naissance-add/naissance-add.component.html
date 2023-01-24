@@ -565,7 +565,8 @@
             border duration-200 ease-in-out 
             border-gray-600 transition">Prècedent</button>
                 <div class="flex-auto flex flex-row-reverse">
-                    <button mat-button matStepperNext class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
+                    <button   (click)="openDialog()"
+                    mat-button matStepperNext class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
             hover:bg-blue-600  
             bg-blue-600 
             text-blue-100 

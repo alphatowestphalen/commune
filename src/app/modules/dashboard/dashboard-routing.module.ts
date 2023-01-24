@@ -10,6 +10,8 @@ import { ReconnaissanceComponent } from './components/naissance/reconnaissance/r
 import { JugementComponent } from './components/naissance/jugement/jugement.component';
 import { PremiereCopieVoirComponent } from './components/naissance/premiere-copie-voir/premiere-copie-voir.component';
 
+
+
 const routes: Routes = [
   {
     path: '',
@@ -24,6 +26,7 @@ const routes: Routes = [
       {path: 'reconnaissance-naissance', component: ReconnaissanceComponent},
       {path: 'jugement-naissance', component: JugementComponent},
       {path: 'premiere-copie-voir', component: PremiereCopieVoirComponent},
+ 
       { path: '**', redirectTo: 'error/404' },
     ],
   },

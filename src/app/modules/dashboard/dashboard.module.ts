@@ -27,7 +27,7 @@ import { NftAuctionsTableComponent } from './components/nft/nft-auctions-table/n
 import { NftAuctionsTableItemComponent } from './components/nft/nft-auctions-table-item/nft-auctions-table-item.component';
 import { NaissanceHomeComponent } from './components/naissance/naissance-home/naissance-home.component';
 import { PremiereCopieComponent } from './components/naissance/premiere-copie/premiere-copie.component';
-import { NaissanceAddComponent } from './components/naissance/naissance-add/naissance-add.component';
+import { NaissanceAddComponent, AfficheCopieComponent } from './components/naissance/naissance-add/naissance-add.component';
 import { AdoptionComponent } from './components/naissance/adoption/adoption.component';
 import { JugementComponent } from './components/naissance/jugement/jugement.component';
 import { ReconnaissanceComponent } from './components/naissance/reconnaissance/reconnaissance.component';
@@ -50,6 +50,7 @@ import { PremiereCopieVoirComponent } from './components/naissance/premiere-copi
     JugementComponent,
     ReconnaissanceComponent,
     PremiereCopieVoirComponent,
+    AfficheCopieComponent,
   ],
   imports: [
     CommonModule,
