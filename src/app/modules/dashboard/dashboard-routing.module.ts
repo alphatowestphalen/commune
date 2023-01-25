@@ -10,6 +10,8 @@ import { ReconnaissanceComponent } from './components/naissance/reconnaissance/r
 import { JugementComponent } from './components/naissance/jugement/jugement.component';
 import { PremiereCopieVoirComponent } from './components/naissance/premiere-copie-voir/premiere-copie-voir.component';
 import { AdoptionAddComponent } from './components/naissance/adoption/adoption-add/adoption-add.component';
+import { JugementAddComponent } from './components/naissance/jugement/jugement-add/jugement-add.component';
+import { ReconnaissanceAddComponent } from './components/naissance/reconnaissance/reconnaissance-add/reconnaissance-add.component';
 
 
 const routes: Routes = [
@@ -23,6 +25,8 @@ const routes: Routes = [
       {path: 'nfts', component: NftComponent},
       {path: 'add-naissance', component: NaissanceAddComponent},
       {path: 'add-adoption', component: AdoptionAddComponent},
+      {path: 'add-jugement', component: JugementAddComponent},
+      {path: 'add-reconnaissance', component: ReconnaissanceAddComponent},
       {path: 'adoption-naissance', component: AdoptionComponent},
       {path: 'reconnaissance-naissance', component: ReconnaissanceComponent},
       {path: 'jugement-naissance', component: JugementComponent},
