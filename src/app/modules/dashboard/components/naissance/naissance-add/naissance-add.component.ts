@@ -34,7 +34,13 @@ export class NaissanceAddComponent implements OnInit {
   }
 
   openDialog() {
-    const dialogRef = this.dialog.open(AfficheCopieComponent);
+    const dialogRef = this.dialog.open(AfficheCopieComponent, {
+
+maxWidth: '100vw',
+      maxHeight: '100vh',
+      height: '90%',
+      width: '85%',
+      panelClass: 'full-screen-modal'    });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
@@ -75,5 +81,6 @@ export class NaissanceAddComponent implements OnInit {
   templateUrl: 'affiche-copie.component.html',
 })
 export class AfficheCopieComponent {
-  constructor( public dialog: MatDialog) { }
+  
 }
+

@@ -14,7 +14,7 @@ form{
 .page{
   position: relative;
   width: auto;
-  padding: 15mm 8mm 0mm 20mm;
+  padding: 0mm 8mm 0mm 20mm;
 }
 .heading{
   display: inline-block;
@@ -116,37 +116,23 @@ form{
 }
 .timeline__content{
   width: calc(100% - 2mm);}  
+
+  .md-dialog-container {
+      background-color:red;
+      width: 100%;
+      height: 100%
+}  
 </style>
 
-  <h2 mat-dialog-title>Install Angular</h2>
-<mat-dialog-content class="mat-typography">
+  <h2 mat-dialog-title>Première Copie</h2>
+<mat-dialog-content class="font-poppins">
 
-    <div class="fixed inset-0 bg-gray-700 bg-opacity-75 transition-opacity">
+
    
-    <div class="fixed overflow-y-auto inset-0 z-10 ">
-      <div class="flex h-full w-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-        <button
-          
-        class="shadow-md inline-flex items-center px-4 py-2 bg-red-200 hover:bg-red-600 text-gray-800 text-sm font-medium rounded-md"
-      >
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" />
-      </svg>
-  
-    Cliquer pour télecharger 
-      </button>
-      <button 
-      class="shadow-md inline-flex items-center px-4 py-2 bg-green-400 hover:bg-teal-600 text-gray-800 text-sm font-medium rounded-md"
-    >
-    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
-    </svg>
-  
-  Cliquer pour imprimer 
-    </button>
-        <button class=" hover:bg-red-500 text-white font-bold py-2 px-4 rounded-full absolute  bg-red-700 lg:h-10 lg:max-w-[8%] right-2 top-2" >x</button>
-        <div class="relative transform overflow-auto rounded-lg bg-white text-left  lg:h-full lg:max-w-[75%] shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
-          <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 mt-2">
+ 
+     
+        <div class="relative transform overflow-auto rounded-lg bg-white text-left  lg:h-full lg:max-w-[100%] shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+          <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
             <div class="page" id="htmlData">
               <header>
                 <h1 class="heading">Teny midina faha-788-MJ/CAB <br> tamin'ny 29 Desambra 1961 nataon'ny <br> Ministry ny
@@ -291,14 +277,32 @@ form{
           </form>
       
         </div>
-      </div>
-    </div>
+     
+
   
-  </div>
+
 
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Install</button>
+ 
+  <button mat-button mat-dialog-close
+          
+  class="shadow-md inline-flex items-center px-4 py-2 bg-red-200 hover:bg-red-600 text-gray-800 text-sm font-medium rounded-md"
+>
+<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" />
+</svg>
+
+Cliquer pour modifier 
+</button>
+<button  mat-button [mat-dialog-close]="true" cdkFocusInitial
+class="shadow-md inline-flex items-center ml-2 px-4 py-2 bg-green-400 hover:bg-teal-600 text-gray-800 text-sm font-medium rounded-md"
+>
+<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
+</svg>
+
+Cliquer pour sauvegarder 
+</button>
 </mat-dialog-actions>
 

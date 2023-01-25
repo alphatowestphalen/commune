@@ -9,7 +9,7 @@ import { AdoptionComponent } from './components/naissance/adoption/adoption.comp
 import { ReconnaissanceComponent } from './components/naissance/reconnaissance/reconnaissance.component';
 import { JugementComponent } from './components/naissance/jugement/jugement.component';
 import { PremiereCopieVoirComponent } from './components/naissance/premiere-copie-voir/premiere-copie-voir.component';
-
+import { AdoptionAddComponent } from './components/naissance/adoption/adoption-add/adoption-add.component';
 
 
 const routes: Routes = [
@@ -22,6 +22,7 @@ const routes: Routes = [
       { path: 'naissance', component: NaissanceHomeComponent },
       {path: 'nfts', component: NftComponent},
       {path: 'add-naissance', component: NaissanceAddComponent},
+      {path: 'add-adoption', component: AdoptionAddComponent},
       {path: 'adoption-naissance', component: AdoptionComponent},
       {path: 'reconnaissance-naissance', component: ReconnaissanceComponent},
       {path: 'jugement-naissance', component: JugementComponent},

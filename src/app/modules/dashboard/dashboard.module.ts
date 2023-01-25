@@ -32,6 +32,8 @@ import { AdoptionComponent } from './components/naissance/adoption/adoption.comp
 import { JugementComponent } from './components/naissance/jugement/jugement.component';
 import { ReconnaissanceComponent } from './components/naissance/reconnaissance/reconnaissance.component';
 import { PremiereCopieVoirComponent } from './components/naissance/premiere-copie-voir/premiere-copie-voir.component';
+import { AdoptionAddComponent } from './components/naissance/adoption/adoption-add/adoption-add.component';
+import { AdoptionVoirComponent } from './components/naissance/adoption/adoption-voir/adoption-voir.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +53,8 @@ import { PremiereCopieVoirComponent } from './components/naissance/premiere-copi
     ReconnaissanceComponent,
     PremiereCopieVoirComponent,
     AfficheCopieComponent,
+    AdoptionAddComponent,
+    AdoptionVoirComponent,
   ],
   imports: [
     CommonModule,
