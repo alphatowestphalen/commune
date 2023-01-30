@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { FeaturesRoutingModule } from './features-routing.module';
 import { ScopedAComponent } from './components/scoped-a/scoped-a.component';
-
+import {MatExpansionModule} from '@angular/material/expansion';
 
 @NgModule({
   declarations: [
@@ -11,7 +11,8 @@ import { ScopedAComponent } from './components/scoped-a/scoped-a.component';
   ],
   imports: [
     CommonModule,
-    FeaturesRoutingModule
+    FeaturesRoutingModule,
+    MatExpansionModule,
   ]
 })
 export class FeaturesModule { }
