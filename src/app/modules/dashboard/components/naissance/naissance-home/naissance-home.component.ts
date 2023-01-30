@@ -27,6 +27,7 @@ export class NaissanceHomeComponent implements OnInit {
       users.push(createNewUser(i));
     }
 
+
     // Assign the data to the data source for the table to render
     this.dataSource = new MatTableDataSource(users);
   

@@ -3,7 +3,8 @@ import {MatDialog} from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { Nft } from '../../../models/nft';
+import { PremiereCopieService } from '../../../services/premiere-copie.service';
+import { PremiereCopie } from '../../../models/premiere-copie.model'
 
 @Component({
   selector: 'app-premiere-copie',
@@ -11,25 +12,17 @@ import { Nft } from '../../../models/nft';
   styleUrls: ['./premiere-copie.component.scss']
 })
 export class PremiereCopieComponent implements OnInit {
-  public activeAuction: Nft[] = [];
   displayedColumns = [
-    'id',
-    'name',
-    'datenaiss',
-    'dateenregistrement',
+    'idPremiereCopie',
+    'description',
+    'datePremiereCopie',
+    'datePCopie',
     'actions',
   ];
-  dataSource: MatTableDataSource<UserData>;
-  showModal = false;
-  constructor( public dialog: MatDialog) {
-    const users: UserData[] = [];
-    for (let i = 1; i <= 100; i++) {
-      users.push(createNewUser(i));
-    }
 
-    // Assign the data to the data source for the table to render
-    this.dataSource = new MatTableDataSource(users);
-  
+  dataSource = new MatTableDataSource<PremiereCopie[]>();
+  showModal = false;
+  constructor( public dialog: MatDialog, private premierecopieservice: PremiereCopieService) {
   } 
   
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -42,8 +35,8 @@ export class PremiereCopieComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.displayedColumns;
-    this.dataSource;
+    this.displayedColumns;   
+    this.getAllfirstCertificates();
   }
 
   applyFilter(filterValue: string) {
@@ -58,104 +51,13 @@ export class PremiereCopieComponent implements OnInit {
   toggleModal(){
     this.showModal = !this.showModal;
   }
-}
 
-function createNewUser(id: number): UserData {
-  const name =
-    NAMES[Math.round(Math.random() * (NAMES.length - 1))] +
-    ' ' +
-    FIRSTNAMES[Math.round(Math.random() * (NAMES.length - 1))];
-  const date =
-    DATE[Math.round(Math.random() * (DATE.length - 1))] +
-    '/' +
-    DATE[Math.round(Math.random() * (DATE.length - 1))] +
-    '/' +
-    YEAR[Math.round(Math.random() * (YEAR.length - 1))];
-  const color =
-    DATE[Math.round(Math.random() * (DATE.length - 1))] +
-    '/' +
-    DATE[Math.round(Math.random() * (DATE.length - 1))] +
-    '/' +
-    '2022';
-
-  return {
-    id: id.toString(),
-    name: name,
-    datenaiss: date,
-    dateenregitrement: color,
-  };
-}
-
-/** Constants used to fill up our data base. */
-const DATE = [
-  '01',
-  '02',
-  '03',
-  '04',
-  '04',
-  '04',
-  '05',
-  '06',
-  '07',
-  '08',
-  '09',
-  '10',
-  '11',
-];
-const YEAR = [
-  '2000',
-  '2001',
-  '2002',
-  '2003',
-  '2010',
-  '2011',
-  '2013',
-  '2006',
-  '2020',
-  '2022',
-];
-const FIRSTNAMES = [
-  'Jean',
-  'Gregoire',
-  'Louis',
-  'Matteao',
-  'Santos',
-  'Law',
-  'Asher',
-  'Olivia',
-  'Atticus',
-  'Amelia',
-  'Jack',
-  'Charlotte',
-  'Theodore',
-  'Isla',
-  'Oliver',
-  'Isabella',
-  'Jasper',
-  'Cora',
-  'Levi',
-  'Violet',
-  'Arthur',
-  'Mia',
-  'Thomas',
-  'Elizabeth',
-];
-const NAMES = [
-  'RAZANANDRAINY',
-  'RAKOTONIRINA',
-  'ANDRINIAINA',
-  'RAHARAVELO',
-  'RAKOTOMAMONJY',
-  'RANDRIANANTENAINA',
-  'ZAFIMAHALEO',
-  'SEHENONINAINA',
-  'NANTENAINA',
-  'TONGASOA',
-];
-
-export interface UserData {
-  id: string;
-  name: string;
-  datenaiss: string;
-  dateenregitrement: string;
+  getAllfirstCertificates(){
+    this.premierecopieservice.getFirstCertificates()
+    .subscribe(data=>{ 
+       this.dataSource.data = data;
+     // this.certificates = data;
+      console.log(this.dataSource.data)
+    })
+  }
 }
