@@ -135,7 +135,7 @@
     </div>
 </div> -->
 
-   <mat-horizontal-stepper  #stepper>
+   <mat-horizontal-stepper [linear]="true" #stepper>
           <mat-step [stepControl]="PiecesFormGroup">
             <form [formGroup]="PiecesFormGroup">
               <ng-template matStepLabel> Dossier <br>
@@ -205,7 +205,7 @@
                 <div class="mb-4 w-4/5">
   
                   <label class="block mb-2 text-sm font-bold text-black">Nom de l'enfant</label>
-                  <input type="text" formControlName="firstCtrl"
+                  <input type="text" formControlName = "nomEnfant" id="nomEnfant"
                     class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
                     placeholder="Saisir nom de l'enfant" />
   
@@ -213,7 +213,7 @@
                 <div class="mb-4 w-4/5">
   
                   <label class="block mb-2 text-sm font-bold text-black">Prenoms de l'enfant</label>
-                  <input type="text" formControlName="firstCtrl"
+                  <input type="text"  formControlName = "prenomsEnfant" 
                     class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
                     placeholder="Saisir Prenoms de l'enfant" />
   
@@ -224,17 +224,17 @@
                 <div class="mb-4 w-4/5">
   
                   <label class="block mb-2 text-sm font-bold text-black">Date de Naissance</label>
-                  <input type="date" formControlName="firstCtrl"
+                  <input type="date" formControlName = "datenaissEnfant" id="dateEnfant"
                     class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                    placeholder="Saisir Prenoms de l'enfant" />
+                    placeholder="Saisir Date de Naissance l'enfant" />
   
                 </div>
                 <div class="mb-4 w-4/5">
   
                   <label class="block mb-2 text-sm font-bold text-black">Heure de naissance</label>
-                  <input type="time" formControlName="firstCtrl"
+                  <input type="time"  formControlName = "heurenaissEnfant" id="heureEnfant"
                     class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                    placeholder="Saisir Prenoms de l'enfant" />
+                    placeholder="Saisir heure de Naissancede l'enfant" />
   
                 </div>
               </div>
@@ -242,16 +242,16 @@
                 <div class="mb-4 w-4/5">
   
                   <label class="block mb-2 text-sm font-bold text-black">Lieu de Naissance</label>
-                  <input type="text" formControlName="firstCtrl"
-                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                    placeholder="Saisir Prenoms de l'enfant" />
+                  <input type="text"  formControlName="lieuNaissEnfant" id="lieuNaissEnfant"
+                     class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                    placeholder="Saisir Lieu de Naissance de l'enfant" />
   
                 </div>
                 <div class="mb-4 w-4/5">
   
                   <label class="block mb-2 text-sm font-bold text-black">Sexe</label>
   
-                  <select name="" id="" formControlName="firstCtrl"
+                  <select formControlName="sexeEnfant" id="sexeEnfant" 
                     class="bg-gray-50 rounded-lg text-md border border-gray-300 block w-full p-2.5">
                     <option selected disabled>Choisir le Sexe</option>
                     <option value="fille">Fille</option>
@@ -292,7 +292,7 @@
                 <div class="mb-4 w-4/5">
   
                   <label class="block mb-2 text-sm font-bold text-black">Nom </label>
-                  <input type="text" formControlName="threeCtrl"
+                  <input type="text" formControlName="nomMere"
                     class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
                     placeholder="Saisir Nom du mère" />
   
@@ -300,7 +300,7 @@
                 <div class="mb-4 w-4/5">
   
                   <label class="block mb-2 text-sm font-bold text-black">Prenoms </label>
-                  <input type="text" formControlName="threeCtrl"
+                  <input type="text" formControlName="prenomsMere"
                     class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
                     placeholder="Saisir Prènoms du mère" />
   
@@ -311,7 +311,7 @@
                 <div class="mb-4 w-4/5">
   
                   <label class="block mb-2 text-sm font-bold text-black">Date de Naissance</label>
-                  <input type="date" formControlName="threeCtrl"
+                  <input type="date" formControlName="datenaissMere"
                     class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
                     placeholder="Saisir Date de Naissance du mère" />
   
@@ -319,7 +319,7 @@
                 <div class="mb-4 w-4/5">
   
                   <label class="block mb-2 text-sm font-bold text-black">Lieu de Naissance</label>
-                  <input type="text" formControlName="threeCtrl"
+                  <input type="text" formControlName="lieuNaissMere"
                     class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
                     placeholder="Saisir Lieu de Naissance du Mère " />
   
@@ -330,14 +330,14 @@
                 <div class="mb-4 w-4/5">
   
                   <label class="block mb-2 text-sm font-bold text-black">Profession</label>
-                  <input type="text" formControlName="threeCtrl"
+                  <input type="text" formControlName="professionMere"
                     class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
                     placeholder="Saisir Proffesion du Mère " />
   
                 </div>
                 <div class="mb-4 w-4/5">
                   <label class="block mb-2 text-sm font-bold text-black">Adresse Exacte</label>
-                  <input type="text" formControlName="threeCtrl"
+                  <input type="text" formControlName="adresseMere"
                     class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
                     placeholder="Saisir Adresse du Mère" />
                 </div>
@@ -372,7 +372,7 @@
                 <div class="mb-4 w-4/5">
   
                   <label class="block mb-2 text-sm font-bold text-black">Nom </label>
-                  <input type="text" formControlName="secondCtrl"
+                  <input type="text" formControlName="nomPere"
                     class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
                     placeholder="Saisir Nom du père" />
   
@@ -380,7 +380,7 @@
                 <div class="mb-4 w-4/5">
   
                   <label class="block mb-2 text-sm font-bold text-black">Prenoms </label>
-                  <input type="text" formControlName="secondCtrl"
+                  <input type="text" formControlName="prenomsPere"
                     class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
                     placeholder="Saisir Prènoms du père" />
   
@@ -391,7 +391,7 @@
                 <div class="mb-4 w-4/5">
   
                   <label class="block mb-2 text-sm font-bold text-black">Date de Naissance</label>
-                  <input type="date" formControlName="secondCtrl"
+                  <input type="date" formControlName="datenaissPere"
                     class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
                     placeholder="Saisir Date de Naissance du père" />
   
@@ -399,7 +399,7 @@
                 <div class="mb-4 w-4/5">
   
                   <label class="block mb-2 text-sm font-bold text-black">Lieu de Naissance</label>
-                  <input type="text" formControlName="secondCtrl"
+                  <input type="text" formControlName="lieuNaissPere"
                     class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
                     placeholder="Saisir Lieu de Naissance du père " />
   
@@ -410,14 +410,14 @@
                 <div class="mb-4 w-4/5">
   
                   <label class="block mb-2 text-sm font-bold text-black">Profession</label>
-                  <input type="text" formControlName="secondCtrl"
+                  <input type="text" formControlName="professionPere"
                     class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
                     placeholder="Saisir Proffesion du père " />
   
                 </div>
                 <div class="mb-4 w-4/5">
                   <label class="block mb-2 text-sm font-bold text-black">Adresse Exacte</label>
-                  <input type="text" formControlName="secondCtrl"
+                  <input type="text" formControlName="adressePere"
                     class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
                     placeholder="Saisir Adresse du père" />
                 </div>
@@ -452,7 +452,7 @@
                 <div class="mb-4 w-4/5">
   
                   <label class="block mb-2 text-sm font-bold text-black">Nom </label>
-                  <input type="text" formControlName="fourCtrl"
+                  <input type="text" formControlName="nomDeclarant"
                     class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
                     placeholder="Saisir Nom du Declarante" />
   
@@ -460,7 +460,7 @@
                 <div class="mb-4 w-4/5">
   
                   <label class="block mb-2 text-sm font-bold text-black">Prenoms </label>
-                  <input type="text" formControlName="fourCtrl"
+                  <input type="text" formControlName="prenomsDeclarant"
                     class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
                     placeholder="Saisir Prènoms du Declarante" />
   
@@ -471,7 +471,7 @@
                 <div class="mb-4 w-4/5">
   
                   <label class="block mb-2 text-sm font-bold text-black">Date de Naissance</label>
-                  <input type="date" formControlName="fourCtrl"
+                  <input type="date" formControlName="datenaissDeclarant"
                     class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
                     placeholder="Saisir Date de Naissance du Declarante" />
   
@@ -479,7 +479,7 @@
                 <div class="mb-4 w-4/5">
   
                   <label class="block mb-2 text-sm font-bold text-black">Lieu de Naissance</label>
-                  <input type="text" formControlName="fourCtrl"
+                  <input type="text" formControlName="lieuNaissDeclarant"
                     class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
                     placeholder="Saisir Lieu de Naissance du Declarante " />
   
@@ -487,17 +487,10 @@
   
               </div>
               <div class="lg:grid md:grid-flow-col grid-cols-2 mt-2  gap-4">
-                <div class="mb-4 w-4/5">
-  
-                  <label class="block mb-2 text-sm font-bold text-black">Profession</label>
-                  <input type="text" formControlName="fourCtrl"
-                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                    placeholder="Saisir Proffesion du Declarante " />
-  
-                </div>
+             
                 <div class="mb-4 w-4/5">
                   <label class="block mb-2 text-sm font-bold text-black">Adresse Exacte</label>
-                  <input type="text" formControlName="fourCtrl"
+                  <input type="text" formControlName="adresseDeclarant"
                     class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
                     placeholder="Saisir Adresse du Declarante" />
                 </div>
@@ -531,7 +524,7 @@
                 <div class="mb-4 w-4/5">
   
                   <label class="block mb-2 text-sm font-bold text-black">Nom </label>
-                  <input type="text" formControlName="fiveCtrl"
+                  <input type="text" formControlName="nomMaire"
                     class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
                     placeholder="Saisir Nom du Maire" />
   
@@ -539,7 +532,7 @@
                 <div class="mb-4 w-4/5">
   
                   <label class="block mb-2 text-sm font-bold text-black">Prenoms </label>
-                  <input type="text" formControlName="fiveCtrl"
+                  <input type="text" formControlName="prenomsMaire"
                     class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
                     placeholder="Saisir Prènoms du Maire" />
   
@@ -550,7 +543,7 @@
                 <div class="mb-4 w-4/5">
   
                   <label class="block mb-2 text-sm font-bold text-black">Fonction</label>
-                  <input type="date" formControlName="fiveCtrl"
+                  <input type="date" formControlName="fonction" id="fonction"
                     class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
                     placeholder="Saisir Fonction du Maire" />
   

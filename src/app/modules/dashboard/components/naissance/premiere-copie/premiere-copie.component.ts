@@ -60,4 +60,7 @@ export class PremiereCopieComponent implements OnInit {
       console.log(this.dataSource.data)
     })
   }
+  edit(idPremiereCopie: number){
+    alert(idPremiereCopie);
+  }
 }

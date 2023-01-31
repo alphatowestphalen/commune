@@ -10,24 +10,48 @@ import jsPDF from 'jspdf';
   styleUrls: ['./naissance-add.component.scss']
 })
 export class NaissanceAddComponent implements OnInit {
-
+  isLinear = true;
   constructor(private _formBuilder: FormBuilder, public dialog: MatDialog) { }
 
   PiecesFormGroup = this._formBuilder.group({});
+
   EnfantFormGroup = this._formBuilder.group({
-    firstCtrl: ['', Validators.required],
+    nomEnfant: ['', Validators.required],
+    prenomsEnfant:'',
+    datenaissEnfant: ['', Validators.required],
+    lieuNaissEnfant: ['', Validators.required],
+    heurenaissEnfant: ['', Validators.required],
+    sexeEnfant: ['', Validators.required],
   });
+
   PereFormGroup = this._formBuilder.group({
-    secondCtrl: ['', Validators.required],
+    nomPere: '',
+    prenomsPere: '',
+    datenaissPere: '',
+    lieuNaissPere: '',
+    professionPere: '',
+    adressePere: '',
   });
+
   MereFormGroup = this._formBuilder.group({
-    threeCtrl: ['', Validators.required],
+    nomMere: ['', Validators.required],
+    prenomsMere: '',
+    datenaissMere: ['', Validators.required],
+    lieuNaissMere: ['', Validators.required],
+    professionMere: ['', Validators.required],
+    adresseMere: ['', Validators.required],
   });
   DeclarantFormGroup = this._formBuilder.group({
-    fourCtrl: ['', Validators.required],
+    nomDeclarant: ['', Validators.required],
+    prenomsDeclarant:'',
+    datenaissDeclarant: ['', Validators.required],
+    lieuNaissDeclarant: ['', Validators.required],
+    adresseDeclarant: ['', Validators.required]
   });
   MaireFormGroup = this._formBuilder.group({
-    fiveCtrl: ['', Validators.required],
+    nomMaire: ['', Validators.required],
+    prenomsMaire: '',
+    fonction: ['', Validators.required],
   });
   @ViewChild('htmlData') htmlData!: ElementRef;
   ngOnInit(): void {
@@ -35,16 +59,15 @@ export class NaissanceAddComponent implements OnInit {
 
   openDialog() {
     const dialogRef = this.dialog.open(AfficheCopieComponent, {
-
-maxWidth: '100vw',
+      maxWidth: '100vw',
       maxHeight: '100vh',
       height: '90%',
       width: '85%',
-      panelClass: 'full-screen-modal'    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+      panelClass: 'full-screen-modal'
     });
+
+console.log( this.EnfantFormGroup.value, this.DeclarantFormGroup.value, this.MaireFormGroup.value, 
+  this.MereFormGroup.value, this.PereFormGroup.value, this.PiecesFormGroup.value)
   }
 
   public openPDF(): void {
@@ -61,16 +84,16 @@ maxWidth: '100vw',
       PDF.save('angular-demo.pdf');
     });
   }
-  
-  printPage(){
+
+  printPage() {
     var printContents = document.getElementById('htmlData')!.innerHTML;
-     var originalContents = document.body.innerHTML;
+    var originalContents = document.body.innerHTML;
 
-     document.body.innerHTML = printContents;
+    document.body.innerHTML = printContents;
 
-     window.print();
+    window.print();
 
-     document.body.innerHTML = originalContents;
+    document.body.innerHTML = originalContents;
   }
 
 
@@ -81,6 +104,6 @@ maxWidth: '100vw',
   templateUrl: 'affiche-copie.component.html',
 })
 export class AfficheCopieComponent {
-  
+
 }
 
