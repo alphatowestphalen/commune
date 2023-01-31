@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class PremiereCopieService {
 
 
-  private baseUrl = "https://mocki.io/v1/616bc212-68eb-448f-9fe7-86be30b0b1cb";
+  private baseUrl = "http://localhost:3000/premiereCopie";
 
   constructor(private http: HttpClient) { }
 
