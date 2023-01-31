@@ -153,7 +153,7 @@ form{
       
                     <p class="section__title my-5">Faha : 451</p>
       
-                    <p class="section__title mt-5">Tamin'ny <br> <span class="ml-0 pr-10">04 Aprily 2002</span> </p>
+                    <p class="section__title mt-5">Tamin'ny <br> <span class="ml-0 pr-10">{{data.datenaissEnfant}}</span> </p>
       
                     <div class="section__content">
                       <div class="section__entry">
@@ -164,13 +164,13 @@ form{
                       </div>
                       <div class="section__entry">
                         <div class="section_content font-medium">
-                          SEHENONINAINA Amelia
+                          {{data.nomEnfant}} {{data.prenomsEnfant}}
                         </div>
                       </div>
       
                       <div class="section__entry">
                         <div class="section_content ml-5 my-20">
-                          01 Aprily 2002
+                          {{data.datenaissEnfant}}
                         </div>
                       </div>
       
@@ -219,15 +219,15 @@ form{
                           <p class="mb-5">
                             <span class="pl-10">Tamin'ny iray aprily roa arivo </span>, tamin'ny ira ora maraina sy efapolo
                             minitra,
-                            no teraka tao Amin'ny Trano Fampiterahanan'i Fianarantsoa, SEHENONINAINA Amelia, zazavavy,
+                            no teraka tao Amin'ny {{data.lieuNaissEnfant}}, {{data.nomEnfant}} {{data.prenomsEnfant}}, {{data.sexeEnfant}},
                             zanak'i
-                            RANDRINASOLO Leon
-                            ,Gens de Maison, teraka tamin'ny enina amby ny roapolo febroary taona valopolo sy sivinjato sy
-                            arivo tao Fianarantsoa
-                            , sy RASEHENONIANA Marianna, Cuisinière, teraka tamin'ny enina marsa tao roa vaopolo sy
+                            {{data.nomPere}} {{data.prenomsPere}}
+                            ,{{data.professionPere}}, teraka tamin'ny enina amby ny roapolo febroary taona valopolo sy sivinjato sy
+                            arivo tao {{data.lieuNaissPere}}
+                            , sy {{data.nomMere}}, {{data.prenomsMere}}, teraka tamin'ny enina marsa tao roa vaopolo sy
                             sivinjato
-                            sy arivo tao Fianarantsoa
-                            , samy monina ao Andrainjato
+                            sy arivo tao {{data.lieuNaissMere}}
+                            , samy monina ao {{data.adresseMere}}
                           </p>
       
                         </div>
@@ -236,15 +236,14 @@ form{
                         <div class="timeline__content ">
                           <p class="mb-5">
                             <span class="pl-10">Nosoratana androany roa aprily </span> taona roa sy roa arivo
-                            tamin'ny valo ora maraina sy folo minitra, araka ny fanamabarana nataon'i RAZANAMASY,
+                            tamin'ny valo ora maraina sy folo minitra, araka ny fanamabarana nataon'i {{data.nomDeclarant}},
                             Mampivelona,
                             teraka
                             tamin'ny efatra janoary taona telo amby fitopolo sy sivinjato sy arivo tao Antsirabe, monina ao
-                            Ambatomena, izay
-                            miaraka manao sonia aminay. RAKOTOZAFY Urbain, Ben 'ny Tanàna , mpiraikitra ny
-                            soram-piankohonana
+                            {{data.adresseDeclarant}}, izay
+                            miaraka manao sonia aminay. {{data.nomMaire}},{{data.fonction}} 
                             ao amin'ny
-                            Commune Urbaine de Fianarantsoa, rehefa novakiana ity soratra ity.
+                            Commune Rurale d'Ankadinondry, rehefa novakiana ity soratra ity.
                           </p>
       
                         </div>

@@ -1,33 +1,42 @@
-import { Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
+import {
+  Component,
+  ElementRef,
+  Inject,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 
 @Component({
   selector: 'app-naissance-add',
   templateUrl: './naissance-add.component.html',
-  styleUrls: ['./naissance-add.component.scss']
+  styleUrls: ['./naissance-add.component.scss'],
 })
 export class NaissanceAddComponent implements OnInit {
   isLinear = true;
 
-  constructor(private _formBuilder: FormBuilder, public dialog: MatDialog) { 
- 
+  data: any;
 
-  }
- 
+  constructor(private _formBuilder: FormBuilder, public dialog: MatDialog) {}
+
   PiecesFormGroup = this._formBuilder.group({});
 
   EnfantFormGroup = this._formBuilder.group({
-    nomEnfant: ['', Validators.required],
-    prenomsEnfant:'',
-    datenaissEnfant: ['', Validators.required],
-    lieuNaissEnfant: ['', Validators.required],
-    heurenaissEnfant: ['', Validators.required],
-    sexeEnfant: ['', Validators.required],
+    nomEnfant: [''],
+    prenomsEnfant: '',
+    datenaissEnfant: [''],
+    lieuNaissEnfant: [''],
+    heurenaissEnfant: [''],
+    sexeEnfant: [''],
   });
-
 
   PereFormGroup = this._formBuilder.group({
     nomPere: '',
@@ -39,45 +48,61 @@ export class NaissanceAddComponent implements OnInit {
   });
 
   MereFormGroup = this._formBuilder.group({
-    nomMere: ['', Validators.required],
+    nomMere: [''],
     prenomsMere: '',
-    datenaissMere: ['', Validators.required],
-    lieuNaissMere: ['', Validators.required],
-    professionMere: ['', Validators.required],
-    adresseMere: ['', Validators.required],
+    datenaissMere: [''],
+    lieuNaissMere: [''],
+    professionMere: [''],
+    adresseMere: [''],
   });
   DeclarantFormGroup = this._formBuilder.group({
-    nomDeclarant: ['', Validators.required],
-    prenomsDeclarant:'',
-    datenaissDeclarant: ['', Validators.required],
-    lieuNaissDeclarant: ['', Validators.required],
-    adresseDeclarant: ['', Validators.required]
+    nomDeclarant: [''],
+    prenomsDeclarant: '',
+    datenaissDeclarant: [''],
+    lieuNaissDeclarant: [''],
+    adresseDeclarant: [''],
   });
   MaireFormGroup = this._formBuilder.group({
-    nomMaire: ['', Validators.required],
+    nomMaire: [''],
     prenomsMaire: '',
-    fonction: ['', Validators.required],
+    fonction: [''],
   });
   @ViewChild('htmlData') htmlData!: ElementRef;
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   openDialog() {
-    const dialogRef = this.dialog.open(AfficheCopieComponent, {
-      maxWidth: '100vw',
-      maxHeight: '100vh',
-      height: '90%',
-      width: '85%',
-      panelClass: 'full-screen-modal'
-    });
+   
 
+    if (
+      this.EnfantFormGroup.valid &&
+      this.DeclarantFormGroup.valid &&
+      this.MaireFormGroup.valid &&
+      this.MereFormGroup.valid &&
+      this.PereFormGroup.valid &&
+      this.PiecesFormGroup.valid
+    ) {
+      this.data = {
+        ...this.EnfantFormGroup.value,
+        ...this.DeclarantFormGroup.value,
+        ...this.MaireFormGroup.value,
+        ...this.PereFormGroup.value,
+        ...this.MereFormGroup.value,
+        ...this.PiecesFormGroup.value,
+      };
+      const dialogRef = this.dialog.open(AfficheCopieComponent, {
+        maxWidth: '100vw',
+        maxHeight: '100vh',
+        height: '90%',
+        width: '85%',
+        panelClass: 'full-screen-modal',
+        data : this.data
+      });
+    }
 
-console.log( this.EnfantFormGroup.value, this.DeclarantFormGroup.value, this.MaireFormGroup.value, 
-  this.MereFormGroup.value, this.PereFormGroup.value, this.PiecesFormGroup.value)
+    // console.log(this.data);
   }
 
   public openPDF(): void {
-
     let DATA: any = document.getElementById('htmlData');
     console.log(DATA);
     html2canvas(DATA).then((canvas) => {
@@ -101,8 +126,6 @@ console.log( this.EnfantFormGroup.value, this.DeclarantFormGroup.value, this.Mai
 
     document.body.innerHTML = originalContents;
   }
-
-
 }
 
 @Component({
@@ -110,6 +133,10 @@ console.log( this.EnfantFormGroup.value, this.DeclarantFormGroup.value, this.Mai
   templateUrl: 'affiche-copie.component.html',
 })
 export class AfficheCopieComponent {
+  constructor(@Inject (MAT_DIALOG_DATA) public data: any ) {}
 
+  ngOnInit() {
+    
+    console.log(this.data)
+  }
 }
-
