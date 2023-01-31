@@ -1,5 +1,5 @@
 import { Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
@@ -11,8 +11,12 @@ import jsPDF from 'jspdf';
 })
 export class NaissanceAddComponent implements OnInit {
   isLinear = true;
-  constructor(private _formBuilder: FormBuilder, public dialog: MatDialog) { }
 
+  constructor(private _formBuilder: FormBuilder, public dialog: MatDialog) { 
+ 
+
+  }
+ 
   PiecesFormGroup = this._formBuilder.group({});
 
   EnfantFormGroup = this._formBuilder.group({
@@ -23,6 +27,7 @@ export class NaissanceAddComponent implements OnInit {
     heurenaissEnfant: ['', Validators.required],
     sexeEnfant: ['', Validators.required],
   });
+
 
   PereFormGroup = this._formBuilder.group({
     nomPere: '',
@@ -65,6 +70,7 @@ export class NaissanceAddComponent implements OnInit {
       width: '85%',
       panelClass: 'full-screen-modal'
     });
+
 
 console.log( this.EnfantFormGroup.value, this.DeclarantFormGroup.value, this.MaireFormGroup.value, 
   this.MereFormGroup.value, this.PereFormGroup.value, this.PiecesFormGroup.value)
