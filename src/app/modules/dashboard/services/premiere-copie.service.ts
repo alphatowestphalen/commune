@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -9,12 +10,12 @@ import { Observable } from 'rxjs';
 export class PremiereCopieService {
 
 
-  private baseUrl = "http://localhost:3000/premiereCopie";
+  private baseUrl = environment.baseUrl;
 
   constructor(private http: HttpClient) { }
 
 
   getFirstCertificates(): Observable<any> {
-    return this.http.get(`${this.baseUrl}`);
+    return this.http.get(`${this.baseUrl}/premierCopies`);
   }
 }
