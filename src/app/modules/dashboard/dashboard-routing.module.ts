@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard.component';
 import { NaissanceHomeComponent } from './components/naissance/naissance-home/naissance-home.component';
-import { NftComponent } from './pages/nft/nft.component';
 import { PremiereCopieComponent } from './components/naissance/premiere-copie/premiere-copie.component';
 import { NaissanceAddComponent } from './components/naissance/naissance-add/naissance-add.component';
 import { AdoptionComponent } from './components/naissance/adoption/adoption.component';
@@ -22,7 +21,6 @@ const routes: Routes = [
       { path: '', redirectTo: 'naissance', pathMatch: 'full' },
       { path: 'premiere-copie', component: PremiereCopieComponent },
       { path: 'naissance', component: NaissanceHomeComponent },
-      {path: 'nfts', component: NftComponent},
       {path: 'add-naissance', component: NaissanceAddComponent},
       {path: 'add-adoption', component: AdoptionAddComponent},
       {path: 'add-jugement', component: JugementAddComponent},
