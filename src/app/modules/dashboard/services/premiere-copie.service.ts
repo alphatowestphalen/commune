@@ -10,12 +10,16 @@ import { environment } from 'src/environments/environment';
 export class PremiereCopieService {
 
 
-  private baseUrl = environment.baseUrl;
+  private baseUrl = environment.baseUrl+'/premierCopies';
 
   constructor(private http: HttpClient) { }
 
 
   getFirstCertificates(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/premierCopies`);
+    return this.http.get(`${this.baseUrl}`);
+  }
+
+  addFirstCertificates(premiereCopie: Object):Observable<Object> {
+    return this.http.post(`${this.baseUrl}`,premiereCopie);
   }
 }
