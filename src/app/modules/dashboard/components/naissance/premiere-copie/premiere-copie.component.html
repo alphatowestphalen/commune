@@ -98,65 +98,8 @@
 
 
 
-    <app-mat-table [data]="data" [displayedColumns]="displayedColumns">
-      <ng-container matColumnDef="idPremiereCopie">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>
-        N° Copie
-        </th >
-        <td mat-cell *matCellDef="let row"> {{ row.idPremiereCopie }} </td >
-      </ng-container>
+    <app-mat-table [columns]="columns" [data]="data"></app-mat-table>
 
-      <!-- Progress Column -->
-      <ng-container matColumnDef=" description">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>
-          Date de Naissance
-        </th >
-        <td mat-cell *matCellDef="let row"> {{ row.description }} </td >
-      </ng-container>
-
-      <!-- Name Column -->
-      <ng-container matColumnDef="datePremiereCopie">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>
-          Nom et Prènoms
-        </th >
-        <td mat-cell *matCellDef="let row"> {{ row.datePremiereCopie }} </td >
-      </ng-container>
-
-      <!-- Color Column -->
-      <ng-container matColumnDef="datePCopie">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>
-          Date d'Enregistrement
-        </th >
-        <td mat-cell *matCellDef="let row"> {{ row.datePCopie }} </td >
-      </ng-container>
-      <ng-container matColumnDef="actions">
-        <th mat-header-cell *matHeaderCellDef> Actions</th >
-        <td mat-cell *matCellDef="let row; let i = index">
-          <button
-            routerLink="/dashboard/premiere-copie-voir"
-            class="btn btn-sm font-normal lowercase modal-button text-xs bg-blue-600 px-4 py-2 text-white rounded-md mr-2"
-          >
-            voir
-          </button>
-          <button
-            mat-icon-button
-            (click)="edit(row.idPremiereCopie)"
-            class="btn btn-sm font-normal lowercase text-xs bg-green-600 px-4 py-2 text-white rounded-md mr-2"
-          >
-            editer
-          </button>
-          <button
-            mat-icon-button
-            class="btn btn-sm font-normal lowercase text-xs bg-red-600 px-4 py-2 text-white rounded-md"
-          >
-            supprimer
-          </button>
-        </td >
-      </ng-container>
-
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns"> </tr>
-    </app-mat-table>
 
     <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
 

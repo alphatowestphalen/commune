@@ -12,7 +12,8 @@ import { PremiereCopie } from '../../../models/premiere-copie.model'
   styleUrls: ['./premiere-copie.component.scss']
 })
 export class PremiereCopieComponent implements OnInit {
-  displayedColumns:string[] = ['idPremiere','description','datePremiereCopie','datePCopie','actions'];
+  
+  columns:any[] = ['idPremiereCopie','description','datePremiereCopie','datePCopie','actions'];
   data = [];
 
   //dataSource = new MatTableDataSource<PremiereCopie[]>();
@@ -30,7 +31,7 @@ export class PremiereCopieComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.displayedColumns;   
+   // this.displayedColumns;   
 
     //this.getAllfirstCertificates();
   }
@@ -42,20 +43,21 @@ export class PremiereCopieComponent implements OnInit {
   }
   openDialog(){
     this.dialog.open(PremiereCopieComponent);
+    this.getAllfirstCertificates();
   }
  
   toggleModal(){
     this.showModal = !this.showModal;
   }
 
-  // getAllfirstCertificates(){
-  //   this.premierecopieservice.getFirstCertificates()
-  //   .subscribe(data=>{ 
-  //   //    this.dataSource.data = data;
-  //   //  // this.certificates = data;
-  //   //   console.log(this.dataSource.data)
-  //   })
-  // }
+  getAllfirstCertificates(){
+    this.premierecopieservice.getFirstCertificates()
+    .subscribe(data=>{ 
+     this.data = data;
+    //  // this.certificates = data;
+   console.log(this.data)
+    })
+  }
 
   
   edit(idPremiereCopie: number){

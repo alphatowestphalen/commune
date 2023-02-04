@@ -10,12 +10,13 @@ export class MatTableComponent implements OnInit {
   @Input()
   data: any[] = [];
     @Input()
-    displayedColumns: any[] = [];
-  dataSource = new MatTableDataSource(this.data,);
+    columns: string[] = [];
+  dataSource = new MatTableDataSource();
 
   constructor() { }
 
   ngOnInit(): void {
+    this.dataSource.data = this.data
   }
 
 }
