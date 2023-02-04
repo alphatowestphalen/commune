@@ -13,8 +13,8 @@ import { PremiereCopie } from '../../../models/premiere-copie.model'
 })
 export class PremiereCopieComponent implements OnInit {
   
-  columns:any[] = ['idPremiereCopie','description','datePremiereCopie','datePCopie','actions'];
-  data = [];
+  columns:string[] = ['idPremiereCopie','description','datePremiereCopie','datePCopie','actions'];
+  certificates:any = [];
 
   //dataSource = new MatTableDataSource<PremiereCopie[]>();
   showModal = false;
@@ -31,9 +31,7 @@ export class PremiereCopieComponent implements OnInit {
   }
 
   ngOnInit(): void {
-   // this.displayedColumns;   
-
-    //this.getAllfirstCertificates();
+    this.getAllfirstCertificates();
   }
 
   applyFilter(filterValue: string) {
@@ -53,9 +51,8 @@ export class PremiereCopieComponent implements OnInit {
   getAllfirstCertificates(){
     this.premierecopieservice.getFirstCertificates()
     .subscribe(data=>{ 
-     this.data = data;
-    //  // this.certificates = data;
-   console.log(this.data)
+     this.certificates = data;
+   console.log(this.certificates)
     })
   }
 
