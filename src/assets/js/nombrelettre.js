@@ -102,3 +102,23 @@ function NombreEnLettre(nombre){
 
 	 return numberToLettre;
 }
+
+function MoisMalgache( nombre ){
+	let moismalgache;
+	switch( nombre ){
+		case "01": moismalgache = "janoary"; break;
+		case "02": moismalgache = "febroary"; break;
+		case "03": moismalgache = "martsa"; break;
+		case "04": moismalgache = "aprily"; break;
+		case "05": moismalgache = "may"; break;
+		case "06": moismalgache = "jiona"; break;
+		case "07": moismalgache = "jolay"; break;
+		case "08": moismalgache = "aogositra"; break;
+		case "09": moismalgache = "septambra"; break;
+		case "10": moismalgache = "oktobra"; break;
+		case "11": moismalgache = "novambra"; break;
+		case "12": moismalgache = "desambra"; break;
+		
+	}//fin switch
+	return moismalgache;
+}

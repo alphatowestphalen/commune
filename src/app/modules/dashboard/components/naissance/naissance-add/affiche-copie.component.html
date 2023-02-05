@@ -217,16 +217,13 @@ form{
                       <div class="timeline">
                         <div class="timeline__content ">
                           <p class="mb-5">
-                            <span class="pl-10">Tamin'ny iray aprily roa arivo </span>, tamin'ny ira ora maraina sy efapolo
+                            <span class="pl-10">Tamin'ny {{data.dateEnfant}} </span>, tamin'ny ira ora maraina sy efapolo
                             minitra,
                             no teraka tao Amin'ny {{data.lieuNaissEnfant}}, {{data.nomEnfant}} {{data.prenomsEnfant}}, {{data.sexeEnfant}},
                             zanak'i
                             {{data.nomPere}} {{data.prenomsPere}}
-                            ,{{data.professionPere}}, teraka tamin'ny enina amby ny roapolo febroary taona valopolo sy sivinjato sy
-                            arivo tao {{data.lieuNaissPere}}
-                            , sy {{data.nomMere}}, {{data.prenomsMere}}, teraka tamin'ny enina marsa tao roa vaopolo sy
-                            sivinjato
-                            sy arivo tao {{data.lieuNaissMere}}
+                            ,{{data.professionPere}}, teraka tamin'ny {{data.datePere}} tao {{data.lieuNaissPere}}
+                            , sy {{data.nomMere}}, {{data.prenomsMere}}, teraka tamin'ny {{data.dateMere}} tao {{data.lieuNaissMere}}
                             , samy monina ao {{data.adresseMere}}
                           </p>
       
@@ -235,11 +232,11 @@ form{
                       <div class="timeline">
                         <div class="timeline__content ">
                           <p class="mb-5">
-                            <span class="pl-10">Nosoratana androany roa aprily </span> taona roa sy roa arivo
+                            <span class="pl-10">Nosoratana androany {{data.dateregistre}} </span> 
                             tamin'ny valo ora maraina sy folo minitra, araka ny fanamabarana nataon'i {{data.nomDeclarant}},
                             Mampivelona,
                             teraka
-                            tamin'ny efatra janoary taona telo amby fitopolo sy sivinjato sy arivo tao Antsirabe, monina ao
+                            tamin'ny {{data.dateDeclarant}} tao Antsirabe, monina ao
                             {{data.adresseDeclarant}}, izay
                             miaraka manao sonia aminay. {{data.nomMaire}},{{data.fonction}} 
                             ao amin'ny
