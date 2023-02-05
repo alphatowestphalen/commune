@@ -5,7 +5,9 @@ import { MatSort } from '@angular/material/sort';
 // import { MatTableDataSource } from '@angular/material/table';
 import { PremiereCopieService } from '../../../services/premiere-copie.service';
 import { PremiereCopie } from '../../../models/premiere-copie.model'
+import "../../../../../../assets/js/nombrelettre.js"
 
+declare function NombreEnLettre(params:number)  : any;
 @Component({
   selector: 'app-premiere-copie',
   templateUrl: './premiere-copie.component.html',
@@ -15,6 +17,8 @@ export class PremiereCopieComponent implements OnInit {
   
   columns:string[] = ['idPremiereCopie','description','datePremiereCopie','datePCopie','actions'];
   certificates:any = [];
+  test: any;
+
 
   //dataSource = new MatTableDataSource<PremiereCopie[]>();
   showModal = false;
@@ -32,6 +36,9 @@ export class PremiereCopieComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllfirstCertificates();
+    this.test = NombreEnLettre(2011); 
+    console.log(this.test)
+
   }
 
   applyFilter(filterValue: string) {
@@ -56,9 +63,13 @@ export class PremiereCopieComponent implements OnInit {
     })
   }
 
+
+  
   
   edit(idPremiereCopie: number){
     alert(idPremiereCopie);
   }
 
 }
+
+

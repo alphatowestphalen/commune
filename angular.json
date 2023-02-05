@@ -32,6 +32,7 @@
               "src/styles.scss"
             ],
             "scripts": [
+              "src/assets/js/nombrelettre.js",
               "node_modules/apexcharts/dist/apexcharts.min.js"
             ],
             "allowedCommonJsDependencies": [
