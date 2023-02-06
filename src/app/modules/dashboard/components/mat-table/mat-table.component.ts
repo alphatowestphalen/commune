@@ -10,7 +10,9 @@ import { MatSort } from '@angular/material/sort';
 })
 export class MatTableComponent implements OnInit {
   @Input()
-  data: any[] = [];
+  data: any;
+  @Input()
+  columnMap: any;
     @Input()
     columns: string[] = [];
   dataSource = new MatTableDataSource();

@@ -14,13 +14,11 @@ import { PremiereCopie } from '../../../models/premiere-copie.model'
 })
 export class PremiereCopieComponent implements OnInit {
   
-  columns:string[] = ['idPremiereCopie','description','datePremiereCopie','datePCopie','actions'];
-
+  columns:string[] = ['idPremierCopie','description','datePremierCopie','datePCopie','actions'];
+  columnMap = ['idPremierCopie','description','datePremierCopie','datePCopie','actions'] ;
   data:any  ;
   test: any;
 
-
-  //dataSource = new MatTableDataSource<PremiereCopie[]>();
   showModal = false;
   constructor( public dialog: MatDialog, private premierecopieservice: PremiereCopieService) {
   } 
