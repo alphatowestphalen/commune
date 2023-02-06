@@ -15,7 +15,8 @@ import { PremiereCopie } from '../../../models/premiere-copie.model'
 export class PremiereCopieComponent implements OnInit {
   
   columns:string[] = ['idPremiereCopie','description','datePremiereCopie','datePCopie','actions'];
-  certificates:any = [];
+
+  data:any  ;
   test: any;
 
 
@@ -35,8 +36,6 @@ export class PremiereCopieComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllfirstCertificates();
-   
-
   }
 
   applyFilter(filterValue: string) {
@@ -56,8 +55,8 @@ export class PremiereCopieComponent implements OnInit {
   getAllfirstCertificates(){
     this.premierecopieservice.getFirstCertificates()
     .subscribe(data=>{ 
-     this.certificates = data;
-   console.log(this.certificates)
+     this.data = data;
+   console.log(this.data)
     })
   }
 
