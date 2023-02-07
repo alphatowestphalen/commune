@@ -100,9 +100,12 @@
 
 
 
-  <app-mat-table *ngIf="data && data.length > 0"  [data]="data"  [columns]="columns" [columnMap]="columnMap"></app-mat-table>
- 
-  <p *ngIf="!data || data.length === 0">No data available</p>
+  <!-- <app-mat-table *ngIf="data && data.length > 0"  [data]="data"  [columns]="columns" [columnMap]="columnMap"></app-mat-table> -->
+ <app-mat-table
+  [tableColumns]="tableColumns"
+  [tableData]="tableData">
+</app-mat-table>
+  <p *ngIf="!tableData || tableData.length === 0">No data available</p>
   </div>
 </div>
 

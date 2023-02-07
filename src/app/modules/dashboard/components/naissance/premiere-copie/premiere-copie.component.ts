@@ -5,6 +5,7 @@ import { MatSort } from '@angular/material/sort';
 // import { MatTableDataSource } from '@angular/material/table';
 import { PremiereCopieService } from '../../../services/premiere-copie.service';
 import { PremiereCopie } from '../../../models/premiere-copie.model'
+import { Column } from '../../../models/column';
 
 
 @Component({
@@ -19,6 +20,33 @@ export class PremiereCopieComponent implements OnInit {
   data:any  ;
   test: any;
 
+  tableColumns: Array<Column> = [
+    {
+      columnDef: 'idPremierCopie',
+      header: 'N° Première Copie',
+      cell: (element: Record<string, any>) => `${element['idPremiereCopie']}`
+    },
+    {
+      columnDef: 'description',
+      header: 'Description',
+      cell: (element: Record<string, any>) => `${element['description']}`,
+      isLink: true,
+      url: 'abc'
+    },
+    {
+      columnDef: 'mention',
+      header: 'Mention',
+      cell: (element: Record<string, any>) => `${element['mention']}`
+    },
+    {
+      columnDef: 'DatePremiereCopie',
+      header: 'Date Copie',
+      cell: (element: Record<string, any>) => `${element['datePremierCopie']}`
+    }
+  ];
+
+  tableData:any = [];
+  
   showModal = false;
   constructor( public dialog: MatDialog, private premierecopieservice: PremiereCopieService) {
   } 
@@ -53,8 +81,8 @@ export class PremiereCopieComponent implements OnInit {
   getAllfirstCertificates(){
     this.premierecopieservice.getFirstCertificates()
     .subscribe(data=>{ 
-     this.data = data;
-   console.log(this.data)
+     this.tableData = data;
+   console.log(this.tableData)
     })
   }
 

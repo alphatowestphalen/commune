@@ -2,6 +2,7 @@ import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { Column } from '../../models/column';
 
 @Component({
   selector: 'app-mat-table',
@@ -10,11 +11,12 @@ import { MatSort } from '@angular/material/sort';
 })
 export class MatTableComponent implements OnInit {
   @Input()
-  data: any;
+  tableColumns: Array<Column> = [];
+
   @Input()
-  columnMap: any;
-    @Input()
-    columns: string[] = [];
+  tableData: any = [];
+
+  displayedColumns: Array<string> = [];
   dataSource = new MatTableDataSource();
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -24,7 +26,8 @@ export class MatTableComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.dataSource.data = this.data
+    this.displayedColumns = this.tableColumns.map((c) => c.columnDef);
+    this.dataSource = new MatTableDataSource(this.tableData);
   }
 
   ngAfterViewInit(): void {
