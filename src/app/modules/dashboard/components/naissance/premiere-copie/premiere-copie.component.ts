@@ -4,7 +4,6 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 // import { MatTableDataSource } from '@angular/material/table';
 import { PremiereCopieService } from '../../../services/premiere-copie.service';
-import { PremiereCopie } from '../../../models/premiere-copie.model'
 import { Column } from '../../../models/column';
 
 

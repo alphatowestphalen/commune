@@ -196,6 +196,66 @@
        
             </form>
           </mat-step>
+          <mat-step [stepControl]="CopieFormGroup">
+            <form [formGroup]="CopieFormGroup">
+              <ng-template matStepLabel> Dossier <br>
+                <span class="font-normal text-xs text-gray-400">Check Dossier</span>
+              </ng-template>
+              <div class="lg:grid md:grid-flow-col grid-cols-2 gap-4 mt-20">
+                <div class="mb-4  w-60">
+                  <label class="label cursor-pointer w-60">
+                    <input type="checkbox" checked="checked" class="checkbox" />
+                    <span class="label-text"> Certificat d' accouchement</span>
+                  </label>
+                </div>
+                <div class="mb-4  w-60">
+                  <label class="label cursor-pointer">
+                    <input type="checkbox" checked="checked" class="checkbox" />
+                    <span class="label-text">Livrée de Famille</span>
+  
+                  </label>
+                </div>
+  
+              </div>
+              <div class="lg:grid md:grid-flow-col grid-cols-2 gap-4">
+                <div class="mb-4 w-60">
+                  <label class="label cursor-pointer ">
+                    <input type="checkbox" checked="checked" class="checkbox" />
+                    <span class="label-text">Photocopie CIN de la mère</span>
+  
+                  </label>
+                </div>
+                <div class="mb-4 w-60">
+                  <label class="label cursor-pointer ">
+                    <input type="checkbox" checked="checked" class="checkbox" />
+                    <span class="label-text">Photocopie de CIN declarant</span>
+  
+                  </label>
+                </div>
+              </div>
+  
+           
+              <div class="flex p-2 mt-4">
+                <button routerLink="/dashboard/premiere-copie" class="text-md hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
+            hover:bg-gray-200  
+            bg-gray-100 
+            text-red-700 
+            border duration-200 ease-in-out 
+            border-red-600 transition">
+                      Annuler</button>
+                <div class="flex-auto flex flex-row-reverse">
+                    <button mat-button matStepperNext class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
+            hover:bg-teal-600  
+            bg-teal-600 
+            text-teal-100 
+            border duration-200 ease-in-out 
+            border-teal-600 transition">Suivant</button>
+                  
+                </div>
+            </div>
+       
+            </form>
+          </mat-step>
           <mat-step [stepControl]="EnfantFormGroup">
             <form [formGroup]="EnfantFormGroup">
               <ng-template matStepLabel >Enfant <br>
@@ -524,16 +584,20 @@
               <div class=" lg:grid md:grid-flow-col grid-cols-2 mt-2  gap-4">
                 <div class="mb-4 w-4/5">
   
-                  <label class="block mb-2 text-sm font-bold text-black">Nom </label>
-                  <input type="text" formControlName="nomMaire"
-                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                    placeholder="Saisir Nom du Maire" />
-  
+                  <mat-form-field appearance="fill">
+                    <mat-label>Nom du Maire</mat-label>
+                    <mat-select formControlName="idMaire" name="Nom du Maire">
+                      <mat-option *ngFor="let maires of maire" [value]="maires.idMaire">
+                        {{maires.nomMaire}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                
                 </div>
                 <div class="mb-4 w-4/5">
   
                   <label class="block mb-2 text-sm font-bold text-black">Prenoms </label>
-                  <input type="text" formControlName="prenomsMaire"
+                  <input type="text" formControlName="nomMaire"
                     class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
                     placeholder="Saisir Prènoms du Maire" />
   

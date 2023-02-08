@@ -8,6 +8,7 @@ import { DashboardComponent } from './dashboard.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import {MatSelectModule} from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -59,6 +60,7 @@ import { MatTableComponent } from './components/mat-table/mat-table.component';
     HttpClientModule,
     MatTableModule,
     MatStepperModule,
+    MatSelectModule,
     MatPaginatorModule,
     MatInputModule,
     NgApexchartsModule,

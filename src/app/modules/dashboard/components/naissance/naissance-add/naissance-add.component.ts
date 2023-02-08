@@ -14,7 +14,12 @@ import {
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf'
+import {PremiereCopie} from '../../../models/premiere-copie'
+
+import {PremiereCopieService} from '../../../services/premiere-copie.service'
 import "../../../../../../assets/js/nombrelettre.js";
+import { MaireService } from '../../../services/maire.service';
+import { Router } from '@angular/router';
 
 
 declare function NombreEnLettre(params:number)  : any;
@@ -27,7 +32,7 @@ declare function MoisMalgache(params: string) : any
 export class NaissanceAddComponent implements OnInit {
   isLinear = true;
   data: any;
-  test: any;
+  maire: any;
   datenaiss: string | null | undefined;
   datenaissMere: string | null | undefined;
   datenaissPere: string | null | undefined;
@@ -35,9 +40,26 @@ export class NaissanceAddComponent implements OnInit {
   dateregistre: string | null | undefined;
   
 
-  constructor(private _formBuilder: FormBuilder, public dialog: MatDialog) {}
+  constructor(private _formBuilder: FormBuilder, public dialog: MatDialog, private maireservice: MaireService  ) {}
 
-  PiecesFormGroup = this._formBuilder.group({});
+  PiecesFormGroup = this._formBuilder.group({
+    certificatAccouch: true,
+      livretFamille: true,
+      cinMere: true,
+      cinDeclarant: true
+
+  });
+
+
+  CopieFormGroup = this._formBuilder.group({
+    idPremierCopie: [''],
+    description: [''],
+    date: [''],
+    heurenaissEnfant: [''],
+    dateEnfant: [''],
+    sexeEnfant: [''],
+
+  });
 
   EnfantFormGroup = this._formBuilder.group({
     nomEnfant: [''],
@@ -77,6 +99,7 @@ export class NaissanceAddComponent implements OnInit {
     adresseDeclarant: [''],
   });
   MaireFormGroup = this._formBuilder.group({
+    idMaire: [''],
     nomMaire: [''],
     prenomsMaire: '',
     fonction: [''],
@@ -84,7 +107,7 @@ export class NaissanceAddComponent implements OnInit {
   });
   @ViewChild('htmlData') htmlData!: ElementRef;
   ngOnInit(): void {
-
+   this.getAllMaire();
   }
 
   openDialog() {
@@ -180,6 +203,11 @@ export class NaissanceAddComponent implements OnInit {
     });
   }
 
+  getAllMaire(){
+    this.maireservice.getAllMaire().subscribe(data=>{
+      this.maire = data;
+    })
+  }
   printPage() {
     var printContents = document.getElementById('htmlData')!.innerHTML;
     var originalContents = document.body.innerHTML;
@@ -190,17 +218,35 @@ export class NaissanceAddComponent implements OnInit {
 
     document.body.innerHTML = originalContents;
   }
+
+
 }
+
+
+
+
 
 @Component({
   selector: 'affiche-copie',
   templateUrl: 'affiche-copie.component.html',
 })
 export class AfficheCopieComponent {
-  constructor(@Inject (MAT_DIALOG_DATA) public data: any ) {}
+  constructor(@Inject (MAT_DIALOG_DATA) public data: any, private premierecopieservice: PremiereCopieService,
+   public dialog: MatDialog, private router:Router  ) {}
 
   ngOnInit() {
-    
+  console.log(this.data)
+  }
+  saveCertificate(){
+  
+    this.premierecopieservice.addFirstCertificates(this.data).subscribe(data=>{
+
+      const dialogRef = this.dialog.closeAll();
+      this.router.navigate(['/dashboard/premiere-copie']);
+    })
     console.log(this.data)
+
   }
 }
+
+
