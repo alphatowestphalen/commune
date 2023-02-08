@@ -198,45 +198,45 @@
           </mat-step>
           <mat-step [stepControl]="CopieFormGroup">
             <form [formGroup]="CopieFormGroup">
-              <ng-template matStepLabel> Dossier <br>
-                <span class="font-normal text-xs text-gray-400">Check Dossier</span>
+              <ng-template matStepLabel>Information<br>
+                <span class="font-normal text-xs text-gray-400">Utile</span>
               </ng-template>
-              <div class="lg:grid md:grid-flow-col grid-cols-2 gap-4 mt-20">
-                <div class="mb-4  w-60">
-                  <label class="label cursor-pointer w-60">
-                    <input type="checkbox" checked="checked" class="checkbox" />
-                    <span class="label-text"> Certificat d' accouchement</span>
-                  </label>
-                </div>
-                <div class="mb-4  w-60">
-                  <label class="label cursor-pointer">
-                    <input type="checkbox" checked="checked" class="checkbox" />
-                    <span class="label-text">Livrée de Famille</span>
+              <div class=" lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
+                <div class="mb-4 w-4/5">
   
-                  </label>
+                  <label class="block mb-2 text-sm font-bold text-black">N° Première Copie</label>
+                  <input type="text" formControlName = "idPremierCopie" id="idPremierCopie"
+                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                    placeholder="Saisir la N° Première Copie" />
+  
+                </div>
+                <div class="mb-4 w-4/5">
+  
+                  <label class="block mb-2 text-sm font-bold text-black">Déscription</label>
+                  <textarea type="text"  formControlName = "description" 
+                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                    placeholder="Saisir Prenoms de l'enfant"></textarea>
+  
                 </div>
   
               </div>
-              <div class="lg:grid md:grid-flow-col grid-cols-2 gap-4">
-                <div class="mb-4 w-60">
-                  <label class="label cursor-pointer ">
-                    <input type="checkbox" checked="checked" class="checkbox" />
-                    <span class="label-text">Photocopie CIN de la mère</span>
+              <div class=" lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
+                <div class="mb-4 w-4/5">
   
-                  </label>
-                </div>
-                <div class="mb-4 w-60">
-                  <label class="label cursor-pointer ">
-                    <input type="checkbox" checked="checked" class="checkbox" />
-                    <span class="label-text">Photocopie de CIN declarant</span>
+                  <label class="block mb-2 text-sm font-bold text-black">Mention de marge</label>
+                  <input type="text" formControlName = "mention" id="mention"
+                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                    placeholder="Saisir la Mention" />
   
-                  </label>
                 </div>
+          
+  
               </div>
+              
   
            
               <div class="flex p-2 mt-4">
-                <button routerLink="/dashboard/premiere-copie" class="text-md hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
+                <button mat-button  matStepperPrevious class="text-md hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
             hover:bg-gray-200  
             bg-gray-100 
             text-red-700 
@@ -302,7 +302,7 @@
                 <div class="mb-4 w-4/5">
   
                   <label class="block mb-2 text-sm font-bold text-black">Lieu de Naissance</label>
-                  <input type="text"  formControlName="lieuNaissEnfant" id="lieuNaissEnfant"
+                  <input type="text"  formControlName="lieunaissEnfant" id="lieunaissEnfant"
                      class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
                     placeholder="Saisir Lieu de Naissance de l'enfant" />
   
@@ -551,7 +551,7 @@
              
                 <div class="mb-4 w-4/5">
                   <label class="block mb-2 text-sm font-bold text-black">Adresse Exacte</label>
-                  <input type="text" formControlName="adresseDeclarant"
+                  <input type="text" formControlName="adressDeclarant"
                     class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
                     placeholder="Saisir Adresse du Declarante" />
                 </div>

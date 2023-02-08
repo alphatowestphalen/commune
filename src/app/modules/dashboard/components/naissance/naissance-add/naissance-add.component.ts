@@ -43,21 +43,20 @@ export class NaissanceAddComponent implements OnInit {
   constructor(private _formBuilder: FormBuilder, public dialog: MatDialog, private maireservice: MaireService  ) {}
 
   PiecesFormGroup = this._formBuilder.group({
-    certificatAccouch: true,
+      certificatAccouch: true,
       livretFamille: true,
       cinMere: true,
       cinDeclarant: true
 
   });
-
-
+  today = new Date();
   CopieFormGroup = this._formBuilder.group({
+    
     idPremierCopie: [''],
     description: [''],
-    date: [''],
-    heurenaissEnfant: [''],
-    dateEnfant: [''],
-    sexeEnfant: [''],
+    datePCopie: this.today,
+    datePremierCopie:this.today,
+    mention: [''],
 
   });
 
@@ -65,7 +64,7 @@ export class NaissanceAddComponent implements OnInit {
     nomEnfant: [''],
     prenomsEnfant: '',
     datenaissEnfant: [''],
-    lieuNaissEnfant: [''],
+    lieunaissEnfant: [''],
     heurenaissEnfant: [''],
     dateEnfant: [''],
     sexeEnfant: [''],
@@ -94,9 +93,10 @@ export class NaissanceAddComponent implements OnInit {
     nomDeclarant: [''],
     prenomsDeclarant: '',
     datenaissDeclarant: [''],
+    professionDeclarant: [''],
     dateDeclarant: [''],
     lieuNaissDeclarant: [''],
-    adresseDeclarant: [''],
+    adressDeclarant: [''],
   });
   MaireFormGroup = this._formBuilder.group({
     idMaire: [''],
@@ -127,6 +127,7 @@ export class NaissanceAddComponent implements OnInit {
       this.DeclarantFormGroup.value.dateDeclarant =  this.datenaissDeclarant
       this.MaireFormGroup.value.dateregistre = this.dateregistre
       this.data = {
+        ...this.CopieFormGroup.value,
         ...this.EnfantFormGroup.value,
         ...this.DeclarantFormGroup.value,
         ...this.MaireFormGroup.value,
