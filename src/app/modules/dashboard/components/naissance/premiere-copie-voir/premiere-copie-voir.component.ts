@@ -1,6 +1,8 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas';
+import { ActivatedRoute, Router } from '@angular/router';
+import { PremiereCopieService } from '../../../services/premiere-copie.service';
 
 @Component({
   selector: 'app-premiere-copie-voir',
@@ -8,10 +10,15 @@ import html2canvas from 'html2canvas';
   styleUrls: ['./premiere-copie-voir.component.scss']
 })
 export class PremiereCopieVoirComponent implements OnInit {
+  id: any;
+  certificates: any;
 
-  constructor() { }
+  constructor( private activatedroute: ActivatedRoute, private router: Router, private premierecopieservice: PremiereCopieService) { }
   @ViewChild('htmlData') htmlData!: ElementRef;
   ngOnInit(): void {
+    this.activatedroute.paramMap.subscribe(params => { 
+      this.id = params.get('id');
+    this.getCertificatesbyID();});
   }
   OpenCopie = false;
   toggleModal(){
@@ -42,4 +49,13 @@ export class PremiereCopieVoirComponent implements OnInit {
 
      document.body.innerHTML = originalContents;
   }
+
+    getCertificatesbyID(){
+      this.premierecopieservice.getCertificateByID(this.id)
+      .subscribe(data => {
+        this.certificates = data;
+        console.log(this.certificates)
+      })
+     
+    }
 }

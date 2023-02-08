@@ -51,7 +51,7 @@
     </div>
   </div>
 
-  <div
+  <div *ngIf="certificates"
     class="flex-col rounded-lg bg-white mt-2 dark:bg-night-700"
   >
     <div class="flex  justify-between">
@@ -94,24 +94,24 @@
 
   <dl class="flex mt-2">
     <div class="flex flex-col-reverse">
-      <dt class="text-sm font-medium text-slate-800">RAKOTONIRINA Leon Bertrand</dt>
+      <dt class="text-sm font-medium text-slate-800">{{certificates.enfant.nomEnfant}} {{certificates.enfant.prenomsEnfant}}</dt>
       <dd class="text-xs text-slate-500">Nom et Prènoms</dd>
     </div>
 
     <div class="flex flex-col-reverse ml-3 sm:ml-6">
-      <dt class="text-sm font-medium text-slate-800">15 Janvier 2000</dt>
+      <dt class="text-sm font-medium text-slate-800">{{certificates.enfant.datenaissEnfant}}</dt>
       <dd class="text-xs text-slate-500">Date de Naissance</dd>
     </div>
     <div class="flex flex-col-reverse ml-3 sm:ml-6">
-      <dt class="text-sm font-medium text-slate-800">CHU Tambohobe Fianarantsoa</dt>
+      <dt class="text-sm font-medium text-slate-800">{{certificates.enfant.lieunaissEnfant}}</dt>
       <dd class="text-xs text-slate-500">Lieu de Naissance</dd>
     </div>
      <div class="flex flex-col-reverse ml-3 sm:ml-6"> 
-      <dt class="text-sm font-medium text-slate-800">O6:34 PM</dt>
+      <dt class="text-sm font-medium text-slate-800">{{certificates.enfant.heurenaissEnfant}}</dt>
       <dd class="text-xs text-slate-500">Heure de Naissance </dd>
     </div>
      <div class="flex flex-col-reverse ml-3 sm:ml-6">
-      <dt class="text-sm font-medium text-slate-800">Garçon</dt>
+      <dt class="text-sm font-medium text-slate-800">{{certificates.enfant.sexeEnfant}}</dt>
       <dd class="text-xs text-slate-500">Sexe</dd>
     </div>
 
@@ -138,25 +138,26 @@
 
   <dl class="flex mt-2">
     <div class="flex flex-col-reverse">
-      <dt class="text-sm font-medium text-slate-800">RAVAO Marie</dt>
+      <dt class="text-sm font-medium text-slate-800"><span class="upperca
+        ">{{certificates.mere.nomMere}}</span> {{certificates.mere.prenoms}}</dt>
       <dd class="text-xs text-slate-500">Nom et Prènoms</dd>
     </div>
 
     <div class="flex flex-col-reverse ml-3 sm:ml-6">
-      <dt class="text-sm font-medium text-slate-800">05 Février 1989</dt>
+      <dt class="text-sm font-medium text-slate-800">{{certificates.mere.datenaissMere}}</dt>
       <dd class="text-xs text-slate-500">Date de Naissance</dd>
     </div>
     <div class="flex flex-col-reverse ml-3 sm:ml-6">
-      <dt class="text-sm font-medium text-slate-800">CHU Tambohobe Fianarantsoa</dt>
+      <dt class="text-sm font-medium text-slate-800">{{certificates.mere.lieuNaissMere}}</dt>
       <dd class="text-xs text-slate-500">Lieu de Naissance</dd>
     </div>
 
      <div class="flex flex-col-reverse ml-3 sm:ml-6">
-      <dt class="text-sm font-medium text-slate-800">Menagère</dt>
+      <dt class="text-sm font-medium text-slate-800">{{certificates.mere.profession}}</dt>
       <dd class="text-xs text-slate-500">Profession</dd>
     </div>
     <div class="flex flex-col-reverse ml-3 sm:ml-6">
-      <dt class="text-sm font-medium text-slate-800">Tanambao</dt>
+      <dt class="text-sm font-medium text-slate-800">{{certificates.mere.adresseMere}}</dt>
       <dd class="text-xs text-slate-500">Habite à</dd>
     </div>
 
@@ -182,24 +183,24 @@
 
   <dl class="flex mt-2">
     <div class="flex flex-col-reverse">
-      <dt class="text-sm font-medium text-slate-800">RAKOTONIRINA Kotozafy Jean Emmanuel</dt>
+      <dt class="text-sm font-medium text-slate-800">{{certificates.pere.nomPere}} {{certificates.pere.prenomsPere}}</dt>
       <dd class="text-xs text-slate-500">Nom et Prènoms</dd>
     </div>
 
     <div class="flex flex-col-reverse ml-3 sm:ml-6">
-      <dt class="text-sm font-medium text-slate-800">31 Novembre 1990 </dt>
+      <dt class="text-sm font-medium text-slate-800">{{certificates.pere.datenaissPere}} </dt>
       <dd class="text-xs text-slate-500">Date de Naissance</dd>
     </div>
     <div class="flex flex-col-reverse ml-3 sm:ml-6">
-      <dt class="text-sm font-medium text-slate-800">CSB 2 Ambalavao Tsienimparihy</dt>
+      <dt class="text-sm font-medium text-slate-800">{{certificates.pere.lieunaissPere}}</dt>
       <dd class="text-xs text-slate-500">Lieu de Naissance</dd>
     </div>
      <div class="flex flex-col-reverse ml-3 sm:ml-6">
-      <dt class="text-sm font-medium text-slate-800">Chauffeur</dt>
+      <dt class="text-sm font-medium text-slate-800">{{certificates.pere.professionPere}}</dt>
       <dd class="text-xs text-slate-500">Profession</dd>
     </div>
     <div class="flex flex-col-reverse ml-3 sm:ml-6">
-      <dt class="text-sm font-medium text-slate-800">Tanambao</dt>
+      <dt class="text-sm font-medium text-slate-800">{{certificates.pere.adressePere}}</dt>
       <dd class="text-xs text-slate-500">Habite à</dd>
     </div>
   
@@ -224,21 +225,21 @@
 
   <dl class="flex mt-2">
     <div class="flex flex-col-reverse">
-      <dt class="text-sm font-medium text-slate-800">LUCIENNE Marthe Beatrice</dt>
+      <dt class="text-sm font-medium text-slate-800">{{certificates.declarant.nomDeclarant}} {{certificates.declarant.prenomsDeclarant}}</dt>
       <dd class="text-xs text-slate-500">Nom et Prènoms</dd>
     </div>
 
     <div class="flex flex-col-reverse ml-3 sm:ml-6">
-      <dt class="text-sm font-medium text-slate-800">23 Fevrier 1976 </dt>
+      <dt class="text-sm font-medium text-slate-800">{{certificates.declarant.datenaissDeclarant}} </dt>
       <dd class="text-xs text-slate-500">Date de Naissance</dd>
     </div>
     <div class="flex flex-col-reverse ml-3 sm:ml-6">
-      <dt class="text-sm font-medium text-slate-800">CHU  Toliara</dt>
+      <dt class="text-sm font-medium text-slate-800">{{certificates.declarant.lieuNaissDeclarant}}</dt>
       <dd class="text-xs text-slate-500">Lieu de Naissance</dd>
     </div>
 
      <div class="flex flex-col-reverse ml-3 sm:ml-6">
-      <dt class="text-sm font-medium text-slate-800">Sage Femme</dt>
+      <dt class="text-sm font-medium text-slate-800">{{certificates.declarant.professionDeclarant}}</dt>
       <dd class="text-xs text-slate-500">Profession</dd>
     </div>
 
@@ -264,11 +265,11 @@
 
   <dl class="flex mt-2">
     <div class="flex flex-col-reverse">
-      <dt class="text-sm font-medium text-slate-800">RAKOTONIAINA Tahinanjanahary</dt>
+      <dt class="text-sm font-medium text-slate-800">{{certificates.maire.nomMaire}} {{certificates.maire.prenomsMaire}}</dt>
       <dd class="text-xs text-slate-500">Nom et Prènoms</dd>
     </div>
      <div class="flex flex-col-reverse ml-3 sm:ml-6">
-      <dt class="text-sm font-medium text-slate-800">1 ère Adjoint Maire</dt>
+      <dt class="text-sm font-medium text-slate-800">{{certificates.maire.fonction}}</dt>
       <dd class="text-xs text-slate-500">Fonction</dd>
     </div>
 
@@ -277,6 +278,8 @@
 
 </div>
 </div>
+
+<p *ngIf="!certificates || certificates.length === 0">No data available</p>
 </div>
 <div *ngIf="OpenCopie" class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
   <div class="fixed inset-0 bg-gray-700 bg-opacity-75 transition-opacity">
@@ -336,13 +339,13 @@ Cliquer pour imprimer
                     </div>
                     <div class="section__entry">
                       <div class="section_content font-medium">
-                        SEHENONINAINA Amelia
+                        {{certificates.enfant.nomEnfant}}
                       </div>
                     </div>
     
                     <div class="section__entry">
                       <div class="section_content ml-5 my-20">
-                        01 Aprily 2002
+                        {{certificates.enfant.datenaissEnfant}}
                       </div>
                     </div>
     

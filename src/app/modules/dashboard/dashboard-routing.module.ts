@@ -28,7 +28,7 @@ const routes: Routes = [
       {path: 'adoption-naissance', component: AdoptionComponent},
       {path: 'reconnaissance-naissance', component: ReconnaissanceComponent},
       {path: 'jugement-naissance', component: JugementComponent},
-      {path: 'premiere-copie-voir', component: PremiereCopieVoirComponent},
+      {path: 'premiere-copie-voir/:id', component: PremiereCopieVoirComponent},
  
       { path: '**', redirectTo: 'error/404' },
     ],

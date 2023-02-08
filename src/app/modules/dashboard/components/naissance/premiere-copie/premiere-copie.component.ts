@@ -1,8 +1,8 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import {MatDialog} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-// import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 import { PremiereCopieService } from '../../../services/premiere-copie.service';
 import { Column } from '../../../models/column';
 
@@ -13,11 +13,6 @@ import { Column } from '../../../models/column';
   styleUrls: ['./premiere-copie.component.scss']
 })
 export class PremiereCopieComponent implements OnInit {
-  
-  columns:string[] = ['idPremierCopie','description','datePremierCopie','datePCopie','actions'];
-  columnMap = ['idPremierCopie','description','datePremierCopie','datePCopie','actions'] ;
-  data:any  ;
-  test: any;
 
   tableColumns: Array<Column> = [
     {
@@ -44,20 +39,16 @@ export class PremiereCopieComponent implements OnInit {
     }
   ];
 
-  tableData:any = [];
-  
+  tableData: any = [];
+
   showModal = false;
-  constructor( public dialog: MatDialog, private premierecopieservice: PremiereCopieService) {
-  } 
-  
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
+  constructor(private router:Router, public dialog: MatDialog, private premierecopieservice: PremiereCopieService) {
+  }
+
+
   @ViewChild('htmlData') htmlData!: ElementRef;
 
-  ngAfterViewInit(): void {
-    // this.dataSource.paginator = this.paginator;
-    // this.dataSource.sort = this.sort;
-  }
+
 
   ngOnInit(): void {
     this.getAllfirstCertificates();
@@ -68,30 +59,31 @@ export class PremiereCopieComponent implements OnInit {
     filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
     //this.dataSource.filter = filterValue;
   }
-  openDialog(){
+  openDialog() {
     this.dialog.open(PremiereCopieComponent);
     this.getAllfirstCertificates();
   }
- 
-  toggleModal(){
+
+  toggleModal() {
     this.showModal = !this.showModal;
   }
 
-  getAllfirstCertificates(){
+  getAllfirstCertificates() {
     this.premierecopieservice.getFirstCertificates()
-    .subscribe(data=>{ 
-     this.tableData = data;
-   console.log(this.tableData)
-    })
+      .subscribe(data => {
+        this.tableData = data;
+        console.log(this.tableData)
+      })
 
-    
+
   }
 
 
   showRow(element: any) {
-    console.log('Edit row', element);
+    this.router.navigate(['/dashboard/premiere-copie-voir', element.idPremierCopie ])
+   // console.log('Edit row', element.idPremierCopie);
   }
-  
+
   editRow(element: any) {
     console.log('Edit row', element);
   }
@@ -99,8 +91,8 @@ export class PremiereCopieComponent implements OnInit {
   deleteRow() {
     console.log('Delete row');
   }
-  
-  edit(idPremiereCopie: number){
+
+  edit(idPremiereCopie: number) {
     alert(idPremiereCopie);
   }
 
