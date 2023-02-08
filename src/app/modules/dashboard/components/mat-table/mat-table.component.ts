@@ -42,12 +42,13 @@ export class MatTableComponent implements OnInit {
   editRow(element: any) {
     this.editEvent.emit(element);
   }
+  
   showRow(element: any) {
     this.showEvent.emit(element);
   }
 
-  deleteRow() {
-    this.deleteEvent.emit();
+  deleteRow(element: any) {
+    this.deleteEvent.emit(element);
   }
 
 

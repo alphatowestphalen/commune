@@ -27,5 +27,13 @@ export class PremiereCopieService {
     return this.http.get(`${this.baseUrl}/${idPremierCopie}`)
   }
 
+  updateCertificate(id:number, premierCopie: Object){
+    return this.http.put(`${this.baseUrl}/${id}`, premierCopie)
+  }
+
+  deleteCertificate(id:number){
+    return this.http.delete(`${this.baseUrl}/${id}`)
+  }
+
 
 }

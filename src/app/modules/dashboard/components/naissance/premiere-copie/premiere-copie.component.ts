@@ -23,9 +23,8 @@ export class PremiereCopieComponent implements OnInit {
     {
       columnDef: 'description',
       header: 'Description',
-      cell: (element: Record<string, any>) => `${element['description']}`,
-      isLink: true,
-      url: 'abc'
+      cell: (element: Record<string, any>) => `${element['enfant']['nomEnfant']} ${element['enfant']['prenomsEnfant']}`,
+    
     },
     {
       columnDef: 'mention',
@@ -81,20 +80,22 @@ export class PremiereCopieComponent implements OnInit {
 
   showRow(element: any) {
     this.router.navigate(['/dashboard/premiere-copie-voir', element.idPremierCopie ])
-   // console.log('Edit row', element.idPremierCopie);
+
   }
 
   editRow(element: any) {
     console.log('Edit row', element);
+    this.premierecopieservice.updateCertificate(element.idPremierCopie, element)
+      .subscribe(data=> {
+        
+      })
   }
 
-  deleteRow() {
-    console.log('Delete row');
+  deleteRow(element: any) {
+    console.log('Delete row', element);
   }
 
-  edit(idPremiereCopie: number) {
-    alert(idPremiereCopie);
-  }
+
 
 }
 
