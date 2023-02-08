@@ -88,6 +88,10 @@ export class PremiereCopieComponent implements OnInit {
   }
 
 
+  showRow(element: any) {
+    console.log('Edit row', element);
+  }
+  
   editRow(element: any) {
     console.log('Edit row', element);
   }

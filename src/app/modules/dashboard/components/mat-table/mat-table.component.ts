@@ -17,6 +17,7 @@ export class MatTableComponent implements OnInit {
   tableData: any = [];
 
   @Output() editEvent = new EventEmitter<any>();
+  @Output() showEvent = new EventEmitter<any>();
   @Output() deleteEvent = new EventEmitter<any>();
 
   displayedColumns: Array<string> = [];
@@ -40,6 +41,9 @@ export class MatTableComponent implements OnInit {
 
   editRow(element: any) {
     this.editEvent.emit(element);
+  }
+  showRow(element: any) {
+    this.showEvent.emit(element);
   }
 
   deleteRow() {
