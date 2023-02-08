@@ -24,7 +24,7 @@ export class PremiereCopieComponent implements OnInit {
     {
       columnDef: 'idPremierCopie',
       header: 'N° Première Copie',
-      cell: (element: Record<string, any>) => `${element['idPremiereCopie']}`
+      cell: (element: Record<string, any>) => `${element['idPremierCopie']}`
     },
     {
       columnDef: 'description',
@@ -84,10 +84,18 @@ export class PremiereCopieComponent implements OnInit {
      this.tableData = data;
    console.log(this.tableData)
     })
+
+    
   }
 
 
-  
+  editRow(element: any) {
+    console.log('Edit row', element);
+  }
+
+  deleteRow() {
+    console.log('Delete row');
+  }
   
   edit(idPremiereCopie: number){
     alert(idPremiereCopie);
