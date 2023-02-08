@@ -87,12 +87,18 @@ export class PremiereCopieComponent implements OnInit {
     console.log('Edit row', element);
     this.premierecopieservice.updateCertificate(element.idPremierCopie, element)
       .subscribe(data=> {
+        this.getAllfirstCertificates();
         
       })
   }
 
   deleteRow(element: any) {
-    console.log('Delete row', element);
+    this.premierecopieservice.deleteCertificate(element.idPremierCopie)
+      .subscribe(data=> { 
+        this.getAllfirstCertificates();
+        console.log('Delete row', data);
+      })
+  
   }
 
 
