@@ -33,6 +33,7 @@ import { JugementVoirComponent } from './components/naissance/jugement/jugement-
 import { ReconnaissanceAddComponent } from './components/naissance/reconnaissance/reconnaissance-add/reconnaissance-add.component';
 import { ReconnaissanceVoirComponent } from './components/naissance/reconnaissance/reconnaissance-voir/reconnaissance-voir.component';
 import { MatTableComponent } from './pages/mat-table/mat-table.component';
+import { CopieComponent } from './pages/copie/copie.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { MatTableComponent } from './pages/mat-table/mat-table.component';
     ReconnaissanceAddComponent,
     ReconnaissanceVoirComponent,
     MatTableComponent,
+    CopieComponent,
   ],
   imports: [
     CommonModule,

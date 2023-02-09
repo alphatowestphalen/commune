@@ -54,7 +54,6 @@ export class PremiereCopieVoirComponent implements OnInit {
       this.premierecopieservice.getCertificateByID(this.id)
       .subscribe(data => {
         this.certificates = data;
-        console.log(this.certificates)
       })
      
     }
