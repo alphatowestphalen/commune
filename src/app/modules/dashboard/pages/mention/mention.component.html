@@ -1,0 +1,18 @@
+
+  <div class="section__contentt">
+    <div class="timeline">
+      <div class="timeline__content">
+
+        <p class="mb-5" *ngIf="mention.type == 'reconnaissance'" >
+        <app-reconnaissance-mention></app-reconnaissance-mention>
+        </p>
+
+        <p class="mb-5" *ngIf="mention.type == 'jugement'">
+       <app-jugement-mention></app-jugement-mention>
+        </p>
+        <p class="mb-5" *ngIf="mention.type == 'adoption'">
+        <app-adoption-mention></app-adoption-mention>
+        </p>
+      </div>
+    </div>
+  </div>

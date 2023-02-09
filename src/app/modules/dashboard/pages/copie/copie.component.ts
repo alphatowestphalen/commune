@@ -9,7 +9,8 @@ import { Copie } from '../../models/copie';
 export class CopieComponent implements OnInit {
   @Input()
   copie: any;
-
+  
+  
   constructor() { }
 
   ngOnInit(): void {

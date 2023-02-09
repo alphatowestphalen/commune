@@ -34,6 +34,10 @@ import { ReconnaissanceAddComponent } from './components/naissance/reconnaissanc
 import { ReconnaissanceVoirComponent } from './components/naissance/reconnaissance/reconnaissance-voir/reconnaissance-voir.component';
 import { MatTableComponent } from './pages/mat-table/mat-table.component';
 import { CopieComponent } from './pages/copie/copie.component';
+import { MentionComponent } from './pages/mention/mention.component';
+import { AdoptionMentionComponent } from './pages/adoption-mention/adoption-mention.component';
+import { JugementMentionComponent } from './pages/jugement-mention/jugement-mention.component';
+import { ReconnaissanceMentionComponent } from './pages/reconnaissance-mention/reconnaissance-mention.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +58,10 @@ import { CopieComponent } from './pages/copie/copie.component';
     ReconnaissanceVoirComponent,
     MatTableComponent,
     CopieComponent,
+    MentionComponent,
+    AdoptionMentionComponent,
+    JugementMentionComponent,
+    ReconnaissanceMentionComponent,
   ],
   imports: [
     CommonModule,

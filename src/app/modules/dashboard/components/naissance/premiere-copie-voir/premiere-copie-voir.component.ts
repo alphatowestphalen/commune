@@ -54,9 +54,17 @@ export class PremiereCopieVoirComponent implements OnInit {
       this.premierecopieservice.getCertificateByID(this.id)
       .subscribe(data => {
         this.certificates = data;
-      console.log(this.certificates)
-
-      })
-     
+      this.certificates.mentions = [
+        {
+          "idAdoption": 0,
+          "parentAdoptif": "string",
+          "dateAdoption": "string",
+          "heureAdoption": "string",
+          "numAdoption": "string",
+          "createdDate": "2023-02-09T10:52:38.666Z",
+          "type": "adoption",
+        }
+      ]
+      })     
     }
 }

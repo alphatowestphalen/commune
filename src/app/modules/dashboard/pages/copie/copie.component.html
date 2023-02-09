@@ -114,9 +114,13 @@
                       </div>
                     </div>
       
-                    <div class=" text-sm font-normal ml-48">
+                    <div class=" text-sm font-normal ml-48 mb-3">
                       <span>-MANARAKA NY SONIA-</span>
                     </div>
+                    <div *ngFor="let mention of copie.mentions">
+                        <app-mention [mention]="mention"></app-mention>
+                    </div>
+
                     <div class="section__contentt">
                       <div class="timeline">
                         <div class="timeline__content">
