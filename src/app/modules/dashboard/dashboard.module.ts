@@ -32,7 +32,7 @@ import { JugementAddComponent } from './components/naissance/jugement/jugement-a
 import { JugementVoirComponent } from './components/naissance/jugement/jugement-voir/jugement-voir.component';
 import { ReconnaissanceAddComponent } from './components/naissance/reconnaissance/reconnaissance-add/reconnaissance-add.component';
 import { ReconnaissanceVoirComponent } from './components/naissance/reconnaissance/reconnaissance-voir/reconnaissance-voir.component';
-import { MatTableComponent } from './components/mat-table/mat-table.component';
+import { MatTableComponent } from './pages/mat-table/mat-table.component';
 
 @NgModule({
   declarations: [
