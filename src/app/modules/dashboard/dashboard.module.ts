@@ -38,6 +38,7 @@ import { MentionComponent } from './pages/mention/mention.component';
 import { AdoptionMentionComponent } from './pages/adoption-mention/adoption-mention.component';
 import { JugementMentionComponent } from './pages/jugement-mention/jugement-mention.component';
 import { ReconnaissanceMentionComponent } from './pages/reconnaissance-mention/reconnaissance-mention.component';
+import { LoadingComponent } from './pages/loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { ReconnaissanceMentionComponent } from './pages/reconnaissance-mention/r
     AdoptionMentionComponent,
     JugementMentionComponent,
     ReconnaissanceMentionComponent,
+    LoadingComponent,
   ],
   imports: [
     CommonModule,
