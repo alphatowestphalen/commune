@@ -60,7 +60,7 @@
           [tableColumns]="tableColumns"
           [tableData]="tableData" (editEvent)="editRow($event)" (deleteEvent)="deleteRow($event)"  (showEvent)="showRow($event)" >
         </app-mat-table>
-          <p *ngIf="!tableData || tableData.length === 0">No data available</p>
+          <p *ngIf="!tableData || tableData.length === 0"><app-loading></app-loading></p>
 
         </div>
         </div>

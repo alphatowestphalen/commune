@@ -4,6 +4,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {  Router } from '@angular/router';
 import { Column } from '../../../models/column';
 import { AdoptionService } from '../../../services/adoption.service';
+import { PremiereCopieService } from '../../../services/premiere-copie.service';
 
 
 @Component({
@@ -39,7 +40,7 @@ export class AdoptionComponent implements OnInit {
 
 tableData: any = [];
 
-  constructor( public dialog: MatDialog, private adoptionservice: AdoptionService , private router:Router) {
+  constructor( public dialog: MatDialog, private adoptionservice: AdoptionService, private premierecopie: PremiereCopieService, private router:Router) {
 
   
   } 
@@ -85,6 +86,13 @@ tableData: any = [];
       })
   
   }
+
+  // getAllFirstCertificate(){
+  //   this.premierecopie.getFirstCertificates()
+  //   .pipe(map(data =>{
+      
+  //   }))
+  // }
 }
 
 
