@@ -207,7 +207,7 @@
                   <div class="mb-4 w-4/5">
   
                     <mat-form-field appearance="fill">
-                      <mat-label>Numéro de Copie</mat-label>
+                      <mat-label>Numéro de Copie</mat-label> 
                       <mat-select formControlName="idPremiereCopie" name="N° Première copie" (ngModelChange)="onChange($event)">
                         <mat-option *ngFor="let adoptions of adoption" [value]="adoptions.idPremierCopie" >
                           {{adoptions.idPremierCopie}} {{adoptions.enfant.nomEnfant}} 
