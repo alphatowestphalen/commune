@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { PremiereCopieService } from 'src/app/modules/dashboard/services/premiere-copie.service';
 
 @Component({
   selector: 'app-adoption-add',
@@ -7,27 +8,45 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./adoption-add.component.scss']
 })
 export class AdoptionAddComponent implements OnInit {
+  adoption: any;
+  certificate: any;
 
-  constructor(private _formBuilder: FormBuilder,) { }
+  constructor(private _formBuilder: FormBuilder, private premierecopie: PremiereCopieService,) { }
 
   PiecesFormGroup = this._formBuilder.group({});
   EnfantFormGroup = this._formBuilder.group({
-    firstCtrl: ['', Validators.required],
+    nomEnfant: [''],
+    prenomsEnfant: '',
+    datenaissEnfant: [''],
+    lieunaissEnfant: [''],
+    heurenaissEnfant: [''],
+    dateEnfant: [''],
+    idPremiereCopie: ['']
   });
-  PereFormGroup = this._formBuilder.group({
-    secondCtrl: ['', Validators.required],
+  AdoptionFormGroup = this._formBuilder.group({
+   infoChangement: [''],
+   numChangement: [''],
   });
-  MereFormGroup = this._formBuilder.group({
-    threeCtrl: ['', Validators.required],
-  });
-  DeclarantFormGroup = this._formBuilder.group({
-    fourCtrl: ['', Validators.required],
-  });
-  MaireFormGroup = this._formBuilder.group({
-    fiveCtrl: ['', Validators.required],
-  });
+
 
   ngOnInit(): void {
+    this.getAllFirstCertificate();
   }
 
+  getAllFirstCertificate(){
+    this.premierecopie.getFirstCertificates()
+    .subscribe(data=>{
+     this.adoption = data.premierCopies
+     console.log(this.adoption)
+    })
+  }
+
+  onChange(event: any){
+
+    this.premierecopie.getCertificateByID(event)
+    .subscribe(data=>{
+      this.certificate = data;
+     console.log(this.certificate)
+    })
+     } 
 }
