@@ -10,6 +10,7 @@ import { PremiereCopieService } from 'src/app/modules/dashboard/services/premier
 export class AdoptionAddComponent implements OnInit {
   adoption: any;
   certificate: any;
+  keyword = "ProjectTitle"
 
   constructor(private _formBuilder: FormBuilder, private premierecopie: PremiereCopieService,) { }
 
