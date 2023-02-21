@@ -214,30 +214,7 @@
                         </mat-option>
                       </mat-select>
                     </mat-form-field> -->
-                    <label class="block text-gray-700 text-sm font-bold mb-2">
-                      Nom de Projet
-                    </label>
-                  <div class="ng-autocomplete select-bordered max-w-sm shadow appearance-none border rounded w-64 py-2 px-4 leading-tight focus:outline-none focus:shadow-outline">
-                    <ng-autocomplete 
-                      [data]="Projects"
-                      [searchKeyword]="keyword"
-                      name="ProjectID" 
-                      required
-                      [(ngModel)]="participation.ProjectID"
-                      (ngModelChange)="onChange($event)"
-                      placeholder="Choisir Nom Projet"
-                      [itemTemplate]="itemTemplate"
-                      [notFoundTemplate]="notFoundTemplate">                                 
-                    </ng-autocomplete>
-                    
-                    <ng-template #itemTemplate let-item>
-                    <a [innerHTML]="item.ProjectTitle"></a>
-                    </ng-template>
-                    
-                    <ng-template #notFoundTemplate let-Introuvable>
-                    <div [innerHTML]="Introuvable"></div>
-                    </ng-template>
-                    </div>
+              
                   </div>
   
                 </div>
