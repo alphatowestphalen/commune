@@ -105,6 +105,7 @@ export class NaissanceAddComponent implements OnInit {
     fonction: [''],
     dateregistre: ['']
   });
+  
   @ViewChild('htmlData') htmlData!: ElementRef;
   ngOnInit(): void {
    this.getAllMaire();
