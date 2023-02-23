@@ -5,9 +5,6 @@ import { debounceTime, tap, switchMap, finalize, distinctUntilChanged, filter } 
 import { HttpClient } from '@angular/common/http';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-
-const API_KEY = "e8067b53"
-
 @Component({
   selector: 'app-adoption-add',
   templateUrl: './adoption-add.component.html',
@@ -16,7 +13,7 @@ const API_KEY = "e8067b53"
 export class AdoptionAddComponent implements OnInit {
   adoption: any;
   certificate: any;
-  keyword = "ProjectTitle"
+
   searchMoviesCtrl = new FormControl();
   filteredMovies: any = [] ;
   isLoading = false;
@@ -26,7 +23,7 @@ export class AdoptionAddComponent implements OnInit {
 
 
 
-  constructor(private _formBuilder: FormBuilder, private premierecopie: PremiereCopieService, private http: HttpClient) { }
+  constructor(private _formBuilder: FormBuilder, private premierecopie: PremiereCopieService, public dialog : MatDialog) { }
 
   PiecesFormGroup = this._formBuilder.group({});
   EnfantFormGroup = this._formBuilder.group({
@@ -114,14 +111,29 @@ export class AdoptionAddComponent implements OnInit {
         console.log(data);
       });
   }
+
+  openDialog() {
+   
+       const dialogRef = this.dialog.open(AdoptionCopieComponent, {
+         maxWidth: '100vw',
+         maxHeight: '100vh',
+         height: '90%',
+         width: '85%',
+         panelClass: 'full-screen-modal',
+        
+       });
+     
+ 
+    
+   }
 }
 
 @Component({
   selector: 'app-copie',
-  templateUrl: './../../page/copie/copie.component.html',
-  styleUrls: ['./copie.component.scss']
+  templateUrl: 'adoption-copie.component.html',
+
 })
-export class AfficheCopieComponent {
+export class AdoptionCopieComponent {
   constructor(@Inject (MAT_DIALOG_DATA) public data: any, private premierecopieservice: PremiereCopieService,
    public dialog: MatDialog, private router:Router  ) {}
 
