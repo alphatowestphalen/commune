@@ -66,7 +66,7 @@ tableData: any = [];
   }
 
   showRow(element: any) {
-    this.router.navigate(['/dashboard/adoption-voir', element.idAdoption ])
+    this.router.navigate(['/dashboard/adoption-copie-voir', element.idAdoption ])
 
   }
 

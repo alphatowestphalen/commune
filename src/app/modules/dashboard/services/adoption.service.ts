@@ -28,4 +28,7 @@ private baseURl = environment.baseUrl+'/adoptions'
     return this.http.delete(`${this.baseURl}/${id}`)
   }
 
+  getAdoptionById(id: number): Observable<any>{
+    return this.http.get(`${this.baseURl}/${id}`)
+  }
 }

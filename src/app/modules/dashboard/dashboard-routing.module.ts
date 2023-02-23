@@ -11,7 +11,7 @@ import { PremiereCopieVoirComponent } from './components/naissance/premiere-copi
 import { AdoptionAddComponent } from './components/naissance/adoption/adoption-add/adoption-add.component';
 import { JugementAddComponent } from './components/naissance/jugement/jugement-add/jugement-add.component';
 import { ReconnaissanceAddComponent } from './components/naissance/reconnaissance/reconnaissance-add/reconnaissance-add.component';
-
+import { AdoptionVoirComponent } from './components/naissance/adoption/adoption-voir/adoption-voir.component';
 
 const routes: Routes = [
   {
@@ -29,6 +29,7 @@ const routes: Routes = [
       {path: 'reconnaissance-naissance', component: ReconnaissanceComponent},
       {path: 'jugement-naissance', component: JugementComponent},
       {path: 'premiere-copie-voir/:id', component: PremiereCopieVoirComponent},
+      {path: 'adoption-copie-voir/:id', component: AdoptionVoirComponent},
  
       { path: '**', redirectTo: 'error/404' },
     ],
