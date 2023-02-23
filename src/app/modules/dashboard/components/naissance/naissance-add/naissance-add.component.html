@@ -586,8 +586,8 @@
   
                   <mat-form-field appearance="fill">
                     <mat-label>Nom du Maire</mat-label>
-                    <mat-select formControlName="idMaire" name="Nom du Maire">
-                      <mat-option *ngFor="let maires of maire" [value]="maires.idMaire">
+                    <mat-select formControlName="idMaire" (optionSelected)="onSelected()" name="Nom du Maire">
+                      <mat-option *ngFor="let maires of maire" [value]="maires.idMaire" >
                         {{maires.nomMaire}}
                       </mat-option>
                     </mat-select>

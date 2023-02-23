@@ -29,12 +29,12 @@ export class AdoptionComponent implements OnInit {
   {
     columnDef: 'dateAdoption',
     header: 'Date d\'Adoption ',
-    cell: (element: Record<string, any>) => `${element['datedoption']}`
+    cell: (element: Record<string, any>) => `${element['dateAdoption']}`
   },
   {
     columnDef: 'DatePremiereCopie',
-    header: 'Date Copie',
-    cell: (element: Record<string, any>) => `${element['datePremierCopie']}`
+    header: 'Date 1ère Copie',
+    cell: (element: Record<string, any>) => `${element['premierecopie']['datePremierCopie']}`
   }
 ];
 
