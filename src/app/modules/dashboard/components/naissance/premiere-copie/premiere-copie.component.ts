@@ -70,7 +70,7 @@ export class PremiereCopieComponent implements OnInit {
   getAllfirstCertificates() {
     this.premierecopieservice.getFirstCertificates()
       .subscribe(data => {
-        this.tableData = data.premierCopies;
+        this.tableData = data;
         console.log(this.tableData)
       })
 
