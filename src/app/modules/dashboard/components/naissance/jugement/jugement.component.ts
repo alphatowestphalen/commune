@@ -19,23 +19,23 @@ export class JugementComponent implements OnInit {
     {
       columnDef: 'idJugement',
       header: 'N° Jugement Copie',
-      cell: (element: Record<string, any>) => `${element['idAdoption']}`
+      cell: (element: Record<string, any>) => `${element['idJugement']}`
     },
     {
       columnDef: 'nom',
       header: 'Nom et Prénoms',
-      cell: (element: Record<string, any>) => `${element['premierecopie']['enfant']['nomEnfant']} ${element ['premierecopie']['enfant']['prenomsEnfant']}`,
+      cell: (element: Record<string, any>) => `${element['premierCopie']['enfant']['nomEnfant']} ${element ['premierCopie']['enfant']['prenomsEnfant']}`,
     
     },
     {
       columnDef: 'dateAdoption',
       header: 'Date d\'Adoption ',
-      cell: (element: Record<string, any>) => `${element['dateAdoption']}`
+      cell: (element: Record<string, any>) => `${element['createdDate']}`
     },
     {
       columnDef: 'DatePremiereCopie',
       header: 'Date 1ère Copie',
-      cell: (element: Record<string, any>) => `${element['premierecopie']['datePremierCopie']}`
+      cell: (element: Record<string, any>) => `${element['premierCopie']['datePremierCopie']}`
     }
   ];
   
