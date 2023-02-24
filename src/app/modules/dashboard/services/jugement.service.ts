@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class JugementService {
-  private baseURl = environment.baseUrl+'/jugement';
+  private baseURl = environment.baseUrl+'/jugements';
 
   constructor( private http: HttpClient) { }
 

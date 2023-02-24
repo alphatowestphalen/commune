@@ -17,7 +17,7 @@ export class AdoptionComponent implements OnInit {
  tableColumns: Array<Column> = [
   {
     columnDef: 'idAdoption',
-    header: 'N° Première Copie',
+    header: 'N° Adoption Copie',
     cell: (element: Record<string, any>) => `${element['idAdoption']}`
   },
   {
