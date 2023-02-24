@@ -7,8 +7,8 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class MentionComponent implements OnInit {
   @Input()
-
   mention: any;
+
 
 
   constructor() { }
