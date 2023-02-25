@@ -12,6 +12,7 @@ import { AdoptionAddComponent } from './components/naissance/adoption/adoption-a
 import { JugementAddComponent } from './components/naissance/jugement/jugement-add/jugement-add.component';
 import { ReconnaissanceAddComponent } from './components/naissance/reconnaissance/reconnaissance-add/reconnaissance-add.component';
 import { AdoptionVoirComponent } from './components/naissance/adoption/adoption-voir/adoption-voir.component';
+import { JugementVoirComponent } from './components/naissance/jugement/jugement-voir/jugement-voir.component';
 
 const routes: Routes = [
   {
@@ -30,6 +31,7 @@ const routes: Routes = [
       {path: 'jugement-naissance', component: JugementComponent},
       {path: 'premiere-copie-voir/:id', component: PremiereCopieVoirComponent},
       {path: 'adoption-copie-voir/:id', component: AdoptionVoirComponent},
+      {path: 'jugement-copie-voir/:id', component: JugementVoirComponent},
  
       { path: '**', redirectTo: 'error/404' },
     ],

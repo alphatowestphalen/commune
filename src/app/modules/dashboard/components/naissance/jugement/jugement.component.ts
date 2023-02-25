@@ -3,6 +3,7 @@ import {MatDialog} from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 import { Column } from '../../../models/column';
 import { JugementService } from '../../../services/jugement.service';
 
@@ -40,10 +41,10 @@ export class JugementComponent implements OnInit {
   ];
   
   tableData: any = [];
-  router: any;
-  adoptionservice: any;
+ 
 
-  constructor( public dialog: MatDialog, private jugementservice: JugementService) {
+
+  constructor( public dialog: MatDialog, private router:Router, private jugementservice: JugementService) {
     
     }
 
@@ -63,7 +64,7 @@ export class JugementComponent implements OnInit {
 
   getAllJugement(){
     this.jugementservice.getAlljugement()
-    .subscribe(data=>{
+    .subscribe((data: any)=>{
       this.tableData = data.jugement;
       console.log(this.tableData)
     })
@@ -71,26 +72,23 @@ export class JugementComponent implements OnInit {
 
 
   showRow(element: any) {
-    this.router.navigate(['/dashboard/jugement-copie-voir', element.idAdoption ])
+    this.router.navigate(['/dashboard/jugement-copie-voir', element.idJugement ])
 
   }
 
   editRow(element: any) {
     console.log('Edit row', element);
-    this.adoptionservice.updateAdoption(element.idAdoption, element)
+    this.jugementservice.updateJugement(element.idJugement, element)
       .subscribe((data: any)=> {
-        this.getAlladoption();
+        this.getAllJugement();
         
       })
   }
-  getAlladoption() {
-    throw new Error('Method not implemented.');
-  }
 
   deleteRow(element: any) {
-    this.adoptionservice.deleteAdoption(element.idAdoption)
+    this.jugementservice.deleteJugement(element.idJugement)
       .subscribe((data: any)=> { 
-        this.getAlladoption();
+        this.getAllJugement();
         console.log('Delete row', data);
       })
   
