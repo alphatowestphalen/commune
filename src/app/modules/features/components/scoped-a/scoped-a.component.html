@@ -1,8 +1,22 @@
 <div class=" bg-gray-100 flex justify-center items-center ">
 	<div class="container mx-auto bg-yellow-300 rounded-lg p-10 pt-3">
 		<form>
-			<h1 class="text-center mx-auto font-bold text-white text-2xl">Recherche dans la registre votre Copie</h1>
-			<p class="mx-auto font-normal text-sm my-6 max-w-lg">Effectuer une recherche en saisant votre numèro de
+			<span  class="inline-flex">
+				<h1 class="text-center inline mx-auto font-bold text-gray-100 text-2xl">Recherche dans la registre votre Copie</h1>
+				<button 
+				routerLink="/dashboard"
+					class="shadow-md inline-flex items-center  ml-32 px-4 bg-blue-400 hover:bg-blue-800 text-gray-100 text-sm font-medium rounded-md"
+				  >
+				  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" />
+				  </svg>
+			  
+				Cliquer pour entrer dans tableau d'administrateur 
+				  </button>
+			</span>
+			
+			 
+			<p class="mx-auto font-normal inline-flex text-sm my-6 max-w-lg">Effectuer une recherche en saisant votre numèro de
 				copie ou Nom et Prènoms </p>
 			<div class="sm:flex items-center bg-white rounded-lg overflow-hidden px-2 py-1 justify-between">
 				<input matInput [(ngModel)]="CopieSelected" class="text-base text-gray-400 flex-grow outline-none px-2 " type="text"
@@ -13,6 +27,7 @@
 				</div>
 			</div>
 		</form>
+
 	</div>
 </div>
 

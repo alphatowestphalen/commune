@@ -5,7 +5,8 @@ import { FeaturesComponent } from './features.component';
 
 const routes: Routes = [
   {
-    path:'',component:FeaturesComponent, children: [
+    path:'',component:FeaturesComponent,
+     children: [
       {path: '', redirectTo: 'scoped',pathMatch: 'full' },
       {path: 'scoped', component: ScopedAComponent } 
     ]

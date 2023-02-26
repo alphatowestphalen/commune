@@ -3,17 +3,18 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: '',
-    loadChildren: () => import('./modules/layout/layout.module').then((m) => m.LayoutModule),
-  },
-  {
-    path: 'auth',
-    loadChildren: () => import('./modules/auth/auth.module').then((m) => m.AuthModule),
-  },
-  {
     path: 'demande',
     loadChildren: () => import('./modules/features/features.module').then((m) => m.FeaturesModule )
   },
+  {
+    path: 'dashboard',
+    loadChildren: () => import('./modules/layout/layout.module').then((m) => m.LayoutModule),
+  },
+  {
+    path: '',
+    loadChildren: () => import('./modules/auth/auth.module').then((m) => m.AuthModule),
+  },
+ 
   { path: '**', redirectTo: 'error/404' },
 ];
 
