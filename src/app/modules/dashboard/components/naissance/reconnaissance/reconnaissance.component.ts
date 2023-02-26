@@ -23,7 +23,7 @@ export class ReconnaissanceComponent implements OnInit {
     {
       columnDef: 'nom',
       header: 'Nom et Prénoms',
-      cell: (element: Record<string, any>) => `${element['premierCopie']['enfant']['nomEnfant']} ${element ['premierCopie']['enfant']['prenomsEnfant']}`,
+      cell: (element: Record<string, any>) => `${element['premierecopie']['enfant']['nomEnfant']} ${element ['premierecopie']['enfant']['prenomsEnfant']}`,
     
     },
     {
@@ -34,7 +34,7 @@ export class ReconnaissanceComponent implements OnInit {
     {
       columnDef: 'DatePremiereCopie',
       header: 'Date 1ère Copie',
-      cell: (element: Record<string, any>) => `${element['premierCopie']['datePremierCopie']}`
+      cell: (element: Record<string, any>) => `${element['premierecopie']['datePremierCopie']}`
     }
   ];
   

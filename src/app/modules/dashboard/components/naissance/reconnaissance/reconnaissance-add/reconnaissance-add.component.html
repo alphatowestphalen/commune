@@ -135,449 +135,236 @@
     </div>
 </div> -->
 
-   <mat-horizontal-stepper  #stepper>
-          <mat-step [stepControl]="PiecesFormGroup">
-            <form [formGroup]="PiecesFormGroup">
-              <ng-template matStepLabel> Dossier <br>
-                <span class="font-normal text-xs text-gray-400">Check Dossier</span>
-              </ng-template>
-              <div class="lg:grid md:grid-flow-col grid-cols-2 gap-4 mt-20">
-                <div class="mb-4  w-60">
-                  <label class="label cursor-pointer w-60">
-                    <input type="checkbox" checked="checked" class="checkbox" />
-                    <span class="label-text"> Certificat d' accouchement</span>
-                  </label>
-                </div>
-                <div class="mb-4  w-60">
-                  <label class="label cursor-pointer">
-                    <input type="checkbox" checked="checked" class="checkbox" />
-                    <span class="label-text">Livrée de Famille</span>
-  
-                  </label>
-                </div>
-  
-              </div>
-              <div class="lg:grid md:grid-flow-col grid-cols-2 gap-4">
-                <div class="mb-4 w-60">
-                  <label class="label cursor-pointer ">
-                    <input type="checkbox" checked="checked" class="checkbox" />
-                    <span class="label-text">Photocopie CIN de la mère</span>
-  
-                  </label>
-                </div>
-                <div class="mb-4 w-60">
-                  <label class="label cursor-pointer ">
-                    <input type="checkbox" checked="checked" class="checkbox" />
-                    <span class="label-text">Photocopie de CIN declarant</span>
-  
-                  </label>
-                </div>
-              </div>
-  
-           
-              <div class="flex p-2 mt-4">
-                <button routerLink="/dashboard/premiere-copie" class="text-md hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
-            hover:bg-gray-200  
-            bg-gray-100 
-            text-red-700 
-            border duration-200 ease-in-out 
-            border-red-600 transition">
-                      Annuler</button>
-                <div class="flex-auto flex flex-row-reverse">
-                    <button mat-button matStepperNext class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
-            hover:bg-teal-600  
-            bg-teal-600 
-            text-teal-100 
-            border duration-200 ease-in-out 
-            border-teal-600 transition">Suivant</button>
-                  
-                </div>
-            </div>
+
+<mat-horizontal-stepper [linear]="true" #stepper>
+  <mat-step [stepControl]="PiecesFormGroup">
+    <form [formGroup]="PiecesFormGroup">
+      <ng-template matStepLabel> Dossier <br>
+        <span class="font-normal text-xs text-gray-400">Check Dossier</span>
+      </ng-template>
+      <div class="lg:grid md:grid-flow-col grid-cols-2 gap-4 mt-20">
+        <div class="mb-4  w-60">
+          <label class="label cursor-pointer w-60">
+            <input type="checkbox" checked="checked" class="checkbox" />
+            <span class="label-text"> Certificat d' accouchement</span>
+          </label>
+        </div>
+        <div class="mb-4  w-60">
+          <label class="label cursor-pointer">
+            <input type="checkbox" checked="checked" class="checkbox" />
+            <span class="label-text">Livrée de Famille</span>
+
+          </label>
+        </div>
+
+      </div>
+      <div class="lg:grid md:grid-flow-col grid-cols-2 gap-4">
+        <div class="mb-4 w-60">
+          <label class="label cursor-pointer ">
+            <input type="checkbox" checked="checked" class="checkbox" />
+            <span class="label-text">Photocopie CIN de la mère</span>
+
+          </label>
+        </div>
+        <div class="mb-4 w-60">
+          <label class="label cursor-pointer ">
+            <input type="checkbox" checked="checked" class="checkbox" />
+            <span class="label-text">Photocopie de CIN declarant</span>
+
+          </label>
+        </div>
+      </div>
+
+
+      <div class="flex p-2 mt-4">
+        <button routerLink="/dashboard/premiere-copie" class="text-md hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
+hover:bg-gray-200  
+bg-gray-100 
+text-red-700 
+border duration-200 ease-in-out 
+border-red-600 transition">
+          Annuler</button>
+        <div class="flex-auto flex flex-row-reverse">
+          <button mat-button  matStepperNext class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
+hover:bg-teal-600  
+bg-teal-600 
+text-teal-100 
+border duration-200 ease-in-out 
+border-teal-600 transition">Suivant</button>
+
+        </div>
+      </div>
+
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="EnfantFormGroup">
+    <form [formGroup]="EnfantFormGroup">
+      <ng-template matStepLabel> Première copie<br>
+        <span class="font-normal text-xs text-gray-400">Recuperer Premiere Copie</span>
+      </ng-template>
+
+    
+    <div class="wrapper">
+      <mat-form-field class="example-full-width">
+        <mat-label>Recherche par Numèro de Copie</mat-label>
+        <input matInput [(ngModel)]="CopieSelected" [matAutocomplete]="auto"
+          [formControl]="searchMoviesCtrl" placeholder="Saisir la Numèro de Copie">
+        <button *ngIf="CopieSelected" matSuffix mat-icon-button aria-label="Clear" (click)="clearSelection()">
+
+        </button>
+        <mat-autocomplete [panelWidth]="400" #auto="matAutocomplete" (optionSelected)="onSelected()"
+          [displayWith]="displayWith">
+          <mat-option *ngIf="isLoading" class="is-loading">Chargement...</mat-option>
+          <ng-container *ngIf="!isLoading">
+            <mat-option *ngFor="let movie of filteredMovies" [value]="movie">
+              <span><b>{{movie.idPremierCopie}}</b> ({{movie.enfant.nomEnfant}})</span>
+            </mat-option>
+          </ng-container>
+        </mat-autocomplete>
+      </mat-form-field>
+
+      <br>
+
+      <ng-container *ngIf="errorMsg; else elseTemplate">
+        {{errorMsg}}
+      </ng-container>
+      <ng-template #elseTemplate>
+
+        <div class=" lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4"  *ngIf="CopieSelected?.idPremierCopie">
+          <div class="mb-4 w-4/5">
+
+            <label class="block mb-2 text-sm font-bold text-black">Nom de l'enfant</label>
+            <input type="text"  readonly value="{{CopieSelected?.enfant.nomEnfant}}"
+              class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+              placeholder="Saisir nom de l'enfant" />
+
+          </div>
+          <div class="mb-4 w-4/5">
+
+            <label class="block mb-2 text-sm font-bold text-black">Prenoms de l'enfant</label>
+            <input type="text"  readonly   value="{{CopieSelected?.enfant.prenomsEnfant}}"
+              class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+              placeholder="Saisir Prenoms de l'enfant" />
+
+          </div>
+
+        </div>
+        <div class="lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
+          <div class="mb-4 w-4/5">
+
+            <label class="block mb-2 text-sm font-bold text-black">Date de Naissance</label>
+            <input type="text" readonly  value="{{CopieSelected?.enfant?.datenaissEnfant}}"
+              class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+              placeholder="Saisir Date de Naissance l'enfant" />
+
+          </div>
+          <div class="mb-4 w-4/5">
+
+            <label class="block mb-2 text-sm font-bold text-black">Heure de naissance</label>
+            <input type="text"  readonly value="{{CopieSelected?.enfant?.heurenaissEnfant}}"
+              class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+              placeholder="Saisir heure de Naissancede l'enfant" />
+
+          </div>
+        </div>
+        <div class="lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
+          <div class="mb-4 w-4/5">
+
+            <label class="block mb-2 text-sm font-bold text-black">Lieu de Naissance</label>
+            <input type="text" readonly value="{{CopieSelected?.enfant?.lieunaissEnfant}}"
+               class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+              placeholder="Saisir Lieu de Naissance de l'enfant" />
+
+          </div>
+     
+        </div>
+    
+      </ng-template>
+
+    </div>
+
+    <div class="flex p-2 mt-4">
+      <button mat-button  matStepperPrevious class="text-md hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
+  hover:bg-gray-200  
+  bg-gray-100 
+  text-red-700 
+  border duration-200 ease-in-out 
+  border-red-600 transition">
+            Annuler</button>
+      <div class="flex-auto flex flex-row-reverse">
+          <button mat-button  (click)="FirstStep()" matStepperNext class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
+  hover:bg-teal-600  
+  bg-teal-600 
+  text-teal-100 
+  border duration-200 ease-in-out 
+  border-teal-600 transition">Suivant</button>
+        
+      </div>
+  </div>
+
+    </form>
+
+  </mat-step>
+
+  <mat-step [stepControl]="ReconnaissanceFormGroup">
+    <form [formGroup]="ReconnaissanceFormGroup" >
+      <ng-template matStepLabel>  Reconnaissance <br>
+        <span class="font-normal text-xs text-gray-400">Information Reconnaissance</span>
+      </ng-template>
+      <div class=" lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
        
-            </form>
-          </mat-step>
-          <mat-step [stepControl]="EnfantFormGroup">
-            <form [formGroup]="EnfantFormGroup">
-              <ng-template matStepLabel >Enfant <br>
-                <span class="font-normal text-xs text-gray-400">Information personnel </span>
-              </ng-template>
-              <div class=" lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
-                <div class="mb-4 w-4/5">
-  
-                  <label class="block mb-2 text-sm font-bold text-black">Nom de l'enfant</label>
-                  <input type="text" formControlName="firstCtrl"
-                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                    placeholder="Saisir nom de l'enfant" />
-  
-                </div>
-                <div class="mb-4 w-4/5">
-  
-                  <label class="block mb-2 text-sm font-bold text-black">Prenoms de l'enfant</label>
-                  <input type="text" formControlName="firstCtrl"
-                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                    placeholder="Saisir Prenoms de l'enfant" />
-  
-                </div>
-  
-              </div>
-              <div class="lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
-                <div class="mb-4 w-4/5">
-  
-                  <label class="block mb-2 text-sm font-bold text-black">Date de Naissance</label>
-                  <input type="date" formControlName="firstCtrl"
-                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                    placeholder="Saisir Prenoms de l'enfant" />
-  
-                </div>
-                <div class="mb-4 w-4/5">
-  
-                  <label class="block mb-2 text-sm font-bold text-black">Heure de naissance</label>
-                  <input type="time" formControlName="firstCtrl"
-                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                    placeholder="Saisir Prenoms de l'enfant" />
-  
-                </div>
-              </div>
-              <div class="lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
-                <div class="mb-4 w-4/5">
-  
-                  <label class="block mb-2 text-sm font-bold text-black">Lieu de Naissance</label>
-                  <input type="text" formControlName="firstCtrl"
-                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                    placeholder="Saisir Prenoms de l'enfant" />
-  
-                </div>
-                <div class="mb-4 w-4/5">
-  
-                  <label class="block mb-2 text-sm font-bold text-black">Sexe</label>
-  
-                  <select name="" id="" formControlName="firstCtrl"
-                    class="bg-gray-50 rounded-lg text-md border border-gray-300 block w-full p-2.5">
-                    <option selected disabled>Choisir le Sexe</option>
-                    <option value="fille">Fille</option>
-                    <option value="garcon">Garçon</option>
-                  </select>
-                </div>
-              </div>
-              <div class="flex p-2 mt-4">
-                <button mat-button matStepperPrevious class="text-md hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
-            hover:bg-gray-200  
-            bg-gray-100 
-            text-gray-700 
-            border duration-200 ease-in-out 
-            border-gray-600 transition">Prècedent</button>
-                <div class="flex-auto flex flex-row-reverse">
-                    <button mat-button matStepperNext class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
-            hover:bg-teal-600  
-            bg-teal-600 
-            text-teal-100 
-            border duration-200 ease-in-out 
-            border-teal-600 transition">Suivant</button>
-                    
-                </div>
-            </div>
-              <div>
-  
-              </div>
-            </form>
-          </mat-step>
-          <mat-step [stepControl]="MereFormGroup">
-            <form [formGroup]="MereFormGroup">
-              <ng-template matStepLabel> Mère <br>
-                <span class="font-normal text-xs text-gray-400">Information personnel</span>
-              </ng-template>
-  
-  
-              <div class=" lg:grid md:grid-flow-col grid-cols-2  mt-2 gap-4">
-                <div class="mb-4 w-4/5">
-  
-                  <label class="block mb-2 text-sm font-bold text-black">Nom </label>
-                  <input type="text" formControlName="threeCtrl"
-                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                    placeholder="Saisir Nom du mère" />
-  
-                </div>
-                <div class="mb-4 w-4/5">
-  
-                  <label class="block mb-2 text-sm font-bold text-black">Prenoms </label>
-                  <input type="text" formControlName="threeCtrl"
-                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                    placeholder="Saisir Prènoms du mère" />
-  
-                </div>
-  
-              </div>
-              <div class="lg:grid md:grid-flow-col grid-cols-2 mt-2  gap-4">
-                <div class="mb-4 w-4/5">
-  
-                  <label class="block mb-2 text-sm font-bold text-black">Date de Naissance</label>
-                  <input type="date" formControlName="threeCtrl"
-                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                    placeholder="Saisir Date de Naissance du mère" />
-  
-                </div>
-                <div class="mb-4 w-4/5">
-  
-                  <label class="block mb-2 text-sm font-bold text-black">Lieu de Naissance</label>
-                  <input type="text" formControlName="threeCtrl"
-                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                    placeholder="Saisir Lieu de Naissance du Mère " />
-  
-                </div>
-  
-              </div>
-              <div class="lg:grid md:grid-flow-col grid-cols-2 mt-2  gap-4">
-                <div class="mb-4 w-4/5">
-  
-                  <label class="block mb-2 text-sm font-bold text-black">Profession</label>
-                  <input type="text" formControlName="threeCtrl"
-                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                    placeholder="Saisir Proffesion du Mère " />
-  
-                </div>
-                <div class="mb-4 w-4/5">
-                  <label class="block mb-2 text-sm font-bold text-black">Adresse Exacte</label>
-                  <input type="text" formControlName="threeCtrl"
-                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                    placeholder="Saisir Adresse du Mère" />
-                </div>
-  
-              </div>
-              <div class="flex p-2 mt-4">
-                <button mat-button matStepperPrevious class="text-md hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
-            hover:bg-gray-200  
-            bg-gray-100 
-            text-gray-700 
-            border duration-200 ease-in-out 
-            border-gray-600 transition">Prècedent</button>
-                <div class="flex-auto flex flex-row-reverse">
-                    <button mat-button matStepperNext class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
-            hover:bg-teal-600  
-            bg-teal-600 
-            text-teal-100 
-            border duration-200 ease-in-out 
-            border-teal-600 transition">Suivant</button>
-                    
-                </div>
-            </div>
-            </form>
-  
-          </mat-step>
-          <mat-step [stepControl]="PereFormGroup">
-            <form [formGroup]="PereFormGroup">
-              <ng-template matStepLabel> Père <br>
-                <span class="font-normal text-xs text-gray-400">Information personnel</span>
-              </ng-template>
-              <div class=" lg:grid md:grid-flow-col grid-cols-2 mt-2  gap-4">
-                <div class="mb-4 w-4/5">
-  
-                  <label class="block mb-2 text-sm font-bold text-black">Nom </label>
-                  <input type="text" formControlName="secondCtrl"
-                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                    placeholder="Saisir Nom du père" />
-  
-                </div>
-                <div class="mb-4 w-4/5">
-  
-                  <label class="block mb-2 text-sm font-bold text-black">Prenoms </label>
-                  <input type="text" formControlName="secondCtrl"
-                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                    placeholder="Saisir Prènoms du père" />
-  
-                </div>
-  
-              </div>
-              <div class="lg:grid md:grid-flow-col grid-cols-2 mt-2  gap-4">
-                <div class="mb-4 w-4/5">
-  
-                  <label class="block mb-2 text-sm font-bold text-black">Date de Naissance</label>
-                  <input type="date" formControlName="secondCtrl"
-                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                    placeholder="Saisir Date de Naissance du père" />
-  
-                </div>
-                <div class="mb-4 w-4/5">
-  
-                  <label class="block mb-2 text-sm font-bold text-black">Lieu de Naissance</label>
-                  <input type="text" formControlName="secondCtrl"
-                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                    placeholder="Saisir Lieu de Naissance du père " />
-  
-                </div>
-  
-              </div>
-              <div class="lg:grid md:grid-flow-col grid-cols-2 mt-2  gap-4">
-                <div class="mb-4 w-4/5">
-  
-                  <label class="block mb-2 text-sm font-bold text-black">Profession</label>
-                  <input type="text" formControlName="secondCtrl"
-                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                    placeholder="Saisir Proffesion du père " />
-  
-                </div>
-                <div class="mb-4 w-4/5">
-                  <label class="block mb-2 text-sm font-bold text-black">Adresse Exacte</label>
-                  <input type="text" formControlName="secondCtrl"
-                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                    placeholder="Saisir Adresse du père" />
-                </div>
-  
-              </div>
-              <div class="flex p-2 mt-4">
-                <button mat-button matStepperPrevious class="text-md hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
-            hover:bg-gray-200  
-            bg-gray-100 
-            text-gray-700 
-            border duration-200 ease-in-out 
-            border-gray-600 transition">Prècedent</button>
-                <div class="flex-auto flex flex-row-reverse">
-                    <button mat-button matStepperNext class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
-            hover:bg-teal-600  
-            bg-teal-600 
-            text-teal-100 
-            border duration-200 ease-in-out 
-            border-teal-600 transition">Suivant</button>
-                    
-                </div>
-                </div>
-            </form>
-  
-          </mat-step>
-          <mat-step [stepControl]="DeclarantFormGroup">
-            <form [formGroup]="DeclarantFormGroup">
-              <ng-template matStepLabel> Declarante <br>
-                <span class="font-normal text-xs text-gray-400">Information personnel</span>
-              </ng-template>
-              <div class=" lg:grid md:grid-flow-col grid-cols-2 mt-2  gap-4">
-                <div class="mb-4 w-4/5">
-  
-                  <label class="block mb-2 text-sm font-bold text-black">Nom </label>
-                  <input type="text" formControlName="fourCtrl"
-                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                    placeholder="Saisir Nom du Declarante" />
-  
-                </div>
-                <div class="mb-4 w-4/5">
-  
-                  <label class="block mb-2 text-sm font-bold text-black">Prenoms </label>
-                  <input type="text" formControlName="fourCtrl"
-                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                    placeholder="Saisir Prènoms du Declarante" />
-  
-                </div>
-  
-              </div>
-              <div class="lg:grid md:grid-flow-col grid-cols-2 mt-2  gap-4">
-                <div class="mb-4 w-4/5">
-  
-                  <label class="block mb-2 text-sm font-bold text-black">Date de Naissance</label>
-                  <input type="date" formControlName="fourCtrl"
-                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                    placeholder="Saisir Date de Naissance du Declarante" />
-  
-                </div>
-                <div class="mb-4 w-4/5">
-  
-                  <label class="block mb-2 text-sm font-bold text-black">Lieu de Naissance</label>
-                  <input type="text" formControlName="fourCtrl"
-                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                    placeholder="Saisir Lieu de Naissance du Declarante " />
-  
-                </div>
-  
-              </div>
-              <div class="lg:grid md:grid-flow-col grid-cols-2 mt-2  gap-4">
-                <div class="mb-4 w-4/5">
-  
-                  <label class="block mb-2 text-sm font-bold text-black">Profession</label>
-                  <input type="text" formControlName="fourCtrl"
-                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                    placeholder="Saisir Proffesion du Declarante " />
-  
-                </div>
-                <div class="mb-4 w-4/5">
-                  <label class="block mb-2 text-sm font-bold text-black">Adresse Exacte</label>
-                  <input type="text" formControlName="fourCtrl"
-                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                    placeholder="Saisir Adresse du Declarante" />
-                </div>
-  
-              </div>
-              <div class="flex p-2 mt-4">
-                <button mat-button matStepperPrevious class="text-md hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
-            hover:bg-gray-200  
-            bg-gray-100 
-            text-gray-700 
-            border duration-200 ease-in-out 
-            border-gray-600 transition">Prècedent</button>
-                <div class="flex-auto flex flex-row-reverse">
-                    <button mat-button matStepperNext class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
-            hover:bg-teal-600  
-            bg-teal-600 
-            text-teal-100 
-            border duration-200 ease-in-out 
-            border-teal-600 transition">Suivant</button>
-                    
-                </div>
-            </div>
-            </form>
-          </mat-step>
-          <mat-step [stepControl]="MaireFormGroup">
-            <form [formGroup]="MaireFormGroup">
-              <ng-template matStepLabel> Maire <br>
-                <span class="font-normal text-xs text-gray-400">Information personnel</span>
-              </ng-template>
-              <div class=" lg:grid md:grid-flow-col grid-cols-2 mt-2  gap-4">
-                <div class="mb-4 w-4/5">
-  
-                  <label class="block mb-2 text-sm font-bold text-black">Nom </label>
-                  <input type="text" formControlName="fiveCtrl"
-                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                    placeholder="Saisir Nom du Maire" />
-  
-                </div>
-                <div class="mb-4 w-4/5">
-  
-                  <label class="block mb-2 text-sm font-bold text-black">Prenoms </label>
-                  <input type="text" formControlName="fiveCtrl"
-                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                    placeholder="Saisir Prènoms du Maire" />
-  
-                </div>
-  
-              </div>
-              <div class="lg:grid md:grid-flow-col grid-cols-2 mt-2  gap-4">
-                <div class="mb-4 w-4/5">
-  
-                  <label class="block mb-2 text-sm font-bold text-black">Fonction</label>
-                  <input type="date" formControlName="fiveCtrl"
-                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                    placeholder="Saisir Fonction du Maire" />
-  
-                </div>
-              </div>
-  
-              <div class="flex p-2 mt-4">
-                <button mat-button matStepperPrevious class="text-md hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
-            hover:bg-gray-200  
-            bg-gray-100 
-            text-gray-700 
-            border duration-200 ease-in-out 
-            border-gray-600 transition">Prècedent</button>
-                <div class="flex-auto flex flex-row-reverse">
-                    <button
-                    mat-button matStepperNext class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
-            hover:bg-blue-600  
-            bg-blue-600 
-            text-blue-100 
-            border duration-200 ease-in-out 
-            border-blue-600 transition">Sauvegarder</button>
-                    
-                </div>
-            </div>
-            </form>
-          </mat-step>
-        </mat-horizontal-stepper>
+        <div class="mb-4 w-4/5">
+
+          <label class="block mb-2 text-sm font-bold text-black">Info de la Declarant</label>
+          <input type="text" formControlName = "infoPersonDeclarant" id="infoPersonDeclarant"
+            class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+            placeholder="Saisir Parents adoptifs" />
+
+        </div>
+       
+
+      </div>
+      <div class="lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
+        <div class="mb-4 w-4/5">
+
+          <label class="block mb-2 text-sm font-bold text-black">Date declaration</label>
+          <input type="date" formControlName = "dateDeclaration" id="dateDeclaration"
+            class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+            placeholder="Saisir Date d'adoption" />
+
+        </div>
+        <div class="mb-4 w-4/5">
+
+          <label class="block mb-2 text-sm font-bold text-black">Heure de declaration</label>
+          <input type="time"  formControlName = "heureDeclaration" id="heureDeclaration"
+            class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+            placeholder="Saisir heure d'adoption" />
+
+        </div>
+      </div>
+      <div class="flex p-2 mt-4">
+        <button mat-button  matStepperPrevious class="text-md hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
+    hover:bg-gray-200  
+    bg-gray-100 
+    text-red-700 
+    border duration-200 ease-in-out 
+    border-red-600 transition">
+              Annuler</button>
+        <div class="flex-auto flex flex-row-reverse">
+          <button   (click)="openDialog()"
+          mat-button matStepperNext class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
+  hover:bg-blue-600  
+  bg-blue-600 
+  text-blue-100 
+  border duration-200 ease-in-out 
+  border-blue-600 transition">Sauvegarder</button>
+          
+        </div>
+    </div>
+    </form>
+  </mat-step>
+</mat-horizontal-stepper>
+
 
         </div>
         </div>
