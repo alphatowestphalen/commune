@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { debounceTime, distinctUntilChanged, filter, finalize, switchMap, tap } from 'rxjs';
+import { DemandeService } from '../../services/demande.service';
 
 @Component({
   selector: 'app-scoped-a',
@@ -6,10 +9,64 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./scoped-a.component.scss']
 })
 export class ScopedAComponent implements OnInit {
+  
   panelOpenState = false;
-  constructor() { }
+  demande: any = [];
+  demandefilter:any =[];
+  searchDemande = new FormControl();
+  CopieSelected: any = "";
+//  errorMsg: string;
+  isLoading = false;
+  errorMsg!: string;
+  premierecopie: any;
+
+  constructor(private demandeservice: DemandeService) { }
 
   ngOnInit(): void {
+
+    this.getallCertificates();
+
+    this.searchDemande.valueChanges
+    .pipe(
+      filter(res => {
+        if(res == null){
+          this.getallCertificates();
+        }
+        return res !== null
+      }),
+      switchMap(value => this.demandeservice.SearchCertificateByIdPremierCopie(value)
+        .pipe(
+          finalize(() => {
+            this.isLoading = false
+          }),
+        )
+      )
+    )
+    .subscribe((data: any) => {
+
+      this.demande = data.premierCopies;
+      console.log(data);
+    });
   }
 
+  getallCertificates(){
+  this.demandeservice.getAllCertificates()
+  .subscribe(data=>{
+    this.demande = data;
+    console.log("data", this.demande)
+  })
+ }
+
+ Birthcertif(id: string){
+  console.log(id);
+
+ }
+
+ Weddingcertif(id:string){
+alert(id);
+ }
+
+ Deadcertif(id: string){
+
+ }
 }

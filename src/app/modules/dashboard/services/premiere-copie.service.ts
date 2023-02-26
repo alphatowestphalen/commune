@@ -35,5 +35,8 @@ export class PremiereCopieService {
     return this.http.delete(`${this.baseUrl}/${id}`)
   }
 
+ 
+
+
 
 }
