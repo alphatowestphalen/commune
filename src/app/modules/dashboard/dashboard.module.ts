@@ -14,7 +14,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 
 import { NgApexchartsModule } from 'ng-apexcharts';
@@ -39,6 +41,7 @@ import { AdoptionMentionComponent } from './pages/adoption-mention/adoption-ment
 import { JugementMentionComponent } from './pages/jugement-mention/jugement-mention.component';
 import { ReconnaissanceMentionComponent } from './pages/reconnaissance-mention/reconnaissance-mention.component';
 import { LoadingComponent } from './pages/loading/loading.component';
+
 
 @NgModule({
   declarations: [
@@ -82,6 +85,7 @@ import { LoadingComponent } from './pages/loading/loading.component';
     MatCardModule,
     MatListModule,
     ReactiveFormsModule,
+    MatAutocompleteModule,
     AngularSvgIconModule.forRoot(),
   ],
 })

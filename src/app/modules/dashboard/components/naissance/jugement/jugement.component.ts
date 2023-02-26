@@ -3,6 +3,9 @@ import {MatDialog} from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
+import { Column } from '../../../models/column';
+import { JugementService } from '../../../services/jugement.service';
 
 
 @Component({
@@ -11,143 +14,86 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrls: ['./jugement.component.scss']
 })
 export class JugementComponent implements OnInit {
+  jugement: any;
   
-  displayedColumns = [
-    'id',
-    'name',
-    'datenaiss',
-    'dateenregistrement',
-    'actions',
+  tableColumns: Array<Column> = [
+    {
+      columnDef: 'idJugement',
+      header: 'N° Jugement Copie',
+      cell: (element: Record<string, any>) => `${element['idJugement']}`
+    },
+    {
+      columnDef: 'nom',
+      header: 'Nom et Prénoms',
+      cell: (element: Record<string, any>) => `${element['premierCopie']['enfant']['nomEnfant']} ${element ['premierCopie']['enfant']['prenomsEnfant']}`,
+    
+    },
+    {
+      columnDef: 'dateAdoption',
+      header: 'Date d\'Adoption ',
+      cell: (element: Record<string, any>) => `${element['createdDate']}`
+    },
+    {
+      columnDef: 'DatePremiereCopie',
+      header: 'Date 1ère Copie',
+      cell: (element: Record<string, any>) => `${element['premierCopie']['datePremierCopie']}`
+    }
   ];
-  dataSource: MatTableDataSource<UserData>;
-  constructor( public dialog: MatDialog) {
-    const users: UserData[] = [];
-    for (let i = 1; i <= 100; i++) {
-      users.push(createNewUser(i));
+  
+  tableData: any = [];
+ 
+
+
+  constructor( public dialog: MatDialog, private router:Router, private jugementservice: JugementService) {
+    
     }
 
-    // Assign the data to the data source for the table to render
-    this.dataSource = new MatTableDataSource(users);
   
-  } 
-  
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
-  @ViewChild('htmlData') htmlData!: ElementRef;
+    @ViewChild('htmlData') htmlData!: ElementRef;
 
-  ngAfterViewInit(): void {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-  }
+  
+    applyFilter(filterValue: string) {
+      filterValue = filterValue.trim(); // Remove whitespace
+  
+    }
+  
 
   ngOnInit(): void {
-    this.displayedColumns;
-    this.dataSource;
-  }
-  applyFilter(filterValue: string) {
-    filterValue = filterValue.trim(); // Remove whitespace
-    filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
-    this.dataSource.filter = filterValue;
+   this.getAllJugement()
   }
 
+  getAllJugement(){
+    this.jugementservice.getAlljugement()
+    .subscribe((data: any)=>{
+      this.tableData = data.jugement;
+      console.log(this.tableData)
+    })
+  }
+
+
+  showRow(element: any) {
+    this.router.navigate(['/dashboard/jugement-copie-voir', element.idJugement ])
+
+  }
+
+  editRow(element: any) {
+    console.log('Edit row', element);
+    this.jugementservice.updateJugement(element.idJugement, element)
+      .subscribe((data: any)=> {
+        this.getAllJugement();
+        
+      })
+  }
+
+  deleteRow(element: any) {
+    this.jugementservice.deleteJugement(element.idJugement)
+      .subscribe((data: any)=> { 
+        this.getAllJugement();
+        console.log('Delete row', data);
+      })
+  
+  }
+
+  
 }
 
-function createNewUser(id: number): UserData {
-  const name =
-    NAMES[Math.round(Math.random() * (NAMES.length - 1))] +
-    ' ' +
-    FIRSTNAMES[Math.round(Math.random() * (NAMES.length - 1))];
-  const date =
-    DATE[Math.round(Math.random() * (DATE.length - 1))] +
-    '/' +
-    DATE[Math.round(Math.random() * (DATE.length - 1))] +
-    '/' +
-    YEAR[Math.round(Math.random() * (YEAR.length - 1))];
-  const color =
-    DATE[Math.round(Math.random() * (DATE.length - 1))] +
-    '/' +
-    DATE[Math.round(Math.random() * (DATE.length - 1))] +
-    '/' +
-    '2022';
-
-  return {
-    id: id.toString(),
-    name: name,
-    datenaiss: date,
-    dateenregitrement: color,
-  };
-}
-
-/** Constants used to fill up our data base. */
-const DATE = [
-  '01',
-  '02',
-  '03',
-  '04',
-  '04',
-  '04',
-  '05',
-  '06',
-  '07',
-  '08',
-  '09',
-  '10',
-  '11',
-];
-const YEAR = [
-  '2000',
-  '2001',
-  '2002',
-  '2003',
-  '2010',
-  '2011',
-  '2013',
-  '2006',
-  '2020',
-  '2022',
-];
-const FIRSTNAMES = [
-  'Jean',
-  'Gregoire',
-  'Louis',
-  'Matteao',
-  'Santos',
-  'Law',
-  'Asher',
-  'Olivia',
-  'Atticus',
-  'Amelia',
-  'Jack',
-  'Charlotte',
-  'Theodore',
-  'Isla',
-  'Oliver',
-  'Isabella',
-  'Jasper',
-  'Cora',
-  'Levi',
-  'Violet',
-  'Arthur',
-  'Mia',
-  'Thomas',
-  'Elizabeth',
-];
-const NAMES = [
-  'RAZANANDRAINY',
-  'RAKOTONIRINA',
-  'ANDRINIAINA',
-  'RAHARAVELO',
-  'RAKOTOMAMONJY',
-  'RANDRIANANTENAINA',
-  'ZAFIMAHALEO',
-  'SEHENONINAINA',
-  'NANTENAINA',
-  'TONGASOA',
-];
-
-export interface UserData {
-  id: string;
-  name: string;
-  datenaiss: string;
-  dateenregitrement: string;
-}

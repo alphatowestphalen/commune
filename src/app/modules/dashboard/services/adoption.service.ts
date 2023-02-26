@@ -16,8 +16,8 @@ private baseURl = environment.baseUrl+'/adoptions'
     return this.http.get(`${this.baseURl}`)
   }
 
-  addAdoption(adoption: Object): Observable<Object>{
-    return this.http.post(`${this.baseURl}`, adoption);
+  addAdoption(id:number, adoption: Object ): Observable<Object>{
+    return this.http.post(`${this.baseURl}/${id}`, adoption);
   }
 
   updateAdoption(id:number, adoption:Object):Observable<any>{
@@ -28,4 +28,7 @@ private baseURl = environment.baseUrl+'/adoptions'
     return this.http.delete(`${this.baseURl}/${id}`)
   }
 
+  getAdoptionById(id: number): Observable<any>{
+    return this.http.get(`${this.baseURl}/${id}`)
+  }
 }

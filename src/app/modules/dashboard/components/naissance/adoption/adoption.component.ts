@@ -17,30 +17,30 @@ export class AdoptionComponent implements OnInit {
  tableColumns: Array<Column> = [
   {
     columnDef: 'idAdoption',
-    header: 'N° Première Copie',
+    header: 'N° Adoption Copie',
     cell: (element: Record<string, any>) => `${element['idAdoption']}`
   },
   {
     columnDef: 'nom',
     header: 'Nom et Prénoms',
-    cell: (element: Record<string, any>) => `${element['enfant']['nomEnfant']} ${element['enfant']['prenomsEnfant']}`,
+    cell: (element: Record<string, any>) => `${element['premierecopie']['enfant']['nomEnfant']} ${element ['premierecopie']['enfant']['prenomsEnfant']}`,
   
   },
   {
     columnDef: 'dateAdoption',
     header: 'Date d\'Adoption ',
-    cell: (element: Record<string, any>) => `${element['datedoption']}`
+    cell: (element: Record<string, any>) => `${element['dateAdoption']}`
   },
   {
     columnDef: 'DatePremiereCopie',
-    header: 'Date Copie',
-    cell: (element: Record<string, any>) => `${element['datePremierCopie']}`
+    header: 'Date 1ère Copie',
+    cell: (element: Record<string, any>) => `${element['premierecopie']['datePremierCopie']}`
   }
 ];
 
 tableData: any = [];
 
-  constructor( public dialog: MatDialog, private adoptionservice: AdoptionService, private premierecopie: PremiereCopieService, private router:Router) {
+  constructor( public dialog: MatDialog, private adoptionservice: AdoptionService,  private router:Router) {
 
   
   } 
@@ -50,7 +50,7 @@ tableData: any = [];
 
 
   ngOnInit(): void {
-   
+    this.getAlladoption();
   }
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
@@ -60,12 +60,13 @@ tableData: any = [];
   getAlladoption(){
     this.adoptionservice.getAllAdoption()
     .subscribe(data =>{
-      this.adoption = data;
+      this.tableData = data.adoption;
+      console.log(this.tableData)
     })
   }
 
   showRow(element: any) {
-    this.router.navigate(['/dashboard/adoption-voir', element.idAdoption ])
+    this.router.navigate(['/dashboard/adoption-copie-voir', element.idAdoption ])
 
   }
 
@@ -87,12 +88,7 @@ tableData: any = [];
   
   }
 
-  // getAllFirstCertificate(){
-  //   this.premierecopie.getFirstCertificates()
-  //   .pipe(map(data =>{
-      
-  //   }))
-  // }
+
 }
 
 

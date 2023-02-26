@@ -23,7 +23,7 @@ export class PremiereCopieService {
     return this.http.post(`${this.baseUrl}`,premiereCopie);
   }
 
-  getCertificateByID(idPremierCopie: number): Observable<any>{
+  getCertificateByID(idPremierCopie: any): Observable<any>{
     return this.http.get(`${this.baseUrl}/${idPremierCopie}`)
   }
 

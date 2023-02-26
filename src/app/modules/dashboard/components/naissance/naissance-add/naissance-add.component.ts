@@ -38,6 +38,7 @@ export class NaissanceAddComponent implements OnInit {
   datenaissPere: string | null | undefined;
   datenaissDeclarant: string | null | undefined;
   dateregistre: string | null | undefined;
+  MaireSelected: any;
   
 
   constructor(private _formBuilder: FormBuilder, public dialog: MatDialog, private maireservice: MaireService  ) {}
@@ -105,6 +106,7 @@ export class NaissanceAddComponent implements OnInit {
     fonction: [''],
     dateregistre: ['']
   });
+  
   @ViewChild('htmlData') htmlData!: ElementRef;
   ngOnInit(): void {
    this.getAllMaire();
@@ -220,6 +222,11 @@ export class NaissanceAddComponent implements OnInit {
     document.body.innerHTML = originalContents;
   }
 
+  onSelected() {
+    console.log(this.MaireSelected);
+    this.MaireSelected = this.MaireSelected;
+
+  }
 
 }
 
