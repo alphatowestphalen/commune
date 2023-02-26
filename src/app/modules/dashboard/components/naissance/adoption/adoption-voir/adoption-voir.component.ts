@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
+import { AdoptionService } from 'src/app/modules/dashboard/services/adoption.service';
 import { PremiereCopieService } from 'src/app/modules/dashboard/services/premiere-copie.service';
 @Component({
   selector: 'app-adoption-voir',
@@ -11,14 +12,25 @@ import { PremiereCopieService } from 'src/app/modules/dashboard/services/premier
 export class AdoptionVoirComponent implements OnInit {
   id: any;
   certificates: any;
+  adoption: any;
 
-  constructor( private activatedroute: ActivatedRoute, private router: Router, private premierecopieservice: PremiereCopieService) { }
+  constructor( private activatedroute: ActivatedRoute, private router: Router, private premierecopieservice: PremiereCopieService, private adoptionservice: AdoptionService ) { }
 
   @ViewChild('htmlData') htmlData!: ElementRef;
   ngOnInit(): void {
     this.activatedroute.paramMap.subscribe(params => { 
       this.id = params.get('id');
-    this.getCertificatesbyID();});
+    this.getCertificatesbyID();
+  this.getAdoptionById()});
+
+  }
+
+
+  getAdoptionById(){
+    this.adoptionservice.getAdoptionById(this.id)
+    .subscribe(data=>{
+      this.adoption = data
+    })
   }
   getCertificatesbyID() {
     this.premierecopieservice.getCertificateByID(this.id)

@@ -51,7 +51,7 @@
       </div>
     </div>
   
-    <div *ngIf="certificates"
+    <div *ngIf="certificates  && adoption" 
       class="flex-col rounded-lg bg-white mt-2 dark:bg-night-700"
     >
       <div class="flex  justify-between">
@@ -246,7 +246,7 @@
       </dl>
     
     </div>
-    <div
+    <!-- <div
       class="relative block p-3 overflow-hidden border bg-white border-slate-100 rounded-lg mx-2"
       href=""
     >
@@ -275,7 +275,42 @@
       
       </dl>
     
+    </div> -->
+    <div
+    class="relative block p-3 overflow-hidden border bg-white border-slate-100 rounded-lg mx-2"
+    href=""
+  >
+    <span
+      class="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-blue-700 via-blue-300 to-yellow-600"
+    ></span>
+  
+    <div class="justify-between sm:flex">
+      <div class=" sm:pr-8">
+          <p class="text-sm text-slate-700 underline">
+            A propos de l'adoption
+          </p>
+        </div>
     </div>
+  
+    <dl class="flex mt-2">
+      <div class="flex flex-col-reverse">
+        <dt class="text-sm font-medium text-slate-800">{{adoption.parentAdoptif}} {{certificates.maire.prenomsMaire}}</dt>
+        <dd class="text-xs text-slate-500">Nom et Prènoms</dd>
+      </div>
+       <div class="flex flex-col-reverse ml-3 sm:ml-6">
+        <dt class="text-sm font-medium text-slate-800">{{adoption.dateAdoption}}  {{adoption.heureAdoption}}</dt>
+        <dd class="text-xs text-slate-500">Date et Heure d'Adoption</dd>
+      </div>
+      <div class="flex flex-col-reverse ml-3 sm:ml-6">
+        <dt class="text-sm font-medium text-slate-800">{{adoption.numAdoption}}</dt>
+        <dd class="text-xs text-slate-500">Numero de Registre</dd>
+      </div>
+
+  
+    
+    </dl>
+  
+  </div>
     </div>
     
     <p *ngIf="!certificates || certificates.length === 0">No data available</p>
@@ -305,153 +340,7 @@
     Cliquer pour imprimer 
       </button>
           <button class=" hover:bg-red-500 text-white font-bold py-2 px-4 rounded-full absolute  bg-red-700 lg:h-10 lg:max-w-[8%] right-2 top-2" (click)="toggleModal()">x</button>
-          <!-- <div class="relative transform overflow-auto rounded-lg bg-white text-left  lg:h-full lg:max-w-[75%] shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
-            <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 mt-2">
-              <div class="page" id="htmlData">
-                <header>
-                  <h1 class="heading">Teny midina faha-788-MJ/CAB <br> tamin'ny 29 Desambra 1961 nataon'ny <br> Ministry ny
-                    Fitsarana sy ny Mpitahiry </h1>
-                  <img class="repoblika" src="@/../../../../../../../assets/images/Repoblika.jpg" alt="">
-                  <img class="bongolava" src="@/../../../../../../../assets/images/bongolava-logo.jpg" alt="">
-        
-                </header>
-        
-        
-                <main class="main">
-                  <aside class="main__left">
-                    <section class="section">
-        
-                      <img class="commune" src="@/../../../../../../../assets/images/FIANARANTSOA.png" alt="">
-        
-                      <p class="kaominina">Kaominina Andrenivohitra Fianarantsoa</p>
-        
-                      <p class="section__title my-5">Faha : 451</p>
-        
-                      <p class="section__title mt-5">Tamin'ny <br> <span class="ml-0 pr-10">04 Aprily 2002</span> </p>
-        
-                      <div class="section__content">
-                        <div class="section__entry">
-                          <div class="section_title">
-                            Fahaterahana
-        
-                          </div>
-                        </div>
-                        <div class="section__entry">
-                          <div class="section_content font-medium">
-                            {{certificates.enfant.nomEnfant}}
-                          </div>
-                        </div>
-        
-                        <div class="section__entry">
-                          <div class="section_content ml-5 my-20">
-                            {{certificates.enfant.datenaissEnfant}}
-                          </div>
-                        </div>
-        
-                      </div>
-                    </section>
-        
-                    <section class="section">
-        
-        
-                      <div class="section__content">
-                        <p class="section__entry">Tsy asiana hajia araka <br>
-                          ny and. 416-n'ny CGET</p>
-        
-                      </div>
-                    </section>
-        
-                    <section class="section">
-        
-        
-                      <div class="section__content">
-                        <p class="section__entry font-semibold">Soratra an-tsisiny</p>
-        
-                      </div>
-                    </section>
-        
-                  </aside>
-        
-                  <div class="main__right">
-                    <section class="section">
-                      <p class="faritra">FARITRA BONGOLAVA</p>
-                      <div class="timeline__title mt-10 ml-20">
-                        <span>KOPIAN'NY SORAM-PIANKOHONANA</span>
-                      </div>
-                      <div class="section__contentt">
-                        <div class="timeline">
-                          <div class="timeline__content">
-                            <p class="mb-5">
-                              <span class="pl-10">Nalaina tamin'ny bokim-pianakaviana , tamin'ny taona roa sy roa arivo
-                                ,</span>
-                              voatahiry ato amin'ny Kaominina Ambonivohitra Fianarantsoa izao soratra manaraka izao:
-                            </p>
-                          </div>
-                        </div>
-                        <div class="timeline">
-                          <div class="timeline__content ">
-                            <p class="mb-5">
-                              <span class="pl-10">Tamin'ny iray aprily roa arivo </span>, tamin'ny ira ora maraina sy efapolo
-                              minitra,
-                              no teraka tao Amin'ny Trano Fampiterahanan'i Fianarantsoa, SEHENONINAINA Amelia, zazavavy,
-                              zanak'i
-                              RANDRINASOLO Leon
-                              ,Gens de Maison, teraka tamin'ny enina amby ny roapolo febroary taona valopolo sy sivinjato sy
-                              arivo tao Fianarantsoa
-                              , sy RASEHENONIANA Marianna, Cuisinière, teraka tamin'ny enina marsa tao roa vaopolo sy
-                              sivinjato
-                              sy arivo tao Fianarantsoa
-                              , samy monina ao Andrainjato
-                            </p>
-        
-                          </div>
-                        </div>
-                        <div class="timeline">
-                          <div class="timeline__content ">
-                            <p class="mb-5">
-                              <span class="pl-10">Nosoratana androany roa aprily </span> taona roa sy roa arivo
-                              tamin'ny valo ora maraina sy folo minitra, araka ny fanamabarana nataon'i RAZANAMASY,
-                              Mampivelona,
-                              teraka
-                              tamin'ny efatra janoary taona telo amby fitopolo sy sivinjato sy arivo tao Antsirabe, monina ao
-                              Ambatomena, izay
-                              miaraka manao sonia aminay. RAKOTOZAFY Urbain, Ben 'ny Tanàna , mpiraikitra ny
-                              soram-piankohonana
-                              ao amin'ny
-                              Commune Urbaine de Fianarantsoa, rehefa novakiana ity soratra ity.
-                            </p>
-        
-                          </div>
-                        </div>
-                      </div>
-        
-                      <div class=" text-sm font-normal ml-48">
-                        <span>-MANARAKA NY SONIA-</span>
-                      </div>
-                      <div class="section__contentt">
-                        <div class="timeline">
-                          <div class="timeline__content">
-                            <p class="mb-5">
-                              <span class="pl-10">Kopia manontolo nadika tamin'ny boky androany telo aprily roa sy roa arivo
-                              </span>
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-        
-                      <div class=" text-sm font-normal ml-20">
-                        <span>NY MPIANDRAIKITRA NY SORAM-PIANKOHONANA</span>
-                      </div>
-                    </section>
-                  </div>
-                </main>
-              </div>
-        
-        
-            </form>
-        
-          </div> -->
-       <app-copie [copie]="certificates"></app-copie>
+           <app-copie [copie]="certificates"></app-copie>
         </div>
       </div>
     

@@ -11,9 +11,12 @@ export class MentionComponent implements OnInit {
 
 
 
-  constructor() { }
+  constructor() { 
+  
+  }
 
   ngOnInit(): void {
+  
   }
 
 }
