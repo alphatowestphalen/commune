@@ -1,225 +1,59 @@
-
 <div class=" bg-gray-100 flex justify-center items-center ">
 	<div class="container mx-auto bg-yellow-300 rounded-lg p-10 pt-3">
 		<form>
 			<h1 class="text-center mx-auto font-bold text-white text-2xl">Recherche dans la registre votre Copie</h1>
-				<p class="mx-auto font-normal text-sm my-6 max-w-lg">Effectuer une recherche en saisant votre numèro de copie ou Nom et Prènoms </p>
-				<div class="sm:flex items-center bg-white rounded-lg overflow-hidden px-2 py-1 justify-between">
-					<input class="text-base text-gray-400 flex-grow outline-none px-2 " type="text" placeholder="Saisir ici votre numèro de Copie ou Nom " />
-					<div class="ms:flex items-center px-2 rounded-lg space-x-4 mx-auto ">
-					
-						<button class="bg-indigo-500 text-white text-base rounded-lg px-4 py-2 font-bold">Recherche</button>
-					</div>
+			<p class="mx-auto font-normal text-sm my-6 max-w-lg">Effectuer une recherche en saisant votre numèro de
+				copie ou Nom et Prènoms </p>
+			<div class="sm:flex items-center bg-white rounded-lg overflow-hidden px-2 py-1 justify-between">
+				<input matInput [(ngModel)]="CopieSelected" class="text-base text-gray-400 flex-grow outline-none px-2 " type="text"
+				[formControl]="searchDemande"  placeholder="Saisir ici votre numèro de Copie ou Nom " />
+				<div class="ms:flex items-center px-2 rounded-lg space-x-4 mx-auto ">
+
+					<button class="bg-indigo-500 text-white text-base rounded-lg px-4 py-2 font-bold">Recherche</button>
 				</div>
+			</div>
 		</form>
 	</div>
 </div>
 
 <div class=" bg-gray-100 flex-block justify-center items-center">
-	<mat-accordion  class="container block mx-auto rounded-lg p-10 py-3">
+
+
+	<span *ngFor="let demand of demande" >
+		
+		<mat-accordion class="container block mx-auto rounded-lg p-10 py-3">
+
+			<mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+				<mat-expansion-panel-header>
+					<mat-panel-title>
+						<strong>{{demand.idPremierCopie}}</strong>
+					</mat-panel-title>
+					<mat-panel-title>
+						<strong>{{demand.enfant.nomEnfant}} {{demand.enfant.prenomsEnfant}}</strong>
+					</mat-panel-title>
+					<mat-panel-description class="ml-3">
+						{{demand.enfant.datenaissEnfant}} tao {{demand.enfant.lieunaissEnfant}}
+					</mat-panel-description>
+					<mat-panel-description>
+						<strong>{{demand.pere.nomPere}} {{demand.pere.prenomsPere}}</strong> <span class="px-2">sy </span><strong> {{demand.mere.nomMere}} {{demand.mere.prenomsMere}}</strong>
+					</mat-panel-description>
+				</mat-expansion-panel-header>
+				<label
+					class="btn btn-sm font-normal lowercase modal-button text-xs bg-blue-600 px-4 py-2 text-white rounded-md mr-2" (click)="Birthcertif(demand.idPremierCopie)"
+					for="my-modal">
+					Demande Acte de Naissance
+				</label>
+				<button mat-icon-button
+					class="btn btn-sm font-normal lowercase text-xs bg-green-600 px-4 py-2 text-white rounded-md mr-2" (click)="Weddingcertif(demand.idPremierCopie)">
+					Demande Acte de Mariage
+				</button>
+				<button mat-icon-button
+					class="btn btn-sm font-normal lowercase text-xs bg-amber-600 px-4 py-2 text-white rounded-md" (click)="Deadcertif(demand.idPremierCopie)">
+					Demande Acte de Déces
+				</button>
+			</mat-expansion-panel>
+		</mat-accordion>
+	</span>
 	
-		<mat-expansion-panel (opened)="panelOpenState = true"
-							 (closed)="panelOpenState = false">
-		  <mat-expansion-panel-header>
-			<mat-panel-title>
-				<strong>112</strong> -1989 
-				</mat-panel-title>
-		<mat-panel-title>
-			<strong>RANDRAINASOLO Tantelinarivo Odilon </strong>
-			</mat-panel-title>
-			<mat-panel-description class="ml-3">
-			22 Aogositra 1989 tao Antananarivo  
-			</mat-panel-description>
-			<mat-panel-description>
-			<strong>RANDRAINASOLO Léon</strong>  <span class="px-2">sy </span><strong> RAVAOMARIA Anne</strong>
-			</mat-panel-description>
-		  </mat-expansion-panel-header>
-		  <label
-		  class="btn btn-sm font-normal lowercase modal-button text-xs bg-blue-600 px-4 py-2 text-white rounded-md mr-2"
-		  for="my-modal" >
-		  Demande Acte de Naissance
-		</label>
-		<button mat-icon-button
-		  class="btn btn-sm font-normal lowercase text-xs bg-green-600 px-4 py-2 text-white rounded-md mr-2"
-		 >
-		  Demande Acte de Mariage
-		</button>
-		<button mat-icon-button
-		  class="btn btn-sm font-normal lowercase text-xs bg-amber-600 px-4 py-2 text-white rounded-md"
-		 >
-		 Demande Acte de Déces
-		</button>
-		</mat-expansion-panel>
-	  </mat-accordion>
-	  
-		<mat-accordion  class="container block mx-auto rounded-lg p-10 py-3">
 	
-		<mat-expansion-panel (opened)="panelOpenState = true"
-							 (closed)="panelOpenState = false">
-		  <mat-expansion-panel-header>
-			<mat-panel-title>
-				<strong>112</strong> -1989 
-				</mat-panel-title><mat-panel-title>
-			<strong>RANDRAINASOLO Tantelinarivo Odilon </strong>
-			</mat-panel-title>
-			<mat-panel-description class="ml-3">
-			22 Aogositra 1989 tao Antananarivo  
-			</mat-panel-description>
-			<mat-panel-description>
-			<strong>RANDRAINASOLO Léon</strong>  <span class="px-2">sy </span><strong> RAVAOMARIA Anne</strong>
-			</mat-panel-description>
-		  </mat-expansion-panel-header>
-		  <label
-		  class="btn btn-sm font-normal lowercase modal-button text-xs bg-blue-600 px-4 py-2 text-white rounded-md mr-2"
-		  for="my-modal" >
-		  Demande Acte de Naissance
-		</label>
-		<button mat-icon-button
-		  class="btn btn-sm font-normal lowercase text-xs bg-green-600 px-4 py-2 text-white rounded-md mr-2"
-		 >
-		  Demande Acte de Mariage
-		</button>
-		<button mat-icon-button
-		  class="btn btn-sm font-normal lowercase text-xs bg-amber-600 px-4 py-2 text-white rounded-md"
-		 >
-		 Demande Acte de Déces
-		</button>
-		</mat-expansion-panel>
-	  </mat-accordion>
-		<mat-accordion  class="container block mx-auto rounded-lg p-10 py-3">
-	
-		<mat-expansion-panel (opened)="panelOpenState = true"
-							 (closed)="panelOpenState = false">
-		  <mat-expansion-panel-header>
-			<mat-panel-title>
-				<strong>112</strong> -1989 
-				</mat-panel-title><mat-panel-title>
-			<strong>RANDRAINASOLO Tantelinarivo Odilon </strong>
-			</mat-panel-title>
-			<mat-panel-description class="ml-3">
-			22 Aogositra 1989 tao Antananarivo  
-			</mat-panel-description>
-			<mat-panel-description>
-			<strong>RANDRAINASOLO Léon</strong>  <span class="px-2">sy </span><strong> RAVAOMARIA Anne</strong>
-			</mat-panel-description>
-		  </mat-expansion-panel-header>
-		  <label
-		  class="btn btn-sm font-normal lowercase modal-button text-xs bg-blue-600 px-4 py-2 text-white rounded-md mr-2"
-		  for="my-modal" >
-		  Demande Acte de Naissance
-		</label>
-		<button mat-icon-button
-		  class="btn btn-sm font-normal lowercase text-xs bg-green-600 px-4 py-2 text-white rounded-md mr-2"
-		 >
-		  Demande Acte de Mariage
-		</button>
-		<button mat-icon-button
-		  class="btn btn-sm font-normal lowercase text-xs bg-amber-600 px-4 py-2 text-white rounded-md"
-		 >
-		 Demande Acte de Déces
-		</button>
-		</mat-expansion-panel>
-	  </mat-accordion>
-		<mat-accordion  class="container block mx-auto rounded-lg p-10 py-3">
-	
-		<mat-expansion-panel (opened)="panelOpenState = true"
-							 (closed)="panelOpenState = false">
-		  <mat-expansion-panel-header>
-			<mat-panel-title>
-				<strong>112</strong> -1989 
-				</mat-panel-title><mat-panel-title>
-			<strong>RANDRAINASOLO Tantelinarivo Odilon </strong>
-			</mat-panel-title>
-			<mat-panel-description class="ml-3">
-			22 Aogositra 1989 tao Antananarivo  
-			</mat-panel-description>
-			<mat-panel-description>
-			<strong>RANDRAINASOLO Léon</strong>  <span class="px-2">sy </span><strong> RAVAOMARIA Anne</strong>
-			</mat-panel-description>
-		  </mat-expansion-panel-header>
-		  <label
-		  class="btn btn-sm font-normal lowercase modal-button text-xs bg-blue-600 px-4 py-2 text-white rounded-md mr-2"
-		  for="my-modal" >
-		  Demande Acte de Naissance
-		</label>
-		<button mat-icon-button
-		  class="btn btn-sm font-normal lowercase text-xs bg-green-600 px-4 py-2 text-white rounded-md mr-2"
-		 >
-		  Demande Acte de Mariage
-		</button>
-		<button mat-icon-button
-		  class="btn btn-sm font-normal lowercase text-xs bg-amber-600 px-4 py-2 text-white rounded-md"
-		 >
-		 Demande Acte de Déces
-		</button>
-		</mat-expansion-panel>
-	  </mat-accordion>
-		<mat-accordion  class="container block mx-auto rounded-lg p-10 py-3">
-	
-		<mat-expansion-panel (opened)="panelOpenState = true"
-							 (closed)="panelOpenState = false">
-		  <mat-expansion-panel-header>
-			<mat-panel-title>
-				<strong>112</strong> -1989 
-				</mat-panel-title><mat-panel-title>
-			<strong>RANDRAINASOLO Tantelinarivo Odilon </strong>
-			</mat-panel-title>
-			<mat-panel-description class="ml-3">
-			22 Aogositra 1989 tao Antananarivo  
-			</mat-panel-description>
-			<mat-panel-description>
-			<strong>RANDRAINASOLO Léon</strong>  <span class="px-2">sy </span><strong> RAVAOMARIA Anne</strong>
-			</mat-panel-description>
-		  </mat-expansion-panel-header>
-		  <label
-		  class="btn btn-sm font-normal lowercase modal-button text-xs bg-blue-600 px-4 py-2 text-white rounded-md mr-2"
-		  for="my-modal" >
-		  Demande Acte de Naissance
-		</label>
-		<button mat-icon-button
-		  class="btn btn-sm font-normal lowercase text-xs bg-green-600 px-4 py-2 text-white rounded-md mr-2"
-		 >
-		  Demande Acte de Mariage
-		</button>
-		<button mat-icon-button
-		  class="btn btn-sm font-normal lowercase text-xs bg-amber-600 px-4 py-2 text-white rounded-md"
-		 >
-		 Demande Acte de Déces
-		</button>
-		</mat-expansion-panel>
-	  </mat-accordion>
-		<mat-accordion  class="container block mx-auto rounded-lg p-10 py-3">
-	
-		<mat-expansion-panel (opened)="panelOpenState = true"
-							 (closed)="panelOpenState = false">
-		  <mat-expansion-panel-header>
-			<mat-panel-title>
-				<strong>112</strong> -1989 
-				</mat-panel-title><mat-panel-title>
-			<strong>RANDRAINASOLO Tantelinarivo Odilon </strong>
-			</mat-panel-title>
-			<mat-panel-description class="ml-3">
-			22 Aogositra 1989 tao Antananarivo  
-			</mat-panel-description>
-			<mat-panel-description>
-			<strong>RANDRAINASOLO Léon</strong>  <span class="px-2">sy </span><strong> RAVAOMARIA Anne</strong>
-			</mat-panel-description>
-		  </mat-expansion-panel-header>
-		  <label
-		  class="btn btn-sm font-normal lowercase modal-button text-xs bg-blue-600 px-4 py-2 text-white rounded-md mr-2"
-		  for="my-modal" >
-		  Demande Acte de Naissance
-		</label>
-		<button mat-icon-button
-		  class="btn btn-sm font-normal lowercase text-xs bg-green-600 px-4 py-2 text-white rounded-md mr-2"
-		 >
-		  Demande Acte de Mariage
-		</button>
-		<button mat-icon-button
-		  class="btn btn-sm font-normal lowercase text-xs bg-amber-600 px-4 py-2 text-white rounded-md"
-		 >
-		 Demande Acte de Déces
-		</button>
-		</mat-expansion-panel>
-	  </mat-accordion>
 </div>
