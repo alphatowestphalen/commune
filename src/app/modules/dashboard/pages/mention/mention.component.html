@@ -4,7 +4,7 @@
       <div class="timeline__content">
 
         <p class="mb-5" *ngIf="mention.type == 'reconnaissance'" >
-        <app-reconnaissance-mention ></app-reconnaissance-mention>
+        <app-reconnaissance-mention [reconnaissance]="mention" ></app-reconnaissance-mention>
         </p>
 
         <p class="mb-5" *ngIf="mention.type == 'jugement'">
