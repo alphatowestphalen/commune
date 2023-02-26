@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 import { PremiereCopieService } from 'src/app/modules/dashboard/services/premiere-copie.service';
+import { ReconnaissanceService } from 'src/app/modules/dashboard/services/reconnaissance.service';
 
 @Component({
   selector: 'app-reconnaissance-voir',
@@ -13,20 +14,29 @@ export class ReconnaissanceVoirComponent implements OnInit {
 
   id: any;
   certificates: any;
+  reconnaissance: any;
 
-  constructor( private activatedroute: ActivatedRoute, private router: Router, private premierecopieservice: PremiereCopieService) { }
+  constructor( private activatedroute: ActivatedRoute, private router: Router, private premierecopieservice: PremiereCopieService, private reconnaissanceservice: ReconnaissanceService) { }
 
   @ViewChild('htmlData') htmlData!: ElementRef;
   ngOnInit(): void {
     this.activatedroute.paramMap.subscribe(params => { 
       this.id = params.get('id');
-    this.getCertificatesbyID();});
+    this.getCertificatesbyID();
+this.getReconnaissanceById()});
   }
+
+getReconnaissanceById(){
+  this.reconnaissanceservice.getReconnaissanceById(this.id)
+  .subscribe(data=>{
+    this.reconnaissance = data;
+  })
+}
   getCertificatesbyID() {
     this.premierecopieservice.getCertificateByID(this.id)
     .subscribe(data => {
       this.certificates = data;
-      console.log("adoption",this.certificates)}
+     }
     
 )  }
   OpenCopie = false;

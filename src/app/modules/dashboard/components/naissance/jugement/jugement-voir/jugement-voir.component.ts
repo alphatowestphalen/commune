@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
+import { JugementService } from 'src/app/modules/dashboard/services/jugement.service';
 import { PremiereCopieService } from 'src/app/modules/dashboard/services/premiere-copie.service';
 
 @Component({
@@ -12,20 +13,29 @@ import { PremiereCopieService } from 'src/app/modules/dashboard/services/premier
 export class JugementVoirComponent implements OnInit {
   id: any;
   certificates: any;
+  jugement: any;
 
-  constructor( private activatedroute: ActivatedRoute, private router: Router, private premierecopieservice: PremiereCopieService) { }
+  constructor( private activatedroute: ActivatedRoute, private router: Router, private premierecopieservice: PremiereCopieService, private jugementservice: JugementService) { }
 
   @ViewChild('htmlData') htmlData!: ElementRef;
   ngOnInit(): void {
     this.activatedroute.paramMap.subscribe(params => { 
       this.id = params.get('id');
-    this.getCertificatesbyID();});
+    this.getCertificatesbyID();
+  this.getjugementByID()});
+  }
+
+  getjugementByID(){
+    this.jugementservice.getJugementById(this.id)
+      .subscribe(data=>{
+        this.jugement = data;
+      })
   }
   getCertificatesbyID() {
     this.premierecopieservice.getCertificateByID(this.id)
     .subscribe(data => {
       this.certificates = data;
-      console.log("adoption",this.certificates)}
+     }
     
 )  }
   OpenCopie = false;
