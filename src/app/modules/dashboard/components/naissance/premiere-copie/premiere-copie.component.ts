@@ -43,8 +43,8 @@ export class PremiereCopieComponent implements OnInit {
 
   showModal = false;
 
+  size:any = '';
 
-  size = 5;
   page = 0;
 
 
@@ -89,7 +89,8 @@ export class PremiereCopieComponent implements OnInit {
     this.premierecopieservice.getCertificates(size, page)
       .subscribe(data => {
         this.tableData = data.premierCopies;
-        console.log(this.tableData)
+        this.size = data.length;
+        console.log(this.tableData, this.size)
       })
 
 
@@ -122,6 +123,7 @@ export class PremiereCopieComponent implements OnInit {
 
   handlePageChange(event: PageEvent) {
     console.log(event)
+    // this.size = event.pageSize
     this.getfirstCertificates(event.pageSize, event.pageIndex)
   }
 
