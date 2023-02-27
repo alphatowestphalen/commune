@@ -34,6 +34,27 @@
 <div class=" bg-gray-100 flex-block justify-center items-center">
 
 
+	<mat-accordion class="container block mx-auto rounded-lg p-10 py-3">
+
+		<mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+			<mat-expansion-panel-header>
+				<mat-panel-title>
+					<strong>N° Première Copie</strong>
+				</mat-panel-title>
+				<mat-panel-title>
+					<strong>Nom et Prènoms</strong>
+				</mat-panel-title>
+				<mat-panel-description class="ml-3">
+					Date et Lieu de Naissance 
+				</mat-panel-description>
+				<mat-panel-description>
+					<strong>Nom et Prenoms de Père</strong> <span class="px-2"></span><strong>Nom et Prènoms de Mère</strong>
+				</mat-panel-description>
+			</mat-expansion-panel-header>
+		
+		</mat-expansion-panel>
+	</mat-accordion>
+
 	<span *ngFor="let demand of demande" >
 		
 		<mat-accordion class="container block mx-auto rounded-lg p-10 py-3">

@@ -71,26 +71,30 @@ alert(id);
  }
 
  Search(){
- if(this.containsOnlyNumbers(this.CopieSelected) == true ){
-  console.log(this.CopieSelected)
-  this.demandeservice.SearchCertificateByIdPremierCopie(this.CopieSelected)
-  .subscribe(data=>{
-    this.demande = data.premierCopies;
-    console.log(data);
-  })
-
- } 
- else{
-  console.log(this.CopieSelected)
-
-
-  this.demandeservice.SearchCertificateByNomEnfant(this.CopieSelected, this.CopieSelected)
-  .subscribe(data=>{
-    this.demande = data.premierCopies;
-    console.log(data);
-  })
-
- }
+  if(this.CopieSelected == " "){
+    return this.getallCertificates();
+  }
+  else{
+    if(this.containsOnlyNumbers(this.CopieSelected) == true ){
+      console.log(this.CopieSelected)
+      this.demandeservice.SearchCertificateByIdPremierCopie(this.CopieSelected)
+      .subscribe(data=>{
+        this.demande = data.premierCopies;
+        console.log(data);
+      })
+    
+     } 
+     else{
+      console.log(this.CopieSelected)
+      this.demandeservice.SearchCertificateByNomEnfant(this.CopieSelected, this.CopieSelected)
+      .subscribe(data=>{
+        this.demande = data.premierCopies;
+        console.log(data);
+      })
+    
+     }
+    
+  }
 
  }
 
