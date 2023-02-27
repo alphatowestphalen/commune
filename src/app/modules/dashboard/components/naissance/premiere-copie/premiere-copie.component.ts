@@ -22,9 +22,9 @@ export class PremiereCopieComponent implements OnInit {
       cell: (element: Record<string, any>) => `${element['idPremierCopie']}`
     },
     {
-      columnDef: 'description',
+      columnDef: 'descriptionRow',
       header: 'Description',
-      cell: (element: Record<string, any>) => `${element['enfant']['nomEnfant']} ${element['enfant']['prenomsEnfant']}`,
+      cell: (element: Record<string, any>) => `${element['descriptionRow']} `,
     
     },
     {
@@ -47,6 +47,8 @@ export class PremiereCopieComponent implements OnInit {
 
   page = 0;
 
+  search: any = "";
+
 
   constructor(private router:Router, public dialog: MatDialog, private premierecopieservice: PremiereCopieService) {
   }
@@ -64,7 +66,7 @@ export class PremiereCopieComponent implements OnInit {
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
     filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
-    //this.dataSource.filter = filterValue;
+    this.search = filterValue
   }
   openDialog() {
     this.dialog.open(PremiereCopieComponent);
@@ -89,6 +91,9 @@ export class PremiereCopieComponent implements OnInit {
     this.premierecopieservice.getCertificates(size, page)
       .subscribe(data => {
         this.tableData = data.premierCopies;
+        this.tableData.map((d: any) => {
+          d.descriptionRow = d.enfant.nomEnfant + ' ' + d.enfant.prenomsEnfant
+        })
         this.size = data.length;
         console.log(this.tableData, this.size)
       })
