@@ -4,6 +4,7 @@ import html2canvas from 'html2canvas';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PremiereCopieService } from '../../../services/premiere-copie.service';
 
+
 @Component({
   selector: 'app-premiere-copie-voir',
   templateUrl: './premiere-copie-voir.component.html',
@@ -54,17 +55,9 @@ export class PremiereCopieVoirComponent implements OnInit {
       this.premierecopieservice.getCertificateByID(this.id)
       .subscribe(data => {
         this.certificates = data;
-      // this.certificates.mentions = [
-      //   {
-      //     "idAdoption": 0,
-      //     "parentAdoptif": "string",
-      //     "dateAdoption": "string",
-      //     "heureAdoption": "string",
-      //     "numAdoption": "string",
-      //     "createdDate": "2023-02-09T10:52:38.666Z",
-      //     "type": "adoption",
-      //   }
-      // ]
+   
       })     
     }
+
+   
 }

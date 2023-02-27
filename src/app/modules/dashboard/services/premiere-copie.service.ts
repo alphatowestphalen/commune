@@ -15,9 +15,14 @@ export class PremiereCopieService {
   constructor(private http: HttpClient) { }
 
 
-  getFirstCertificates(): Observable<any> {
+  getCertificates(size: number, page: number ): Observable<any> {
+    return this.http.get(`${this.baseUrl}?page=${page}&size=${size}`);
+  }
+
+  getFirstCertificates( ): Observable<any> {
     return this.http.get(`${this.baseUrl}`);
   }
+
 
   addFirstCertificates(premiereCopie: Object):Observable<Object> {
     return this.http.post(`${this.baseUrl}`,premiereCopie);

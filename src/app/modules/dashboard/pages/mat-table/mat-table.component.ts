@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, ViewChild,Output, EventEmitter } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { MatPaginator } from '@angular/material/paginator';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { Column } from '../../models/column';
 
@@ -20,11 +20,16 @@ export class MatTableComponent implements OnInit {
   @Output() showEvent = new EventEmitter<any>();
   @Output() deleteEvent = new EventEmitter<any>();
 
+  @Output() pageChange = new EventEmitter<PageEvent>();
+
+
   displayedColumns: Array<string> = [];
   dataSource = new MatTableDataSource();
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+
+
 
 
   constructor() { }
