@@ -1,17 +1,17 @@
 <div class=" bg-gray-100 flex justify-center items-center ">
 	<div class="container mx-auto bg-yellow-300 rounded-lg p-10 pt-3">
 		<form>
-			<span  class="inline-flex">
-				<h1 class="text-center inline mx-auto font-bold text-gray-100 text-2xl">Recherche dans la registre votre Copie</h1>
+			<span  class="inline-flex w-full">
+				<h1 class=" inline mx-auto ml-0 text-left font-bold text-gray-100 text-2xl">Recherche dans la registre votre Copie</h1>
 				<button 
 				routerLink="/dashboard"
-					class="shadow-md inline-flex items-center  ml-32 px-4 bg-blue-400 hover:bg-blue-800 text-gray-100 text-sm font-medium rounded-md"
+					class="shadow-md inline-flex items-center capitalize mr-0 px-4 bg-blue-400 hover:bg-blue-800 text-gray-100 text-sm font-medium rounded-md"
 				  >
 				  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" />
 				  </svg>
 			  
-				Cliquer pour entrer dans tableau d'administrateur 
+				 tableau de bord 
 				  </button>
 			</span>
 			
@@ -23,7 +23,7 @@
 				[formControl]="searchDemande"  placeholder="Saisir ici votre numèro de Copie ou Nom " />
 				<div class="ms:flex items-center px-2 rounded-lg space-x-4 mx-auto ">
 
-					<button class="bg-indigo-500 text-white text-base rounded-lg px-4 py-2 font-bold">Recherche</button>
+					<button (click)="Search()" class="bg-indigo-500 text-white text-base rounded-lg px-4 py-2 font-bold">Recherche</button>
 				</div>
 			</div>
 		</form>
@@ -33,6 +33,27 @@
 
 <div class=" bg-gray-100 flex-block justify-center items-center">
 
+
+	<mat-accordion class="container block mx-auto rounded-lg p-10 py-3">
+
+		<mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+			<mat-expansion-panel-header>
+				<mat-panel-title>
+					<strong>N° Première Copie</strong>
+				</mat-panel-title>
+				<mat-panel-title>
+					<strong>Nom et Prènoms</strong>
+				</mat-panel-title>
+				<mat-panel-description class="ml-3">
+					Date et Lieu de Naissance 
+				</mat-panel-description>
+				<mat-panel-description>
+					<strong>Nom et Prenoms de Père</strong> <span class="px-2"></span><strong>Nom et Prènoms de Mère</strong>
+				</mat-panel-description>
+			</mat-expansion-panel-header>
+		
+		</mat-expansion-panel>
+	</mat-accordion>
 
 	<span *ngFor="let demand of demande" >
 		

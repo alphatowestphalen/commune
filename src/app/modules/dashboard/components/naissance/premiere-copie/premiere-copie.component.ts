@@ -5,6 +5,7 @@ import { MatSort } from '@angular/material/sort';
 import { Router } from '@angular/router';
 import { PremiereCopieService } from '../../../services/premiere-copie.service';
 import { Column } from '../../../models/column';
+import { PageEvent } from '@angular/material/paginator';
 
 
 @Component({
@@ -41,6 +42,12 @@ export class PremiereCopieComponent implements OnInit {
   tableData: any = [];
 
   showModal = false;
+
+  size:any = '';
+
+  page = 0;
+
+
   constructor(private router:Router, public dialog: MatDialog, private premierecopieservice: PremiereCopieService) {
   }
 
@@ -50,7 +57,8 @@ export class PremiereCopieComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.getAllfirstCertificates();
+   // this.getAllfirstCertificates();
+   this.getfirstCertificates(this.size, this.page)
   }
 
   applyFilter(filterValue: string) {
@@ -70,8 +78,19 @@ export class PremiereCopieComponent implements OnInit {
   getAllfirstCertificates() {
     this.premierecopieservice.getFirstCertificates()
       .subscribe(data => {
-        this.tableData = data;
+        this.tableData = data.premierCopies;
         console.log(this.tableData)
+      })
+
+
+  }
+
+  getfirstCertificates(size: number, page: number) {
+    this.premierecopieservice.getCertificates(size, page)
+      .subscribe(data => {
+        this.tableData = data.premierCopies;
+        this.size = data.length;
+        console.log(this.tableData, this.size)
       })
 
 
@@ -102,6 +121,11 @@ export class PremiereCopieComponent implements OnInit {
   }
 
 
+  handlePageChange(event: PageEvent) {
+    console.log(event)
+    // this.size = event.pageSize
+    this.getfirstCertificates(event.pageSize, event.pageIndex)
+  }
 
 }
 

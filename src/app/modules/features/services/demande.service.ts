@@ -17,7 +17,7 @@ export class DemandeService {
 
   SearchCertificateByIdPremierCopie(idPremierCopie: any): Observable<any>{
     return this.http.get(`${this.baseUrl}/?idPremierCopie=${idPremierCopie}`)
-   // http://localhost:8080/api/premierCopies/?idPremierCopie=2023&page=0&size=3
+   
   }
 
 
@@ -25,4 +25,8 @@ export class DemandeService {
     return this.http.get(`${this.baseUrl}`)
   }
 
+   SearchCertificateByNomEnfant(nomEnfant: any, PrenomsEnfant: any): Observable<any>{
+    return this.http.get(`${this.baseUrl}/nomEnfant?NomEnfant=${nomEnfant}&PrenomsEnfant=${PrenomsEnfant}`)
+ 
+  }
 }

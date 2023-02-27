@@ -26,33 +26,33 @@ export class ScopedAComponent implements OnInit {
 
     this.getallCertificates();
 
-    this.searchDemande.valueChanges
-    .pipe(
-      filter(res => {
-        if(res == null){
-          this.getallCertificates();
-        }
-        return res !== null
-      }),
-      switchMap(value => this.demandeservice.SearchCertificateByIdPremierCopie(value)
-        .pipe(
-          finalize(() => {
-            this.isLoading = false
-          }),
-        )
-      )
-    )
-    .subscribe((data: any) => {
+    // this.searchDemande.valueChanges
+    // .pipe(
+    //   filter(res => {
+    //     if(res == null){
+    //       this.getallCertificates();
+    //     }
+    //     return res !== null
+    //   }),
+    //   switchMap(value => this.demandeservice.SearchCertificateByIdPremierCopie(value)
+    //     .pipe(
+    //       finalize(() => {
+    //         this.isLoading = false
+    //       }),
+    //     )
+    //   )
+    // )
+    // .subscribe((data: any) => {
 
-      this.demande = data.premierCopies;
-      console.log(data);
-    });
+    //   this.demande = data.premierCopies;
+    //   console.log(data);
+    // });
   }
 
   getallCertificates(){
   this.demandeservice.getAllCertificates()
   .subscribe(data=>{
-    this.demande = data;
+    this.demande = data.premierCopies;
     console.log("data", this.demande)
   })
  }
@@ -69,4 +69,38 @@ alert(id);
  Deadcertif(id: string){
 
  }
+
+ Search(){
+  if(this.CopieSelected == " "){
+    return this.getallCertificates();
+  }
+  else{
+    if(this.containsOnlyNumbers(this.CopieSelected) == true ){
+      console.log(this.CopieSelected)
+      this.demandeservice.SearchCertificateByIdPremierCopie(this.CopieSelected)
+      .subscribe(data=>{
+        this.demande = data.premierCopies;
+        console.log(data);
+      })
+    
+     } 
+     else{
+      console.log(this.CopieSelected)
+      this.demandeservice.SearchCertificateByNomEnfant(this.CopieSelected, this.CopieSelected)
+      .subscribe(data=>{
+        this.demande = data.premierCopies;
+        console.log(data);
+      })
+    
+     }
+    
+  }
+
+ }
+
+  containsOnlyNumbers(str: string) {
+   // console.log(str)
+  return /^(\d+-)*(\d+)$/.test(str);
+}
+
 }
