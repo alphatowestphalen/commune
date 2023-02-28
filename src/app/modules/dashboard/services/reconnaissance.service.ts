@@ -12,6 +12,9 @@ private baseURl = environment.baseUrl+'/reconnaissances'
 
   constructor(private http: HttpClient) { }
 
+  getReconnaissances(size: number, page: number ): Observable<any> {
+    return this.http.get(`${this.baseURl}?page=${page}&size=${size}`);
+  }
   getAllReconnaissance(): Observable<any>{
     return this.http.get(`${this.baseURl}`)
   }

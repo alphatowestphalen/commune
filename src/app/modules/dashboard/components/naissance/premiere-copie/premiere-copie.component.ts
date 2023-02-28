@@ -22,9 +22,9 @@ export class PremiereCopieComponent implements OnInit {
       cell: (element: Record<string, any>) => `${element['idPremierCopie']}`
     },
     {
-      columnDef: 'description',
+      columnDef: 'descriptionRow',
       header: 'Description',
-      cell: (element: Record<string, any>) => `${element['enfant']['nomEnfant']} ${element['enfant']['prenomsEnfant']}`,
+      cell: (element: Record<string, any>) => `${element['descriptionRow']} `,
     
     },
     {
@@ -44,8 +44,9 @@ export class PremiereCopieComponent implements OnInit {
   showModal = false;
 
   size:any = '';
-
   page = 0;
+
+  search: any = "";
 
 
   constructor(private router:Router, public dialog: MatDialog, private premierecopieservice: PremiereCopieService) {
@@ -64,31 +65,26 @@ export class PremiereCopieComponent implements OnInit {
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
     filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
-    //this.dataSource.filter = filterValue;
+    this.search = filterValue
   }
   openDialog() {
     this.dialog.open(PremiereCopieComponent);
-    this.getAllfirstCertificates();
+    this.getfirstCertificates(this.size, this.page)
   }
 
   toggleModal() {
     this.showModal = !this.showModal;
   }
 
-  getAllfirstCertificates() {
-    this.premierecopieservice.getFirstCertificates()
-      .subscribe(data => {
-        this.tableData = data.premierCopies;
-        console.log(this.tableData)
-      })
 
-
-  }
 
   getfirstCertificates(size: number, page: number) {
     this.premierecopieservice.getCertificates(size, page)
       .subscribe(data => {
         this.tableData = data.premierCopies;
+        this.tableData.map((d: any) => {
+          d.descriptionRow = d.enfant.nomEnfant + ' ' + d.enfant.prenomsEnfant
+        })
         this.size = data.length;
         console.log(this.tableData, this.size)
       })
@@ -106,7 +102,7 @@ export class PremiereCopieComponent implements OnInit {
     console.log('Edit row', element);
     this.premierecopieservice.updateCertificate(element.idPremierCopie, element)
       .subscribe(data=> {
-        this.getAllfirstCertificates();
+        this.getfirstCertificates(this.size, this.page)
         
       })
   }
@@ -114,7 +110,7 @@ export class PremiereCopieComponent implements OnInit {
   deleteRow(element: any) {
     this.premierecopieservice.deleteCertificate(element.idPremierCopie)
       .subscribe(data=> { 
-        this.getAllfirstCertificates();
+        this.getfirstCertificates(this.size, this.page)
         console.log('Delete row', data);
       })
   

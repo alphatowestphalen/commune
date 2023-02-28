@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
-import { MatPaginator } from '@angular/material/paginator';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
@@ -41,7 +41,9 @@ export class JugementComponent implements OnInit {
   ];
   
   tableData: any = [];
- 
+  page: number= 0;
+  size: any = '';
+  search: any;
 
 
   constructor( public dialog: MatDialog, private router:Router, private jugementservice: JugementService) {
@@ -59,12 +61,14 @@ export class JugementComponent implements OnInit {
   
 
   ngOnInit(): void {
-   this.getAllJugement()
+   this.getAllJugements(this.size, this.page)
   }
 
-  getAllJugement(){
-    this.jugementservice.getAlljugement()
-    .subscribe((data: any)=>{
+
+
+  getAllJugements(size: number, page: number){
+    this.jugementservice.getJugements(size, page)
+    .subscribe(data=>{
       this.tableData = data.jugement;
       console.log(this.tableData)
     })
@@ -80,7 +84,7 @@ export class JugementComponent implements OnInit {
     console.log('Edit row', element);
     this.jugementservice.updateJugement(element.idJugement, element)
       .subscribe((data: any)=> {
-        this.getAllJugement();
+        this.getAllJugements(this.size, this.page)
         
       })
   }
@@ -88,12 +92,16 @@ export class JugementComponent implements OnInit {
   deleteRow(element: any) {
     this.jugementservice.deleteJugement(element.idJugement)
       .subscribe((data: any)=> { 
-        this.getAllJugement();
+        this.getAllJugements(this.size, this.page)
         console.log('Delete row', data);
       })
   
   }
 
+handlePageChange(event: PageEvent){
+  this.getAllJugements(event.pageSize, event.pageIndex)
+
+}
   
 }
 

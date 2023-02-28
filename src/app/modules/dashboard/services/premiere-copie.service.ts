@@ -32,15 +32,18 @@ export class PremiereCopieService {
     return this.http.get(`${this.baseUrl}/${idPremierCopie}`)
   }
 
-  updateCertificate(id:number, premierCopie: Object){
+  updateCertificate(id:number, premierCopie: Object): Observable<any>{
     return this.http.put(`${this.baseUrl}/${id}`, premierCopie)
   }
 
-  deleteCertificate(id:number){
+  deleteCertificate(id:number): Observable<any>{
     return this.http.delete(`${this.baseUrl}/${id}`)
   }
 
  
+  getLastIdCerticate():Observable<any>{
+    return this.http.get(`${this.baseUrl}/LastPremiereCopie`);
+  }
 
 
 
