@@ -43,6 +43,7 @@ export class JugementComponent implements OnInit {
   tableData: any = [];
   page: number= 0;
   size: any = '';
+  search: any;
 
 
   constructor( public dialog: MatDialog, private router:Router, private jugementservice: JugementService) {

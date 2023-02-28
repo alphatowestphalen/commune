@@ -18,7 +18,10 @@ export class AdoptionComponent implements OnInit {
  adoption: any;
 
  size:any = '';
+
 page = 0;
+
+search: any;
 
  tableColumns: Array<Column> = [
   {

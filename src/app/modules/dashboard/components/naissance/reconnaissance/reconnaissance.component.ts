@@ -40,10 +40,12 @@ export class ReconnaissanceComponent implements OnInit {
   ];
   
   tableData: any = [];
- 
 
   size: any = '';
+
   page = 0;
+
+  search: any;
 
   constructor( public dialog: MatDialog, private router:Router, private reconnaissanceservice: ReconnaissanceService) {
     
