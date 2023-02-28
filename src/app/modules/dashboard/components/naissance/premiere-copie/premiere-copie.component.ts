@@ -44,7 +44,6 @@ export class PremiereCopieComponent implements OnInit {
   showModal = false;
 
   size:any = '';
-
   page = 0;
 
   search: any = "";
@@ -70,22 +69,14 @@ export class PremiereCopieComponent implements OnInit {
   }
   openDialog() {
     this.dialog.open(PremiereCopieComponent);
-    this.getAllfirstCertificates();
+    this.getfirstCertificates(this.size, this.page)
   }
 
   toggleModal() {
     this.showModal = !this.showModal;
   }
 
-  getAllfirstCertificates() {
-    this.premierecopieservice.getFirstCertificates()
-      .subscribe(data => {
-        this.tableData = data.premierCopies;
-        console.log(this.tableData)
-      })
 
-
-  }
 
   getfirstCertificates(size: number, page: number) {
     this.premierecopieservice.getCertificates(size, page)
@@ -111,7 +102,7 @@ export class PremiereCopieComponent implements OnInit {
     console.log('Edit row', element);
     this.premierecopieservice.updateCertificate(element.idPremierCopie, element)
       .subscribe(data=> {
-        this.getAllfirstCertificates();
+        this.getfirstCertificates(this.size, this.page)
         
       })
   }
@@ -119,7 +110,7 @@ export class PremiereCopieComponent implements OnInit {
   deleteRow(element: any) {
     this.premierecopieservice.deleteCertificate(element.idPremierCopie)
       .subscribe(data=> { 
-        this.getAllfirstCertificates();
+        this.getfirstCertificates(this.size, this.page)
         console.log('Delete row', data);
       })
   

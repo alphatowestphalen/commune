@@ -1,6 +1,7 @@
 
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
+import { PageEvent } from '@angular/material/paginator';
 import {  Router } from '@angular/router';
 import { Column } from '../../../models/column';
 import { AdoptionService } from '../../../services/adoption.service';
@@ -13,7 +14,12 @@ import { PremiereCopieService } from '../../../services/premiere-copie.service';
   styleUrls: ['./adoption.component.scss']
 })
 export class AdoptionComponent implements OnInit {
+
  adoption: any;
+
+ size:any = '';
+page = 0;
+
  tableColumns: Array<Column> = [
   {
     columnDef: 'idAdoption',
@@ -50,21 +56,20 @@ tableData: any = [];
 
 
   ngOnInit(): void {
-    this.getAlladoption();
+    this.getAllAdoptions(this.size, this.page );
   }
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
 
   }
 
-  getAlladoption(){
-    this.adoptionservice.getAllAdoption()
-    .subscribe(data =>{
+
+  getAllAdoptions(size: number, page: number){
+    this.adoptionservice.getAdoptions(size, page)
+    .subscribe(data=>{
       this.tableData = data.adoption;
-      console.log(this.tableData)
     })
   }
-
   showRow(element: any) {
     this.router.navigate(['/dashboard/adoption-copie-voir', element.idAdoption ])
 
@@ -74,7 +79,7 @@ tableData: any = [];
     console.log('Edit row', element);
     this.adoptionservice.updateAdoption(element.idAdoption, element)
       .subscribe(data=> {
-        this.getAlladoption();
+        this.getAllAdoptions(this.size, this.page );
         
       })
   }
@@ -82,13 +87,17 @@ tableData: any = [];
   deleteRow(element: any) {
     this.adoptionservice.deleteAdoption(element.idAdoption)
       .subscribe(data=> { 
-        this.getAlladoption();
+        this.getAllAdoptions(this.size, this.page );
         console.log('Delete row', data);
       })
   
   }
 
 
+  handlePageChange(event: PageEvent) {
+
+    this.getAllAdoptions(event.pageSize, event.pageIndex)
+  }
 }
 
 

@@ -12,6 +12,10 @@ private baseURl = environment.baseUrl+'/adoptions'
 
   constructor(private http: HttpClient) { }
 
+  getAdoptions(size: number, page: number ): Observable<any> {
+    return this.http.get(`${this.baseURl}?page=${page}&size=${size}`);
+  }
+
   getAllAdoption(): Observable<any>{
     return this.http.get(`${this.baseURl}`)
   }
