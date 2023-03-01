@@ -30,7 +30,6 @@ export class BulletinComponent implements OnInit {
             type: 'text',
             name: 'prenomsPersonne',
             title: 'Prénoms',
-            isRequired: true,
           },
           {
             type: 'text',
@@ -120,14 +119,25 @@ export class BulletinComponent implements OnInit {
 
   constructor(
     public dialog: MatDialog,
-    private bulletinservice: BulletinNaissanceService,
+    private bulletinService: BulletinNaissanceService,
     private router: Router
   ) {}
 
   @ViewChild('htmlData') htmlData!: ElementRef;
 
   ngOnInit(): void {
+    const $ = this;
     const survey = new Model(this.defaultJson);
+    survey.onComplete.add(function (sender, options) {
+      $.bulletinService
+        .saveBulletin(sender, options)
+        .then((data) => {
+          options.showDataSavingClear();
+        })
+        .catch(function () {
+          options.showDataSavingError();
+        });
+    });
     this.surveyModel = survey;
   }
 }
