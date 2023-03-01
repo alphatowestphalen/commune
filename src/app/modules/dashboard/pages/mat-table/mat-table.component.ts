@@ -22,7 +22,8 @@ export class MatTableComponent implements OnInit {
   @Output() editEvent = new EventEmitter<any>();
   @Output() showEvent = new EventEmitter<any>();
   @Output() deleteEvent = new EventEmitter<any>();
-
+  @Output() askEvent = new EventEmitter<any>();
+ 
   @Output() pageChange = new EventEmitter<PageEvent>();
 
 
@@ -47,6 +48,10 @@ export class MatTableComponent implements OnInit {
   ngAfterViewInit(): void {
      this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+  }
+
+  AskRow(element: any){
+    this.askEvent.emit(element);
   }
 
   editRow(element: any) {

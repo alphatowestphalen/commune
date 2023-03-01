@@ -47,6 +47,7 @@ import { LoadingComponent } from './pages/loading/loading.component';
 import { DecesComponent } from './components/deces/deces/deces.component';
 import { MariageComponent } from './components/mariage/mariage/mariage.component';
 import { BulletinComponent } from './components/naissance/bulletin/bulletin.component';
+import { BulletinListComponent } from './components/naissance/bulletin/bulletin-list/bulletin-list.component';
 
 @NgModule({
   exports: [SurveyCreatorModule, SurveyModule],
@@ -76,6 +77,7 @@ import { BulletinComponent } from './components/naissance/bulletin/bulletin.comp
     LoadingComponent,
     DecesComponent,
     MariageComponent,
+    BulletinListComponent,
   ],
   imports: [
     CommonModule,
