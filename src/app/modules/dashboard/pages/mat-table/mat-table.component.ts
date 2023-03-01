@@ -16,6 +16,9 @@ export class MatTableComponent implements OnInit {
   @Input()
   tableData: any = [];
 
+  @Input()
+  search: any = "";
+
   @Output() editEvent = new EventEmitter<any>();
   @Output() showEvent = new EventEmitter<any>();
   @Output() deleteEvent = new EventEmitter<any>();
@@ -32,11 +35,13 @@ export class MatTableComponent implements OnInit {
 
 
 
+
   constructor() { }
 
   ngOnInit(): void {
     this.displayedColumns = this.tableColumns.map((c) => c.columnDef);
     this.dataSource = new MatTableDataSource(this.tableData);
+    this.dataSource.filter = this.search
   }
 
   ngAfterViewInit(): void {
@@ -56,6 +61,10 @@ export class MatTableComponent implements OnInit {
     this.deleteEvent.emit(element);
   }
 
+ ngOnChanges(change: any){
 
+  this.dataSource.filter = change.search.currentValue.toLowerCase();
+  
+ }
 
 }

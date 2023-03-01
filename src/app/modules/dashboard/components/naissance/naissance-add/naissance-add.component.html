@@ -184,7 +184,7 @@
             border-red-600 transition">
                       Annuler</button>
                 <div class="flex-auto flex flex-row-reverse">
-                    <button mat-button matStepperNext class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
+                    <button mat-button matStepperNext (click)="getLastNumPremierCopie()"  class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
             hover:bg-teal-600  
             bg-teal-600 
             text-teal-100 
@@ -205,7 +205,7 @@
                 <div class="mb-4 w-4/5">
   
                   <label class="block mb-2 text-sm font-bold text-black">N° Première Copie</label>
-                  <input type="text" formControlName = "idPremierCopie" id="idPremierCopie"
+                  <input type="text" readonly formControlName ="idPremierCopie" value="{{CopieFormGroup.value.idPremierCopie}}"  id="idPremierCopie"
                     class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
                     placeholder="Saisir la N° Première Copie" />
   
@@ -244,7 +244,7 @@
             border-red-600 transition">
                       Annuler</button>
                 <div class="flex-auto flex flex-row-reverse">
-                    <button mat-button matStepperNext class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
+                    <button mat-button matStepperNext (click)="test()" class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
             hover:bg-teal-600  
             bg-teal-600 
             text-teal-100 
@@ -586,8 +586,8 @@
   
                   <mat-form-field appearance="fill">
                     <mat-label>Nom du Maire</mat-label>
-                    <mat-select formControlName="idMaire" (optionSelected)="onSelected()" name="Nom du Maire">
-                      <mat-option *ngFor="let maires of maire" [value]="maires.idMaire" >
+                    <mat-select formControlName="idMaire" name="Nom du Maire" (selectionChange)="onSelected($event.value)">
+                      <mat-option *ngFor="let maires of maire" [value]="maires.idMaire"   >
                         {{maires.nomMaire}}
                       </mat-option>
                     </mat-select>
@@ -597,7 +597,7 @@
                 <div class="mb-4 w-4/5">
   
                   <label class="block mb-2 text-sm font-bold text-black">Prenoms </label>
-                  <input type="text" formControlName="nomMaire"
+                  <input type="text" formControlName="prenomsMaire" value="{{MaireFormGroup.value.prenomsMaire}}" readonly
                     class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
                     placeholder="Saisir Prènoms du Maire" />
   
@@ -608,7 +608,7 @@
                 <div class="mb-4 w-4/5">
   
                   <label class="block mb-2 text-sm font-bold text-black">Fonction</label>
-                  <input type="text" formControlName="fonction" id="fonction"
+                  <input type="text" formControlName="fonction" id="fonction" value="{{MaireFormGroup.value.fonction}}" readonly
                     class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
                     placeholder="Saisir Fonction du Maire" />
   

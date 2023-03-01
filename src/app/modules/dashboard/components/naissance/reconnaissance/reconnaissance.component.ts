@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
+import { PageEvent } from '@angular/material/paginator';
 import { Router } from '@angular/router';
 import { Column } from '../../../models/column';
 import { ReconnaissanceService } from '../../../services/reconnaissance.service';
@@ -39,8 +40,12 @@ export class ReconnaissanceComponent implements OnInit {
   ];
   
   tableData: any = [];
- 
 
+  size: any = '';
+
+  page = 0;
+
+  search: any;
 
   constructor( public dialog: MatDialog, private router:Router, private reconnaissanceservice: ReconnaissanceService) {
     
@@ -57,17 +62,19 @@ export class ReconnaissanceComponent implements OnInit {
   
 
   ngOnInit(): void {
-   this.getAllReconnaissance()
+   this.getAllReconnaissances(this.size, this.page)
   }
 
-  getAllReconnaissance(){
-    this.reconnaissanceservice.getAllReconnaissance()
-    .subscribe((data: any)=>{
-      this.tableData = data.reconnaissance;
+
+
+  getAllReconnaissances(size: number, page: number) {
+    this.reconnaissanceservice.getReconnaissances(size, page)
+    .subscribe(data=>{
+      this.reconnaissance = data.reconnaissance;
       console.log(this.tableData)
     })
-  }
 
+  }
 
   showRow(element: any) {
     this.router.navigate(['/dashboard/reconnaissance-copie-voir', element.idReconnaissance ])
@@ -78,7 +85,7 @@ export class ReconnaissanceComponent implements OnInit {
     console.log('Edit row', element);
     this.reconnaissanceservice.updateReconnaissance(element.idReconnaissance, element)
       .subscribe((data: any)=> {
-        this.getAllReconnaissance();
+        this.getAllReconnaissances(this.size, this.page)
         
       })
   }
@@ -86,12 +93,15 @@ export class ReconnaissanceComponent implements OnInit {
   deleteRow(element: any) {
     this.reconnaissanceservice.deleteReconnaissance(element.idReconnaissance)
       .subscribe((data: any)=> { 
-        this.getAllReconnaissance();
+        this.getAllReconnaissances(this.size, this.page)
         console.log('Delete row', data);
       })
   
   }
-
+  handlePageChange(event: PageEvent) {
+    console.log(event)
+    this.getAllReconnaissances(event.pageSize, event.pageIndex)
+  }
   
 }
 

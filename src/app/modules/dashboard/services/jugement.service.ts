@@ -11,6 +11,10 @@ export class JugementService {
 
   constructor( private http: HttpClient) { }
 
+  getJugements(size: number, page: number ): Observable<any> {
+    return this.http.get(`${this.baseURl}?page=${page}&size=${size}`);
+  }
+  
   getAlljugement():Observable<any>{
     return this.http.get(`${this.baseURl}`)
     
