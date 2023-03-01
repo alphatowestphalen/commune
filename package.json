@@ -29,6 +29,7 @@
     "jspdf": "^2.5.1",
     "ng-apexcharts": "^1.7.1",
     "rxjs": "~7.5.0",
+    "survey-angular-ui": "^1.9.76",
     "tailwind-scrollbar": "^2.1.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
