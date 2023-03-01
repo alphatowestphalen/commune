@@ -129,7 +129,15 @@ export class BulletinComponent implements OnInit {
     const $ = this;
     const survey = new Model(this.defaultJson);
     survey.onComplete.add(function (sender, options) {
-      $.bulletinService.saveBulletin(sender, options);
+      options.showDataSaving();
+      $.bulletinService.saveBulletin(sender, options).subscribe(
+        (data) => {
+          options.showDataSavingSuccess();
+        },
+        (error) => {
+          options.showDataSavingError();
+        }
+      );
     });
     this.surveyModel = survey;
   }
