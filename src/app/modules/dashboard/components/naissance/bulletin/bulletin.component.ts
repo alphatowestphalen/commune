@@ -1,3 +1,4 @@
+import { PremiereCopieService } from 'src/app/modules/dashboard/services/premiere-copie.service';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { SurveyCreatorModel } from 'survey-creator-core';
 import { Model } from 'survey-core';
@@ -120,6 +121,7 @@ export class BulletinComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     private bulletinService: BulletinNaissanceService,
+    private premiereCopieService: PremiereCopieService,
     private router: Router
   ) {}
 
@@ -127,6 +129,10 @@ export class BulletinComponent implements OnInit {
 
   ngOnInit(): void {
     const $ = this;
+    $.premiereCopieService.getLastIdCerticate().subscribe(
+      (data) => console.log(data),
+      (error) => console.log(error)
+    );
     const survey = new Model(this.defaultJson);
     survey.onComplete.add(function (sender, options) {
       options.showDataSaving();
