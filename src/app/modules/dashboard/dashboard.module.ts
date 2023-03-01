@@ -1,3 +1,5 @@
+import { SurveyModule } from 'survey-angular-ui';
+import { SurveyCreatorModule } from 'survey-creator-angular';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -8,22 +10,23 @@ import { DashboardComponent } from './dashboard.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
-import {MatSelectModule} from '@angular/material/select';
+import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-
 
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { NaissanceHomeComponent } from './components/naissance/naissance-home/naissance-home.component';
 import { PremiereCopieComponent } from './components/naissance/premiere-copie/premiere-copie.component';
-import { NaissanceAddComponent, AfficheCopieComponent } from './components/naissance/naissance-add/naissance-add.component';
+import {
+  NaissanceAddComponent,
+  AfficheCopieComponent,
+} from './components/naissance/naissance-add/naissance-add.component';
 import { AdoptionComponent } from './components/naissance/adoption/adoption.component';
 import { JugementComponent } from './components/naissance/jugement/jugement.component';
 import { ReconnaissanceComponent } from './components/naissance/reconnaissance/reconnaissance.component';
@@ -43,10 +46,12 @@ import { ReconnaissanceMentionComponent } from './pages/reconnaissance-mention/r
 import { LoadingComponent } from './pages/loading/loading.component';
 import { DecesComponent } from './components/deces/deces/deces.component';
 import { MariageComponent } from './components/mariage/mariage/mariage.component';
-
+import { BulletinComponent } from './components/naissance/bulletin/bulletin.component';
 
 @NgModule({
+  exports: [SurveyCreatorModule, SurveyModule],
   declarations: [
+    BulletinComponent,
     DashboardComponent,
     NaissanceHomeComponent,
     PremiereCopieComponent,
@@ -82,6 +87,8 @@ import { MariageComponent } from './components/mariage/mariage/mariage.component
     MatSelectModule,
     MatPaginatorModule,
     MatInputModule,
+    SurveyCreatorModule,
+    SurveyModule,
     NgApexchartsModule,
     FormsModule,
     MatDialogModule,

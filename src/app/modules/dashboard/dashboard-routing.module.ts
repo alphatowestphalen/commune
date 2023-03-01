@@ -14,6 +14,7 @@ import { ReconnaissanceAddComponent } from './components/naissance/reconnaissanc
 import { AdoptionVoirComponent } from './components/naissance/adoption/adoption-voir/adoption-voir.component';
 import { JugementVoirComponent } from './components/naissance/jugement/jugement-voir/jugement-voir.component';
 import { ReconnaissanceVoirComponent } from './components/naissance/reconnaissance/reconnaissance-voir/reconnaissance-voir.component';
+import { BulletinComponent } from './components/naissance/bulletin/bulletin.component';
 
 const routes: Routes = [
   {
@@ -23,17 +24,24 @@ const routes: Routes = [
       { path: '', redirectTo: 'naissance', pathMatch: 'full' },
       { path: 'premiere-copie', component: PremiereCopieComponent },
       { path: 'naissance', component: NaissanceHomeComponent },
-      {path: 'add-naissance', component: NaissanceAddComponent},
-      {path: 'add-adoption', component: AdoptionAddComponent},
-      {path: 'add-jugement', component: JugementAddComponent},
-      {path: 'add-reconnaissance', component: ReconnaissanceAddComponent},
-      {path: 'adoption-naissance', component: AdoptionComponent},
-      {path: 'reconnaissance-naissance', component: ReconnaissanceComponent},
-      {path: 'jugement-naissance', component: JugementComponent},
-      {path: 'premiere-copie-voir/:id', component: PremiereCopieVoirComponent},
-      {path: 'adoption-copie-voir/:id', component: AdoptionVoirComponent},
-      {path: 'jugement-copie-voir/:id', component: JugementVoirComponent},
-      {path: 'reconnaissance-copie-voir/:id', component: ReconnaissanceVoirComponent},
+      { path: 'bulletin-naissance', component: BulletinComponent },
+      { path: 'add-naissance', component: NaissanceAddComponent },
+      { path: 'add-adoption', component: AdoptionAddComponent },
+      { path: 'add-jugement', component: JugementAddComponent },
+      { path: 'add-reconnaissance', component: ReconnaissanceAddComponent },
+      { path: 'adoption-naissance', component: AdoptionComponent },
+      { path: 'reconnaissance-naissance', component: ReconnaissanceComponent },
+      { path: 'jugement-naissance', component: JugementComponent },
+      {
+        path: 'premiere-copie-voir/:id',
+        component: PremiereCopieVoirComponent,
+      },
+      { path: 'adoption-copie-voir/:id', component: AdoptionVoirComponent },
+      { path: 'jugement-copie-voir/:id', component: JugementVoirComponent },
+      {
+        path: 'reconnaissance-copie-voir/:id',
+        component: ReconnaissanceVoirComponent,
+      },
       { path: '**', redirectTo: 'error/404' },
     ],
   },
