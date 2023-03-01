@@ -76,6 +76,26 @@ export class BulletinComponent implements OnInit {
         ],
         title: 'Information concernant les parents',
       },
+      {
+        name: 'page3',
+        elements: [
+          {
+            type: 'text',
+            name: 'idPremierCopie',
+            title: 'Numéro de copie',
+            isRequired: true,
+            inputType: 'number',
+          },
+          {
+            type: 'text',
+            name: 'dateCopie',
+            title: 'Date de copie',
+            isRequired: true,
+            inputType: 'date',
+          },
+        ],
+        title: "Information sur l'acte",
+      },
     ],
   };
   bulletin: any;
@@ -128,11 +148,9 @@ export class BulletinComponent implements OnInit {
   @ViewChild('htmlData') htmlData!: ElementRef;
 
   ngOnInit(): void {
+    // const creator = new SurveyCreatorModel(this.creatorOptions);
+    // creator.text = JSON.stringify(this.defaultJson);
     const $ = this;
-    $.premiereCopieService.getLastIdCerticate().subscribe(
-      (data) => console.log(data),
-      (error) => console.log(error)
-    );
     const survey = new Model(this.defaultJson);
     survey.onComplete.add(function (sender, options) {
       options.showDataSaving();
@@ -146,5 +164,6 @@ export class BulletinComponent implements OnInit {
       );
     });
     this.surveyModel = survey;
+    // this.surveyCreatorModel = creator;
   }
 }
