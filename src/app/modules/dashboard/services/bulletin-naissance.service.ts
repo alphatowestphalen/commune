@@ -8,8 +8,7 @@ import { HttpClient } from '@angular/common/http';
 export class BulletinNaissanceService {
   constructor(private readonly http: HttpClient) {}
   private baseURl: string = environment.baseUrl + '/bulletinNaissances';
-  async saveBulletin(sender: any, options: any): Promise<Observable<any>> {
-    options.showDataSaving();
+  saveBulletin(sender: any, options: any) {
     return this.http.post(this.baseURl, sender.data, {
       headers: { 'Content-Type': 'application/json; charset=utf-8' },
     });
