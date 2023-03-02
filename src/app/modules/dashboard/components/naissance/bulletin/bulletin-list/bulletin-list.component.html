@@ -104,7 +104,11 @@
    
    <app-mat-table *ngIf="tableData && tableData.length >0" [search]="search"
     [tableColumns]="tableColumns"
-    [tableData]="tableData" (askEvent)="askRow($event)"  (showEvent)="showRow($event)" >
+    [tableData]="tableData" >
+
+      <button mat-icon-button
+      class="btn btn-sm font-normal lowercase modal-button text-xs bg-green-700 px-4 py-2 text-white rounded-md mr-2" (askEvent)="AskRow($event)">Demande</button>
+     
   </app-mat-table>
     <p *ngIf="!tableData || tableData.length === 0"><app-loading></app-loading></p>
     </div>

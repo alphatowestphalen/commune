@@ -23,9 +23,7 @@
   <ng-container matColumnDef="actions">
     <th mat-header-cell *matHeaderCellDef> Actions </th>
     <td mat-cell *matCellDef="let element">
-      <button mat-icon-button
-      class="btn btn-sm font-normal lowercase modal-button text-xs bg-green-700 px-4 py-2 text-white rounded-md mr-2" (click)="AskRow(element)">Demande</button>
-     
+    
       <button mat-icon-button
       class="btn btn-sm font-normal lowercase modal-button text-xs bg-blue-600 px-4 py-2 text-white rounded-md mr-2" (click)="showRow(element)">voir</button>
      
@@ -36,6 +34,7 @@
       <button mat-icon-button
       class="btn btn-sm font-normal lowercase text-xs bg-red-600 px-4 py-2 text-white rounded-md mr-2"
        (click)="deleteRow(element)">Supprimer</button>
+       <ng-content (click)="askEvent(element)"></ng-content>
     </td>
   </ng-container>
 

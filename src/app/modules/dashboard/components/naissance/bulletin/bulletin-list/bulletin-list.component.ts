@@ -27,12 +27,12 @@ export class BulletinListComponent implements OnInit {
     {
       columnDef: 'mention',
       header: 'Mention',
-      cell: (element: Record<string, any>) => `${element['mention']}`
+      cell: (element: Record<string, any>) => `${element['type']}`
     },
     {
       columnDef: 'DatePremiereCopie',
       header: 'Date Copie',
-      cell: (element: Record<string, any>) => `${element['datePremierCopie']}`
+      cell: (element: Record<string, any>) => `${element['dateCopie']}`
     }
   ];
 
@@ -49,6 +49,9 @@ export class BulletinListComponent implements OnInit {
     this.bulletinservice.getAllBulletin()
     .subscribe(data=>{
       this.tableData = data
+      this.tableData.map((d:any)=>{
+        d.descriptionRow = d.nomPersonne + ' ' + d.prenomsPersonne
+      })
     })
 
   }
@@ -64,7 +67,7 @@ export class BulletinListComponent implements OnInit {
 
   }
 
-  askRow(element: any) {
+  AskRow(element: any) {
     console.log(element);
   }
 

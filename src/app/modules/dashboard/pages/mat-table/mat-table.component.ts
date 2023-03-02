@@ -23,6 +23,7 @@ export class MatTableComponent implements OnInit {
   @Output() showEvent = new EventEmitter<any>();
   @Output() deleteEvent = new EventEmitter<any>();
   @Output() askEvent = new EventEmitter<any>();
+
  
   @Output() pageChange = new EventEmitter<PageEvent>();
 
