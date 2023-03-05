@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Column } from 'src/app/modules/dashboard/models/column';
 import { BulletinNaissanceService } from 'src/app/modules/dashboard/services/bulletin-naissance.service';
@@ -8,7 +8,7 @@ import { BulletinNaissanceService } from 'src/app/modules/dashboard/services/bul
   styleUrls: ['./bulletin-list.component.scss']
 })
 export class BulletinListComponent implements OnInit {
- 
+  @Output() askEvent = new EventEmitter<any>();
 
   constructor( private router: Router,  private bulletinservice: BulletinNaissanceService) { }
 
@@ -67,8 +67,8 @@ export class BulletinListComponent implements OnInit {
 
   }
 
-  AskRow(element: any) {
-    console.log(element);
+  AskRow(element : any) {
+    this.askEvent.emit(element);
   }
 
   // editRow(element: any) {

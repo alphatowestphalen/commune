@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild,Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, ViewChild,Output, EventEmitter, TemplateRef } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -38,6 +38,7 @@ export class MatTableComponent implements OnInit {
 
 
 
+
   constructor() { }
 
   ngOnInit(): void {
@@ -52,7 +53,7 @@ export class MatTableComponent implements OnInit {
   }
 
   AskRow(element: any){
-    this.askEvent.emit(element);
+    console.log(element);
   }
 
   editRow(element: any) {
@@ -72,5 +73,9 @@ export class MatTableComponent implements OnInit {
   this.dataSource.filter = change.search.currentValue.toLowerCase();
   
  }
+
+ onAskEvent(parameter: any) {
+  console.log('Ask event clicked with parameter:', parameter);
+}
 
 }

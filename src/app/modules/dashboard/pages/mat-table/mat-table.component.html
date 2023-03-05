@@ -34,7 +34,7 @@
       <button mat-icon-button
       class="btn btn-sm font-normal lowercase text-xs bg-red-600 px-4 py-2 text-white rounded-md mr-2"
        (click)="deleteRow(element)">Supprimer</button>
-       <ng-content (click)="askEvent(element)"></ng-content>
+       <ng-content (askEvent)="AskRow(element)"></ng-content>
     </td>
   </ng-container>
 
