@@ -28,10 +28,9 @@ export class BulletinNaissanceService {
     );
   }
 
-  getAllBulletin():Observable<any>{
-    return  this.http.get(`${this.baseURl}`)
+  getAllBulletin(size: number, page: number):Observable<any>{
+    return  this.http.get(`${this.baseURl}?page=${page}&size=${size}`)
   }
 
-  
 
 }

@@ -1,4 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { PageEvent } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Column } from 'src/app/modules/dashboard/models/column';
 import { BulletinNaissanceService } from 'src/app/modules/dashboard/services/bulletin-naissance.service';
@@ -8,50 +10,38 @@ import { BulletinNaissanceService } from 'src/app/modules/dashboard/services/bul
   styleUrls: ['./bulletin-list.component.scss']
 })
 export class BulletinListComponent implements OnInit {
-  @Output() askEvent = new EventEmitter<any>();
+
+
+  displayedColumns = [
+    'id',
+    'name',
+    'datenaiss',
+    'dateenregistrement',
+    'actions',
+  ];
+  dataSource!: MatTableDataSource<any>;
+  
+  tableData: any;
+  size:any = '';
+  page = 0;
 
   constructor( private router: Router,  private bulletinservice: BulletinNaissanceService) { }
 
-  tableColumns: Array<Column> = [
-    {
-      columnDef: 'idPremierCopie',
-      header: 'N° Première Copie',
-      cell: (element: Record<string, any>) => `${element['idPremierCopie']}`
-    },
-    {
-      columnDef: 'descriptionRow',
-      header: 'Description',
-      cell: (element: Record<string, any>) => `${element['descriptionRow']} `,
-    
-    },
-    {
-      columnDef: 'mention',
-      header: 'Mention',
-      cell: (element: Record<string, any>) => `${element['type']}`
-    },
-    {
-      columnDef: 'DatePremiereCopie',
-      header: 'Date Copie',
-      cell: (element: Record<string, any>) => `${element['dateCopie']}`
-    }
-  ];
 
-  tableData: any = [];
-
-  search: any = "";
 
 
   ngOnInit(): void {
-    this.getAllService();
+    this.getAllService(this.size, this.page);
+   
   }
 
-  getAllService(){
-    this.bulletinservice.getAllBulletin()
+  getAllService(size: number, page: number){
+    this.bulletinservice.getAllBulletin(size, page)
     .subscribe(data=>{
       this.tableData = data
-      this.tableData.map((d:any)=>{
-        d.descriptionRow = d.nomPersonne + ' ' + d.prenomsPersonne
-      })
+      this.dataSource = new MatTableDataSource(this.tableData);
+      console.log(this.tableData)
+      
     })
 
   }
@@ -59,7 +49,7 @@ export class BulletinListComponent implements OnInit {
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
     filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
-    this.search = filterValue
+    this.dataSource.filter = filterValue;
   }
 
   showRow(element: any) {
@@ -67,9 +57,7 @@ export class BulletinListComponent implements OnInit {
 
   }
 
-  AskRow(element : any) {
-    this.askEvent.emit(element);
-  }
+
 
   // editRow(element: any) {
   //   console.log('Edit row', element);
@@ -88,5 +76,9 @@ export class BulletinListComponent implements OnInit {
   //     })
   
   // }
-
+  pageChange(event: PageEvent) {
+    console.log(event)
+    // this.size = event.pageSize
+    this.getAllService(event.pageSize, event.pageIndex)
+    }
 }
