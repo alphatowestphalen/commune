@@ -12,8 +12,8 @@ import { PremiereCopieService } from 'src/app/modules/dashboard/services/premier
   styleUrls: ['./bulletin-list.component.scss']
 })
 export class BulletinListComponent implements OnInit {
-
-
+ Opendemande=  false;
+  bulletin: any;
   displayedColumns = [
     'id',
     'name',
@@ -27,6 +27,7 @@ export class BulletinListComponent implements OnInit {
   tableData: any;
   size:any = '';
   page = 0;
+  nombre: number = 0;
 
 
   constructor( private router: Router, public dialog: MatDialog, private bulletinservice: BulletinNaissanceService) { }
@@ -87,42 +88,20 @@ export class BulletinListComponent implements OnInit {
     this.getAllService(event.pageSize, event.pageIndex)
     }
 
+
   AskRow(row:any ){
-    console.log(row)
-
-    const dialogRef = this.dialog.open(AfficheCopieComponent, {
-      maxWidth: '100vw',
-      maxHeight: '100vh',
-      height: '90%',
-      width: '85%',
-      panelClass: 'full-screen-modal',
-      data : row
-    });
-    
-  }  
-}
-
-
-
-@Component({
-  selector: 'bulletin-naissance',
-  templateUrl: 'bulletin-naissance.component.html',
-})
-export class AfficheCopieComponent {
-  constructor(@Inject (MAT_DIALOG_DATA) public data: any, private bulletinservice: BulletinNaissanceService,
-   public dialog: MatDialog, private router:Router  ) {}
-
-  ngOnInit() {
-  console.log(this.data)
-  }
-  saveCertificate(){
   
-    // this.bulletinservice.addFirstCertificates(this.data).subscribe(data=>{
+   this.bulletin = row;
+    this.Opendemande = !this.Opendemande;
+  
 
-    //   const dialogRef = this.dialog.closeAll();
-    //   this.router.navigate(['/dashboard/premiere-copie']);
-    // })
-    console.log(this.data)
+  }  
 
+  next(nombre: any){
+    console.log(nombre)
+    this.Opendemande = !this.Opendemande;
+    console.log( this.Opendemande)
   }
 }
+
+
