@@ -5,7 +5,6 @@ export class Menu {
     {
       group: 'Acte de Naissance',
       separator: false,
-     
       
       items: [
         {
@@ -39,12 +38,12 @@ export class Menu {
         {
           icon: 'assets/icons/outline/download.svg',
           label: 'Acte de Mariage ',
-          route: '/download',
+          route: '/dashboard/mariage-list',
         },
         {
           icon: 'assets/icons/outline/gift.svg',
           label: 'Acte de Divorce',
-          route: '/gift',
+          route: '/dashboard/divorce-list',
         },
         {
           icon: 'assets/icons/outline/users.svg',

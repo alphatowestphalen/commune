@@ -16,6 +16,9 @@ import { JugementVoirComponent } from './components/naissance/jugement/jugement-
 import { ReconnaissanceVoirComponent } from './components/naissance/reconnaissance/reconnaissance-voir/reconnaissance-voir.component';
 import { BulletinComponent } from './components/naissance/bulletin/bulletin.component';
 import { BulletinListComponent } from './components/naissance/bulletin/bulletin-list/bulletin-list.component';
+import { MariageComponent } from './components/mariage/mariage/mariage.component';
+import { MariageAddComponent } from './components/mariage/mariage/mariage-add/mariage-add.component';
+import { DivorceComponent } from './components/mariage/divorce/divorce.component';
 
 const routes: Routes = [
   {
@@ -44,6 +47,10 @@ const routes: Routes = [
         path: 'reconnaissance-copie-voir/:id',
         component: ReconnaissanceVoirComponent,
       },
+      {path: 'mariage-list', component: MariageComponent},
+      {path: 'mariage-add', component: MariageAddComponent},
+      {path: 'divorce-list', component: DivorceComponent},
+
       { path: '**', redirectTo: 'error/404' },
     ],
   },
