@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-bulletin-naissance',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./bulletin-naissance.component.scss']
 })
 export class BulletinNaissanceComponent implements OnInit {
+@Input()
+bulletin:any
 
   constructor() { }
 
