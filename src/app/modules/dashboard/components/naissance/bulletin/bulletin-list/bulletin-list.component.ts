@@ -97,11 +97,17 @@ export class BulletinListComponent implements OnInit {
 
   }  
 
-  next(nombre: any){
+  nextDialog(nombre: any){
     console.log(nombre)
-    this.Opendemande = !this.Opendemande;
-    console.log( this.Opendemande)
+   this.Opendemande = ! this.Opendemande
+    
   }
+
+  exitDialog(){
+    this.nombre = 0;
+    this.Opendemande = false;
+  }
+
+ 
+
 }
-
-
