@@ -1,4 +1,4 @@
-import { PremiereCopieService } from 'src/app/modules/dashboard/services/premiere-copie.service';
+import { FormService } from '../../../services/form.service';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { SurveyCreatorModel } from 'survey-creator-core';
 import { Model } from 'survey-core';
@@ -14,90 +14,8 @@ import { BulletinNaissanceService } from '../../../services/bulletin-naissance.s
   styleUrls: ['./bulletin.component.scss'],
 })
 export class BulletinComponent implements OnInit {
-  defaultJson: any = {
-    title: 'Bulletin de naissance',
-    logoPosition: 'right',
-    pages: [
-      {
-        name: 'page1',
-        elements: [
-          {
-            type: 'text',
-            name: 'nomPersonne',
-            title: 'Nom',
-            isRequired: true,
-          },
-          {
-            type: 'text',
-            name: 'prenomsPersonne',
-            title: 'Prénoms',
-          },
-          {
-            type: 'text',
-            name: 'dateNaissPersonne',
-            title: 'Date de naissance',
-            isRequired: true,
-            inputType: 'date',
-          },
-          {
-            type: 'text',
-            name: 'lieuNaissPersonne',
-            title: 'Lieu de naissance',
-            isRequired: true,
-          },
-        ],
-        title: 'Information personnelle',
-      },
-      {
-        name: 'page2',
-        elements: [
-          {
-            type: 'text',
-            name: 'nomPere',
-            title: 'Nom ( pére )',
-            isRequired: true,
-          },
-          {
-            type: 'text',
-            name: 'prenomsPere',
-            title: 'Prénoms ( pére )',
-          },
-          {
-            type: 'text',
-            name: 'nomMere',
-            title: 'Noms ( mére )',
-            isRequired: true,
-          },
-          {
-            type: 'text',
-            name: 'prenomsMere',
-            title: 'Prénoms ( mére )',
-          },
-        ],
-        title: 'Information concernant les parents',
-      },
-      {
-        name: 'page3',
-        elements: [
-          {
-            type: 'text',
-            name: 'idPremierCopie',
-            title: 'Numéro de copie',
-            isRequired: true,
-            inputType: 'number',
-          },
-          {
-            type: 'text',
-            name: 'dateCopie',
-            title: 'Date de copie',
-            isRequired: true,
-            inputType: 'date',
-          },
-        ],
-        title: "Information sur l'acte",
-      },
-    ],
-  };
+  defaultJson: any;
+  formName: string = 'BulletinNaissance';
   bulletin: any;
   surveyModel: any;
   surveyCreatorModel: any;
@@ -141,29 +59,32 @@ export class BulletinComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     private bulletinService: BulletinNaissanceService,
-    private premiereCopieService: PremiereCopieService,
+    private formService: FormService,
     private router: Router
   ) {}
 
   @ViewChild('htmlData') htmlData!: ElementRef;
 
   ngOnInit(): void {
+    const $ = this;
+    this.formService.getFormByTitle(this.formName).subscribe((data: any) => {
+      this.defaultJson = data.form.content;
+      const survey = new Model(this.defaultJson);
+      survey.onComplete.add(function (sender, options) {
+        options.showDataSaving();
+        $.bulletinService.saveBulletin(sender, options).subscribe(
+          (data) => {
+            options.showDataSavingSuccess();
+          },
+          (error) => {
+            options.showDataSavingError();
+          }
+        );
+      });
+      this.surveyModel = survey;
+    });
     // const creator = new SurveyCreatorModel(this.creatorOptions);
     // creator.text = JSON.stringify(this.defaultJson);
-    const $ = this;
-    const survey = new Model(this.defaultJson);
-    survey.onComplete.add(function (sender, options) {
-      options.showDataSaving();
-      $.bulletinService.saveBulletin(sender, options).subscribe(
-        (data) => {
-          options.showDataSavingSuccess();
-        },
-        (error) => {
-          options.showDataSavingError();
-        }
-      );
-    });
-    this.surveyModel = survey;
     // this.surveyCreatorModel = creator;
   }
 }

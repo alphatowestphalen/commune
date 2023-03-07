@@ -15,6 +15,7 @@ import { AdoptionVoirComponent } from './components/naissance/adoption/adoption-
 import { JugementVoirComponent } from './components/naissance/jugement/jugement-voir/jugement-voir.component';
 import { ReconnaissanceVoirComponent } from './components/naissance/reconnaissance/reconnaissance-voir/reconnaissance-voir.component';
 import { BulletinComponent } from './components/naissance/bulletin/bulletin.component';
+import { BulletinListComponent } from './components/naissance/bulletin/bulletin-list/bulletin-list.component';
 
 const routes: Routes = [
   {
@@ -24,7 +25,8 @@ const routes: Routes = [
       { path: '', redirectTo: 'naissance', pathMatch: 'full' },
       { path: 'premiere-copie', component: PremiereCopieComponent },
       { path: 'naissance', component: NaissanceHomeComponent },
-      { path: 'bulletin-naissance', component: BulletinComponent },
+      { path: 'bulletin-naissance-add', component: BulletinComponent },
+      { path: 'bulletin-naissance-list', component: BulletinListComponent},
       { path: 'add-naissance', component: NaissanceAddComponent },
       { path: 'add-adoption', component: AdoptionAddComponent },
       { path: 'add-jugement', component: JugementAddComponent },

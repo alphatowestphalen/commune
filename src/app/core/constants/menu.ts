@@ -25,6 +25,11 @@ export class Menu {
        
           ],
         },
+        {
+          icon: 'assets/icons/outline/users.svg',
+          label: 'Bulletin de Naissance',
+          route: '/dashboard/bulletin-naissance-list',
+        },
       ],
     },
     {
