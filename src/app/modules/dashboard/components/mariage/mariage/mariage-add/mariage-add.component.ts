@@ -14,7 +14,7 @@ declare function MoisMalgache(params: string) : any
 })
 export class MariageAddComponent implements OnInit {
 
-  isLinear = true;
+  isLinear = false;
   data: any;
   maire: any;
   datenaiss: string | null | undefined;
@@ -30,6 +30,9 @@ export class MariageAddComponent implements OnInit {
   errorMsg!: string;
   minLengthTerm = 1;
   CopieSelected: any = "";
+  isTypeHomme= false;
+  isTypeFemme = false;
+
 
   constructor( private _formBuilder: FormBuilder, private premiercopieService: PremiereCopieService) { }
 
@@ -94,11 +97,13 @@ export class MariageAddComponent implements OnInit {
     });
   }
 
-  FirstStep(stepper : MatStepper){
-   if(this.PiecesFormGroup.value.typeHomme == 'interne'){
-    stepper.next()
-   }
+  HommeStep(){
+   this.isTypeHomme = !this.isTypeHomme;
   }
+
+  FemmeStep(){
+    this.isTypeFemme = !this.isTypeFemme;
+   }
 
   onSelected() {
     console.log(this.CopieSelected);
