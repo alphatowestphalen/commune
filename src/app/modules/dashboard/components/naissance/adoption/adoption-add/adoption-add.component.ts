@@ -18,8 +18,8 @@ export class AdoptionAddComponent implements OnInit {
   adoption: any;
   certificate: any;
 
-  searchMoviesCtrl = new FormControl();
-  filteredMovies: any = [];
+  searchCopie = new FormControl();
+  filteredCopies: any = [];
   isLoading = false;
   errorMsg!: string;
   minLengthTerm = 1;
@@ -85,11 +85,11 @@ export class AdoptionAddComponent implements OnInit {
 
   clearSelection() {
     this.CopieSelected = "";
-    this.filteredMovies = [];
+    this.filteredCopies = [];
   }
 
   ngOnInit() {
-    this.searchMoviesCtrl.valueChanges
+    this.searchCopie.valueChanges
       .pipe(
         filter(res => {
           return res !== null && res.length >= this.minLengthTerm
@@ -98,7 +98,7 @@ export class AdoptionAddComponent implements OnInit {
         debounceTime(1000),
         tap(() => {
           this.errorMsg = "";
-          this.filteredMovies = [];
+          this.filteredCopies = [];
           this.isLoading = true;
         }),
 
@@ -113,12 +113,12 @@ export class AdoptionAddComponent implements OnInit {
       .subscribe((data: any) => {
         // if (data.premierCopies == undefined) {
         //   this.errorMsg = data['Error'];
-        //   this.filteredMovies = [];
+        //   this.filteredCopies = [];
         // } else {
         //   this.errorMsg = "";
 
         // }
-        this.filteredMovies = data;
+        this.filteredCopies = data.premierCopies;
         console.log(data);
       });
   }
