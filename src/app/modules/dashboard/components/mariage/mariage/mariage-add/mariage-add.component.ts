@@ -76,23 +76,23 @@ export class MariageAddComponent implements OnInit {
   });
 
   MereFemmeFormGroup = this._formBuilder.group({
-    nomMere: [''],
-    prenomsMere: '',
-    datenaissMere: [''],
-    lieuNaissMere: [''],
-    professionMere: [''],
-    adresseMere: [''],
+    nomFemmeMere: [''],
+    prenomsFemmeMere: '',
+    datenaissFemmeMere: [''],
+    lieuNaissFemmeMere: [''],
+    professionFemmeMere: [''],
+    adresseFemmeMere: [''],
   })
 
 
   PereFemmeFormGroup = this._formBuilder.group({
-    nomPere: '',
-    prenomsPere: '',
-    datenaissPere: '',
-    datePere: '',
-    lieuNaissPere: '',
-    professionPere: '',
-    adressPere: '',
+    nomFemmePere: '',
+    prenomsFemmePere: '',
+    datenaissFemmePere: '',
+    dateFemmePere: '',
+    lieuNaissFemmePere: '',
+    professionFemmePere: '',
+    adressFemmePere: '',
   });
 
   HommeFormGroup = this._formBuilder.group({
@@ -284,8 +284,6 @@ console.log(this.MaireFormGroup.value, this.PiecesFormGroup.value)
 
    SecondHommeInterne(){
   
-   
-
     this.HommeFormGroup.value.nomHomme = this.CopieSelected.enfant.nomEnfant,
     this.HommeFormGroup.value.prenomsHomme = this.CopieSelected.enfant.prenomsEnfant,
     this.HommeFormGroup.value.datenaissHomme = this.CopieSelected.enfant.datenaissEnfant,
@@ -308,7 +306,28 @@ console.log(this.MaireFormGroup.value, this.PiecesFormGroup.value)
    }
 
 
+   SecondFemmeInterne(){
   
+    this.FemmeFormGroup.value.nomFemme = this.CopieSelected.enfant.nomEnfant,
+    this.FemmeFormGroup.value.prenomsFemme = this.CopieSelected.enfant.prenomsEnfant,
+    this.FemmeFormGroup.value.datenaissFemme= this.CopieSelected.enfant.datenaissEnfant,
+    this.FemmeFormGroup.value.lieunaissFemme = this.CopieSelected.enfant.lieunaissEnfant,
+    this.FemmeFormGroup.value.nationalFemme = "Malagasy"
+
+    this.PereFemmeFormGroup.value.nomFemmePere = this.CopieSelected.pere.nomPere,
+    this.PereFemmeFormGroup.value.prenomsFemmePere = this.CopieSelected.pere.prenomsPere,
+    this.PereFemmeFormGroup.value.datenaissFemmePere = this.CopieSelected.pere.datenaissPere,
+    this.PereFemmeFormGroup.value.lieuNaissFemmePere = this.CopieSelected.pere.lieuNaissPere,
+    this.PereFemmeFormGroup.value.adressFemmePere = this.CopieSelected.pere.adressePere,
+    this.PereFemmeFormGroup.value.professionFemmePere = this.CopieSelected.pere.professionPere,
+
+    this.MereFemmeFormGroup.value.nomFemmeMere = this.CopieSelected.mere.nomMere,
+    this.MereFemmeFormGroup.value.prenomsFemmeMere = this.CopieSelected.mere.prenomsMere,
+    this.MereFemmeFormGroup.value.datenaissFemmeMere = this.CopieSelected.mere.datenaissMere;
+    this.MereFemmeFormGroup.value.lieuNaissFemmeMere = this.CopieSelected.mere.lieuNaissMere;
+    this.MereFemmeFormGroup.value.professionFemmeMere = this.CopieSelected.mere.professionMere;
+    this.MereFemmeFormGroup.value.adresseFemmeMere = this.CopieSelected.mere.adresseMere;
+   }
    
 }
 
