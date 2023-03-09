@@ -180,7 +180,7 @@
       </form>
     </mat-step>
     <mat-step [stepControl]="ExterneFormGroup">
-      <form [formGroup]="ExterneFormGroup" [hidden]="isTypeHomme">
+      <form [formGroup]="ExterneFormGroup" *ngIf="isTypeHomme == true">
         <ng-template matStepLabel> Copie Externe<br>
           <span class="font-normal text-xs text-gray-400">Recuperer Info Copie</span>
         </ng-template>
@@ -245,7 +245,7 @@
     </div>
 
       </form>
-      <form [formGroup]="InterneFormGroup" [hidden]="!isTypeHomme">
+      <form [formGroup]="InterneFormGroup"  *ngIf="isTypeHomme == false">
         <ng-template matStepLabel>Copie Interne<br>
           <span class="font-normal text-xs text-gray-400">Recuperer Info Copie</span>
         </ng-template>
@@ -462,8 +462,8 @@
       </form>
     </mat-step> -->
 
-    <mat-step [stepControl]="TemoinFormGroup">
-      <form [formGroup]="TemoinFormGroup" >
+    <mat-step [stepControl]="TemoinHommeGroup">
+      <form [formGroup]="TemoinHommeGroup" >
         <ng-template matStepLabel> Temoin <br>
           <span class="font-normal text-xs text-gray-400">Information temoin</span>
         </ng-template>
@@ -591,7 +591,7 @@
       </form>
     </mat-step>
      <mat-step [stepControl]="ExterneFormGroup">
-      <form [formGroup]="ExterneFormGroup" [hidden]="isTypeFemme">
+      <form [formGroup]="ExterneFormGroup" *ngIf="isTypeFemme == true">
         <ng-template matStepLabel> Copie Externe<br>
           <span class="font-normal text-xs text-gray-400">Recuperer Info Copie</span>
         </ng-template>
@@ -656,7 +656,7 @@
     </div>
 
       </form>
-      <form [formGroup]="InterneFormGroup" [hidden]="!isTypeFemme">
+      <form [formGroup]="InterneFormGroup" *ngIf="isTypeFemme == false">
         <ng-template matStepLabel>Copie Interne<br>
           <span class="font-normal text-xs text-gray-400">Recuperer Info Copie</span>
         </ng-template>
@@ -763,118 +763,9 @@
 
       </form>
     </mat-step>
-    <mat-step [stepControl]="InterneFormGroup">
-      <form [formGroup]="InterneFormGroup">
-        <ng-template matStepLabel>Copie Interne<br>
-          <span class="font-normal text-xs text-gray-400">Recuperer Info Copie</span>
-        </ng-template>
 
-      
-        <div class="wrapper">
-          <mat-form-field class="example-full-width">
-            <mat-label>Recherche par Numèro de Copie</mat-label>
-            <input matInput [(ngModel)]="CopieSelected" [matAutocomplete]="auto"
-              [formControl]="searchCopie" placeholder="Saisir la Numèro de Copie">
-            <button *ngIf="CopieSelected" matSuffix mat-icon-button aria-label="Clear" (click)="clearSelection()">
-    
-            </button>
-            <mat-autocomplete [panelWidth]="400" #auto="matAutocomplete" (optionSelected)="onSelected()"
-             >
-              <mat-option *ngIf="isLoading" class="is-loading">Chargement...</mat-option>
-              <ng-container *ngIf="!isLoading">
-                <mat-option *ngFor="let copie of filteredCopies" [value]="copie">
-                  <span><b>{{copie.idPremierCopie}}</b> ({{copie.enfant.nomEnfant}})</span>
-                </mat-option>
-              </ng-container>
-            </mat-autocomplete>
-          </mat-form-field>
-    
-          <br>
-    
-          <ng-container *ngIf="errorMsg; else elseTemplate">
-            {{errorMsg}}
-          </ng-container>
-          <ng-template #elseTemplate>
-  
-            <div class=" lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4"  *ngIf="CopieSelected?.idPremierCopie">
-              <div class="mb-4 w-4/5">
-
-                <label class="block mb-2 text-sm font-bold text-black">Nom de l'enfant</label>
-                <input type="text"  readonly value="{{CopieSelected?.enfant.nomEnfant}}"
-                  class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                  placeholder="Saisir nom de l'enfant" />
-
-              </div>
-              <div class="mb-4 w-4/5">
-
-                <label class="block mb-2 text-sm font-bold text-black">Prenoms de l'enfant</label>
-                <input type="text"  readonly   value="{{CopieSelected?.enfant.prenomsEnfant}}"
-                  class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                  placeholder="Saisir Prenoms de l'enfant" />
-
-              </div>
-
-            </div>
-            <div class="lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
-              <div class="mb-4 w-4/5">
-
-                <label class="block mb-2 text-sm font-bold text-black">Date de Naissance</label>
-                <input type="text" readonly  value="{{CopieSelected?.enfant?.datenaissEnfant}}"
-                  class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                  placeholder="Saisir Date de Naissance l'enfant" />
-
-              </div>
-              <div class="mb-4 w-4/5">
-
-                <label class="block mb-2 text-sm font-bold text-black">Heure de naissance</label>
-                <input type="text"  readonly value="{{CopieSelected?.enfant?.heurenaissEnfant}}"
-                  class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                  placeholder="Saisir heure de Naissancede l'enfant" />
-
-              </div>
-            </div>
-            <div class="lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
-              <div class="mb-4 w-4/5">
-
-                <label class="block mb-2 text-sm font-bold text-black">Lieu de Naissance</label>
-                <input type="text" readonly value="{{CopieSelected?.enfant?.lieunaissEnfant}}"
-                   class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                  placeholder="Saisir Lieu de Naissance de l'enfant" />
-
-              </div>
-         
-            </div>
-        
-          </ng-template>
-    
-        </div>
-
-
-      <div class="flex p-2 mt-4">
-        <button mat-button  matStepperPrevious class="text-md hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
-    hover:bg-gray-200  
-    bg-gray-100 
-    text-red-700 
-    border duration-200 ease-in-out 
-    border-red-600 transition">
-              Annuler</button>
-        <div class="flex-auto flex flex-row-reverse">
-            <button mat-button   matStepperNext class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
-    hover:bg-teal-600  
-    bg-teal-600 
-    text-teal-100 
-    border duration-200 ease-in-out 
-    border-teal-600 transition">Suivant</button>
-          
-        </div>
-    </div>
-
-      </form>
-
-    </mat-step>
-
-    <mat-step [stepControl]="TemoinFormGroup">
-      <form [formGroup]="TemoinFormGroup" >
+    <mat-step [stepControl]="TemoinFemmeGroup">
+      <form [formGroup]="TemoinFemmeGroup" >
         <ng-template matStepLabel> Temoin <br>
           <span class="font-normal text-xs text-gray-400">Information temoin</span>
         </ng-template>

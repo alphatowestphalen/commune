@@ -30,8 +30,8 @@ export class MariageAddComponent implements OnInit {
   errorMsg!: string;
   minLengthTerm = 1;
   CopieSelected: any = "";
-  isTypeHomme= false;
-  isTypeFemme = false;
+  isTypeHomme= true;
+  isTypeFemme = true;
 
 
   constructor( private _formBuilder: FormBuilder, private premiercopieService: PremiereCopieService) { }
@@ -54,13 +54,29 @@ export class MariageAddComponent implements OnInit {
     dateEnfant: [''],
     dateregistre: ['']
   });
-  TemoinFormGroup = this._formBuilder.group({
-    parentAdoptif: [''],
-    dateAdoption: [''],
-    heureAdoption: [''],
-    numAdoption: [''],
-    createdDate: new Date()
-  });
+  // TemoinFormGroup = this._formBuilder.group({
+  //   parentAdoptif: [''],
+  //   dateAdoption: [''],
+  //   heureAdoption: [''],
+  //   numAdoption: [''],
+  //   createdDate: new Date()
+  // });
+  TemoinHommeGroup = this._formBuilder.group({
+      nomTemoinHomme: [''],
+  prenomsTemoinHomme: [''],
+  professionTemoinHomme: [''],
+  datenaissTemoinHomme: [''],
+  lieunaissTemoinHomme: [''],
+  adresseTemoinHomme: [''],
+  })
+   TemoinFemmeGroup = this._formBuilder.group({
+      nomTemoinFemme: [''],
+  prenomsTemoinFemme: [''],
+  professionTemoinFemme: [''],
+  datenaissTemoinFemme: [''],
+  lieunaissTemoinFemme: [''],
+  adresseTemoinFemme: [''],
+  })
 
   ngOnInit(): void {
     this.searchCopie.valueChanges
@@ -98,11 +114,21 @@ export class MariageAddComponent implements OnInit {
   }
 
   HommeStep(){
-   this.isTypeHomme = !this.isTypeHomme;
+   if(this.PiecesFormGroup.value.typeHomme == 'interne'){
+    this.isTypeHomme = false;
+   }
+   else
+   this.isTypeHomme = true;
+   
   }
 
   FemmeStep(){
-    this.isTypeFemme = !this.isTypeFemme;
+    if(this.PiecesFormGroup.value.typeFemme == 'interne'){
+     this.isTypeFemme = false;
+    }
+    else
+    this.isTypeFemme = true;
+    
    }
 
   onSelected() {
