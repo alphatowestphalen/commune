@@ -157,22 +157,23 @@
                 <div class="mb-4 w-4/5">
   
                   <label class="block mb-2 text-sm font-bold text-black">Date de Mariage</label>
-                  <textarea type="text"  formControlName = "dateCopieMariage" 
+                  <input type="text"  formControlName = "dateCopieMariage" 
                     class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                    placeholder="Saisir Prenoms de l'enfant"></textarea>
+                    placeholder="Saisir Prenoms de l'enfant">
   
                 </div>
                 <div class="mb-4 w-4/5">
   
                   <label class="block mb-2 text-sm font-bold text-black">Heure de Mariage</label>
-                  <textarea type="text"  formControlName = "heureCopieMariage" 
+                  <input type="time"  formControlName = "heureCopieMariage" 
                     class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                    placeholder="Saisir Prenoms de l'enfant"></textarea>
+                    placeholder="Saisir Prenoms de l'enfant">
   
                 </div>
   
              
           </div>
+          <form [formGroup]="MaireFormGroup">
           <p class="underline text-sm text-gray-500">Information de Maire :</p>
           <div class=" lg:grid md:grid-flow-col grid-cols-3 mt-5  gap-4">
             
@@ -191,7 +192,7 @@
             <div class="mb-4 w-4/5">
 
               <label class="block mb-2 text-sm font-bold text-black">Prenoms </label>
-              <input type="text" formControlName="prenomsMaire" value="{{PiecesFormGroup.value.prenomsMaire}}" readonly
+              <input type="text" formControlName="prenomsMaire" value="{{MaireFormGroup.value.prenomsMaire}}" readonly
                 class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
                 placeholder="Saisir Prènoms du Maire" />
 
@@ -199,7 +200,7 @@
             <div class="mb-4 w-4/5">
 
               <label class="block mb-2 text-sm font-bold text-black">Fonction</label>
-              <input type="text" formControlName="fonction" id="fonction" value="{{PiecesFormGroup.value.fonction}}" readonly
+              <input type="text" formControlName="fonction" id="fonction" value="{{MaireFormGroup.value.fonction}}" readonly
                 class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
                 placeholder="Saisir Fonction du Maire" />
 
@@ -207,7 +208,7 @@
 
           </div>
         
-
+        </form>
           <div class="flex p-2 mt-4">
             <button mat-button matStepperPrevious class="text-md hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
         hover:bg-gray-200  
@@ -216,13 +217,12 @@
         border duration-200 ease-in-out 
         border-gray-600 transition">Prècedent</button>
             <div class="flex-auto flex flex-row-reverse">
-                <button   
-                mat-button matStepperNext class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
-        hover:bg-blue-600  
-        bg-blue-600 
-        text-blue-100 
-        border duration-200 ease-in-out 
-        border-blue-600 transition">Sauvegarder</button>
+                <button mat-button matStepperNext (click)="FirstStep" class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
+                hover:bg-teal-600  
+                bg-teal-600 
+                text-teal-100 
+                border duration-200 ease-in-out 
+                border-teal-600 transition">Suivant</button>
                 
             </div>
         </div>
@@ -343,7 +343,7 @@
     border-red-600 transition">
               Annuler</button>
             <div class="flex-auto flex flex-row-reverse">
-              <button mat-button matStepperNext class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
+              <button mat-button (click)="SecondStep()" matStepperNext class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
     hover:bg-teal-600  
     bg-teal-600 
     text-teal-100 
@@ -389,15 +389,15 @@
 
                   <label class="block mb-2 text-sm font-bold text-black">Nom de l'enfant</label>
                   <input type="text" readonly value="{{CopieSelected?.enfant.nomEnfant}}"
-                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                    class="bg-gray-50 block uppercase w-full p-2.5 border-gray-300 rounded-lg text-md border"
                     placeholder="Saisir nom de l'enfant" />
 
                 </div>
                 <div class="mb-4 w-4/5">
 
                   <label class="block mb-2 text-sm font-bold text-black">Prenoms de l'enfant</label>
-                  <input type="text" readonly value="{{CopieSelected?.enfant.prenomsEnfant}}"
-                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                  <input type="text" readonly  value="{{CopieSelected?.enfant.prenomsEnfant}}"
+                    class="bg-gray-50 block capitalize w-full p-2.5 border-gray-300 rounded-lg text-md border"
                     placeholder="Saisir Prenoms de l'enfant" />
 
                 </div>
@@ -407,25 +407,18 @@
                 <div class="mb-4 w-4/5">
 
                   <label class="block mb-2 text-sm font-bold text-black">Date de Naissance</label>
-                  <input type="text" readonly value="{{CopieSelected?.enfant?.datenaissEnfant}}"
+                  <input type="text" readonly formControlName="datenaissHomme" value="{{CopieSelected?.enfant?.datenaissEnfant}}"
                     class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
                     placeholder="Saisir Date de Naissance l'enfant" />
 
                 </div>
-                <div class="mb-4 w-4/5">
-
-                  <label class="block mb-2 text-sm font-bold text-black">Heure de naissance</label>
-                  <input type="text" readonly value="{{CopieSelected?.enfant?.heurenaissEnfant}}"
-                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                    placeholder="Saisir heure de Naissancede l'enfant" />
-
-                </div>
+              
               </div>
               <div class="lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
                 <div class="mb-4 w-4/5">
 
                   <label class="block mb-2 text-sm font-bold text-black">Lieu de Naissance</label>
-                  <input type="text" readonly value="{{CopieSelected?.enfant?.lieunaissEnfant}}"
+                  <input type="text" readonly formControlName="lieunaissHomme" value="{{CopieSelected?.enfant?.lieunaissEnfant}}"
                     class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
                     placeholder="Saisir Lieu de Naissance de l'enfant" />
 
@@ -447,7 +440,7 @@
     border-red-600 transition">
               Annuler</button>
             <div class="flex-auto flex flex-row-reverse">
-              <button mat-button matStepperNext class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
+              <button mat-button (click)="SecondHommeInterne()" matStepperNext class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
     hover:bg-teal-600  
     bg-teal-600 
     text-teal-100 
@@ -1030,7 +1023,7 @@
 
       <mat-step [stepControl]="PereHommeFormGroup" *ngIf="isTypeFemme == true">
         <form [formGroup]="PereFemmeFormGroup">
-          <ng-template *ngIf="isTypeHomme == true" matStepLabel> Père <br>
+          <ng-template *ngIf="isTypeFemme == true" matStepLabel> Père <br>
             <span class="font-normal text-xs text-gray-400">Information personnel</span>
           </ng-template>
 
@@ -1179,7 +1172,7 @@
       border-red-600 transition">
             Annuler</button>
           <div class="flex-auto flex flex-row-reverse">
-            <button mat-button matStepperNext class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
+            <button (click)="OpenActeMariage()" mat-button matStepperNext class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
     hover:bg-blue-600  
     bg-blue-600 
     text-blue-100 

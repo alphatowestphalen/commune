@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatStepper } from '@angular/material/stepper/index.js';
+import { Router } from '@angular/router';
 import { filter, distinctUntilChanged, debounceTime, tap, switchMap, finalize } from 'rxjs';
 import { MaireService } from 'src/app/modules/dashboard/services/maire.service';
 import { PremiereCopieService } from 'src/app/modules/dashboard/services/premiere-copie.service';
@@ -36,21 +38,31 @@ export class MariageAddComponent implements OnInit {
 
 
 
-  constructor(private _formBuilder: FormBuilder, private maireservice: MaireService, private premiercopieService: PremiereCopieService) { }
+  constructor(private _formBuilder: FormBuilder, private maireservice: MaireService,
+    private dialog:MatDialog, private premiercopieService: PremiereCopieService) { }
   today = new Date();
   PiecesFormGroup = this._formBuilder.group({
-    typeHomme: [''],
-    typeFemme: [''],
+    typeHomme: new FormControl(),
+    typeFemme: new FormControl(),
     idCopieMariage: new FormControl(),
-    dateCopieMariage: this.today,
-    heureCopieMariage: this.today,
+    dateCopieMariage: this.today.toLocaleDateString('fr-FR',{
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'}),
+    heureCopieMariage: this.today.toLocaleTimeString('fr-FR',{
+      hour: 'numeric',
+      minute: 'numeric'}),
+    
+
+  });
+
+  MaireFormGroup = this._formBuilder.group ({
     idMaire: [''],
     nomMaire: [''],
     prenomsMaire: new FormControl(),
     fonction: new FormControl(),
-    dateregistre: ['']
-
-  });
+  })
   FemmeFormGroup = this._formBuilder.group({
     nomFemme: [''],
     prenomsFemme: [''],
@@ -59,7 +71,7 @@ export class MariageAddComponent implements OnInit {
     datenaissFemme: [''],
     lieunaissFemme: [''],
     adresseFemme: [''],
-    typeFemme: [''],
+   
 
   });
 
@@ -67,10 +79,9 @@ export class MariageAddComponent implements OnInit {
     nomMere: [''],
     prenomsMere: '',
     datenaissMere: [''],
-    dateMere: [''],
     lieuNaissMere: [''],
     professionMere: [''],
-    adressMere: [''],
+    adresseMere: [''],
   })
 
 
@@ -92,7 +103,7 @@ export class MariageAddComponent implements OnInit {
     datenaissHomme: [''],
     lieunaissHomme: [''],
     adresseHomme: [''],
-    typeHomme: [''],
+  
   });
 
   MereHommeFormGroup = this._formBuilder.group({
@@ -102,7 +113,7 @@ export class MariageAddComponent implements OnInit {
     dateMere: [''],
     lieuNaissMere: [''],
     professionMere: [''],
-    adressMere: [''],
+    adresseMere: [''],
   })
 
 
@@ -212,12 +223,115 @@ export class MariageAddComponent implements OnInit {
   MaireSelect(value: any) {
     this.maireservice.getMaireById(value)
     .subscribe(data=>{
-      this.PiecesFormGroup.value.prenomsMaire= data.prenomsMaire;
-      this.PiecesFormGroup.value.fonction = data.fonction;
-      console.log(data);
+      this.MaireFormGroup.value.nomMaire = data.nomMaire;
+      this.MaireFormGroup.value.prenomsMaire= data.prenomsMaire;
+      this.MaireFormGroup.value.fonction = data.fonction;
+      console.log(this.MaireFormGroup.value);
     })
-    this.MaireSelected = this.MaireSelected;
+  }
+
+  OpenActeMariage() {
+console.log(this.MaireFormGroup.value, this.PiecesFormGroup.value)
+     if (
+       this.PiecesFormGroup.valid &&
+       this.MaireFormGroup.valid &&
+       this.HommeFormGroup.valid &&
+       this.FemmeFormGroup.valid &&
+       this.MereHommeFormGroup.valid &&
+       this.PereHommeFormGroup.valid &&
+       this.MereFemmeFormGroup.valid &&
+       this.PereFemmeFormGroup.valid &&
+       this.TemoinHommeGroup && this.TemoinFemmeGroup
+     ) {
+      //  this.EnfantFormGroup.value.dateEnfant =  this.datenaiss
+      //  this.MereFormGroup.value.dateMere =  this.datenaissMere
+      //  this.PereFormGroup.value.datePere =  this.datenaissPere
+      //  this.DeclarantFormGroup.value.dateDeclarant =  this.datenaissDeclarant
+      //  this.MaireFormGroup.value.dateregistre = this.dateregistre
+        this.data = {
+         ...this.PiecesFormGroup.value,
+         ...this.MaireFormGroup.value,
+         ...this.HommeFormGroup.value,
+         ...this.FemmeFormGroup.value,
+         ...this.MereFemmeFormGroup.value,
+         ...this.PereFemmeFormGroup.value,
+         ...this.MereHommeFormGroup.value,
+         ...this.PereHommeFormGroup.value,
+         ...this.TemoinFemmeGroup.value,
+         ...this.TemoinHommeGroup.value,
+       };
+       const dialogRef = this.dialog.open(AfficheMariageComponent, {
+         maxWidth: '100vw',
+         maxHeight: '100vh',
+         height: '90%',
+         width: '85%',
+         panelClass: 'full-screen-modal',
+         data : this.data
+       });
+     }
+ 
+     // console.log(this.data);
+   }
+
+   FirstStep(){
+ //  console.log(this.PiecesFormGroup.value, this.MaireFormGroup.value)
+   }
+
+   SecondStep(){  
+ // console.log(this.HommeFormGroup.value, this.PiecesFormGroup.value)
+ 
+   }
+
+   SecondHommeInterne(){
+  
    
+
+    this.HommeFormGroup.value.nomHomme = this.CopieSelected.enfant.nomEnfant,
+    this.HommeFormGroup.value.prenomsHomme = this.CopieSelected.enfant.prenomsEnfant,
+    this.HommeFormGroup.value.datenaissHomme = this.CopieSelected.enfant.datenaissEnfant,
+    this.HommeFormGroup.value.lieunaissHomme = this.CopieSelected.enfant.lieunaissEnfant,
+    this.HommeFormGroup.value.nationalHomme = "Malagasy"
+
+    this.PereHommeFormGroup.value.nomPere = this.CopieSelected.pere.nomPere,
+    this.PereHommeFormGroup.value.prenomsPere = this.CopieSelected.pere.prenomsPere,
+    this.PereHommeFormGroup.value.datenaissPere = this.CopieSelected.pere.datenaissPere,
+    this.PereHommeFormGroup.value.lieuNaissPere = this.CopieSelected.pere.lieuNaissPere,
+    this.PereHommeFormGroup.value.adressPere = this.CopieSelected.pere.adressePere,
+    this.PereHommeFormGroup.value.professionPere = this.CopieSelected.pere.professionPere,
+
+    this.MereHommeFormGroup.value.nomMere = this.CopieSelected.mere.nomMere,
+    this.MereHommeFormGroup.value.prenomsMere = this.CopieSelected.mere.prenomsMere,
+    this.MereHommeFormGroup.value.datenaissMere = this.CopieSelected.mere.datenaissMere;
+    this.MereHommeFormGroup.value.lieuNaissMere = this.CopieSelected.mere.lieuNaissMere;
+    this.MereHommeFormGroup.value.professionMere = this.CopieSelected.mere.professionMere;
+    this.MereHommeFormGroup.value.adresseMere = this.CopieSelected.mere.adresseMere;
+   }
+
+
+  
+   
+}
+
+@Component({
+  selector: 'affiche-mariage',
+  templateUrl: 'affiche-mariage.component.html',
+})
+export class AfficheMariageComponent {
+  constructor(@Inject (MAT_DIALOG_DATA) public data: any,
+   public dialog: MatDialog, private router:Router  ) {}
+
+  ngOnInit() {
+  console.log(this.data)
+  }
+
+  saveCertificate(){
+  
+    // this.premierecopieservice.addFirstCertificates(this.data).subscribe(data=>{
+
+    //   const dialogRef = this.dialog.closeAll();
+    //   this.router.navigate(['/dashboard/premiere-copie']);
+    // })
+    console.log(this.data)
 
   }
 }
