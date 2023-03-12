@@ -5,6 +5,7 @@ import { MatStepper } from '@angular/material/stepper/index.js';
 import { Router } from '@angular/router';
 import { filter, distinctUntilChanged, debounceTime, tap, switchMap, finalize } from 'rxjs';
 import { MaireService } from 'src/app/modules/dashboard/services/maire.service';
+import { MariageService } from 'src/app/modules/dashboard/services/mariage.service';
 import { PremiereCopieService } from 'src/app/modules/dashboard/services/premiere-copie.service';
 import "../../../../../../../assets/js/nombrelettre.js";
 
@@ -337,19 +338,19 @@ console.log(this.MaireFormGroup.value, this.PiecesFormGroup.value)
 })
 export class AfficheMariageComponent {
   constructor(@Inject (MAT_DIALOG_DATA) public data: any,
-   public dialog: MatDialog, private router:Router  ) {}
+   public dialog: MatDialog, private router:Router , private mariageservice: MariageService ) {}
 
   ngOnInit() {
   console.log(this.data)
   }
 
-  saveCertificate(){
-  
-    // this.premierecopieservice.addFirstCertificates(this.data).subscribe(data=>{
+  saveMariage(){
 
-    //   const dialogRef = this.dialog.closeAll();
-    //   this.router.navigate(['/dashboard/premiere-copie']);
-    // })
+    this.mariageservice.addMariage(this.data, this.data.typeHomme, this.data.typeFemme)
+    .subscribe((data: any)=>{
+            const dialogRef = this.dialog.closeAll();
+      this.router.navigate(['/dashboard/premiere-copie']);
+    })
     console.log(this.data)
 
   }

@@ -430,7 +430,7 @@
                     <div class="mb-4 w-4/5">
 
                       <label class="block mb-2 text-sm font-bold text-black">Profession</label>
-                      <input type="text" readonly formControlName="professionHomme"
+                      <input type="text"  formControlName="professionHomme"
                         class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
                         placeholder="Saisir Date de Naissance l'enfant" />
 
@@ -439,7 +439,7 @@
                     <div class="mb-4 w-4/5">
 
                       <label class="block mb-2 text-sm font-bold text-black">Adresse Exacte</label>
-                      <input type="text" readonly formControlName="adresseHomme"
+                      <input type="text"  formControlName="adresseHomme"
                         class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
                         placeholder="Saisir Lieu de Naissance de l'enfant" />
 
@@ -724,6 +724,9 @@
         </form>
       </mat-step>
 
+
+     <!-- INFORMATION FEMMME  -->
+     
       <mat-step [stepControl]="PiecesFormGroup">
         <form [formGroup]="PiecesFormGroup">
           <ng-template matStepLabel> Personne <br>
@@ -880,56 +883,75 @@
             <br>
 
 
-            <ng-template *ngIf="CopieSelected?.idPremierCopie ">
+            <ng-container *ngIf="errorMsg; else elseTemplate">
+              {{errorMsg}}
+            </ng-container>
+            <ng-template #elseTemplate>
+              <span *ngIf="CopieSelected?.idPremierCopie">
+                <div class=" lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
+                  <div class="mb-4 w-4/5">
 
-              <div class=" lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
-                <div class="mb-4 w-4/5">
+                    <label class="block mb-2 text-sm font-bold text-black">Nom de l'enfant</label>
+                    <input type="text" readonly value="{{CopieSelected?.enfant.nomEnfant}}"
+                      class="bg-gray-50 block uppercase w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                      placeholder="Saisir nom de l'enfant" />
 
-                  <label class="block mb-2 text-sm font-bold text-black">Nom de l'enfant</label>
-                  <input type="text" readonly value="{{CopieSelected?.enfant.nomEnfant}}"
-                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                    placeholder="Saisir nom de l'enfant" />
+                  </div>
+                  <div class="mb-4 w-4/5">
 
-                </div>
-                <div class="mb-4 w-4/5">
+                    <label class="block mb-2 text-sm font-bold text-black">Prenoms de l'enfant</label>
+                    <input type="text" readonly value="{{CopieSelected?.enfant.prenomsEnfant}}"
+                      class="bg-gray-50 block capitalize w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                      placeholder="Saisir Prenoms de l'enfant" />
 
-                  <label class="block mb-2 text-sm font-bold text-black">Prenoms de l'enfant</label>
-                  <input type="text" readonly value="{{CopieSelected?.enfant.prenomsEnfant}}"
-                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                    placeholder="Saisir Prenoms de l'enfant" />
-
-                </div>
-
-              </div>
-              <div class="lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
-                <div class="mb-4 w-4/5">
-
-                  <label class="block mb-2 text-sm font-bold text-black">Date de Naissance</label>
-                  <input type="text" readonly value="{{CopieSelected?.enfant?.datenaissEnfant}}"
-                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                    placeholder="Saisir Date de Naissance l'enfant" />
+                  </div>
 
                 </div>
-                <div class="mb-4 w-4/5">
+                <div class="lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
+                  <div class="mb-4 w-4/5">
 
-                  <label class="block mb-2 text-sm font-bold text-black">Heure de naissance</label>
-                  <input type="text" readonly value="{{CopieSelected?.enfant?.heurenaissEnfant}}"
-                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                    placeholder="Saisir heure de Naissancede l'enfant" />
+                    <label class="block mb-2 text-sm font-bold text-black">Date de Naissance</label>
+                    <input type="text" readonly value="{{CopieSelected?.enfant?.datenaissEnfant}}"
+                      class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                      placeholder="Saisir Date de Naissance l'enfant" />
 
+                  </div>
+
+                  <div class="mb-4 w-4/5">
+
+                    <label class="block mb-2 text-sm font-bold text-black">Lieu de Naissance</label>
+                    <input type="text" readonly value="{{CopieSelected?.enfant?.lieunaissEnfant}}"
+                      class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                      placeholder="Saisir Lieu de Naissance de l'enfant" />
+
+                  </div>
                 </div>
-              </div>
-              <div class="lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
-                <div class="mb-4 w-4/5">
+                <span [hidden]="!CopieSelected.idPremierCopie">
+                  <p class="underline text-sm text-gray-500">Information utile Homme :</p>
 
-                  <label class="block mb-2 text-sm font-bold text-black">Lieu de Naissance</label>
-                  <input type="text" readonly value="{{CopieSelected?.enfant?.lieunaissEnfant}}"
-                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                    placeholder="Saisir Lieu de Naissance de l'enfant" />
+                  <div class="lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
+                    <div class="mb-4 w-4/5">
 
-                </div>
+                      <label class="block mb-2 text-sm font-bold text-black">Profession</label>
+                      <input type="text"  formControlName="professionFemme"
+                        class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                        placeholder="Saisir Date de Naissance l'enfant" />
 
-              </div>
+                    </div>
+
+                    <div class="mb-4 w-4/5">
+
+                      <label class="block mb-2 text-sm font-bold text-black">Adresse Exacte</label>
+                      <input type="text"  formControlName="adresseFemme"
+                        class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                        placeholder="Saisir Lieu de Naissance de l'enfant" />
+
+                    </div>
+
+                  </div>
+                </span>
+              </span>
+
 
             </ng-template>
 
@@ -944,7 +966,7 @@
             border duration-200 ease-in-out 
             border-gray-600 transition">Prècedent</button>
             <div class="flex-auto flex flex-row-reverse">
-              <button mat-button matStepperNext class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
+              <button mat-button (click)="SecondFemmeInterne()" matStepperNext class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
     hover:bg-teal-600  
     bg-teal-600 
     text-teal-100 
