@@ -1,8 +1,8 @@
 import { FormService } from '../../../services/form.service';
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
 import { SurveyCreatorModel } from 'survey-creator-core';
 import { Model } from 'survey-core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { PageEvent } from '@angular/material/paginator';
 import { Router } from '@angular/router';
 import { Column } from '../../../models/column';
@@ -70,21 +70,68 @@ export class BulletinComponent implements OnInit {
     this.formService.getFormByTitle(this.formName).subscribe((data: any) => {
       this.defaultJson = data.form.content;
       const survey = new Model(this.defaultJson);
+
       survey.onComplete.add(function (sender, options) {
-        options.showDataSaving();
-        $.bulletinService.saveBulletin(sender, options).subscribe(
-          (data) => {
-            options.showDataSavingSuccess();
-          },
-          (error) => {
-            options.showDataSavingError();
-          }
-        );
+      //  options.showDataSaving();
+        $.OpenDialog(sender,options);
+   
       });
       this.surveyModel = survey;
     });
     // const creator = new SurveyCreatorModel(this.creatorOptions);
     // creator.text = JSON.stringify(this.defaultJson);
     // this.surveyCreatorModel = creator;
+  }
+
+  OpenDialog(sender: any, options:any){
+    const dialogRef = this.dialog.open(AfficheCopieComponent, {
+      maxWidth: '100vw',
+      maxHeight: '100vh',
+      height: '90%',
+      width: '85%',
+      panelClass: 'full-screen-modal',
+      data : [sender, options]
+
+    });
+
+  } 
+}
+
+
+
+@Component({
+  selector: 'bulletin-naissance',
+  templateUrl: 'bulletin-naissance.component.html',
+})
+export class AfficheCopieComponent {
+  constructor(@Inject (MAT_DIALOG_DATA) public data: any, private bulletinservice: BulletinNaissanceService,
+   public dialog: MatDialog, private router:Router  ) {}
+sender:any; options: any;
+  ngOnInit() {
+ 
+  this.sender = this.data[0],
+  this.options = this.data[1]
+ console.log(this.sender.valuesHash)
+  }
+
+  saveBulletin(){
+  
+    // this.bulletinservice.addFirstCertificates(this.data).subscribe(data=>{
+
+    //   const dialogRef = this.dialog.closeAll();
+    //   this.router.navigate(['/dashboard/premiere-copie']);
+    // })
+    this.bulletinservice.saveBulletin(this.sender, this.options).subscribe(
+      (data) => {
+        this.options.showDataSavingSuccess();   
+        const dialogRef = this.dialog.closeAll();
+         this.router.navigate(['/dashboard/bulletin-naissance-list']);  
+      },
+      (error) => {
+        this.options.showDataSavingError();
+      }
+    );
+    console.log(this.data)
+
   }
 }

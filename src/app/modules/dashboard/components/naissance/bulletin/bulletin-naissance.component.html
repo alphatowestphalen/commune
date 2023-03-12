@@ -210,37 +210,37 @@
                       <tbody>
                         <tr>
                           <td  class="px-6 py-4 font-medium whitespace-nowrap"> NOM</td>
-                          <td class="uppercase"> : {{data.nomPersonne}} </td>
+                          <td class="uppercase"> : {{sender.valuesHash.nomPersonne}} </td>
                         </tr>
                         <tr>
                           <td  class="px-6 py-4 font-medium whitespace-nowrap"> PRENOM</td>
-                          <td class="capitalize">: {{data.prenomsPersonne}}</td>
+                          <td class="capitalize">: {{sender.valuesHash.prenomsPersonne}}</td>
                          
                         </tr>
                         <tr>
                           <td  class="px-6 py-4 font-medium whitespace-nowrap"> NE(E) LE</td>
-                          <td>: {{data.dateNaissPersonne}}</td>
+                          <td>: {{sender.valuesHash.dateNaissPersonne}}</td>
 
                         </tr>
                         <tr>
                           <td  class="px-6 py-4 font-medium whitespace-nowrap"> A </td>
-                          <td>: {{data.lieuNaissPersonne}}</td>
+                          <td>: {{sender.valuesHash.lieuNaissPersonne}}</td>
 
                         </tr>
                         <tr>
                           <td  class="px-6 py-4 font-medium whitespace-nowrap">  FILS(LE)</td>
-                          <td>: <span class="uppercase"> {{data.nomPere}}</span> <span class="capitalize"> {{data.prenomsPere}}</span> </td>
+                          <td>: <span class="uppercase"> {{sender.valuesHash.nomPere}}</span> <span class="capitalize"> {{sender.valuesHash.prenomsPere}}</span> </td>
 
                         </tr>
                         <tr>
                           <td  class="px-6 py-4 font-medium whitespace-nowrap">  ET DE </td>
-                          <td>: <span class="uppercase">  {{data.nomMere}}</span> <span class="capitalize"></span> {{data.prenomsPere}}</td>
+                          <td>: <span class="uppercase">  {{sender.valuesHash.nomMere}}</span> <span class="capitalize"></span> {{sender.valuesHash.prenomsPere}}</td>
 
                         </tr>
                         
                         <tr>
                           <td  class="px-6 py-4 font-medium whitespace-nowrap">    N° ET DATE DE L'ACTE </td>
-                          <td>{{data.idPremierCopie}} du {{data.createdDate}}</td>
+                          <td>{{sender.valuesHash.idPremierCopie}} du {{sender.valuesHash.createdDate}}</td>
 
                         </tr>
                       </tbody>
@@ -289,7 +289,7 @@
   
   Cliquer pour modifier 
   </button>
-  <button  mat-button (click)="saveCertificate()" cdkFocusInitial
+  <button  mat-button (click)="saveBulletin()" cdkFocusInitial
   class="shadow-md inline-flex items-center ml-2 px-4 py-2 bg-green-400 hover:bg-teal-600 text-gray-800 text-sm font-medium rounded-md"
   >
   <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
