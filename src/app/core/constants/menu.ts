@@ -48,7 +48,7 @@ export class Menu {
         {
           icon: 'assets/icons/outline/users.svg',
           label: 'Acte de Celibataire',
-          route: '/users',
+          route: '/dashboard/celibat-list',
         },
       ],
     },
@@ -59,7 +59,7 @@ export class Menu {
         {
           icon: 'assets/icons/outline/cog.svg',
           label: 'Acte de Décés',
-          route: '/settings',
+          route: '/dashboard/deces-list',
         },
 
       ],
