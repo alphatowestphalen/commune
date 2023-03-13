@@ -80,6 +80,7 @@ export class NaissanceAddComponent implements OnInit {
     lieuNaissPere: '',
     professionPere: '',
     adressePere: '',
+    avoirPere: true, 
   });
 
   MereFormGroup = this._formBuilder.group({
@@ -218,6 +219,7 @@ export class NaissanceAddComponent implements OnInit {
       this.CopieFormGroup.value.idPremierCopie = data
       console.log(data)
     })
+    this.PereFormGroup.value.avoirPere = true;
     }
   printPage() {
     var printContents = document.getElementById('htmlData')!.innerHTML;
