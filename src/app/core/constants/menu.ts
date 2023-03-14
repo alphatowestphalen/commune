@@ -2,6 +2,7 @@ import { MenuItem } from '../models/menu.model';
 
 export class Menu {
   public static pages: MenuItem[] = [
+
     {
       group: 'Acte de Naissance',
       separator: false,
@@ -10,7 +11,7 @@ export class Menu {
         {
           icon: 'assets/icons/outline/chart-pie.svg',
           label: 'Première Copie',
-          route: '/dashboard',
+          route: '/dashboard/premiere-copie',
           children: [{ label: 'Création Copie', route: '/dashboard/premiere-copie' }],
         },
         {
