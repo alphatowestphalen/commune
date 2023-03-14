@@ -72,7 +72,7 @@ export class Menu {
         {
           icon: 'assets/icons/outline/cog.svg',
           label: 'Liste des Utilisateurs',
-          route: '/settings',
+          route: '/dashboard/utilisateur-list',
         },
        
       ],

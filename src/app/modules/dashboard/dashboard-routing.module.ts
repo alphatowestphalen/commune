@@ -21,6 +21,8 @@ import { MariageAddComponent } from './components/mariage/mariage/mariage-add/ma
 import { DivorceComponent } from './components/mariage/divorce/divorce.component';
 import { CelibataireComponent } from './components/mariage/celibataire/celibataire.component';
 import { DecesComponent } from './components/deces/deces/deces.component';
+import { UtilisateurListComponent } from './components/utilisateur/utilisateur-list/utilisateur-list.component';
+import { UtilisateurAddComponent } from './components/utilisateur/utilisateur-add/utilisateur-add.component';
 
 const routes: Routes = [
   {
@@ -54,6 +56,8 @@ const routes: Routes = [
       {path: 'divorce-list', component: DivorceComponent},
       {path: 'celibat-list', component: CelibataireComponent},
       {path: 'deces-list', component: DecesComponent},
+      {path: 'utilisateur-list', component: UtilisateurListComponent},
+      {path: 'utilisateur-add', component: UtilisateurAddComponent},
 
       { path: '**', redirectTo: 'error/404' },
     ],
