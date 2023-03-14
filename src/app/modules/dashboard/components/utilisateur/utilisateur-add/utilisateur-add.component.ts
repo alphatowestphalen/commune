@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
+import { UtilisateurService } from '../../../services/utilisateur.service';
 
 @Component({
   selector: 'app-utilisateur-add',
@@ -7,9 +10,35 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UtilisateurAddComponent implements OnInit {
 
-  constructor() { }
+  UserFormGroup = this.formbuilder.group({
+    username: [''],
+    name: [''],
+    password: [''],
+    poste: [''],
+    phone: [''],
+    createdDate: new Date()
+  });
+
+ 
+
+  constructor(private formbuilder: FormBuilder , private utilisateurservice: UtilisateurService,  private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+
+  
+
+  saveUser(user:any){
+    console.log(user);
+    this.utilisateurservice.addUser(user)
+      .subscribe(user=>{
+        this.router.navigate(['/dashboard/utilisateur-list']);
+      })
+  }
+
+  cancelUser(){
+    this.router.navigate(['/dashboard/utilisateur-list'])
   }
 
 }

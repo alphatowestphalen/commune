@@ -13,8 +13,8 @@ private baseURl = environment.baseUrl+'/users'
 
 constructor(private http: HttpClient) { }
 
-getAllUsers(page: number, size: number):Observable<any>{
-    return this.http.get(`${this.baseURl}/page=${page}&size=${size}`)
+getAllUsers(size: number, page: number):Observable<any>{
+    return this.http.get(`${this.baseURl}?page=${page}&size=${size}`)
 }
 
 addUser(user:Object): Observable<any>{

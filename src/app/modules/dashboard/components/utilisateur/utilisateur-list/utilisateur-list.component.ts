@@ -23,25 +23,25 @@ export class UtilisateurListComponent implements OnInit {
  
   tableColumns: Array<Column> = [
    {
-     columnDef: 'idAdoption',
-     header: 'N° Adoption Copie',
-     cell: (element: Record<string, any>) => `${element['idAdoption']}`
+     columnDef: 'id',
+     header: 'N° Enregistrement',
+     cell: (element: Record<string, any>) => `${element['id']}`
    },
    {
      columnDef: 'nom',
      header: 'Nom et Prénoms',
-     cell: (element: Record<string, any>) => `${element['premierecopie']['enfant']['nomEnfant']} ${element ['premierecopie']['enfant']['prenomsEnfant']}`,
+     cell: (element: Record<string, any>) => `${element['name']} ${element ['username']}`,
    
    },
    {
      columnDef: 'dateAdoption',
-     header: 'Date d\'Adoption ',
-     cell: (element: Record<string, any>) => `${element['dateAdoption']}`
+     header: 'N° Téléphone ',
+     cell: (element: Record<string, any>) => `${element['phone']}`
    },
    {
-     columnDef: 'DatePremiereCopie',
-     header: 'Date 1ère Copie',
-     cell: (element: Record<string, any>) => `${element['premierecopie']['datePremierCopie']}`
+     columnDef: 'Poste',
+     header: 'Poste',
+     cell: (element: Record<string, any>) => `${element['poste']}`
    }
  ];
  
@@ -70,7 +70,7 @@ export class UtilisateurListComponent implements OnInit {
    ListAllUsers(size: number, page: number){
      this.utilisateurservice.getAllUsers(size, page)
      .subscribe(data=>{
-       this.tableData = data.adoption;
+       this.tableData = data.users;
      })
    }
 
