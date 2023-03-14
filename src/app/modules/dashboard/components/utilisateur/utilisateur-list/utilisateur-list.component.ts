@@ -28,18 +28,24 @@ export class UtilisateurListComponent implements OnInit {
      cell: (element: Record<string, any>) => `${element['id']}`
    },
    {
-     columnDef: 'nom',
-     header: 'Nom et Prénoms',
-     cell: (element: Record<string, any>) => `${element['name']} ${element ['username']}`,
+     columnDef: 'name',
+     header: 'Nom Complète',
+     cell: (element: Record<string, any>) => `${element['name']} `,
    
    },
    {
-     columnDef: 'dateAdoption',
+    columnDef: 'username',
+    header: 'Pseudo Nom',
+    cell: (element: Record<string, any>) => `${element ['username']}`,
+  
+  },
+   {
+     columnDef: 'phone',
      header: 'N° Téléphone ',
      cell: (element: Record<string, any>) => `${element['phone']}`
    },
    {
-     columnDef: 'Poste',
+     columnDef: 'poste',
      header: 'Poste',
      cell: (element: Record<string, any>) => `${element['poste']}`
    }
