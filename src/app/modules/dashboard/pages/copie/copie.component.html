@@ -1,150 +1,166 @@
+<div
+  class="relative transform overflow-auto rounded-lg bg-white text-left lg:h-full lg:max-w-[75%] shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg"
+>
+  <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 mt-2">
+    <div class="page" id="htmlData">
+      <header>
+        <h1 class="heading">
+          Teny midina faha-788-MJ/CAB <br />
+          tamin'ny 29 Desambra 1961 nataon'ny <br />
+          Ministry ny Fitsarana sy ny Mpitahiry
+        </h1>
+        <img
+          class="repoblika"
+          src="@/../../../../../../../assets/images/Repoblika.jpg"
+          alt=""
+        />
+        <img
+          class="bongolava"
+          src="@/../../../../../../../assets/images/bongolava-logo.jpg"
+          alt=""
+        />
+      </header>
 
-    <div  class="relative transform overflow-auto rounded-lg bg-white text-left  lg:h-full lg:max-w-[75%] shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
-        <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 mt-2">
-          <div class="page" id="htmlcopie" #content>
-            <header>
-              <h1 class="heading">Teny midina faha-788-MJ/CAB <br> tamin'ny 29 Desambra 1961 nataon'ny <br> Ministry ny
-                Fitsarana sy ny Mpitahiry </h1>
-              <img class="repoblika" src="@/../../../../../../../assets/images/Repoblika.jpg" alt="">
-              <img class="bongolava" src="@/../../../../../../../assets/images/bongolava-logo.jpg" alt="">
-    
-            </header>
-    
-            <main class="main">
-                <aside class="main__left">
-                  <section class="section">
-      
-                    <img class="commune" src="@/../../../../../../../assets/images/FIANARANTSOA.png" alt="">
-      
-                    <p class="kaominina">Kaominina Andrenivohitra Fianarantsoa</p>
-      
-                    <p class="section__title my-5">Faha : {{copie.idPremierCopie}}</p>
-      
-                    <p class="section__title mt-5">Tamin'ny <br> <span class="ml-0 pr-10">{{copie.enfant.datenaissEnfant}}</span> </p>
-      
-                    <div class="section__content">
-                      <div class="section__entry">
-                        <div class="section_title">
-                          Fahaterahana
-      
-                        </div>
-                      </div>
-                      <div class="section__entry">
-                        <div class="section_content font-medium">
-                          {{copie.enfant.nomEnfant}} {{copie.enfant.prenomsEnfant}}
-                        </div>
-                      </div>
-      
-                      <div class="section__entry">
-                        <div class="section_content ml-5 my-20">
-                          {{copie.enfant.datenaissEnfant}}
-                        </div>
-                      </div>
-      
-                    </div>
-                  </section>
-      
-                  <section class="section">
-      
-      
-                    <div class="section__content">
-                      <p class="section__entry">Tsy asiana hajia araka <br>
-                        ny and. 416-n'ny CGET</p>
-      
-                    </div>
-                  </section>
-      
-                  <section class="section">
-      
-      
-                    <div class="section__content">
-                      <p class="section__entry font-semibold">Soratra an-tsisiny</p>
-      
-                    </div>
-                  </section>
-      
-                </aside>
-      
-                <div class="main__right">
-                  <section class="section">
-                    <p class="faritra">FARITRA BONGOLAVA</p>
-                    <div class="timeline__title mt-10 ml-20">
-                      <span>KOPIAN'NY SORAM-PIANKOHONANA</span>
-                    </div>
-                    <div class="section__contentt">
-                      <div class="timeline">
-                        <div class="timeline__content">
-                          <p class="mb-5">
-                            <span class="pl-10">Nalaina tamin'ny bokim-pianakaviana , tamin'ny taona roa sy roa arivo
-                              ,</span>
-                            voatahiry ato amin'ny Kaominina Ambonivohitra Fianarantsoa izao soratra manaraka izao:
-                          </p>
-                        </div>
-                      </div>
-                      <div class="timeline">
-                        <div class="timeline__content ">
-                          <p class="mb-5">
-                            <span class="pl-10">Tamin'ny {{copie.enfant.dateEnfant}} </span>, tamin'ny ira ora maraina sy efapolo
-                            minitra,
-                            no teraka tao Amin'ny {{copie.enfant.lieuNaissEnfant}}, {{copie.enfant.nomEnfant}} {{copie.enfant.prenomsEnfant}}, {{copie.enfant.sexeEnfant}},
-                            zanak'i
-                            {{copie.pere.nomPere}} {{copie.pere.prenomsPere}}
-                            ,{{copie.pere.professionPere}}, teraka tamin'ny {{copie.pere.datePere}} tao {{copie.pere.lieuNaissPere}}
-                            , sy {{copie.mere.nomMere}}, {{copie.mere.prenomsMere}}, teraka tamin'ny {{copie.mere.dateMere}} tao {{copie.mere.lieuNaissMere}}
-                            , samy monina ao {{copie.mere.adresseMere}}
-                          </p>
-      
-                        </div>
-                      </div>
-                      <div class="timeline">
-                        <div class="timeline__content ">
-                          <p class="mb-5">
-                            <span class="pl-10">Nosoratana androany {{copie.datePremierCopie}} </span> 
-                            tamin'ny valo ora maraina sy folo minitra, araka ny fanamabarana nataon'i {{copie.declarant.nomDeclarant}},
-                            Mampivelona,
-                            teraka
-                            tamin'ny {{copie.declarant.dateDeclarant}} tao Antsirabe, monina ao
-                            {{copie.declarant.adresseDeclarant}}, izay
-                            miaraka manao sonia aminay. {{copie.maire.nomMaire}},{{copie.maire.fonction}} 
-                            ao amin'ny
-                            Commune Rurale d'Ankadinondry, rehefa novakiana ity soratra ity.
-                          </p>
-      
-                        </div>
-                      </div>
-                    </div>
-      
-                    <div class=" text-sm font-normal ml-48 mb-3">
-                      <span>-MANARAKA NY SONIA-</span>
-                    </div>
-                    <span class="pl-10 text-sm font-normal" >-SORATRA AN-TSISINY </span>
-                    <div *ngFor="let mention of copie.mentions">
-                        <app-mention [mention]="mention"></app-mention>
-                    </div>
+      <main class="main">
+        <aside class="main__left">
+          <section class="section">
+            <img
+              class="commune"
+              src="@/../../../../../../../assets/images/FIANARANTSOA.png"
+              alt=""
+            />
 
-                    <div class="section__contentt">
-                      <div class="timeline">
-                        <div class="timeline__content">
-                          <p class="mb-5">
-                            <span class="pl-10">Kopia manontolo nadika tamin'ny boky androany telo aprily roa sy roa arivo
-                            </span>
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-      
-                    <div class=" text-sm font-normal ml-20">
-                      <span>NY MPIANDRAIKITRA NY SORAM-PIANKOHONANA</span>
-                    </div>
-                  </section>
+            <p class="kaominina">Kaominina Andrenivohitra Fianarantsoa</p>
+
+            <p class="section__title my-5">Faha : {{ copie.idPremierCopie }}</p>
+
+            <p class="section__title mt-5">
+              Tamin'ny <br />
+              <span class="ml-0 pr-10">{{ copie.enfant.datenaissEnfant }}</span>
+            </p>
+
+            <div class="section__content">
+              <div class="section__entry">
+                <div class="section_title">Fahaterahana</div>
+              </div>
+              <div class="section__entry">
+                <div class="section_content font-medium">
+                  {{ copie.enfant.nomEnfant }} {{ copie.enfant.prenomsEnfant }}
                 </div>
-              </main>
-          </div>
-    
-    
-        </form>
-    
-      </div>
+              </div>
 
+              <div class="section__entry">
+                <div class="section_content ml-5 my-20">
+                  {{ copie.enfant.datenaissEnfant }}
+                </div>
+              </div>
+            </div>
+          </section>
 
- 
+          <section class="section">
+            <div class="section__content">
+              <p class="section__entry">
+                Tsy asiana hajia araka <br />
+                ny and. 416-n'ny CGET
+              </p>
+            </div>
+          </section>
+
+          <section class="section">
+            <div class="section__content">
+              <p class="section__entry font-semibold">Soratra an-tsisiny</p>
+            </div>
+          </section>
+        </aside>
+
+        <div class="main__right">
+          <section class="section">
+            <p class="faritra">FARITRA BONGOLAVA</p>
+            <div class="timeline__title mt-10 ml-20">
+              <span>KOPIAN'NY SORAM-PIANKOHONANA</span>
+            </div>
+            <div class="section__contentt">
+              <div class="timeline">
+                <div class="timeline__content">
+                  <p class="mb-5">
+                    <span class="pl-10"
+                      >Nalaina tamin'ny bokim-pianakaviana , tamin'ny taona roa
+                      sy roa arivo ,</span
+                    >
+                    voatahiry ato amin'ny Kaominina Ambonivohitra Fianarantsoa
+                    izao soratra manaraka izao:
+                  </p>
+                </div>
+              </div>
+              <div class="timeline">
+                <div class="timeline__content">
+                  <p class="mb-5">
+                    <span class="pl-10"
+                      >Tamin'ny {{ copie.enfant.dateEnfant }} </span
+                    >, tamin'ny ira ora maraina sy efapolo minitra, no teraka
+                    tao Amin'ny {{ copie.enfant.lieuNaissEnfant }},
+                    {{ copie.enfant.nomEnfant }}
+                    {{ copie.enfant.prenomsEnfant }},
+                    {{ copie.enfant.sexeEnfant }}, zanak'i
+                    {{ copie.pere.nomPere }} {{ copie.pere.prenomsPere }} ,{{
+                      copie.pere.professionPere
+                    }}, teraka tamin'ny {{ copie.pere.datePere }} tao
+                    {{ copie.pere.lieuNaissPere }} , sy
+                    {{ copie.mere.nomMere }}, {{ copie.mere.prenomsMere }},
+                    teraka tamin'ny {{ copie.mere.dateMere }} tao
+                    {{ copie.mere.lieuNaissMere }} , samy monina ao
+                    {{ copie.mere.adresseMere }}
+                  </p>
+                </div>
+              </div>
+              <div class="timeline">
+                <div class="timeline__content">
+                  <p class="mb-5">
+                    <span class="pl-10"
+                      >Nosoratana androany {{ copie.datePremierCopie }}
+                    </span>
+                    tamin'ny valo ora maraina sy folo minitra, araka ny
+                    fanamabarana nataon'i {{ copie.declarant.nomDeclarant }},
+                    Mampivelona, teraka tamin'ny
+                    {{ copie.declarant.dateDeclarant }} tao Antsirabe, monina ao
+                    {{ copie.declarant.adresseDeclarant }}, izay miaraka manao
+                    sonia aminay. {{ copie.maire.nomMaire }},{{
+                      copie.maire.fonction
+                    }}
+                    ao amin'ny Commune Rurale d'Ankadinondry, rehefa novakiana
+                    ity soratra ity.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="text-sm font-normal ml-48 mb-3">
+              <span>-MANARAKA NY SONIA-</span>
+            </div>
+            <span class="pl-10 text-sm font-normal">-SORATRA AN-TSISINY </span>
+            <div *ngFor="let mention of copie.mentions">
+              <app-mention [mention]="mention"></app-mention>
+            </div>
+
+            <div class="section__contentt">
+              <div class="timeline">
+                <div class="timeline__content">
+                  <p class="mb-5">
+                    <span class="pl-10"
+                      >Kopia manontolo nadika tamin'ny boky androany telo aprily
+                      roa sy roa arivo
+                    </span>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="text-sm font-normal ml-20">
+              <span>NY MPIANDRAIKITRA NY SORAM-PIANKOHONANA</span>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+  </form>
+</div>
