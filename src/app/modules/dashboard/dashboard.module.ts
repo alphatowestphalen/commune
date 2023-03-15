@@ -53,6 +53,8 @@ import { DivorceComponent } from './components/mariage/divorce/divorce.component
 import { MariageAddComponent } from './components/mariage/mariage/mariage-add/mariage-add.component';
 import { TableMariageComponent } from './pages/table-mariage/table-mariage.component';
 import { CelibataireComponent } from './components/mariage/celibataire/celibataire.component';
+import { UtilisateurListComponent } from './components/utilisateur/utilisateur-list/utilisateur-list.component';
+import { UtilisateurAddComponent } from './components/utilisateur/utilisateur-add/utilisateur-add.component';
 @NgModule({
   exports: [SurveyCreatorModule, SurveyModule],
   declarations: [
@@ -86,7 +88,9 @@ import { CelibataireComponent } from './components/mariage/celibataire/celibatai
     DivorceComponent,
     MariageAddComponent,
     TableMariageComponent,
-    CelibataireComponent
+    CelibataireComponent,
+    UtilisateurListComponent,
+    UtilisateurAddComponent
   ],
   imports: [
     CommonModule,

@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { BottomNavbarComponent } from './components/bottom-navbar/bottom-navbar.component';
@@ -34,5 +34,8 @@ import { LayoutComponent } from './layout.component';
     NavbarMobileSubmenuComponent,
   ],
   imports: [CommonModule, LayoutRoutingModule, HttpClientModule, AngularSvgIconModule.forRoot(), SharedModule],
+  exports: [NavbarComponent, SidebarComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+
 })
 export class LayoutModule {}

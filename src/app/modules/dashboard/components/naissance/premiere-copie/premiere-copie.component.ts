@@ -23,19 +23,37 @@ export class PremiereCopieComponent implements OnInit {
     },
     {
       columnDef: 'descriptionRow',
-      header: 'Description',
-      cell: (element: Record<string, any>) => `${element['descriptionRow']} `,
-    
+      header: 'Nom et Prènoms',
+      cell: (element: Record<string, any>) => {
+        const nomEnfant = element['enfant']['nomEnfant']
+        const prenomEnfant = element['enfant']['prenomsEnfant']
+        const NomEnfant = nomEnfant.toUpperCase()
+        return `${NomEnfant} ${prenomEnfant}`
+      },
+
     },
     {
-      columnDef: 'mention',
-      header: 'Mention',
-      cell: (element: Record<string, any>) => `${element['mention']}`
+      columnDef: 'datenaiss',
+      header: 'Date et Heure de Naissance',
+      cell: (element: Record<string, any>) => {
+        const datenaissEnfant = element['enfant']['datenaissEnfant'];
+        const heurenaissEnfant = element['enfant']['heurenaissEnfant'];
+        const dateObj = new Date(`${datenaissEnfant}T${heurenaissEnfant}:00`); 
+        const formattedDate = `${dateObj.getDate().toString().padStart(2, '0')}/${(dateObj.getMonth() + 1).toString().padStart(2, '0')}/${dateObj.getFullYear()}`;
+        const formattedTime = `${dateObj.getHours().toString().padStart(2, '0')}:${dateObj.getMinutes().toString().padStart(2, '0')}`;
+        return `${formattedDate} ${formattedTime}`;
+      }
     },
     {
       columnDef: 'DatePremiereCopie',
-      header: 'Date Copie',
-      cell: (element: Record<string, any>) => `${element['datePremierCopie']}`
+      header: 'Date Création Copie',
+
+      cell: (element: Record<string, any>) => {
+        const datenaissEnfant = element['datePremierCopie'];
+        const dateObj = new Date(datenaissEnfant);
+        const formattedDate = `${dateObj.getDate().toString().padStart(2, '0')}/${(dateObj.getMonth() + 1).toString().padStart(2, '0')}/${dateObj.getFullYear()}`;
+        return formattedDate;
+      }
     }
   ];
 
@@ -43,13 +61,13 @@ export class PremiereCopieComponent implements OnInit {
 
   showModal = false;
 
-  size:any = '';
+  size: any = '';
   page = 0;
 
   search: any = "";
 
 
-  constructor(private router:Router, public dialog: MatDialog, private premierecopieservice: PremiereCopieService) {
+  constructor(private router: Router, public dialog: MatDialog, private premierecopieservice: PremiereCopieService) {
   }
 
 
@@ -58,8 +76,8 @@ export class PremiereCopieComponent implements OnInit {
 
 
   ngOnInit(): void {
-   // this.getAllfirstCertificates();
-   this.getfirstCertificates(this.size, this.page)
+    // this.getAllfirstCertificates();
+    this.getfirstCertificates(this.size, this.page)
   }
 
   applyFilter(filterValue: string) {
@@ -94,26 +112,26 @@ export class PremiereCopieComponent implements OnInit {
 
 
   showRow(element: any) {
-    this.router.navigate(['/dashboard/premiere-copie-voir', element.idPremierCopie ])
+    this.router.navigate(['/dashboard/premiere-copie-voir', element.idPremierCopie])
 
   }
 
   editRow(element: any) {
     console.log('Edit row', element);
     this.premierecopieservice.updateCertificate(element.idPremierCopie, element)
-      .subscribe(data=> {
+      .subscribe(data => {
         this.getfirstCertificates(this.size, this.page)
-        
+
       })
   }
 
   deleteRow(element: any) {
     this.premierecopieservice.deleteCertificate(element.idPremierCopie)
-      .subscribe(data=> { 
+      .subscribe(data => {
         this.getfirstCertificates(this.size, this.page)
         console.log('Delete row', data);
       })
-  
+
   }
 
 
