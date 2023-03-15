@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+
 
 import { FeaturesRoutingModule } from './features-routing.module';
 import { ScopedAComponent } from './components/scoped-a/scoped-a.component';
@@ -13,7 +16,8 @@ import { AngularSvgIconModule } from 'angular-svg-icon';
 @NgModule({
     declarations: [
         ScopedAComponent,
-        ScopedBComponent
+        ScopedBComponent,
+        
     ],
     imports: [
         CommonModule,
@@ -22,7 +26,9 @@ import { AngularSvgIconModule } from 'angular-svg-icon';
         HttpClientModule,
         FormsModule,
         ReactiveFormsModule,
+        MatTableModule,
         LayoutModule,
+        MatPaginatorModule,
         AngularSvgIconModule.forRoot()
     ]
 })
