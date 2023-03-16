@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/core/services/auth.service';
+import { TokenService } from 'src/app/core/services/token.service';
 
 @Component({
   selector: 'app-profile-menu',
@@ -7,12 +10,37 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileMenuComponent implements OnInit {
   public isMenuOpen = false;
+  
+  user: any = [];
 
-  constructor() {}
+  constructor(
+    private router: Router,
+    private authservice: AuthService,
+    private token: TokenService
+  ) {}
 
-  ngOnInit(): void {}
-
-  public toggleMenu(): void {
-    this.isMenuOpen = !this.isMenuOpen;
+  ngOnInit(): void {
+    this.CurrentUser();
   }
+
+
+ CurrentUser(){
+  this.authservice.profile().subscribe(data=>{
+    this.user = data
+    console.log(this.user)
+  })
+ }
+
+ Logout(){
+  this.authservice.logout().subscribe(()=>{
+    this.token.removeToken();
+    this.router.navigate(['sign-in']);
+  })
+ }
+
+ public toggleMenu(): void {
+  this.isMenuOpen = !this.isMenuOpen;
+}
+
+
 }

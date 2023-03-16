@@ -10,32 +10,14 @@ import { Router } from '@angular/router';
 })
 export class LayoutComponent implements OnInit {
 
-  user: any = [];
-
-  constructor(
-    private router: Router,
-    private authservice: AuthService,
-    private token: TokenService
-  ) {}
+  constructor( ) {}
 
   ngOnInit(): void {
-    this.CurrentUser();
+  
   }
 
 
- CurrentUser(){
-  this.authservice.profile().subscribe(data=>{
-    this.user = data
-    console.log(this.user)
-  })
- }
 
- Logout(){
-  this.authservice.logout().subscribe(()=>{
-    this.token.removeToken();
-    this.router.navigate(['sign-in']);
-  })
- }
 
 
 }
