@@ -2,17 +2,17 @@ import { MenuItem } from '../models/menu.model';
 
 export class Menu {
   public static pages: MenuItem[] = [
+
     {
       group: 'Acte de Naissance',
       separator: false,
-     
       
       items: [
         {
           icon: 'assets/icons/outline/chart-pie.svg',
           label: 'Première Copie',
-          route: '/dashboard',
-          children: [{ label: 'Création Copie', route: '/dashboard/premiere-copie' }],
+          route: '/dashboard/premiere-copie',
+         
         },
         {
           icon: 'assets/icons/outline/lock-closed.svg',
@@ -25,6 +25,11 @@ export class Menu {
        
           ],
         },
+        {
+          icon: 'assets/icons/outline/users.svg',
+          label: 'Bulletin de Naissance',
+          route: '/dashboard/bulletin-naissance-list',
+        },
       ],
     },
     {
@@ -34,18 +39,18 @@ export class Menu {
         {
           icon: 'assets/icons/outline/download.svg',
           label: 'Acte de Mariage ',
-          route: '/download',
+          route: '/dashboard/mariage-list',
         },
-        {
-          icon: 'assets/icons/outline/gift.svg',
-          label: 'Acte de Divorce',
-          route: '/gift',
-        },
-        {
-          icon: 'assets/icons/outline/users.svg',
-          label: 'Acte de Celibataire',
-          route: '/users',
-        },
+        // {
+        //   icon: 'assets/icons/outline/gift.svg',
+        //   label: 'Acte de Divorce',
+        //   route: '/dashboard/divorce-list',
+        // },
+        // {
+        //   icon: 'assets/icons/outline/users.svg',
+        //   label: 'Acte de Celibataire',
+        //   route: '/dashboard/celibat-list',
+        // },
       ],
     },
     {
@@ -55,7 +60,7 @@ export class Menu {
         {
           icon: 'assets/icons/outline/cog.svg',
           label: 'Acte de Décés',
-          route: '/settings',
+          route: '/dashboard/deces-list',
         },
 
       ],
@@ -67,7 +72,7 @@ export class Menu {
         {
           icon: 'assets/icons/outline/cog.svg',
           label: 'Liste des Utilisateurs',
-          route: '/settings',
+          route: '/dashboard/utilisateur-list',
         },
        
       ],

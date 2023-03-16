@@ -1,4 +1,10 @@
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<!-- <div class="mx-10">
+  <mat-form-field class="example" appearance="outline">
+    <mat-label>Saisir ici votre recherche...</mat-label>
+    <input matInput />
+  </mat-form-field>
+</div> -->
+<table mat-table [dataSource]="dataSource"   class="mat-elevation-z8">
   <ng-container
     *ngFor="let disCol of tableColumns let colIndex = index;"
     matColumnDef="{{disCol.columnDef}}"
@@ -17,6 +23,7 @@
   <ng-container matColumnDef="actions">
     <th mat-header-cell *matHeaderCellDef> Actions </th>
     <td mat-cell *matCellDef="let element">
+    
       <button mat-icon-button
       class="btn btn-sm font-normal lowercase modal-button text-xs bg-blue-600 px-4 py-2 text-white rounded-md mr-2" (click)="showRow(element)">voir</button>
      
@@ -27,6 +34,7 @@
       <button mat-icon-button
       class="btn btn-sm font-normal lowercase text-xs bg-red-600 px-4 py-2 text-white rounded-md mr-2"
        (click)="deleteRow(element)">Supprimer</button>
+       <ng-content (askEvent)="AskRow(element)"></ng-content>
     </td>
   </ng-container>
 
@@ -34,4 +42,11 @@
 
   <tr mat-row *matRowDef="let row; columns: displayedColumns.concat('actions');;"></tr>
 </table>
-<mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+<mat-paginator (page)="pageChange.emit($event)"
+               [pageSizeOptions]="[ 10, 20 , 1 , 5 , 50]" 
+               showFirstLastButtons>
+</mat-paginator>
+
+<!-- <mat-paginator #paginator [length]="totalRows" [pageIndex]="currentPage" [pageSize]="pageSize"
+[pageSizeOptions]="pageSizeOptions" (page)="pageChanged($event)" aria-label="Select page">
+</mat-paginator> -->

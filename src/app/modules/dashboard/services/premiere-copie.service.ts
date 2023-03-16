@@ -15,25 +15,36 @@ export class PremiereCopieService {
   constructor(private http: HttpClient) { }
 
 
-  getFirstCertificates(): Observable<any> {
+  getCertificates(size: number, page: number ): Observable<any> {
+    return this.http.get(`${this.baseUrl}?page=${page}&size=${size}`);
+  }
+
+  getFirstCertificates( ): Observable<any> {
     return this.http.get(`${this.baseUrl}`);
   }
+
 
   addFirstCertificates(premiereCopie: Object):Observable<Object> {
     return this.http.post(`${this.baseUrl}`,premiereCopie);
   }
 
-  getCertificateByID(idPremierCopie: number): Observable<any>{
+  getCertificateByID(idPremierCopie: any): Observable<any>{
     return this.http.get(`${this.baseUrl}/${idPremierCopie}`)
   }
 
-  updateCertificate(id:number, premierCopie: Object){
+  updateCertificate(id:number, premierCopie: Object): Observable<any>{
     return this.http.put(`${this.baseUrl}/${id}`, premierCopie)
   }
 
-  deleteCertificate(id:number){
+  deleteCertificate(id:number): Observable<any>{
     return this.http.delete(`${this.baseUrl}/${id}`)
   }
+
+ 
+  getLastIdCerticate():Observable<any>{
+    return this.http.get(`${this.baseUrl}/LastPremiereCopie`);
+  }
+
 
 
 }

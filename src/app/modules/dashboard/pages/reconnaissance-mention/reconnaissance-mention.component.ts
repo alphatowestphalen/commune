@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-reconnaissance-mention',
@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./reconnaissance-mention.component.scss']
 })
 export class ReconnaissanceMentionComponent implements OnInit {
+@Input()
+reconnaissance: any;
+
 
   constructor() { }
 

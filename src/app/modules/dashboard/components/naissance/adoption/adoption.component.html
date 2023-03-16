@@ -56,62 +56,12 @@
       
 
 
-     
-        <mat-table [dataSource]="dataSource" matSort>
-          <!-- ID Column -->
-          <ng-container matColumnDef="id">
-            <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
-            <mat-cell *matCellDef="let row"> {{ row.id }} </mat-cell>
-          </ng-container>
-      
-          <!-- Progress Column -->
-          <ng-container matColumnDef="datenaiss">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>
-              Date de Naissance
-            </mat-header-cell>
-            <mat-cell *matCellDef="let row"> {{ row.datenaiss }} </mat-cell>
-          </ng-container>
-      
-          <!-- Name Column -->
-          <ng-container matColumnDef="name">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>
-              Nom et Prènoms
-            </mat-header-cell>
-            <mat-cell *matCellDef="let row"> {{ row.name }} </mat-cell>
-          </ng-container>
-      
-          <!-- Color Column -->
-          <ng-container matColumnDef="dateenregistrement">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>
-              Date d'Enregistrement
-            </mat-header-cell>
-            <mat-cell *matCellDef="let row"> {{ row.dateenregitrement }} </mat-cell>
-          </ng-container>
-          <ng-container matColumnDef="actions">
-            <mat-header-cell *matHeaderCellDef> Actions</mat-header-cell>
-            <mat-cell *matCellDef="let row; let i = index">
-              <label
-                class="btn btn-sm font-normal lowercase modal-button text-xs bg-blue-600 px-4 py-2 text-white rounded-md mr-2"
-                for="my-modal" >
-                voir
-              </label>
-              <button mat-icon-button
-                class="btn btn-sm font-normal lowercase text-xs bg-green-600 px-4 py-2 text-white rounded-md mr-2"
-               >
-                editer
-              </button>
-              <button mat-icon-button
-                class="btn btn-sm font-normal lowercase text-xs bg-red-600 px-4 py-2 text-white rounded-md"
-               >
-               supprimer
-              </button>
-            </mat-cell>
-          </ng-container>
-      
-          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-          <mat-row *matRowDef="let row; columns: displayedColumns"> </mat-row>
-        </mat-table>
-        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+        <app-mat-table *ngIf="tableData && tableData.length >0" [search]="search"
+          [tableColumns]="tableColumns"
+          [tableData]="tableData" (editEvent)="editRow($event)" (pageChange)="handlePageChange($event)" (deleteEvent)="deleteRow($event)"  (showEvent)="showRow($event)" >
+        </app-mat-table>
+          <p *ngIf="!tableData || tableData.length === 0"><app-loading></app-loading></p>
+
         </div>
         </div>
     

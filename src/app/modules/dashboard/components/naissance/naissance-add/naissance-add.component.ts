@@ -8,6 +8,7 @@ import {
 import {
   AbstractControl,
   FormBuilder,
+  FormControl,
   FormGroup,
   Validators,
 } from '@angular/forms';
@@ -38,9 +39,11 @@ export class NaissanceAddComponent implements OnInit {
   datenaissPere: string | null | undefined;
   datenaissDeclarant: string | null | undefined;
   dateregistre: string | null | undefined;
-  
+  MaireSelected: any= [];
 
-  constructor(private _formBuilder: FormBuilder, public dialog: MatDialog, private maireservice: MaireService  ) {}
+  NumCopie: any;
+
+  constructor(private _formBuilder: FormBuilder, public dialog: MatDialog, private maireservice: MaireService,  private premierecopieservice: PremiereCopieService  ) {}
 
   PiecesFormGroup = this._formBuilder.group({
       certificatAccouch: true,
@@ -51,8 +54,7 @@ export class NaissanceAddComponent implements OnInit {
   });
   today = new Date();
   CopieFormGroup = this._formBuilder.group({
-    
-    idPremierCopie: [''],
+    idPremierCopie: new FormControl(),
     description: [''],
     datePCopie: this.today,
     datePremierCopie:this.today,
@@ -78,6 +80,7 @@ export class NaissanceAddComponent implements OnInit {
     lieuNaissPere: '',
     professionPere: '',
     adressePere: '',
+    avoirPere: true, 
   });
 
   MereFormGroup = this._formBuilder.group({
@@ -101,10 +104,11 @@ export class NaissanceAddComponent implements OnInit {
   MaireFormGroup = this._formBuilder.group({
     idMaire: [''],
     nomMaire: [''],
-    prenomsMaire: '',
-    fonction: [''],
+    prenomsMaire: new FormControl(),
+    fonction: new FormControl(),
     dateregistre: ['']
   });
+  
   @ViewChild('htmlData') htmlData!: ElementRef;
   ngOnInit(): void {
    this.getAllMaire();
@@ -209,6 +213,14 @@ export class NaissanceAddComponent implements OnInit {
       this.maire = data;
     })
   }
+
+  getLastNumPremierCopie(){
+    this.premierecopieservice.getLastIdCerticate().subscribe(data=>{
+      this.CopieFormGroup.value.idPremierCopie = data
+      console.log(data)
+    })
+    this.PereFormGroup.value.avoirPere = true;
+    }
   printPage() {
     var printContents = document.getElementById('htmlData')!.innerHTML;
     var originalContents = document.body.innerHTML;
@@ -220,6 +232,22 @@ export class NaissanceAddComponent implements OnInit {
     document.body.innerHTML = originalContents;
   }
 
+  onSelected(value: any) {
+    this.maireservice.getMaireById(value)
+    .subscribe(data=>{
+      this.MaireFormGroup.value.prenomsMaire= data.prenomsMaire;
+      this.MaireFormGroup.value.fonction = data.fonction;
+      console.log(data);
+    })
+    this.MaireSelected = this.MaireSelected;
+   
+
+  }
+
+ test(){
+  console.log(this.CopieFormGroup.value)
+ }
+  
 
 }
 
