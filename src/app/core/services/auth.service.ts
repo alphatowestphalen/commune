@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 //import { Token } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { User } from '../user';
+import { User } from '../models/user.model';
 import { environment } from 'src/environments/environment';
 
 
@@ -25,16 +25,16 @@ export class AuthService {
     return this.http.post(`${this.baseUrl}/register`, user);
   }
 
-  // profile(){
-  //   const options = {
-  //     headers: new HttpHeaders({
-  //       Accept: 'application/json',
-  //       'Content-Type': 'application/json',
-  //       Authorization: 'Bearer ' + localStorage.getItem('access_token')
-  //     })
-  //   };
-  //   return this.http.get(`${this.baseUrl}/user`,options)
-  // }
+  profile(){
+    const options = {
+      headers: new HttpHeaders({
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + localStorage.getItem('access_token')
+      })
+    };
+    return this.http.get(`${this.baseUrl}/profile`,options)
+  }
 
   logout()  {
     const options = {

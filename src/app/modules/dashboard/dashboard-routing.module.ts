@@ -23,11 +23,12 @@ import { CelibataireComponent } from './components/mariage/celibataire/celibatai
 import { DecesComponent } from './components/deces/deces/deces.component';
 import { UtilisateurListComponent } from './components/utilisateur/utilisateur-list/utilisateur-list.component';
 import { UtilisateurAddComponent } from './components/utilisateur/utilisateur-add/utilisateur-add.component';
+import { AfterLoginService } from 'src/app/core/services/after-login.service';
 
 const routes: Routes = [
   {
     path: '',
-    component: DashboardComponent,
+    component: DashboardComponent, canActivate:[AfterLoginService],
     children: [
       { path: '', redirectTo: 'naissance', pathMatch: 'full' },
       { path: 'premiere-copie', component: PremiereCopieComponent },
