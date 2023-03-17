@@ -10,10 +10,10 @@
     <!-- List items -->
     <li *ngFor="let item of menu.items">
       <!-- Menu List -->
-      <div (click)="toggleMenu(item)" class="group relative text-gray-500 dark:text-night-400">
+      <div (click)="toggleMenu(item)" class="group relative  text-gray-500 dark:text-night-400">
         <!-- Icon -->
         <div
-          [ngClass]="item.active && !(showSideBar$ | async) ? 'text-primary-500' : ''"
+          [ngClass]="item.active && !(showSideBar$ | async) ? 'text-primary-500 bg-gray-200' : ''"
           class="pointer-events-none absolute m-2">
           <svg-icon src="{{ item.icon }}" [svgClass]="'h-5 w-5'"> </svg-icon>
         </div>
@@ -30,7 +30,7 @@
             routerLink="{{ item.route }}"
             class="flex h-9 cursor-pointer items-center justify-start rounded text-gray-800 hover:bg-gray-100 dark:text-night-100 dark:hover:bg-night-600">
             <a
-              routerLinkActive="text-primary-500"
+              routerLinkActive="text-primary-500 bg-gray-200 py-2"
               class="ml-10 truncate text-xs font-semibold tracking-wide focus:outline-none">
               {{ item.label }}
             </a>
@@ -42,7 +42,7 @@
           <div
             class="flex h-9 cursor-pointer items-center justify-start rounded hover:bg-gray-100 dark:hover:bg-night-600">
             <a
-              class="ml-10 truncate text-xs font-semibold tracking-wide text-gray-800 focus:outline-none dark:text-night-100">
+              class="ml-10 truncate text-xs font-semibold tracking-wide  text-gray-800 focus:outline-none dark:text-night-100">
               {{ item.label }}
             </a>
           </div>
