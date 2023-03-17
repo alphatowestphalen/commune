@@ -11,6 +11,7 @@ import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { NewPasswordComponent } from './pages/new-password/new-password.component';
 import { TwoStepsComponent } from './pages/two-steps/two-steps.component';
+import { ToastService, AngularToastifyModule } from 'angular-toastify';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,15 @@ import { TwoStepsComponent } from './pages/two-steps/two-steps.component';
     NewPasswordComponent,
     TwoStepsComponent,
   ],
-  imports: [CommonModule, FormsModule, ReactiveFormsModule,
-     AuthRoutingModule, HttpClientModule, AngularSvgIconModule.forRoot()],
+  providers: [ToastService],
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    AngularToastifyModule,
+    AuthRoutingModule,
+    HttpClientModule,
+    AngularSvgIconModule.forRoot(),
+  ],
 })
 export class AuthModule {}
