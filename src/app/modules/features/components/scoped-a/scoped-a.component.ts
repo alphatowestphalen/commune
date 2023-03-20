@@ -11,6 +11,7 @@ import {
   tap,
 } from 'rxjs';
 import { DemandeService } from '../../services/demande.service';
+import { PremiereCopieService } from 'src/app/modules/dashboard/services/premiere-copie.service';
 
 @Component({
   selector: 'app-scoped-a',
@@ -34,7 +35,8 @@ export class ScopedAComponent implements OnInit {
   constructor(
     private router: Router,
     private demandeservice: DemandeService,
-    private bulletinService: BulletinNaissanceService
+    private bulletinService: BulletinNaissanceService,
+    private premiercopieservice: PremiereCopieService
   ) {}
 
   ngOnInit(): void {
@@ -89,10 +91,24 @@ export class ScopedAComponent implements OnInit {
 
   Deadcertif(id: string) {}
   NaissanceCertif(id: number) {
-    this.bulletinService.getBulletinByActeId(id).subscribe((data) => {
+    console.log(id)
+    this.premiercopieservice.getCertificateByID(id).subscribe((data) => {
       this.bulletin = data;
       this.Opendemande = !this.Opendemande;
-    });
+      this.bulletin.nomPersonne = data!.enfant.nomEnfant
+      this.bulletin.prenomsPersonne = data!.enfant.prenomsEnfant
+      this.bulletin.dateNaissPersonne = data!.enfant.datenaissEnfant
+      this.bulletin.lieuNaissPersonne = data!.enfant.lieunaissEnfant
+      this.bulletin.nomPere = data!.pere.nomPere
+      this.bulletin.prenomsPere = data!.pere.prenomsPere
+      this.bulletin.nomMere = data!.mere.nomMere
+      this.bulletin.prenomsMere = data!.mere.prenomsMere
+      this.bulletin.idPremierCopie = data!.idPremierCopie
+      this.bulletin.createdDate = data!.createdDate
+      console.log(data);
+    }
+    ////this.bulletinService.getBulletinByActeId(id)
+    );
   }
   Search() {
     if (this.CopieSelected == ' ') {
