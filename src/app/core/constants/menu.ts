@@ -15,9 +15,9 @@ export class Menu {
          
         },
         {
-          icon: 'assets/icons/outline/lock-closed.svg',
+          icon: 'assets/icons/outline/bookmark.svg',
           label: 'Service Général',
-          route: '/dashboard',
+          route: '/dashboard/adoption-naissance'  ,
           children: [
             { label: 'Adoption ', route: '/dashboard/adoption-naissance' },
             { label: 'Jugement', route: '/dashboard/jugement-naissance' },
@@ -26,7 +26,7 @@ export class Menu {
           ],
         },
         {
-          icon: 'assets/icons/outline/users.svg',
+          icon: 'assets/icons/outline/view-grid.svg',
           label: 'Bulletin de Naissance',
           route: '/dashboard/bulletin-naissance-list',
         },
@@ -70,7 +70,7 @@ export class Menu {
       separator: false,
       items: [
         {
-          icon: 'assets/icons/outline/cog.svg',
+          icon: 'assets/icons/outline/users.svg',
           label: 'Liste des Utilisateurs',
           route: '/dashboard/utilisateur-list',
         },

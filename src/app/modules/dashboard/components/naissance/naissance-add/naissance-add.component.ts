@@ -59,6 +59,7 @@ export class NaissanceAddComponent implements OnInit {
     datePCopie: this.today,
     datePremierCopie:this.today,
     mention: [''],
+    createdDate: this.today
 
   });
 
