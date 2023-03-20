@@ -1,99 +1,286 @@
-<div class=" bg-gray-100 flex justify-center items-center ">
-	<div class="container mx-auto bg-yellow-300 rounded-lg p-10 pt-3">
-		<form>
-			<span  class="inline-flex w-full">
-				<h1 class=" inline mx-auto ml-0 text-left font-bold text-gray-100 text-2xl">Recherche dans la registre votre Copie</h1>
-				<button 
-				routerLink="/demande/scoped-board"
-					class="shadow-md inline-flex items-center capitalize mr-0 px-4 bg-blue-400 hover:bg-blue-800 text-gray-100 text-sm font-medium rounded-md"
-				  >
-				  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" />
-				  </svg>
-			  
-				 tableau de bord 
-				  </button>
-			</span>
-			
-			 
-			<p class="mx-auto font-normal inline-flex text-sm my-6 max-w-lg">Effectuer une recherche en saisant votre numèro de
-				copie ou Nom et Prènoms </p>
-			<div class="sm:flex items-center bg-white rounded-lg overflow-hidden px-2 py-1 justify-between">
-				<input matInput [(ngModel)]="CopieSelected" class="text-base text-gray-400 flex-grow outline-none px-2 " type="text"
-				[formControl]="searchDemande"  placeholder="Saisir ici votre numèro de Copie ou Nom " />
-				<div class="ms:flex items-center px-2 rounded-lg space-x-4 mx-auto ">
+<div class="bg-gray-100 flex justify-center items-center">
+  <div class="container mx-auto bg-yellow-300 rounded-lg p-10 pt-3">
+    <form>
+      <span class="inline-flex w-full">
+        <h1
+          class="inline mx-auto ml-0 text-left font-bold text-gray-100 text-2xl"
+        >
+          Recherche dans la registre votre Copie
+        </h1>
+        <button
+          routerLink="/demande/scoped-board"
+          class="shadow-md inline-flex items-center capitalize mr-0 px-4 bg-blue-400 hover:bg-blue-800 text-gray-100 text-sm font-medium rounded-md"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5 mr-2"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"
+            />
+          </svg>
 
-					<button (click)="Search()" class="bg-indigo-500 text-white text-base rounded-lg px-4 py-2 font-bold">Recherche</button>
-				</div>
-			</div>
-		</form>
+          tableau de bord
+        </button>
+      </span>
 
-	</div>
+      <p class="mx-auto font-normal inline-flex text-sm my-6 max-w-lg">
+        Effectuer une recherche en saisant votre numèro de copie ou Nom et
+        Prènoms
+      </p>
+      <div
+        class="sm:flex items-center bg-white rounded-lg overflow-hidden px-2 py-1 justify-between"
+      >
+        <input
+          matInput
+          [(ngModel)]="CopieSelected"
+          class="text-base text-gray-400 flex-grow outline-none px-2"
+          type="text"
+          [formControl]="searchDemande"
+          placeholder="Saisir ici votre numèro de Copie ou Nom "
+        />
+        <div class="ms:flex items-center px-2 rounded-lg space-x-4 mx-auto">
+          <button
+            (click)="Search()"
+            class="bg-indigo-500 text-white text-base rounded-lg px-4 py-2 font-bold"
+          >
+            Recherche
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
 </div>
 
-<div class=" bg-gray-100 flex-block justify-center items-center">
+<div class="bg-gray-100 flex-block justify-center items-center">
+  <mat-accordion class="container block mx-auto rounded-lg p-10 py-3">
+    <mat-expansion-panel
+      (opened)="panelOpenState = true"
+      (closed)="panelOpenState = false"
+    >
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <strong>N° Première Copie</strong>
+        </mat-panel-title>
+        <mat-panel-title>
+          <strong>Nom et Prènoms</strong>
+        </mat-panel-title>
+        <mat-panel-description class="ml-3">
+          Date et Lieu de Naissance
+        </mat-panel-description>
+        <mat-panel-description>
+          <strong>Nom et Prenoms de Père</strong> <span class="px-2"></span
+          ><strong>Nom et Prènoms de Mère</strong>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+    </mat-expansion-panel>
+  </mat-accordion>
 
+  <span *ngFor="let demand of demande">
+    <mat-accordion class="container block mx-auto rounded-lg p-10 py-3">
+      <mat-expansion-panel
+        (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false"
+      >
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <strong>{{ demand.idPremierCopie }}</strong>
+          </mat-panel-title>
+          <mat-panel-title>
+            <strong
+              >{{ demand.enfant.nomEnfant }}
+              {{ demand.enfant.prenomsEnfant }}</strong
+            >
+          </mat-panel-title>
+          <mat-panel-description class="ml-3">
+            {{ demand.enfant.datenaissEnfant }} tao
+            {{ demand.enfant.lieunaissEnfant }}
+          </mat-panel-description>
+          <mat-panel-description>
+            <strong
+              >{{ demand.pere.nomPere }} {{ demand.pere.prenomsPere }}</strong
+            >
+            <span class="px-2">sy </span
+            ><strong>
+              {{ demand.mere.nomMere }} {{ demand.mere.prenomsMere }}</strong
+            >
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <label
+          class="btn btn-sm font-normal modal-button text-xs bg-blue-600 px-4 py-2 text-white rounded-md mr-2"
+          (click)="Birthcertif(demand.idPremierCopie)"
+          for="my-modal"
+        >
+          Demande Acte de Naissance
+        </label>
+        <button
+          mat-icon-button
+          class="btn btn-sm font-normal text-xs bg-green-600 px-4 py-2 text-white rounded-md mr-2"
+          (click)="Weddingcertif(demand.idPremierCopie)"
+        >
+          Demande Acte de Mariage
+        </button>
+        <button
+          mat-icon-button
+          class="btn btn-sm font-normal text-xs bg-amber-600 px-4 py-2 text-white rounded-md mr-2"
+          (click)="Deadcertif(demand.idPremierCopie)"
+        >
+          Demande Acte de Déces
+        </button>
+        <button
+          mat-icon-button
+          class="btn btn-sm font-normal text-xs bg-fuchsia-600 px-4 py-2 text-white rounded-md"
+          (click)="NaissanceCertif(demand.idPremierCopie)"
+        >
+          Demande Bulletin de Naissance
+        </button>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </span>
+</div>
 
-	<mat-accordion class="container block mx-auto rounded-lg p-10 py-3">
+<div
+  *ngIf="Opendemande"
+  class="relative z-10"
+  aria-labelledby="modal-title"
+  role="dialog"
+  aria-modal="true"
+>
+  <div class="fixed inset-0 bg-gray-900 bg-opacity-75 transition-opacity">
+    <div class="fixed overflow-y-auto inset-0 z-10">
+      <div
+        class="block h-full w-full items-end justify-center p-4 text-center sm:items-center sm:p-0"
+      >
+        <button
+          class="hover:bg-red-500 text-white font-bold py-2 px-4 rounded-full absolute bg-red-700 lg:h-10 lg:max-w-[8%] right-2 top-2"
+        >
+          x
+        </button>
+        <div class="w-2/3 block mx-10 pt-10 svelte-1l8159u">
+          <div
+            class="bg-white my-2 p-1 block border border-gray-200 rounded svelte-1l8159u"
+          >
+            <input
+              placeholder="Saisir ici le nombre de Bulletin de naissance"
+              class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+              [(ngModel)]="nombre"
+              name="nombre"
+            />
+          </div>
+        </div>
+        <button
+          (click)="exitDialog()"
+          class="shadow-md inline-flex items-center px-4 py-2 mr-5 bg-red-400 hover:bg-red-200 text-gray-800 text-sm font-medium rounded-md"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5 mr-2"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"
+            />
+          </svg>
 
-		<mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-			<mat-expansion-panel-header>
-				<mat-panel-title>
-					<strong>N° Première Copie</strong>
-				</mat-panel-title>
-				<mat-panel-title>
-					<strong>Nom et Prènoms</strong>
-				</mat-panel-title>
-				<mat-panel-description class="ml-3">
-					Date et Lieu de Naissance 
-				</mat-panel-description>
-				<mat-panel-description>
-					<strong>Nom et Prenoms de Père</strong> <span class="px-2"></span><strong>Nom et Prènoms de Mère</strong>
-				</mat-panel-description>
-			</mat-expansion-panel-header>
-		
-		</mat-expansion-panel>
-	</mat-accordion>
+          Annuler
+        </button>
+        <button
+          (click)="nextDialog(nombre)"
+          class="shadow-md inline-flex items-center px-4 py-2 bg-green-400 hover:bg-teal-600 text-gray-800 text-sm font-medium rounded-md"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5 mr-2"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"
+            />
+          </svg>
 
-	<span *ngFor="let demand of demande" >
-		
-		<mat-accordion class="container block mx-auto rounded-lg p-10 py-3">
+          Suivant
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
 
-			<mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-				<mat-expansion-panel-header>
-					<mat-panel-title>
-						<strong>{{demand.idPremierCopie}}</strong>
-					</mat-panel-title>
-					<mat-panel-title>
-						<strong>{{demand.enfant.nomEnfant}} {{demand.enfant.prenomsEnfant}}</strong>
-					</mat-panel-title>
-					<mat-panel-description class="ml-3">
-						{{demand.enfant.datenaissEnfant}} tao {{demand.enfant.lieunaissEnfant}}
-					</mat-panel-description>
-					<mat-panel-description>
-						<strong>{{demand.pere.nomPere}} {{demand.pere.prenomsPere}}</strong> <span class="px-2">sy </span><strong> {{demand.mere.nomMere}} {{demand.mere.prenomsMere}}</strong>
-					</mat-panel-description>
-				</mat-expansion-panel-header>
-				<label
-					class="btn btn-sm font-normal lowercase modal-button text-xs bg-blue-600 px-4 py-2 text-white rounded-md mr-2" (click)="Birthcertif(demand.idPremierCopie)"
-					for="my-modal">
-					Demande Acte de Naissance
-				</label>
-				<button mat-icon-button
-					class="btn btn-sm font-normal lowercase text-xs bg-green-600 px-4 py-2 text-white rounded-md mr-2" (click)="Weddingcertif(demand.idPremierCopie)">
-					Demande Acte de Mariage
-				</button>
-				<button mat-icon-button
-					class="btn btn-sm font-normal lowercase text-xs bg-amber-600  px-4 py-2 text-white rounded-md mr-2" (click)="Deadcertif(demand.idPremierCopie)">
-					Demande Acte de Déces
-				</button>
-				<button mat-icon-button
-					class="btn btn-sm font-normal lowercase text-xs bg-fuchsia-600 px-4 py-2 text-white rounded-md" (click)="Deadcertif(demand.idPremierCopie)">
-					Demande Bulletin de Naissance
-				</button>
-			</mat-expansion-panel>
-		</mat-accordion>
-	</span>
-	
-	
+<div
+  *ngIf="nombre != 0 && Opendemande == false"
+  class="relative z-10"
+  aria-labelledby="modal-title"
+  role="dialog"
+  aria-modal="true"
+>
+  <div class="fixed inset-0 bg-gray-900 bg-opacity-75 transition-opacity">
+    <div class="fixed overflow-y-auto inset-0 z-10">
+      <div
+        class="flex-1 h-full w-full items-end justify-center p-4 text-center sm:items-center sm:p-0"
+      >
+        <button
+          class="shadow-md inline-flex items-center px-4 py-2 bg-red-200 hover:bg-red-600 text-gray-800 text-sm font-medium rounded-md"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5 mr-2"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"
+            />
+          </svg>
+
+          Cliquer pour télecharger
+        </button>
+        <button
+          class="shadow-md inline-flex items-center px-4 py-2 bg-green-400 hover:bg-teal-600 text-gray-800 text-sm font-medium rounded-md"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5 mr-2"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"
+            />
+          </svg>
+
+          Cliquer pour imprimer
+        </button>
+        <button
+          class="hover:bg-red-500 text-white font-bold py-2 px-4 rounded-full absolute bg-red-700 lg:h-10 lg:max-w-[8%] right-2 top-2"
+          (click)="exitDialog()"
+        >
+          x
+        </button>
+        <app-bulletin-naissance [bulletin]="bulletin"></app-bulletin-naissance>
+      </div>
+    </div>
+  </div>
 </div>
