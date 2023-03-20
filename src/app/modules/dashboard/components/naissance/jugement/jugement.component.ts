@@ -36,8 +36,12 @@ export class JugementComponent implements OnInit {
     {
       columnDef: 'DatePremiereCopie',
       header: 'Date 1ère Copie',
-      cell: (element: Record<string, any>) => `${element['premierCopie']['datePremierCopie']}`
-    }
+      cell: (element: Record<string, any>) => {
+        const datenaissEnfant = element['premierecopie']['datePremierCopie'];
+        const dateObj = new Date(datenaissEnfant);
+        const formattedDate = `${dateObj.getDate().toString().padStart(2, '0')}/${(dateObj.getMonth() + 1).toString().padStart(2, '0')}/${dateObj.getFullYear()}`;
+        return formattedDate;
+      } }
   ];
   
   tableData: any = [];

@@ -20,7 +20,7 @@ export class AdoptionVoirComponent implements OnInit {
   ngOnInit(): void {
     this.activatedroute.paramMap.subscribe(params => { 
       this.id = params.get('id');
-    this.getCertificatesbyID();
+   // this.getCertificatesbyID();
   this.getAdoptionById()});
 
   }
@@ -30,10 +30,12 @@ export class AdoptionVoirComponent implements OnInit {
     this.adoptionservice.getAdoptionById(this.id)
     .subscribe(data=>{
       this.adoption = data
+      //console.log("adoption",this.adoption)
+      this.getCertificatesbyID(this.adoption.premierecopie.idPremierCopie)
     })
   }
-  getCertificatesbyID() {
-    this.premierecopieservice.getCertificateByID(this.id)
+  getCertificatesbyID(idpremierecopie: any) {
+    this.premierecopieservice.getCertificateByID(idpremierecopie)
     .subscribe(data => {
       this.certificates = data;
       console.log("adoption",this.certificates)}
