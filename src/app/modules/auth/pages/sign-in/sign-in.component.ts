@@ -13,6 +13,7 @@ import { TokenService } from 'src/app/core/services/token.service';
 export class SignInComponent implements OnInit {
   loginForm: FormGroup;
   errors: any;
+  type: boolean;
 
   constructor(
     public router: Router,
@@ -63,4 +64,11 @@ export class SignInComponent implements OnInit {
   responseHandler(data: any) {
     this.token.handleData(data);
   }
+
+  toggleFieldTextType() {
+    console.log(this.type)
+  return this.type = !this.type
+  }
+
 }
+
