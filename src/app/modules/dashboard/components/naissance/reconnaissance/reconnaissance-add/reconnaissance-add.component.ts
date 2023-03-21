@@ -83,7 +83,7 @@ export class ReconnaissanceAddComponent implements OnInit {
       //   this.errorMsg = "";
 
       // }
-      this.filteredMovies = data;
+      this.filteredMovies = data.premierCopies;
       console.log(data);
     });
   }

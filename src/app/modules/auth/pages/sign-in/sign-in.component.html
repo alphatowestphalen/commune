@@ -39,37 +39,9 @@
           Nom utilisateur
         </label>
       </div>
-      <div class="relative">
-        <input
-          type="password"
-          id="password"
-          formControlName="password"
-          class="peer block"
-          placeholder=" "
-        />
-        <label
-          for="password"
-          class="absolute top-2 left-1 z-10 origin-[0] -translate-y-4 scale-95 transform bg-white px-2 text-sm text-gray-500 duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-95 peer-focus:px-2 peer-focus:text-primary-600 dark:bg-night-700 dark:text-night-200"
-        >
-          Mot de passe
-        </label>
-        <span
-          class="absolute top-2.5 right-5 cursor-pointer text-gray-400 dark:text-night-300"
-        >
-          <svg-icon
-            src="assets/icons/outline/eye-off.svg"
-            [svgClass]="'h-5 w-5'"
-          >
-          </svg-icon>
-          <svg-icon
-            src="assets/icons/outline/eye.svg"
-            [svgClass]="'h-5 w-5 hidden'"
-          >
-          </svg-icon>
-        </span>
-      </div>
+
     </div>
-    <div class="relative">
+    <div class="relative mt-5">
       <input [type]="type ? 'text' : 'password'" id="password" formControlName="password" class="peer block" placeholder=" " />
       <label
         for="password"
@@ -99,17 +71,4 @@
   </button>
 </form>
 
-    <!-- Submit Button -->
-    <button
-      type="submit"
-      class="group relative mt-7 mb-10 flex w-full justify-center rounded-md border border-transparent bg-primary-500 py-2 px-4 text-sm font-medium text-white focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-2 hover:bg-green-400"
-    >
-      Se connecter
-    </button>
-  </form>
-
-  <!-- Sign-up -->
-  <!-- <div class="text-sm text-gray-400 dark:text-night-200">
-    Créer une nouvelle Compte <a routerLink="/auth/sign-up" class="text-primary-500 hover:text-primary-400">S'enregistrer</a>
-  </div> -->
 

@@ -19,7 +19,7 @@ export class JugementComponent implements OnInit {
   tableColumns: Array<Column> = [
     {
       columnDef: 'idJugement',
-      header: 'N° Jugement Copie',
+      header: 'N° Jugement',
       cell: (element: Record<string, any>) => `${element['idJugement']}`
     },
     {
@@ -30,17 +30,21 @@ export class JugementComponent implements OnInit {
     },
     {
       columnDef: 'dateAdoption',
-      header: 'Date d\'Adoption ',
-      cell: (element: Record<string, any>) => `${element['createdDate']}`
-    },
-    {
-      columnDef: 'DatePremiereCopie',
-      header: 'Date 1ère Copie',
-      cell: (element: Record<string, any>) => {
-        const datenaissEnfant = element['premierecopie']['datePremierCopie'];
+      header: 'Date de Jugement ',
+     cell: (element: Record<string, any>) => {
+        const datenaissEnfant = element['createdDate'];
         const dateObj = new Date(datenaissEnfant);
         const formattedDate = `${dateObj.getDate().toString().padStart(2, '0')}/${(dateObj.getMonth() + 1).toString().padStart(2, '0')}/${dateObj.getFullYear()}`;
         return formattedDate;
+      }
+      
+    },
+    {
+      columnDef: 'DatePremiereCopie',
+      header: 'Info de Jugement',
+      cell: (element: Record<string, any>) => {
+        const infoChangement = element['infoChangement'];
+         return infoChangement;
       } }
   ];
   

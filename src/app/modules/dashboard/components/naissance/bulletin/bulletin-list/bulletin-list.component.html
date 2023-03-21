@@ -121,9 +121,9 @@
       <!-- Progress Column -->
       <ng-container matColumnDef="datenaiss">
         <mat-header-cell *matHeaderCellDef mat-sort-header>
-          Date de Naissance
+          Date et Lieu de Naissance
         </mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{ row.nomPersonne }} </mat-cell>
+        <mat-cell *matCellDef="let row"> {{ row.dateNaissPersonne }} à  {{ row.lieuNaissPersonne }} </mat-cell>
       </ng-container>
 
       <!-- Name Column -->
@@ -131,7 +131,7 @@
         <mat-header-cell *matHeaderCellDef mat-sort-header>
           Nom et Prènoms
         </mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{ row.prenomsPersonne }} </mat-cell>
+        <mat-cell *matCellDef="let row">{{ row.nomPersonne }} {{ row.prenomsPersonne }} </mat-cell>
       </ng-container>
 
       <!-- Color Column -->
@@ -139,7 +139,7 @@
         <mat-header-cell *matHeaderCellDef mat-sort-header>
           Date d'Enregistrement
         </mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{ row.dateCopie }} </mat-cell>
+        <mat-cell *matCellDef="let row"> {{ row.createdDate }} </mat-cell>
       </ng-container>
       <ng-container matColumnDef="actions">
         <mat-header-cell *matHeaderCellDef> Actions</mat-header-cell>

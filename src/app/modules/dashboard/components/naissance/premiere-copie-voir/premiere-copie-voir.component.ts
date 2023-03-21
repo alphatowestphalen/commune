@@ -28,7 +28,7 @@ export class PremiereCopieVoirComponent implements OnInit {
   }
   public openPDF(): void {
 
-    let DATA: any = document.getElementById('htmlcopie')!.innerHTML;
+    let DATA: any = document.getElementById('htmlData')!.innerHTML;
     // console.log(DATA);
     // html2canvas(DATA).then((canvas) => {
     //   let fileWidth = 208;
@@ -66,7 +66,7 @@ export class PremiereCopieVoirComponent implements OnInit {
   }
   
   printPage(){
-    var printContents = document.getElementById('htmlcopie')!.innerHTML;
+    var printContents = document.getElementById('htmlData')!.innerHTML;
      var originalContents = document.body.innerHTML;
 
      document.body.innerHTML = printContents;

@@ -83,6 +83,7 @@ tableData: any = [];
     this.adoptionservice.getAdoptions(size, page)
     .subscribe(data=>{
       this.tableData = data.adoption;
+      console.log(this.tableData)
     })
   }
   showRow(element: any) {
