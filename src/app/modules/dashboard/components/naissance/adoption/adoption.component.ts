@@ -67,7 +67,6 @@ tableData: any = [];
   } 
   
 
-  @ViewChild('htmlData') htmlData!: ElementRef;
 
 
   ngOnInit(): void {
