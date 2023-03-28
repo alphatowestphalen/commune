@@ -37,13 +37,25 @@ search: any;
   },
   {
     columnDef: 'dateAdoption',
-    header: 'Date d\'Adoption ',
-    cell: (element: Record<string, any>) => `${element['dateAdoption']}`
+    header: 'Date et Heure d\'Adoption ',
+    cell: (element: Record<string, any>) => {
+      const datenaissEnfant = element['dateAdoption'];
+      const heurenaissEnfant = element['heureAdoption'];
+      const dateObj = new Date(`${datenaissEnfant}T${heurenaissEnfant}:00`); 
+      const formattedDate = `${dateObj.getDate().toString().padStart(2, '0')}/${(dateObj.getMonth() + 1).toString().padStart(2, '0')}/${dateObj.getFullYear()}`;
+      const formattedTime = `${dateObj.getHours().toString().padStart(2, '0')}:${dateObj.getMinutes().toString().padStart(2, '0')}`;
+      return `${formattedDate} ${formattedTime}`;
+    }
   },
   {
     columnDef: 'DatePremiereCopie',
     header: 'Date 1ère Copie',
-    cell: (element: Record<string, any>) => `${element['premierecopie']['datePremierCopie']}`
+    cell: (element: Record<string, any>) => {
+      const datenaissEnfant = element['premierecopie']['datePremierCopie'];
+      const dateObj = new Date(datenaissEnfant);
+      const formattedDate = `${dateObj.getDate().toString().padStart(2, '0')}/${(dateObj.getMonth() + 1).toString().padStart(2, '0')}/${dateObj.getFullYear()}`;
+      return formattedDate;
+    }
   }
 ];
 
@@ -55,7 +67,6 @@ tableData: any = [];
   } 
   
 
-  @ViewChild('htmlData') htmlData!: ElementRef;
 
 
   ngOnInit(): void {
@@ -71,10 +82,11 @@ tableData: any = [];
     this.adoptionservice.getAdoptions(size, page)
     .subscribe(data=>{
       this.tableData = data.adoption;
+      console.log(this.tableData)
     })
   }
   showRow(element: any) {
-    this.router.navigate(['/dashboard/adoption-copie-voir', element.idAdoption ])
+    this.router.navigate(['/dashboard/adoption-copie-voir/', element.idAdoption ])
 
   }
 

@@ -10,7 +10,6 @@ enum typeDemandeur {
   providedIn: 'root',
 })
 export class BulletinNaissanceService {
-
   constructor(private readonly http: HttpClient) {}
 
   private baseURl: string = environment.baseUrl + '/bulletinNaissances';
@@ -28,9 +27,10 @@ export class BulletinNaissanceService {
     );
   }
 
-  getAllBulletin(size: number, page: number):Observable<any>{
-    return  this.http.get(`${this.baseURl}?page=${page}&size=${size}`)
+  getAllBulletin(size: number, page: number): Observable<any> {
+    return this.http.get(`${this.baseURl}?page=${page}&size=${size}`);
   }
-
-
+  getBulletinByActeId(idPremierCopie: number): Observable<any> {
+    return this.http.get(`${this.baseURl}/numcopie/${idPremierCopie}`);
+  }
 }

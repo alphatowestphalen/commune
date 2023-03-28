@@ -80,7 +80,7 @@ export class JugementAddComponent implements OnInit {
       //   this.errorMsg = "";
 
       // }
-      this.filteredMovies = data;
+      this.filteredMovies = data.premierCopies;
       console.log(data);
     });
   }
@@ -88,7 +88,7 @@ export class JugementAddComponent implements OnInit {
   getAllFirstCertificate() {
     this.premierecopie.getFirstCertificates()
       .subscribe(data => {
-        this.jugement = data
+        this.jugement = data.premierCopies
         console.log(this.jugement)
       })
   }

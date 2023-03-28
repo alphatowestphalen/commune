@@ -8,6 +8,7 @@ import { SharedModule } from './shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FeaturesComponent } from './modules/features/features.component';
 import { SurveyModule } from 'survey-angular-ui';
+import { ToastService, AngularToastifyModule } from 'angular-toastify';
 
 @NgModule({
   declarations: [AppComponent, FeaturesComponent],
@@ -19,8 +20,9 @@ import { SurveyModule } from 'survey-angular-ui';
     HttpClientModule,
     SurveyModule,
     SurveyCreatorModule,
+    AngularToastifyModule,
   ],
-  providers: [SurveyCreatorModule, SurveyModule],
+  providers: [SurveyCreatorModule, SurveyModule, ToastService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

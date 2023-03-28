@@ -69,7 +69,7 @@
                         <div class="mb-4 w-4/5">
 
                             <label class="block mb-2 text-sm font-bold text-black">N° Téléphone</label>
-                            <input type="date" formControlName="phone"
+                            <input type="text" formControlName="phone"
                                 class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
                                 placeholder="Saisir Numéro Téléphone" />
 
@@ -80,9 +80,9 @@
                             <mat-form-field appearance="fill" class="w-3/4">
                                 <mat-label>Poste</mat-label>
                                 <mat-select formControlName="poste" name="Choisir une Poste">
-                                    <mat-option value="admin">Maire</mat-option>
+                                    <mat-option value="chef">Maire</mat-option>
                                     <mat-option value="chef">Chef de Service</mat-option>
-                                    <mat-option value="utilisateur">Personnel de Service</mat-option>
+                                    <mat-option value="chef">Personnel de Service</mat-option>
 
                                 </mat-select>
                             </mat-form-field>

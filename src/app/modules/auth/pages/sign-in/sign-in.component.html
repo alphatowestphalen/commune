@@ -1,8 +1,9 @@
 <!-- login form -->
+<lib-toastify-toast-container></lib-toastify-toast-container>
 <form class="my-10 space-y-6">
   <div class="text-center">
     <h2 class="mb-1 text-3xl font-semibold text-gray-700 dark:text-white">
-     Bonjour <span class="text-primary-500">!</span>
+      Bonjour <span class="text-primary-500">!</span>
     </h2>
     <p class="text-sm text-gray-400 dark:text-night-200">Saisissez vos identifiants pour accéder à notre application.</p>
   </div>
@@ -15,20 +16,32 @@
   </button> -->
 
   <div
-    class="my-4 flex items-center before:mt-0.5 before:flex-1 before:border-t before:border-gray-300 after:mt-0.5 after:flex-1 after:border-t after:border-gray-300 dark:before:border-night-500 dark:after:border-night-500">
-    <p class="mx-4 mb-0 text-center text-sm text-gray-400 dark:text-night-400">AUTHENTIFICATION</p>
+    class="my-4 flex items-center before:mt-0.5 before:flex-1 before:border-t before:border-gray-300 after:mt-0.5 after:flex-1 after:border-t after:border-gray-300 dark:before:border-night-500 dark:after:border-night-500"
+  >
+    <p class="mx-4 mb-0 text-center text-sm text-gray-400 dark:text-night-400">
+      AUTHENTIFICATION
+    </p>
   </div>
-<form [formGroup]="loginForm" (ngSubmit)="Login()">
-  <div class="space-y-3 text-left">
-    <div class="relative">
-      <input type="text" id="text" formControlName="username"  class="peer block" placeholder=" " />
-      <label
-        for="username"
-        class="absolute top-2 left-1 z-10 origin-[0] -translate-y-4 scale-95 transform bg-white px-2 text-sm text-gray-500 duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-95 peer-focus:px-2 peer-focus:text-primary-500 dark:bg-night-700 dark:text-night-200">
-     Nom utilisateur
-      </label>
+  <form [formGroup]="loginForm" (ngSubmit)="Login($event)">
+    <div class="space-y-3 text-left">
+      <div class="relative">
+        <input
+          type="text"
+          id="text"
+          formControlName="username"
+          class="peer block"
+          placeholder=" "
+        />
+        <label
+          for="username"
+          class="absolute top-2 left-1 z-10 origin-[0] -translate-y-4 scale-95 transform bg-white px-2 text-sm text-gray-500 duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-95 peer-focus:px-2 peer-focus:text-primary-500 dark:bg-night-700 dark:text-night-200"
+        >
+          Nom utilisateur
+        </label>
+      </div>
+
     </div>
-    <div class="relative">
+    <div class="relative mt-5">
       <input [type]="type ? 'text' : 'password'" id="password" formControlName="password" class="peer block" placeholder=" " />
       <label
         for="password"
@@ -40,7 +53,6 @@
         <svg-icon *ngIf="type"  src="assets/icons/outline/eye.svg"  [svgClass]="'h-5 w-5 '"> </svg-icon>
       </span>
     </div>
-  </div>
 
   <div class="flex items-center justify-between my-3 space-x-3">
    
@@ -60,8 +72,3 @@
 </form>
 
 
-  <!-- Sign-up -->
-  <!-- <div class="text-sm text-gray-400 dark:text-night-200">
-    Créer une nouvelle Compte <a routerLink="/auth/sign-up" class="text-primary-500 hover:text-primary-400">S'enregistrer</a>
-  </div> -->
-</form>

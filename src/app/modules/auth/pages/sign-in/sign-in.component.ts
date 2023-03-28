@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastService } from 'angular-toastify';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { TokenService } from 'src/app/core/services/token.service';
 
@@ -18,7 +19,8 @@ export class SignInComponent implements OnInit {
     public router: Router,
     private formbuilder: FormBuilder,
     private authservice: AuthService,
-    private token: TokenService
+    private token: TokenService,
+    private _toastService: ToastService
   ) {}
 
   ngOnInit(): void {
@@ -26,12 +28,23 @@ export class SignInComponent implements OnInit {
       username: [''],
       password: [''],
     });
-  
-
   }
 
-
-  Login(){
+  Login($event: any) {
+    $event.preventDefault();
+    const isNotEmpty = Object.values(this.loginForm.value).every(
+      (element) => !!element
+    );
+    if (!isNotEmpty) {
+      Object.values(this.loginForm.value).every((element) => {
+        if (element == '') {
+          this._toastService.error('Remplissez les champs requis');
+          return;
+        }
+      });
+    } else {
+      console.log(this.loginForm.value);
+    }
     this.authservice.login(this.loginForm.value).subscribe(
       (result) => {
         console.log(result);
@@ -39,8 +52,7 @@ export class SignInComponent implements OnInit {
       },
       (error) => {
         this.errors = error.error;
-        console.log("aaa",this.errors);
-       
+        console.log('aaa', this.errors);
       },
       () => {
         this.loginForm.reset();
@@ -48,9 +60,8 @@ export class SignInComponent implements OnInit {
       }
     );
   }
-  
- 
-  responseHandler(data:any) {                                                                                                                                                                                                                              
+
+  responseHandler(data: any) {
     this.token.handleData(data);
   }
 
@@ -60,3 +71,4 @@ export class SignInComponent implements OnInit {
   }
 
 }
+

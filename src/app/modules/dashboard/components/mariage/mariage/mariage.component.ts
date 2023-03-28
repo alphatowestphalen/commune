@@ -13,25 +13,39 @@ export class MariageComponent implements OnInit {
 
   tableColumns: Array<Column> = [
     {
-      columnDef: 'idPremierCopie',
-      header: 'N° Première Copie',
-      cell: (element: Record<string, any>) => `${element['idPremierCopie']}`
+      columnDef: 'Numèro Mariage',
+      header: 'Numèro',
+      cell: (element: Record<string, any>) => `${element['numero'] }`
     },
     {
-      columnDef: 'descriptionRow',
-      header: 'Description',
-      cell: (element: Record<string, any>) => `${element['descriptionRow']} `,
-    
+      columnDef: 'Nom et Prènoms Homme',
+      header: 'Nom et Prènoms Homme',
+        cell: (element: Record<string, any>) => {
+        const nomEnfant = element['homme']['nomHomme']
+        const prenomEnfant = element['homme']['prenomsHomme']
+        const NomEnfant = nomEnfant.toUpperCase()
+        return `${NomEnfant} ${prenomEnfant}`
+      },
     },
     {
-      columnDef: 'mention',
-      header: 'Mention',
-      cell: (element: Record<string, any>) => `${element['mention']}`
+      columnDef: 'Nome et Prènoms Femme',
+      header: 'Nome et Prènoms Femme',
+      cell: (element: Record<string, any>) => {
+        const NomFemme = element['femme']['nomFemme']
+        const prenomsFemme = element['femme']['prenomsFemme']
+        const Nomfemme = NomFemme.toUpperCase()
+        return `${Nomfemme} ${prenomsFemme}`
+      },
     },
     {
-      columnDef: 'DatePremiereCopie',
-      header: 'Date Copie',
-      cell: (element: Record<string, any>) => `${element['datePremierCopie']}`
+      columnDef: 'Date et Heure Mariage',
+      header: 'Date et Heure Mariage',
+     cell: (element: Record<string, any>) => {
+        const datenaissEnfant = element['createdDate'];
+        const dateObj = new Date(datenaissEnfant);
+        const formattedDate = `${dateObj.getDate().toString().padStart(2, '0')}/${(dateObj.getMonth() + 1).toString().padStart(2, '0')}/${dateObj.getFullYear()}`;
+        return formattedDate;
+      }
     }
   ];
 
@@ -50,7 +64,7 @@ this.AllListMariages(this.size, this.page)
     .subscribe(data=>{
       this.tableData = data.mariages,
       this.size = data.length
-      console.log(this.mariage, this.size)
+      console.log(this.tableData, this.size)
     })
   }
 }
