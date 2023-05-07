@@ -45,23 +45,30 @@ export class SignInComponent implements OnInit {
     } else {
       console.log(this.loginForm.value);
     }
-    this.authservice.login(this.loginForm.value).subscribe(
-      (result) => {
-        console.log(result);
-        this.responseHandler(result.token);
-      },
-      (error) => {
-        this.errors = error.error;
-        console.log('aaa', this.errors);
-      },
-      () => {
-        this.loginForm.reset();
-        this.router.navigate(['demande']);
-      }
-    );
+this.authservice.login(this.loginForm.value).then(
+ async (result)=>{
+   await this.responseHandler(result);
+    this.loginForm.reset();
+    this.router.navigate(['demande']);
+  }
+)
+    // this.authservice.login(this.loginForm.value).subscribe(
+    //   // (result) => {
+    //   //   console.log(result);
+    //   //   this.responseHandler(result.token);
+    //   // },
+    //   // (error) => {
+    //   //   this.errors = error.error;
+    //   //   console.log('aaa', this.errors);
+    //   // },
+    //   // () => {
+    //   //   this.loginForm.reset();
+    //   //   this.router.navigate(['demande']);
+    //   // }
+    // );
   }
 
-  responseHandler(data: any) {
+  async responseHandler(data: any) {
     this.token.handleData(data);
   }
 

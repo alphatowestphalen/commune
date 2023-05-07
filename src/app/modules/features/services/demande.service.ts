@@ -13,13 +13,10 @@ export class DemandeService {
 
   constructor( private http:HttpClient) { }
 
-  
-
   SearchCertificateByIdPremierCopie(idPremierCopie: any): Observable<any>{
     return this.http.get(`${this.baseUrl}/?idPremierCopie=${idPremierCopie}`)
    
   }
-
 
   getAllCertificates():Observable<any>{
     return this.http.get(`${this.baseUrl}`)
@@ -28,5 +25,9 @@ export class DemandeService {
    SearchCertificateByNomEnfant(nomEnfant: any, PrenomsEnfant: any): Observable<any>{
     return this.http.get(`${this.baseUrl}/nomEnfant?NomEnfant=${nomEnfant}&PrenomsEnfant=${PrenomsEnfant}`)
  
+  }
+
+  getAllHistoriques(): Observable<any>{
+    return this.http.get(`${this.baseUrl}/historiques`)
   }
 }
