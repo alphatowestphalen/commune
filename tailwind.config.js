@@ -83,6 +83,8 @@ module.exports = {
     fontFamily: {
       poppins: ['Poppins', 'system-ui', 'sans-serif'],
       nunito: ['Nunito Sans', 'sans-serif'],
+      cursive: ['"Lucida Handwriting"','cursive'],
+      dancing: ['Dancing', 'sans-serif'],
     },
   },
   variants: {

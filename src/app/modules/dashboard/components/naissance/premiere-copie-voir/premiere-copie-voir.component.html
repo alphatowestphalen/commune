@@ -285,7 +285,7 @@
   <div class="fixed inset-0 bg-gray-700 bg-opacity-75 transition-opacity">
  
   <div class="fixed overflow-y-auto inset-0 z-10 ">
-    <div class="flex max-h-full w-full items-end justify-center p-10 text-center sm:items-center sm:p-0">
+    <div class="flex max-h-full w-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
     <div class="inline-block items-center m-3 mx-10">
       <button (click)="openPDF()"
         
@@ -310,8 +310,10 @@ Taper pour Imprimer
     </div>
   
       <button class=" hover:bg-red-500 text-white font-bold py-2 px-4 rounded-full absolute  bg-red-700 lg:h-10 lg:max-w-[8%] right-2 top-2" (click)="toggleModal()">x</button>
-       
-
+      <div class="mt-auto">
+        <app-copie [copie]="certificates"></app-copie>
+      </div>  
+     
     </div>
   </div>
 

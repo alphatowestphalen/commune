@@ -35,11 +35,77 @@ $commune-frontend-theme: mat.define-light-theme((
 
 
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+//@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+@font-face {
+	font-family: 'Dancing';
+	src: url('./assets/fonts/Dancing_Script/DancingScript-VariableFont_wght.ttf');
+}
+
+@font-face {
+	font-family: 'Dancing';
+	src: url('./assets/fonts/Dancing_Script/static/DancingScript-Bold.ttf') format('truetype');
+	font-weight: bold;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Dancing';
+	src: url('./assets/fonts/Dancing_Script/static/DancingScript-SemiBold.ttf') format('truetype');
+	font-weight: 500;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Dancing';
+	src: url('./assets/fonts/Dancing_Script/static/DancingScript-Medium.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+
+@font-face {
+	font-family: 'Poppins';
+	src: url('./assets/fonts/Poppins/Poppins-Bold.ttf');
+	font-weight: 800;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Poppins';
+	src: url('./assets/fonts/Poppins/Poppins-Medium.ttf');
+	font-weight: normal;
+	font-style: normal;
+	font-size: medium;
+}
+
+@font-face {
+	font-family: 'Poppins';
+	src: url('./assets/fonts/Poppins/Poppins-Regular.ttf');
+	font-weight: normal;
+	font-style: normal;
+	
+}
+
+@font-face {
+	font-family: 'Poppins';
+	src: url('./assets/fonts/Poppins/Poppins-SemiBold.ttf');
+	font-weight: 500;
+	font-style: normal;
+	
+}
+
+@font-face {
+	font-family: 'Poppins';
+	src: url('./assets/fonts/Poppins/Poppins-Thin.ttf');
+	font-weight: 100;
+	font-style: normal;
+	
+}
+
 
 @layer base {
 	[type='text'],
