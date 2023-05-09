@@ -19,7 +19,11 @@ export class PremiereCopieComponent implements OnInit {
     {
       columnDef: 'idPremierCopie',
       header: 'N° Première Copie',
-      cell: (element: Record<string, any>) => `${element['idPremierCopie']}`
+      cell: (element: Record<string, any>) => {
+        const idPremierCopie  = element['idPremierCopie']
+        const numPremierCopie = idPremierCopie.slice(0,1)
+        return `${numPremierCopie}`
+      },
     },
     {
       columnDef: 'descriptionRow',
