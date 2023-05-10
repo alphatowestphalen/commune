@@ -55,6 +55,7 @@ import { TableMariageComponent } from './pages/table-mariage/table-mariage.compo
 import { CelibataireComponent } from './components/mariage/celibataire/celibataire.component';
 import { UtilisateurListComponent } from './components/utilisateur/utilisateur-list/utilisateur-list.component';
 import { UtilisateurAddComponent } from './components/utilisateur/utilisateur-add/utilisateur-add.component';
+
 @NgModule({
   exports: [SurveyCreatorModule, SurveyModule, BulletinNaissanceComponent],
   declarations: [
@@ -91,6 +92,7 @@ import { UtilisateurAddComponent } from './components/utilisateur/utilisateur-ad
     CelibataireComponent,
     UtilisateurListComponent,
     UtilisateurAddComponent,
+
   ],
   imports: [
     CommonModule,
