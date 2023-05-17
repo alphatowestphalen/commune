@@ -1,0 +1,26 @@
+<div class="flex h-screen w-screen">
+  <div class="auth-bg hidden flex-1 items-center justify-center bg-yellow-500 bg-cover lg:flex">
+    <div class="max-w-2xl space-y-4 p-8 text-center  text-white">
+      <img src="./assets/images/bongolava-logo.jpg" alt="dashboard widget" class="ml-44" />
+      <h1 class="text-4xl font-bold">Commnune Ankadinondry Sakay <br> Région Bongolava</h1>
+      <p class="text-xs font-light">
+       GESTION DES ETAT CIVILS PARMI TOUT LES ACTIVITES DU COMMMMUNE (GERER LES ACTES DE NAISSANCE, ADOPTIONS, RECONNAISSANCE) 
+
+      </p>
+    </div>
+  </div>
+  <div class="flex flex-1 items-center justify-center bg-white dark:bg-night-700">
+    <div class="max-w-md overflow-y-auto px-4 sm:w-[500px]">
+      <!-- logo -->
+      <div class="flex items-center justify-center">
+        <a class="rounded bg-yellow-500 p-1">
+          <!-- <svg-icon src="assets/icons/logo.svg" [svgClass]="'h-5 w-5'"> </svg-icon> -->
+          <img src="./assets/images/bongolava-logo.jpg" alt="dashboard widget" class="h-10 w-8" />
+        </a>
+        <b class="text-md pl-3 font-bold text-lg text-gray-700 dark:text-white"> Etat Civil</b>
+      </div>
+      <!-- Route -->
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
