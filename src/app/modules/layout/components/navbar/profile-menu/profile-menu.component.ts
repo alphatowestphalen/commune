@@ -20,16 +20,9 @@ export class ProfileMenuComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.CurrentUser();
+   
   }
 
-
- CurrentUser(){
-  this.authservice.profile().subscribe(data=>{
-    this.user = data
-    console.log(this.user)
-  })
- }
 
  Logout(){
   this.authservice.logout().subscribe(()=>{

@@ -25,16 +25,6 @@ export class AuthService {
     return this.http.post(`${this.baseUrl}/auth/register`, user);
   }
 
-  profile(){
-    const options = {
-      headers: new HttpHeaders({
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + localStorage.getItem('access_token')
-      })
-    };
-    return this.http.get(`${this.baseUrl}/profile`,options)
-  }
 
   logout()  {
     const options = {
