@@ -17,15 +17,12 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
  
-  login(user: User): Promise<any> {
-   // return this.http.post(`${this.baseUrl}/login`,user);
-   return new Promise((resolve, reject)=>{
-    resolve(1)
-   })
+  login(user: User): Observable<any> {
+    return this.http.post(`${this.baseUrl}/auth/login`,user);
   }
 
   register(user: User): Observable<any> {
-    return this.http.post(`${this.baseUrl}/register`, user);
+    return this.http.post(`${this.baseUrl}/auth/register`, user);
   }
 
   profile(){
