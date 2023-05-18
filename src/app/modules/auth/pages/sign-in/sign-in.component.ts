@@ -45,27 +45,29 @@ export class SignInComponent implements OnInit {
     } else {
       console.log(this.loginForm.value);
     }
-this.authservice.login(this.loginForm.value).then(
- async (result)=>{
-   await this.responseHandler(result);
-    this.loginForm.reset();
-    this.router.navigate(['demande']);
-  }
-)
-    // this.authservice.login(this.loginForm.value).subscribe(
-    //   // (result) => {
-    //   //   console.log(result);
-    //   //   this.responseHandler(result.token);
-    //   // },
-    //   // (error) => {
-    //   //   this.errors = error.error;
-    //   //   console.log('aaa', this.errors);
-    //   // },
-    //   // () => {
-    //   //   this.loginForm.reset();
-    //   //   this.router.navigate(['demande']);
-    //   // }
-    // );
+// this.authservice.login(this.loginForm.value).then(
+//  async (result)=>{
+//    await this.responseHandler(result);
+//     this.loginForm.reset();
+//     this.router.navigate(['demande']);
+//   }
+// )
+    this.authservice.login(this.loginForm.value).subscribe(
+      (result) => {
+        console.log(result);
+        this.responseHandler(result.accessToken);
+      },
+      (error) => {
+        this.errors = error.error;
+        this._toastService.error('Votre information sont incorrectes');
+        console.log('aaa', this.errors);
+      },
+      () => {
+        this.loginForm.reset();
+        this._toastService.success('Vous êtes la bienvenue');
+        this.router.navigate(['demande']);
+      }
+    );
   }
 
   async responseHandler(data: any) {

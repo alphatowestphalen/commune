@@ -11,6 +11,7 @@ import { SurveyModule } from 'survey-angular-ui';
 import { ToastService, AngularToastifyModule } from 'angular-toastify';
 import { LoadingInterceptor } from './core/interceptor/loading.interceptor';
 import { SpinnerComponent } from './shared/components/spinner/spinner.component';
+import { TokenInterceptor } from './core/interceptor/token.interceptor';
 
 @NgModule({
   declarations: [AppComponent, FeaturesComponent, SpinnerComponent],
@@ -25,7 +26,8 @@ import { SpinnerComponent } from './shared/components/spinner/spinner.component'
     AngularToastifyModule,
   ],
   providers: [SurveyCreatorModule, SurveyModule, ToastService,
-    {provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi:true  }
+    {provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi:true  },
+     {provide: HTTP_INTERCEPTORS, useClass:TokenInterceptor, multi:true}
   ],
   bootstrap: [AppComponent],
 })

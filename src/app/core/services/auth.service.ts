@@ -4,6 +4,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from '../models/user.model';
 import { environment } from 'src/environments/environment';
+import { TokenService } from './token.service';
+import { Router } from '@angular/router';
 
 
 @Injectable({
@@ -14,40 +16,28 @@ export class AuthService {
   
    private baseUrl = environment.baseUrl;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private token: TokenService, public router: Router) { }
 
  
-  login(user: User): Promise<any> {
-   // return this.http.post(`${this.baseUrl}/login`,user);
-   return new Promise((resolve, reject)=>{
-    resolve(1)
-   })
+  login(user: User): Observable<any> {
+    return this.http.post(`${this.baseUrl}/auth/login`,user);
   }
 
   register(user: User): Observable<any> {
-    return this.http.post(`${this.baseUrl}/register`, user);
+    return this.http.post(`${this.baseUrl}/auth/register`, user);
   }
 
-  profile(){
-    const options = {
-      headers: new HttpHeaders({
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + localStorage.getItem('access_token')
-      })
-    };
-    return this.http.get(`${this.baseUrl}/profile`,options)
-  }
 
-  logout()  {
-    const options = {
-      headers: new HttpHeaders({
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + localStorage.getItem('access_token')
-      })
-    };
-    return this.http.post(`${this.baseUrl}/logout`,options)
-  }
+  // logout():{
+  //  // return this.http.post(`${this.baseUrl}/auth/logout`,{})
+
+  // }
+
+  logout():void{
+   
+      this.token.removeToken();
+      this.router.navigate(['sign-in']);
+    }
+  
 
 }
