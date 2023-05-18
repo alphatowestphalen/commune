@@ -59,10 +59,12 @@ export class SignInComponent implements OnInit {
       },
       (error) => {
         this.errors = error.error;
+        this._toastService.error('Votre information sont incorrectes');
         console.log('aaa', this.errors);
       },
       () => {
         this.loginForm.reset();
+        this._toastService.success('Vous êtes la bienvenue');
         this.router.navigate(['demande']);
       }
     );

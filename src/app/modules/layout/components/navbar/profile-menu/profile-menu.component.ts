@@ -25,10 +25,7 @@ export class ProfileMenuComponent implements OnInit {
 
 
  Logout(){
-  this.authservice.logout().subscribe(()=>{
-    this.token.removeToken();
-    this.router.navigate(['sign-in']);
-  })
+  this.authservice.logout()
  }
 
  public toggleMenu(): void {
