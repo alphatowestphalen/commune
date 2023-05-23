@@ -6,7 +6,6 @@ import {
 } from '@angular/common/http';
 import { TokenService } from '../services/token.service';
 
-
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
   constructor(private tokenService: TokenService) {}
@@ -15,7 +14,7 @@ export class AuthInterceptor implements HttpInterceptor {
     const accessToken = this.tokenService.getToken();
     req = req.clone({
       setHeaders: {
-        Authorization: 'Bearer ' + accessToken,
+        Authorization: 'Bearer ' + accessToken ?? '',
       },
     });
     return next.handle(req);

@@ -27,8 +27,8 @@
         <img class="rounded-md" src="https://avatars.githubusercontent.com/u/12519008?v=4" alt="" />
       </div>
       <div class="overflow-hidden px-2 text-sm font-semibold text-gray-700 dark:text-night-50">
-        {{user.name}}
-        <p class="truncate text-ellipsis text-xs font-semibold text-gray-400 dark:text-night-300">{{user.username}}</p>
+      
+        <p class="truncate text-ellipsis text-xs font-semibold text-gray-400 dark:text-night-300"></p>
       </div>
     </div>
 
@@ -45,7 +45,7 @@
       </li>
       
       <li
-       routerLink="/sign-in"
+      (click)="Logout()"
         class="block cursor-pointer rounded-md px-3 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-100 hover:text-primary-500 dark:text-night-200 dark:hover:bg-night-500 dark:hover:text-primary-500">
        Déconnexion
       </li>
