@@ -48,39 +48,37 @@ export class SignInComponent implements OnInit {
       this.authservice.login(this.loginForm.value).subscribe(
         (result) => {
           console.log(result);
-          this.responseHandler(result.accessToken);
+          this.responseHandler(result.token);
         },
         (error) => {
           this.errors = error.error;
-          if(error.status === 401)
-          this._toastService.error('Votre information sont incorrectes');
+          if (error.status === 401)
+            this._toastService.error('Votre information sont incorrectes');
           console.log('aaa', this.errors);
         },
         () => {
           this.loginForm.reset();
-         // this._toastService.success('Vous êtes la bienvenue');
+          // this._toastService.success('Vous êtes la bienvenue');
           this.router.navigate(['demande']);
         }
       );
     }
-// this.authservice.login(this.loginForm.value).then(
-//  async (result)=>{
-//    await this.responseHandler(result);
-//     this.loginForm.reset();
-//     this.router.navigate(['demande']);
-//   }
-// )
-   
+    // this.authservice.login(this.loginForm.value).then(
+    //  async (result)=>{
+    //    await this.responseHandler(result);
+    //     this.loginForm.reset();
+    //     this.router.navigate(['demande']);
+    //   }
+    // )
   }
 
   async responseHandler(data: any) {
+    console.log('mydata', data);
     this.token.handleData(data);
   }
 
   toggleFieldTextType() {
-    console.log(this.type)
-  return this.type = !this.type
+    console.log(this.type);
+    return (this.type = !this.type);
   }
-
 }
-
