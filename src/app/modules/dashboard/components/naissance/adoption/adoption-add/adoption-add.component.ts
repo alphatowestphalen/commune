@@ -17,6 +17,7 @@ declare function MoisMalgache(params: string): any
 export class AdoptionAddComponent implements OnInit {
   adoption: any;
   certificate: any;
+  searchResp:any;
 
   searchCopie = new FormControl();
   filteredCopies: any = [];
@@ -156,7 +157,13 @@ export class AdoptionAddComponent implements OnInit {
     return this.datenaiss, this.datenaissMere, this.datenaissPere, this.datenaissDeclarant, this.dateregistre
 
   }
+  spaceResp(){
+    this.searchResp+=" ";
+  }
 
+  closedResp(){
+    this.searchResp="";
+  }
   openDialog() {
 
    
