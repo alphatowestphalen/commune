@@ -42,6 +42,7 @@ export class NaissanceAddComponent implements OnInit {
   MaireSelected: any= [];
 
   NumCopie: any;
+   enableMeridian: boolean= true;
 
   constructor(private _formBuilder: FormBuilder, public dialog: MatDialog, private maireservice: MaireService,  private premierecopieservice: PremiereCopieService  ) {}
 
@@ -68,7 +69,7 @@ export class NaissanceAddComponent implements OnInit {
     prenomsEnfant: '',
     datenaissEnfant: [''],
     lieunaissEnfant: [''],
-    heurenaissEnfant: [''],
+    heurenaissEnfant: [''], 
     dateEnfant: [''],
     sexeEnfant: [''],
   });
@@ -157,7 +158,7 @@ export class NaissanceAddComponent implements OnInit {
     const enfant:any  = this.EnfantFormGroup.value.datenaissEnfant?.split("-") 
    const datenaiss = NombreEnLettre(enfant[2]).concat(' ',MoisMalgache(enfant[1]))
     this.datenaiss = datenaiss.concat(' ',NombreEnLettre(enfant[0]) )
-    console.log(this.datenaiss )
+    console.log(this.EnfantFormGroup.value.heurenaissEnfant)
  return this.datenaiss
   }
 
