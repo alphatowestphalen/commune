@@ -9,7 +9,7 @@ export class SearchPipe implements PipeTransform {
     if(!premierCopies || !premierCopies.length) return premierCopies;
     if(!search || !search.length) return premierCopies;
     return premierCopies.filter(premierCopie => {
-      return premierCopie.nomEnfant.toString().toLowerCase().indexOf(search.toLowerCase()) > -1
+      return premierCopie.enfant.nomEnfant.toString().toLowerCase().indexOf(search.toLowerCase()) > -1
     });
   }
 

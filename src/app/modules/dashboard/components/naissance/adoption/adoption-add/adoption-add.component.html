@@ -105,36 +105,19 @@
             <span class="font-normal text-xs text-gray-400">Recuperer Premiere Copie</span>
           </ng-template>
           <mat-form-field class="example-full-width">
-            <mat-select [formControl]="searchCopie"    name="responsable"  (closed)="closedResp()">
-              <mat-form-field class="search">
+            <mat-select (formControl)="idPremierCopie"  (selectionChange)="onChange($event.value)" name="PremierCopie"  (closed)="closedResp()">
+              <mat-form-field class="w-full">
                 <mat-label>Recherche</mat-label>
-                <input matInput [(ngModel)]="CopieSelected" (keydown.Space)="spaceResp()">
+                <input matInput [(ngModel)]="CopieSelected"   class="w-full" (keydown.Space)="spaceResp()">
               </mat-form-field>
-              <mat-option *ngFor="let copie of adoption|search:CopieSelected" [value]="copie"> <span><b>{{copie.idPremierCopie}}</b> ({{copie.enfant.nomEnfant}})</span></mat-option>
+              <mat-option *ngFor="let copie of adoption|search:CopieSelected" [value]="copie.idPremierCopie"> <span><b>{{copie.idPremierCopie}}</b> ({{copie.enfant.nomEnfant}} {{copie.enfant.prenomsEnfant}})</span></mat-option>
             </mat-select>
           </mat-form-field>
           <form [formGroup]="EnfantFormGroup">
         
         <div class="wrapper">
           
-          
-            <!-- <mat-label>Recherche par Numèro de Copie</mat-label>
-            <input matInput [(ngModel)]="CopieSelected" [matAutocomplete]="auto"
-              [formControl]="searchCopie" placeholder="Saisir la Numèro de Copie">
-            <button *ngIf="CopieSelected" matSuffix mat-icon-button aria-label="Clear" (click)="clearSelection()">
-    
-            </button>
-            <mat-autocomplete [panelWidth]="400" #auto="matAutocomplete" (optionSelected)="onSelected()"
-              [displayWith]="displayWith">
-              <mat-option *ngIf="isLoading" class="is-loading">Chargement...</mat-option>
-              <ng-container *ngIf="!isLoading">
-                <mat-option *ngFor="let copie of filteredCopies" [value]="copie">
-                  <span><b>{{copie.idPremierCopie}}</b> ({{copie.enfant.nomEnfant}})</span>
-                </mat-option>
-              </ng-container>
-            </mat-autocomplete> -->
-          
-    
+         
           <br>
     
           <ng-container *ngIf="errorMsg; else elseTemplate">
@@ -142,11 +125,11 @@
           </ng-container>
           <ng-template #elseTemplate>
   
-            <div class=" lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4"  *ngIf="CopieSelected?.idPremierCopie">
+            <div class=" lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4"  *ngIf="certificate?.idPremierCopie">
               <div class="mb-4 w-4/5">
 
                 <label class="block mb-2 text-sm font-bold text-black">Nom de l'enfant</label>
-                <input type="text"  readonly value="{{CopieSelected?.enfant.nomEnfant}}"
+                <input type="text"   readonly value="{{certificate?.enfant.nomEnfant}}"
                   class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
                   placeholder="Saisir nom de l'enfant" />
 
@@ -154,7 +137,7 @@
               <div class="mb-4 w-4/5">
 
                 <label class="block mb-2 text-sm font-bold text-black">Prenoms de l'enfant</label>
-                <input type="text"  readonly   value="{{CopieSelected?.enfant.prenomsEnfant}}"
+                <input type="text"  readonly   value="{{certificate?.enfant.prenomsEnfant}}"
                   class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
                   placeholder="Saisir Prenoms de l'enfant" />
 
@@ -165,7 +148,7 @@
               <div class="mb-4 w-4/5">
 
                 <label class="block mb-2 text-sm font-bold text-black">Date de Naissance</label>
-                <input type="text" readonly  value="{{CopieSelected?.enfant?.datenaissEnfant}}"
+                <input type="text" readonly  formControlName="dateEnfant" value="{{certificate?.enfant?.datenaissEnfant}}"
                   class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
                   placeholder="Saisir Date de Naissance l'enfant" />
 
@@ -173,7 +156,7 @@
               <div class="mb-4 w-4/5">
 
                 <label class="block mb-2 text-sm font-bold text-black">Heure de naissance</label>
-                <input type="text"  readonly value="{{CopieSelected?.enfant?.heurenaissEnfant}}"
+                <input type="text"  readonly value="{{certificate?.enfant?.heurenaissEnfant}}"
                   class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
                   placeholder="Saisir heure de Naissancede l'enfant" />
 
@@ -183,7 +166,7 @@
               <div class="mb-4 w-4/5">
 
                 <label class="block mb-2 text-sm font-bold text-black">Lieu de Naissance</label>
-                <input type="text" readonly value="{{CopieSelected?.enfant?.lieunaissEnfant}}"
+                <input type="text" readonly value="{{certificate?.enfant?.lieunaissEnfant}}"
                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
                   placeholder="Saisir Lieu de Naissance de l'enfant" />
 
