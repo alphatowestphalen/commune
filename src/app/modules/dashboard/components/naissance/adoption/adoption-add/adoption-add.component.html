@@ -100,14 +100,24 @@
         </form>
       </mat-step>
       <mat-step [stepControl]="EnfantFormGroup">
-        <form [formGroup]="EnfantFormGroup">
+       
           <ng-template matStepLabel> Première copie<br>
             <span class="font-normal text-xs text-gray-400">Recuperer Premiere Copie</span>
           </ng-template>
-
+          <mat-form-field class="example-full-width">
+            <mat-select [formControl]="searchCopie"    name="responsable"  (closed)="closedResp()">
+              <mat-form-field class="search">
+                <mat-label>Recherche</mat-label>
+                <input matInput [(ngModel)]="CopieSelected" (keydown.Space)="spaceResp()">
+              </mat-form-field>
+              <mat-option *ngFor="let copie of adoption|search:CopieSelected" [value]="copie"> <span><b>{{copie.idPremierCopie}}</b> ({{copie.enfant.nomEnfant}})</span></mat-option>
+            </mat-select>
+          </mat-form-field>
+          <form [formGroup]="EnfantFormGroup">
         
         <div class="wrapper">
-          <mat-form-field class="example-full-width">
+          
+          
             <!-- <mat-label>Recherche par Numèro de Copie</mat-label>
             <input matInput [(ngModel)]="CopieSelected" [matAutocomplete]="auto"
               [formControl]="searchCopie" placeholder="Saisir la Numèro de Copie">
@@ -123,14 +133,7 @@
                 </mat-option>
               </ng-container>
             </mat-autocomplete> -->
-            <mat-select [formControl]="CopieSelected" name="responsable"  (closed)="closedResp()">
-              <mat-form-field class="search">
-                <mat-label>Recherche</mat-label>
-                <input matInput [(ngModel)]="CopieSelected" (keydown.Space)="spaceResp()">
-              </mat-form-field>
-              <mat-option *ngFor="let copie of filteredCopies|search:CopieSelected" [value]="copie"> <span><b>{{copie.idPremierCopie}}</b> ({{copie.enfant.nomEnfant}})</span></mat-option>
-            </mat-select>
-          </mat-form-field>
+          
     
           <br>
     

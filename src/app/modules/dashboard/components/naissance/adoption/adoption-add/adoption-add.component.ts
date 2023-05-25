@@ -17,10 +17,10 @@ declare function MoisMalgache(params: string): any
 export class AdoptionAddComponent implements OnInit {
   adoption: any;
   certificate: any;
-  searchResp:any;
 
-  searchCopie = new FormControl();
-  filteredCopies: any = [];
+
+  public searchCopie= new FormControl('')
+  premieresCopies: any = [];
   isLoading = false;
   errorMsg!: string;
   minLengthTerm = 1;
@@ -44,6 +44,7 @@ export class AdoptionAddComponent implements OnInit {
     dateDeclarant: [''],
     dateEnfant: [''],
     dateregistre: ['']
+   
   });
   AdoptionFormGroup = this._formBuilder.group({
     parentAdoptif: [''],
@@ -59,8 +60,8 @@ export class AdoptionAddComponent implements OnInit {
   getAllFirstCertificate() {
     this.premierecopie.getFirstCertificates()
       .subscribe(data => {
-        this.adoption = data
-        console.log(this.adoption)
+        this.adoption = data.premierCopies
+        console.log(this.adoption.premierCopies)
       })
   }
 
@@ -74,11 +75,11 @@ export class AdoptionAddComponent implements OnInit {
   }
 
 
-  onSelected() {
-    console.log(this.CopieSelected);
-    this.CopieSelected = this.CopieSelected;
+  // onSelected() {
+  //   console.log(this.CopieSelected);
+  //   this.CopieSelected = this.CopieSelected;
 
-  }
+  // }
 
   displayWith(value: any) {
     return value?.idPremiereCopie;
@@ -86,42 +87,11 @@ export class AdoptionAddComponent implements OnInit {
 
   clearSelection() {
     this.CopieSelected = "";
-    this.filteredCopies = [];
+   
   }
 
   ngOnInit() {
-    this.searchCopie.valueChanges
-      .pipe(
-        filter(res => {
-          return res !== null && res.length >= this.minLengthTerm
-        }),
-        distinctUntilChanged(),
-        debounceTime(1000),
-        tap(() => {
-          this.errorMsg = "";
-          this.filteredCopies = [];
-          this.isLoading = true;
-        }),
-
-        switchMap(value => this.premierecopie.getFirstCertificates()
-          .pipe(
-            finalize(() => {
-              this.isLoading = false
-            }),
-          )
-        )
-      )
-      .subscribe((data: any) => {
-        // if (data.premierCopies == undefined) {
-        //   this.errorMsg = data['Error'];
-        //   this.filteredCopies = [];
-        // } else {
-        //   this.errorMsg = "";
-
-        // }
-        this.filteredCopies = data.premierCopies;
-        console.log(data);
-      });
+  this.getAllFirstCertificate();
   }
 
   FirstStep() {
@@ -157,12 +127,13 @@ export class AdoptionAddComponent implements OnInit {
     return this.datenaiss, this.datenaissMere, this.datenaissPere, this.datenaissDeclarant, this.dateregistre
 
   }
+
   spaceResp(){
-    this.searchResp+=" ";
+    this.CopieSelected+=" ";
   }
 
   closedResp(){
-    this.searchResp="";
+    this.CopieSelected="";
   }
   openDialog() {
 
