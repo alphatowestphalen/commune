@@ -24,7 +24,8 @@ import { Router } from '@angular/router';
 
 
 declare function NombreEnLettre(params:number)  : any;
-declare function MoisMalgache(params: string) : any
+declare function MoisMalgache(params: string) : any;
+//declare function HeureMalgache(params:number) : any;
 @Component({
   selector: 'app-naissance-add',
   templateUrl: './naissance-add.component.html',
@@ -159,8 +160,8 @@ export class NaissanceAddComponent implements OnInit {
     const heureEnfant:any = this.EnfantFormGroup.value.heurenaissEnfant?.split(":")
    const datenaiss = NombreEnLettre(enfant[2]).concat(' ',MoisMalgache(enfant[1]))
     this.datenaiss = datenaiss.concat(' ',NombreEnLettre(enfant[0]) )
-    const heurenaiss = HeureEnLettre()
-    console.log(this.EnfantFormGroup.value.heurenaissEnfant)
+    // const heurenaiss = HeureMalgache(heureEnfant)
+    // console.log(this.EnfantFormGroup.value.heurenaissEnfant)
  return this.datenaiss
   }
 
