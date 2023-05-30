@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Column } from '../../../models/column';
 import { MariageService } from '../../../services/mariage.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-mariage',
@@ -53,7 +54,7 @@ export class MariageComponent implements OnInit {
 mariage: any = [];
 size: any ='';
 page = 0;
-  constructor(private mariageservice: MariageService) { }
+  constructor(private mariageservice: MariageService, private router:Router) { }
 
   ngOnInit(): void {
 this.AllListMariages(this.size, this.page)
@@ -66,5 +67,17 @@ this.AllListMariages(this.size, this.page)
       this.size = data.length
       console.log(this.tableData, this.size)
     })
+  }
+
+  showRow(element: any) {
+    this.router.navigate(['/dashboard/mariage-show', element.idMariage])
+
+  }
+
+  editRow(element: any) {
+  }
+
+  deleteRow(element: any){
+
   }
 }

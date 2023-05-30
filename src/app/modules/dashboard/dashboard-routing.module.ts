@@ -24,6 +24,7 @@ import { DecesComponent } from './components/deces/deces/deces.component';
 import { UtilisateurListComponent } from './components/utilisateur/utilisateur-list/utilisateur-list.component';
 import { UtilisateurAddComponent } from './components/utilisateur/utilisateur-add/utilisateur-add.component';
 import { AfterLoginService } from 'src/app/core/services/after-login.service';
+import { MariageVoirComponent } from './components/mariage/mariage/mariage-voir/mariage-voir.component';
 
 const routes: Routes = [
   {
@@ -54,6 +55,7 @@ const routes: Routes = [
       },
       {path: 'mariage-list', component: MariageComponent},
       {path: 'mariage-add', component: MariageAddComponent},
+      {path: 'mariage-show/:id', component: MariageVoirComponent},
       {path: 'divorce-list', component: DivorceComponent},
       {path: 'celibat-list', component: CelibataireComponent},
       {path: 'deces-list', component: DecesComponent},

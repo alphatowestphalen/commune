@@ -1,26 +1,26 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { MariageService } from 'src/app/modules/dashboard/services/mariage.service';
 import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas';
-import { ActivatedRoute, Router } from '@angular/router';
-import { PremiereCopieService } from '../../../services/premiere-copie.service';
-
 
 @Component({
-  selector: 'app-premiere-copie-voir',
-  templateUrl: './premiere-copie-voir.component.html',
-  styleUrls: ['./premiere-copie-voir.component.scss']
+  selector: 'app-mariage-voir',
+  templateUrl: './mariage-voir.component.html',
+  styleUrls: ['./mariage-voir.component.scss']
 })
-export class PremiereCopieVoirComponent implements OnInit {
-  id: any;
-  certificates: any;
-  content: any;
+export class MariageVoirComponent implements OnInit {
+  id:any;
+  mariage: any;
 
-  constructor( private activatedroute: ActivatedRoute, private router: Router, private premierecopieservice: PremiereCopieService) { }
+  constructor(private mariageservice:MariageService, private activatedroute:ActivatedRoute) { }
+
   @ViewChild('htmlData') htmlData!: ElementRef;
+
   ngOnInit(): void {
     this.activatedroute.paramMap.subscribe(params => { 
-      this.id = params.get('id');
-    this.getCertificatesbyID();
+    this.id = params.get('id');
+    this.getMariage();
   });
   }
   OpenCopie = false;
@@ -30,19 +30,10 @@ export class PremiereCopieVoirComponent implements OnInit {
   public openPDF(): void {
 
     let DATA: any = document.getElementById('htmlData')!.innerHTML;
-    // console.log(DATA);
-    // html2canvas(DATA).then((canvas) => {
-    //   let fileWidth = 208;
-    //   let fileHeight = (canvas.height * fileWidth) / canvas.width;
-    //   const FILEURI = canvas.toDataURL('image/png');
-    //   let PDF = new jsPDF('p', 'mm', 'a4');
-    //   let position = 0;
-    //   PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight);
-    //   PDF.save('angular-demo.pdf');
-    // });
+ 
 
     const doc = new jsPDF();
-   // const content = this.content.nativeElement;
+   
     html2canvas(DATA).then(canvas => {
         const imgData = canvas.toDataURL('image/png');
         const imgWidth = 210; 
@@ -54,7 +45,7 @@ export class PremiereCopieVoirComponent implements OnInit {
         doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
         heightLeft -= pageHeight;
         doc.setFont('times', 'normal');
-      //  doc.text(DATA.innerHTML, 10, 10);
+     
         
         while (heightLeft >= 0) {
           position = heightLeft - imgHeight;
@@ -76,14 +67,11 @@ export class PremiereCopieVoirComponent implements OnInit {
 
      document.body.innerHTML = originalContents;
   }
+  getMariage(){
+    this.mariageservice.getMariageById(this.id).subscribe(data=>{
+      this.mariage = data;
+      console.log(this.mariage);
+    })
+  }
 
-    getCertificatesbyID(){
-      this.premierecopieservice.getCertificateByID(this.id)
-      .subscribe(data => {
-        this.certificates = data;
-   
-      })     
-    }
-
-   
 }
