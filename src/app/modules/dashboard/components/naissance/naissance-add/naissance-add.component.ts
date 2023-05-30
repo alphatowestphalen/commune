@@ -156,8 +156,10 @@ export class NaissanceAddComponent implements OnInit {
 
   FirstStep( ) {
     const enfant:any  = this.EnfantFormGroup.value.datenaissEnfant?.split("-") 
+    const heureEnfant:any = this.EnfantFormGroup.value.heurenaissEnfant?.split(":")
    const datenaiss = NombreEnLettre(enfant[2]).concat(' ',MoisMalgache(enfant[1]))
     this.datenaiss = datenaiss.concat(' ',NombreEnLettre(enfant[0]) )
+    const heurenaiss = HeureEnLettre()
     console.log(this.EnfantFormGroup.value.heurenaissEnfant)
  return this.datenaiss
   }
