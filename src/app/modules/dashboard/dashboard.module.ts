@@ -44,7 +44,6 @@ import { AdoptionMentionComponent } from './pages/adoption-mention/adoption-ment
 import { JugementMentionComponent } from './pages/jugement-mention/jugement-mention.component';
 import { ReconnaissanceMentionComponent } from './pages/reconnaissance-mention/reconnaissance-mention.component';
 import { LoadingComponent } from './pages/loading/loading.component';
-import { DecesComponent } from './components/deces/deces/deces.component';
 import { MariageComponent } from './components/mariage/mariage/mariage.component';
 import { BulletinComponent } from './components/naissance/bulletin/bulletin.component';
 import { BulletinListComponent } from './components/naissance/bulletin/bulletin-list/bulletin-list.component';
@@ -57,6 +56,9 @@ import { UtilisateurListComponent } from './components/utilisateur/utilisateur-l
 import { UtilisateurAddComponent } from './components/utilisateur/utilisateur-add/utilisateur-add.component';
 import { MariageVoirComponent } from './components/mariage/mariage/mariage-voir/mariage-voir.component';
 import { CopieMariageComponent } from './pages/copie-mariage/copie-mariage.component';
+import { DecesListComponent } from './components/deces/deces-list/deces-list.component';
+import { DecesAddComponent } from './components/deces/deces-add/deces-add.component';
+import { DecesShowComponent } from './components/deces/deces-show/deces-show.component';
 
 @NgModule({
   exports: [SurveyCreatorModule, SurveyModule, BulletinNaissanceComponent],
@@ -84,7 +86,6 @@ import { CopieMariageComponent } from './pages/copie-mariage/copie-mariage.compo
     JugementMentionComponent,
     ReconnaissanceMentionComponent,
     LoadingComponent,
-    DecesComponent,
     MariageComponent,
     BulletinListComponent,
     BulletinNaissanceComponent,
@@ -96,6 +97,9 @@ import { CopieMariageComponent } from './pages/copie-mariage/copie-mariage.compo
     UtilisateurAddComponent,
     MariageVoirComponent,
     CopieMariageComponent,
+    DecesListComponent,
+    DecesAddComponent,
+    DecesShowComponent,
 
   ],
   imports: [
