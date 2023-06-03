@@ -13,31 +13,31 @@ export class DecesListComponent implements OnInit {
     {
       columnDef: 'Numèro Mariage',
       header: 'Numèro',
-      cell: (element: Record<string, any>) => `${element['numero'] }`
+      cell: (element: Record<string, any>) => `${element['idActeDeces'] }`
     },
     {
-      columnDef: 'Nom et Prènoms Homme',
-      header: 'Nom et Prènoms Homme',
+      columnDef: 'Nom et Prènoms ',
+      header: 'Nom et Prènoms ',
         cell: (element: Record<string, any>) => {
-        const nomEnfant = element['homme']['nomHomme']
-        const prenomEnfant = element['homme']['prenomsHomme']
+        const nomEnfant = element['premierCopie']['enfant']['nomEnfant']
+        const prenomEnfant = element['premierCopie']['enfant']['prenomsEnfant']
         const NomEnfant = nomEnfant.toUpperCase()
         return `${NomEnfant} ${prenomEnfant}`
       },
     },
     {
-      columnDef: 'Nome et Prènoms Femme',
-      header: 'Nome et Prènoms Femme',
+      columnDef: 'Nome et Prènoms Declarant',
+      header: 'Nome et Prènoms',
       cell: (element: Record<string, any>) => {
-        const NomFemme = element['femme']['nomFemme']
-        const prenomsFemme = element['femme']['prenomsFemme']
+        const NomFemme = element['nomDeclarant']
+        const prenomsFemme = element['prenomsDeclarant']
         const Nomfemme = NomFemme.toUpperCase()
         return `${Nomfemme} ${prenomsFemme}`
       },
     },
     {
-      columnDef: 'Date et Heure Mariage',
-      header: 'Date et Heure Mariage',
+      columnDef: 'Date Enregistrement',
+      header: 'Date Enregistrement',
      cell: (element: Record<string, any>) => {
         const datenaissEnfant = element['createdDate'];
         const dateObj = new Date(datenaissEnfant);
@@ -55,11 +55,13 @@ export class DecesListComponent implements OnInit {
   
 
   ngOnInit(): void {
+    this.getAllDeces(this.page, this.size);
   }
 
   getAllDeces(page:number, size:number){
     this.decesservice.getAllDeces(page,size).subscribe(data=>{
       this.tableData = data.deces
+      console.log(this.tableData)
     })
   }
   showRow(element: any) {
