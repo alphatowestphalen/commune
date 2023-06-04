@@ -1,0 +1,175 @@
+<div
+  class="relative transform overflow-auto rounded-lg bg-white text-left lg:h-full lg:max-w-[75%] shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg "
+>
+  <form class="bg-white shadow-md rounded ">
+    <div class="page" id="htmlData">
+      <header class="grid grid-rows-2 grid-flow-col gap-2">
+       
+        <div class="subhead row-start-2 row-span-2">
+          <table>
+           <tr>
+            <td>FARITRA </td>
+            <td>: BONGOLAVA</td>
+            <tr>
+              <td>PREFEKTIORA </td>
+              <td>: TSIROAMANDIDY</td>
+            </tr>
+          <tr>
+            <td>KAOMININA </td>
+            <td>: ANKADINONDRY SAKAY</td>
+           </tr>
+          </table>
+          <p class="pl-[25%]">------------------</p>
+        </div>
+        <div class="repoblika row-end-2 pt-5 ">
+          <h3 class="ml-[4%]">REPOBLIKAN'NY MADAGASIKARA</h3>
+          <p class="italic">Fitiavana-Tanindrazana-Fandrosoana</p>
+          <p class="pl-[20%]">------------------</p>
+          
+        </div>
+        <div class="row-start-2 row-end-3 pt-7" >
+          <h1 class="heading">
+            Teny midina faha-788-MJ/CAB 
+            tamin'ny 29 Desambra 1961 nataon'ny 
+            Ministry ny Fitsarana sy ny Mpitahiry ny Kasem-panjakana
+          </h1>
+        </div>
+        <div class="row-start-1 row-end-4 mr-5">
+          <img 
+          class="bongolava"
+          src="@/../../../../../../../assets/images/bongolava-logo.jpg"
+          alt=""
+        />
+          
+        </div>
+       
+
+     
+       
+      </header>
+
+      <div class="text-4xl font-bold py-3">
+        <h1 class="ml-[25%] mr-[5%] font-dancing">Kopian'ny Soram-piankohonana</h1>
+      </div>
+      <main class="main">
+        
+        <aside class="main__left">
+          <section class="section">
+          
+
+            <p class="section__title my-5">Faha : {{ mariage.idPremiermariage }}</p>
+
+            <p class="section__title mt-5">
+              Tamin'ny <br />
+              <span class="ml-0 pr-10">{{ mariage.enfant.datenaissEnfant }}</span>
+            </p>
+
+            <div class="section__content">
+              <div class="section__entry">
+                <div class="section_title">Fanambadiana</div>
+              </div>
+              <div class="section__entry">
+                <div class="section_content font-medium">
+                  {{ mariage.enfant.nomEnfant }} {{ mariage.enfant.prenomsEnfant }}
+                </div>
+              </div>
+
+              <div class="section__entry">
+                <div class="section_content ml-5 my-20">
+                  {{ mariage.enfant.datenaissEnfant }}
+                </div>
+              </div>
+            </div>
+          </section>
+
+       
+        </aside>
+
+        <div class="main__right">
+          <section class="section">
+      
+            <div class="section__contentt">
+              <div class="timeline">
+                <div class="timeline__content">
+                  <p class="mb-5">
+                    <span class="pl-10"
+                      >Nalaina tamin'ny bokim-pianakaviana , tamin'ny taona roa
+                      sy roa arivo ,</span
+                    >
+                    voatahiry ato amin'ny Kaominina Ambonivohitra Fianarantsoa
+                    izao soratra manaraka izao:
+                  </p>
+                </div>
+              </div>
+              <div class="timeline">
+                <div class="timeline__content">
+                  <p class="mb-5">
+                    <span class="pl-10"
+                      >Tamin'ny {{ mariage.enfant.dateEnfant }} </span
+                    >, tamin'ny ira ora maraina sy efapolo minitra, no teraka
+                    tao Amin'ny {{ mariage.enfant.lieuNaissEnfant }},
+                    {{ mariage.enfant.nomEnfant }}
+                    {{ mariage.enfant.prenomsEnfant }},
+                    {{ mariage.enfant.sexeEnfant }}, zanak'i
+                    {{ mariage.pere.nomPere }} {{ mariage.pere.prenomsPere }} ,{{
+                      mariage.pere.professionPere
+                    }}, teraka tamin'ny {{ mariage.pere.datePere }} tao
+                    {{ mariage.pere.lieuNaissPere }} , sy
+                    {{ mariage.mere.nomMere }}, {{ mariage.mere.prenomsMere }},
+                    teraka tamin'ny {{ mariage.mere.dateMere }} tao
+                    {{ mariage.mere.lieuNaissMere }} , samy monina ao
+                    {{ mariage.mere.adresseMere }}
+                  </p>
+                </div>
+              </div>
+              <div class="timeline">
+                <div class="timeline__content">
+                  <p class="mb-5">
+                    <span class="pl-10"
+                      >Nosoratana androany {{ mariage.datePremiermariage }}
+                    </span>
+                    tamin'ny valo ora maraina sy folo minitra, araka ny
+                    fanamabarana nataon'i {{ mariage.declarant.nomDeclarant }},
+                    Mampivelona, teraka tamin'ny
+                    {{ mariage.declarant.dateDeclarant }} tao Antsirabe, monina ao
+                    {{ mariage.declarant.adresseDeclarant }}, izay miaraka manao
+                    sonia aminay. {{ mariage.maire.nomMaire }},{{
+                      mariage.maire.fonction
+                    }}
+                    ao amin'ny Commune Rurale d'Ankadinondry, rehefa novakiana
+                    ity soratra ity.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="text-sm font-normal ml-48 mb-3">
+              <span>-MANARAKA NY SONIA-</span>
+            </div>
+            <span class="pl-10 text-sm font-normal">-SORATRA AN-TSISINY </span>
+            <div *ngFor="let mention of mariage.mentions">
+              <app-mention [mention]="mention"></app-mention>
+            </div>
+
+            <div class="section__contentt">
+              <div class="timeline">
+                <div class="timeline__content">
+                  <p class="mb-5">
+                    <span class="pl-10"
+                      >Kopia manontolo nadika tamin'ny boky androany telo aprily
+                      roa sy roa arivo
+                    </span>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="text-sm font-normal ml-20">
+              <span>NY MPIANDRAIKITRA NY SORAM-PIANKOHONANA</span>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+  </form>
+</div>

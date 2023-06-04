@@ -18,14 +18,15 @@ export class AdoptionAddComponent implements OnInit {
   adoption: any;
   certificate: any;
 
-  searchCopie = new FormControl();
-  filteredCopies: any = [];
+
+  public searchCopie= new FormControl('')
+  premieresCopies: any = [];
   isLoading = false;
   errorMsg!: string;
   minLengthTerm = 1;
   CopieSelected: any = "";
   data: any;
-
+ idPremierCopie = new FormControl();
   datenaiss: string | null | undefined;
   datenaissMere: string | null | undefined;
   datenaissPere: string | null | undefined;
@@ -43,6 +44,7 @@ export class AdoptionAddComponent implements OnInit {
     dateDeclarant: [''],
     dateEnfant: [''],
     dateregistre: ['']
+   
   });
   AdoptionFormGroup = this._formBuilder.group({
     parentAdoptif: [''],
@@ -58,8 +60,8 @@ export class AdoptionAddComponent implements OnInit {
   getAllFirstCertificate() {
     this.premierecopie.getFirstCertificates()
       .subscribe(data => {
-        this.adoption = data
-        console.log(this.adoption)
+        this.adoption = data.premierCopies
+        console.log(this.adoption.premierCopies)
       })
   }
 
@@ -68,79 +70,42 @@ export class AdoptionAddComponent implements OnInit {
     this.premierecopie.getCertificateByID(event)
       .subscribe(data => {
         this.certificate = data;
-        console.log(this.certificate)
+        this.EnfantFormGroup.value.dateEnfant = this.certificate.enfant.datenaissEnfant;
+        console.log( this.EnfantFormGroup.value.dateEnfant)
       })
   }
 
 
-  onSelected() {
-    console.log(this.CopieSelected);
-    this.CopieSelected = this.CopieSelected;
 
-  }
 
   displayWith(value: any) {
     return value?.idPremiereCopie;
   }
 
-  clearSelection() {
-    this.CopieSelected = "";
-    this.filteredCopies = [];
-  }
+ 
 
   ngOnInit() {
-    this.searchCopie.valueChanges
-      .pipe(
-        filter(res => {
-          return res !== null && res.length >= this.minLengthTerm
-        }),
-        distinctUntilChanged(),
-        debounceTime(1000),
-        tap(() => {
-          this.errorMsg = "";
-          this.filteredCopies = [];
-          this.isLoading = true;
-        }),
-
-        switchMap(value => this.premierecopie.getFirstCertificates()
-          .pipe(
-            finalize(() => {
-              this.isLoading = false
-            }),
-          )
-        )
-      )
-      .subscribe((data: any) => {
-        // if (data.premierCopies == undefined) {
-        //   this.errorMsg = data['Error'];
-        //   this.filteredCopies = [];
-        // } else {
-        //   this.errorMsg = "";
-
-        // }
-        this.filteredCopies = data.premierCopies;
-        console.log(data);
-      });
+  this.getAllFirstCertificate();
   }
 
   FirstStep() {
 
 
-    const enfant: any = this.CopieSelected['enfant']['datenaissEnfant']?.split("-")
+    const enfant: any = this.certificate['enfant']['datenaissEnfant']?.split("-")
     const datenaiss = NombreEnLettre(enfant[2]).concat(' ', MoisMalgache(enfant[1]))
     this.datenaiss = datenaiss.concat(' ', NombreEnLettre(enfant[0]))
 
-    const mere: any = this.CopieSelected['mere']['datenaissMere']?.split("-")
+    const mere: any = this.certificate['mere']['datenaissMere']?.split("-")
     const datenaissMere = NombreEnLettre(mere[2]).concat(' ', MoisMalgache(mere[1]))
     this.datenaissMere = datenaissMere.concat(' ', NombreEnLettre(mere[0]))
     console.log(this.datenaiss, this.datenaissMere)
 
-    const pere: any = this.CopieSelected['pere']['datenaissPere']?.split("-")
+    const pere: any = this.certificate['pere']['datenaissPere']?.split("-")
     const datenaissPere = NombreEnLettre(pere[2]).concat(' ', MoisMalgache(pere[1]))
     this.datenaissPere = datenaissPere.concat(' ', NombreEnLettre(pere[0]))
     console.log(this.datenaissPere)
 
-    const declarant: any = this.CopieSelected['declarant']['datenaissDeclarant']?.split("-")
+    const declarant: any = this.certificate['declarant']['datenaissDeclarant']?.split("-")
     const datenaissDeclarant = NombreEnLettre(declarant[2]).concat(' ', MoisMalgache(declarant[1]))
     this.datenaissDeclarant = datenaissDeclarant.concat(' ', NombreEnLettre(declarant[0]))
     console.log(this.datenaissDeclarant)
@@ -157,6 +122,13 @@ export class AdoptionAddComponent implements OnInit {
 
   }
 
+  spaceResp(){
+    this.CopieSelected+=" ";
+  }
+
+  closedResp(){
+    this.CopieSelected="";
+  }
   openDialog() {
 
    
@@ -176,9 +148,11 @@ export class AdoptionAddComponent implements OnInit {
       this.data = {
         ...this.AdoptionFormGroup.value,
         ...this.EnfantFormGroup.value,
-        ...this.CopieSelected
+        ...this.certificate
 
       };
+
+      console.log(this.data)
 
       const dialogRef = this.dialog.open(AdoptionCopieComponent, {
         maxWidth: '100vw',

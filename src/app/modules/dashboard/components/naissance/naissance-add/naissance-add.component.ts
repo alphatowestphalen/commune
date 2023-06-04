@@ -24,7 +24,8 @@ import { Router } from '@angular/router';
 
 
 declare function NombreEnLettre(params:number)  : any;
-declare function MoisMalgache(params: string) : any
+declare function MoisMalgache(params: string) : any;
+//declare function HeureMalgache(params:number) : any;
 @Component({
   selector: 'app-naissance-add',
   templateUrl: './naissance-add.component.html',
@@ -42,6 +43,7 @@ export class NaissanceAddComponent implements OnInit {
   MaireSelected: any= [];
 
   NumCopie: any;
+   enableMeridian: boolean= true;
 
   constructor(private _formBuilder: FormBuilder, public dialog: MatDialog, private maireservice: MaireService,  private premierecopieservice: PremiereCopieService  ) {}
 
@@ -68,7 +70,7 @@ export class NaissanceAddComponent implements OnInit {
     prenomsEnfant: '',
     datenaissEnfant: [''],
     lieunaissEnfant: [''],
-    heurenaissEnfant: [''],
+    heurenaissEnfant: [''], 
     dateEnfant: [''],
     sexeEnfant: [''],
   });
@@ -155,9 +157,11 @@ export class NaissanceAddComponent implements OnInit {
 
   FirstStep( ) {
     const enfant:any  = this.EnfantFormGroup.value.datenaissEnfant?.split("-") 
+    const heureEnfant:any = this.EnfantFormGroup.value.heurenaissEnfant?.split(":")
    const datenaiss = NombreEnLettre(enfant[2]).concat(' ',MoisMalgache(enfant[1]))
     this.datenaiss = datenaiss.concat(' ',NombreEnLettre(enfant[0]) )
-    console.log(this.datenaiss )
+    // const heurenaiss = HeureMalgache(heureEnfant)
+    // console.log(this.EnfantFormGroup.value.heurenaissEnfant)
  return this.datenaiss
   }
 
