@@ -18,19 +18,6 @@ getAllUsers(size: number, page: number):Observable<any>{
     return this.http.get(`${this.baseURl}?page=${page}&size=${size}`)
 }
 
-addUser(user:Object): Observable<any>{
-    return this.http.post(`${this.baseURl}`, user)
-}
-
-
-updateUser(user:Object, id:number):Observable<any>{
-    return this.http.put(`${this.baseURl}/${id}`,user);
-}
-
-deleteUser(id:number){
-    return this.http.delete(`${this.baseURl}/${id}`)
-}
-
 historiqueUser(){
     return this.http.get(`${this.Url}/historiques`)
 }

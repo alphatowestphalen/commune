@@ -15,6 +15,7 @@ import { TokenInterceptor } from './core/interceptor/token.interceptor';
 import { TranslocoRootModule } from './transloco-root.module';
 
 
+
 @NgModule({
   declarations: [AppComponent, FeaturesComponent, SpinnerComponent],
   imports: [

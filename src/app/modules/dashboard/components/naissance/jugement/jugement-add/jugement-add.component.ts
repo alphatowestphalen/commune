@@ -16,8 +16,8 @@ declare function MoisMalgache(params: string): any
 export class JugementAddComponent implements OnInit {
   jugement: any;
   certificate: any;
+  idPremierCopie = new FormControl();
 
-  searchMoviesCtrl = new FormControl();
   filteredMovies: any = [];
   isLoading = false;
   errorMsg!: string;
@@ -34,7 +34,7 @@ export class JugementAddComponent implements OnInit {
   constructor(private _formBuilder: FormBuilder, private premierecopie: PremiereCopieService, public dialog: MatDialog) { }
 
   PiecesFormGroup = this._formBuilder.group({});
- 
+
   EnfantFormGroup = this._formBuilder.group({
     dateMere: '',
     datePere: [''],
@@ -50,39 +50,7 @@ export class JugementAddComponent implements OnInit {
   })
 
   ngOnInit(): void {
-
-    this.searchMoviesCtrl.valueChanges
-    .pipe(
-      filter(res => {
-        return res !== null && res.length >= this.minLengthTerm
-      }),
-      distinctUntilChanged(),
-      debounceTime(1000),
-      tap(() => {
-        this.errorMsg = "";
-        this.filteredMovies = [];
-        this.isLoading = true;
-      }),
-
-      switchMap(value => this.premierecopie.getFirstCertificates()
-        .pipe(
-          finalize(() => {
-            this.isLoading = false
-          }),
-        )
-      )
-    )
-    .subscribe((data: any) => {
-      // if (data.premierCopies == undefined) {
-      //   this.errorMsg = data['Error'];
-      //   this.filteredMovies = [];
-      // } else {
-      //   this.errorMsg = "";
-
-      // }
-      this.filteredMovies = data.premierCopies;
-      console.log(data);
-    });
+    this.getAllFirstCertificate();
   }
 
   getAllFirstCertificate() {
@@ -93,40 +61,42 @@ export class JugementAddComponent implements OnInit {
       })
   }
 
-  onSelected() {
-    console.log(this.CopieSelected);
-    this.CopieSelected = this.CopieSelected;
 
+
+  Onchange($event: any) {
+    this.premierecopie.getCertificateByID($event.value)
+      .subscribe(data => {
+        this.certificate = data
+        console.log(this.certificate)
+
+      })
   }
 
-  displayWith(value: any) {
-    return value?.idPremiereCopie;
+  closedJugement() {
+    this.CopieSelected += "";
   }
 
-  clearSelection() {
+  spaceJugement() {
     this.CopieSelected = "";
-    this.filteredMovies = [];
   }
-
-
   FirstStep() {
 
 
-    const enfant: any = this.CopieSelected['enfant']['datenaissEnfant']?.split("-")
+    const enfant: any = this.certificate['enfant']['datenaissEnfant']?.split("-")
     const datenaiss = NombreEnLettre(enfant[2]).concat(' ', MoisMalgache(enfant[1]))
     this.datenaiss = datenaiss.concat(' ', NombreEnLettre(enfant[0]))
 
-    const mere: any = this.CopieSelected['mere']['datenaissMere']?.split("-")
+    const mere: any = this.certificate['mere']['datenaissMere']?.split("-")
     const datenaissMere = NombreEnLettre(mere[2]).concat(' ', MoisMalgache(mere[1]))
     this.datenaissMere = datenaissMere.concat(' ', NombreEnLettre(mere[0]))
     console.log(this.datenaiss, this.datenaissMere)
 
-    const pere: any = this.CopieSelected['pere']['datenaissPere']?.split("-")
+    const pere: any = this.certificate['pere']['datenaissPere']?.split("-")
     const datenaissPere = NombreEnLettre(pere[2]).concat(' ', MoisMalgache(pere[1]))
     this.datenaissPere = datenaissPere.concat(' ', NombreEnLettre(pere[0]))
     console.log(this.datenaissPere)
 
-    const declarant: any = this.CopieSelected['declarant']['datenaissDeclarant']?.split("-")
+    const declarant: any = this.certificate['declarant']['datenaissDeclarant']?.split("-")
     const datenaissDeclarant = NombreEnLettre(declarant[2]).concat(' ', MoisMalgache(declarant[1]))
     this.datenaissDeclarant = datenaissDeclarant.concat(' ', NombreEnLettre(declarant[0]))
     console.log(this.datenaissDeclarant)
@@ -145,7 +115,7 @@ export class JugementAddComponent implements OnInit {
 
   openDialog() {
 
-   
+
 
     if (
       this.EnfantFormGroup.valid &&
@@ -162,7 +132,7 @@ export class JugementAddComponent implements OnInit {
       this.data = {
         ...this.JugementFormGroup.value,
         ...this.EnfantFormGroup.value,
-        ...this.CopieSelected
+        ...this.certificate
 
       };
 
@@ -190,12 +160,12 @@ export class AdoptionCopieComponent {
     public dialog: MatDialog, private router: Router) { }
 
   ngOnInit() {
-    console.log("data",this.data.idPremierCopie)
+    console.log("data", this.data.idPremierCopie)
   }
 
   saveCertificate() {
 
-    this.jugementservice.addJugement( this.data, this.data.idPremierCopie).subscribe(data => {
+    this.jugementservice.addJugement(this.data, this.data.idPremierCopie).subscribe(data => {
 
       const dialogRef = this.dialog.closeAll();
       this.router.navigate(['/dashboard/jugement-naissance']);
