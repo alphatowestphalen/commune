@@ -12,6 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ScopedBComponent } from './components/scoped-b/scoped-b.component';
 import { LayoutModule } from '../layout/layout.module';
 import { AngularSvgIconModule } from 'angular-svg-icon';
+import { TranslocoModule } from '@ngneat/transloco';
 
 @NgModule({
   declarations: [ScopedAComponent, ScopedBComponent],
@@ -27,6 +28,7 @@ import { AngularSvgIconModule } from 'angular-svg-icon';
     MatPaginatorModule,
     DashboardModule,
     AngularSvgIconModule.forRoot(),
+    TranslocoModule
   ],
 })
 export class FeaturesModule {}

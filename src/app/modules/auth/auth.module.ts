@@ -12,6 +12,9 @@ import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password
 import { NewPasswordComponent } from './pages/new-password/new-password.component';
 import { TwoStepsComponent } from './pages/two-steps/two-steps.component';
 import { ToastService, AngularToastifyModule } from 'angular-toastify';
+import { TranslocoModule } from '@ngneat/transloco';
+
+
 
 @NgModule({
   declarations: [
@@ -21,6 +24,7 @@ import { ToastService, AngularToastifyModule } from 'angular-toastify';
     ForgotPasswordComponent,
     NewPasswordComponent,
     TwoStepsComponent,
+    
   ],
   providers: [ToastService],
   imports: [
@@ -31,6 +35,10 @@ import { ToastService, AngularToastifyModule } from 'angular-toastify';
     AuthRoutingModule,
     HttpClientModule,
     AngularSvgIconModule.forRoot(),
+    TranslocoModule
+    
+
+   
   ],
 })
 export class AuthModule {}

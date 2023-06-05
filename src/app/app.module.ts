@@ -12,6 +12,8 @@ import { ToastService, AngularToastifyModule } from 'angular-toastify';
 import { LoadingInterceptor } from './core/interceptor/loading.interceptor';
 import { SpinnerComponent } from './shared/components/spinner/spinner.component';
 import { TokenInterceptor } from './core/interceptor/token.interceptor';
+import { TranslocoRootModule } from './transloco-root.module';
+
 
 @NgModule({
   declarations: [AppComponent, FeaturesComponent, SpinnerComponent],
@@ -24,6 +26,8 @@ import { TokenInterceptor } from './core/interceptor/token.interceptor';
     SurveyModule,
     SurveyCreatorModule,
     AngularToastifyModule,
+    TranslocoRootModule,
+   
   ],
   providers: [SurveyCreatorModule, SurveyModule, ToastService,
     {provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi:true  },

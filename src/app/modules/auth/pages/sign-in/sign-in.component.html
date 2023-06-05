@@ -2,11 +2,15 @@
 <lib-toastify-toast-container></lib-toastify-toast-container>
 <form class="my-10 space-y-6">
   <div class="text-center">
-    <h2 class="mb-1 text-3xl font-semibold text-gray-700 dark:text-white">
-      Bonjour <span class="text-primary-500">!</span>
+    <h2 class="mb-1 text-3xl font-semibold text-gray-700 dark:text-white"
+   >{{ 'Bonjour' | transloco }}<span class="text-primary-500">!</span>
     </h2>
-    <p class="text-sm text-gray-400 dark:text-night-200">Saisissez vos identifiants pour accéder à notre application.</p>
+    <p class="text-sm text-gray-400 dark:text-night-200">Saisissez vos identifiants pour accéder  à notre application.</p>
+
   </div>
+
+
+
   <!-- <button
     type="button"
     routerLink="/dashboard"
@@ -36,7 +40,7 @@
           for="username"
           class="absolute top-2 left-1 z-10 origin-[0] -translate-y-4 scale-95 transform bg-white px-2 text-sm text-gray-500 duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-95 peer-focus:px-2 peer-focus:text-primary-500 dark:bg-night-700 dark:text-night-200"
         >
-          Nom utilisateur
+        {{ 'nomUtilisateur' | transloco }}
         </label>
       </div>
 
@@ -67,8 +71,20 @@
   <button
     type="submit"
     class="group relative mb-10 mt-5 flex w-full justify-center rounded-md border border-transparent bg-primary-500 py-2 px-4 text-sm font-medium text-white focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 hover:bg-primary-400">
-   Se connecter
+    {{ 'seConnecter' | transloco }}
   </button>
+
 </form>
+    <div class="relative mt-5"> 
+     
+  <button (click)="switchLanguage('fr')" class="mr-2">Français</button>
+  <button (click)="switchLanguage('mg')">Malagasy</button>
+  
+  <h1>{{ 'Bonjour' | transloco }}</h1>
+    </div>
+
+
+
+
 
 
