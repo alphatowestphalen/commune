@@ -1,8 +1,9 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild , AfterViewInit} from '@angular/core';
 import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PremiereCopieService } from '../../../services/premiere-copie.service';
+import { CopieComponent } from '../../../pages/copie/copie.component';
 
 
 @Component({
@@ -10,26 +11,44 @@ import { PremiereCopieService } from '../../../services/premiere-copie.service';
   templateUrl: './premiere-copie-voir.component.html',
   styleUrls: ['./premiere-copie-voir.component.scss']
 })
-export class PremiereCopieVoirComponent implements OnInit {
+export class PremiereCopieVoirComponent implements OnInit{
   id: any;
   certificates: any;
   content: any;
 
   constructor( private activatedroute: ActivatedRoute, private router: Router, private premierecopieservice: PremiereCopieService) { }
-  @ViewChild('htmlData') htmlData!: ElementRef;
+  @ViewChild('htmlData', {static:false}) copiecomponent: CopieComponent;
+
   ngOnInit(): void {
     this.activatedroute.paramMap.subscribe(params => { 
       this.id = params.get('id');
     this.getCertificatesbyID();
   });
   }
+
+  // ngAfterViewInit(){
+  //   this.HtmlData = this.copiecomponent.HtmlData;
+  //   const htmlDataElement = this.HtmlData.nativeElement.querySelector('#htmlData');
+  //   console.log(htmlDataElement);
+
+  // }
+
   OpenCopie = false;
   toggleModal(){
     this.OpenCopie = !this.OpenCopie;
   }
+
+ 
+
+  downloadPdf() {
+   
+   // this.copiecomponent.generatePDF();
+}
+
   public openPDF(): void {
 
     let DATA: any = document.getElementById('htmlData')!.innerHTML;
+    console.log(DATA);
     // console.log(DATA);
     // html2canvas(DATA).then((canvas) => {
     //   let fileWidth = 208;
@@ -81,7 +100,7 @@ export class PremiereCopieVoirComponent implements OnInit {
       this.premierecopieservice.getCertificateByID(this.id)
       .subscribe(data => {
         this.certificates = data;
-   
+  
       })     
     }
 

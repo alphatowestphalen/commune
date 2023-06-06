@@ -47,7 +47,8 @@ export class AdoptionAddComponent implements OnInit {
    
   });
   AdoptionFormGroup = this._formBuilder.group({
-    parentAdoptif: [''],
+    mereAdoptif: [''],
+    pereAdoptif: [''],
     dateAdoption: [''],
     heureAdoption: [''],
     numAdoption: [''],
