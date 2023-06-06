@@ -2,5 +2,9 @@
     "Bonjour" : "Bonjours",
     "seConnecter" : "Se Connecter",
     "nomUtilisateur":"Nom Utilisateur",
-    "recherche":"Recherche"
+    "recherche":"Recherche",
+    "motpasseoublie":"Mot de passe oubliée?",
+    "motpasse":"Mot de passe",
+    "auth":"AUTHENTIFICATION",
+    "saisie":"Saisissez vos identifiants pour accéder  à notre application."
 }

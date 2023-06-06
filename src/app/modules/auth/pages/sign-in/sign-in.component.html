@@ -5,7 +5,7 @@
     <h2 class="mb-1 text-3xl font-semibold text-gray-700 dark:text-white"
    >{{ 'Bonjour' | transloco }}<span class="text-primary-500">!</span>
     </h2>
-    <p class="text-sm text-gray-400 dark:text-night-200">Saisissez vos identifiants pour accéder  à notre application.</p>
+    <p class="text-sm text-gray-400 dark:text-night-200">{{ 'saisie' | transloco }}</p>
 
   </div>
 
@@ -23,7 +23,7 @@
     class="my-4 flex items-center before:mt-0.5 before:flex-1 before:border-t before:border-gray-300 after:mt-0.5 after:flex-1 after:border-t after:border-gray-300 dark:before:border-night-500 dark:after:border-night-500"
   >
     <p class="mx-4 mb-0 text-center text-sm text-gray-400 dark:text-night-400">
-      AUTHENTIFICATION
+       {{ 'auth' | transloco }}
     </p>
   </div>
   <form [formGroup]="loginForm" (ngSubmit)="Login($event)">
@@ -50,7 +50,7 @@
       <label
         for="password"
         class="absolute top-2 left-1 z-10 origin-[0] -translate-y-4 scale-95 transform bg-white px-2 text-sm text-gray-500 duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-95 peer-focus:px-2 peer-focus:text-primary-600 dark:bg-night-700 dark:text-night-200">
-        Mot de passe
+         {{ 'motpasse' | transloco }}
       </label>
       <span (click)="toggleFieldTextType()" class="absolute top-2.5 right-5 cursor-pointer text-gray-400 dark:text-night-300">
          <svg-icon *ngIf="!type"   src="assets/icons/outline/eye-off.svg" [svgClass]="'h-5 w-5'"> </svg-icon>
@@ -62,7 +62,7 @@
    
     <div class="text-sm">
       <a routerLink="/auth/forgot-password" class="font-medium text-primary-500 border-b-2 border-primary-500 hover:text-primary-400">
-        Mot de passe oubliée?
+        {{ 'motpasseoublie' | transloco }}
       </a>
     </div>
   </div>
@@ -80,7 +80,7 @@
   <button (click)="switchLanguage('fr')" class="mr-2">Français</button>
   <button (click)="switchLanguage('mg')">Malagasy</button>
   
-  <h1>{{ 'Bonjour' | transloco }}</h1>
+  
     </div>
 
 
