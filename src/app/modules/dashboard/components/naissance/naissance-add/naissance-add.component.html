@@ -150,7 +150,7 @@
                 </div>
                 <div class="mb-4  w-60">
                   <label class="label cursor-pointer">
-                    <input type="checkbox" checked="checked" class="checkbox" />
+                    <input type="checkbox" checked="checked" (change)="onCheckboxChange($event)"  class="checkbox" />
                     <span class="label-text">Livrée de Famille</span>
   
                   </label>
@@ -424,8 +424,8 @@
             </form>
   
           </mat-step>
-          <mat-step [stepControl]="PereFormGroup">
-            <form [formGroup]="PereFormGroup">
+          <mat-step [stepControl]="PereFormGroup" *ngIf="isPere == true">
+            <form [formGroup]="PereFormGroup" *ngIf="isPere == true">
               <ng-template matStepLabel> Père <br>
                 <span class="font-normal text-xs text-gray-400">Information personnel</span>
               </ng-template>

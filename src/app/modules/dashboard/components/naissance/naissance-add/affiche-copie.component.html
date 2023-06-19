@@ -249,10 +249,12 @@ form{
                     {{ data.nomEnfant }}
                     {{ data.prenomsEnfant }},
                     {{ data.sexeEnfant }}, zanak'i
-                  <span class="uppercase">{{ data.nomPere }}</span>  {{ data.prenomsPere }} ,{{
-                      data.professionPere
-                    }}, teraka tamin'ny {{ data.datePere }} tao
-                    {{ data.lieuNaissPere }} , sy
+                    <span *ngIf="data.AvoirPere == true">
+                      <span class="uppercase">{{ data.nomPere }}</span>  {{ data.prenomsPere }} ,{{
+                        data.professionPere
+                      }}, teraka tamin'ny {{ data.datePere }} tao
+                      {{ data.lieuNaissPere }} , sy
+                    </span> 
                     <span class="uppercase">{{ data.nomMere }} </span> {{ data.prenomsMere }},
                     teraka tamin'ny {{ data.dateMere }} tao
                     {{ data.lieuNaissMere }} , samy monina ao
@@ -307,4 +309,27 @@ form{
       </main>
     </div>
   </form>
+
+</div>
+<div mat-dialog-actions align="end">
+ 
+  <button mat-button mat-dialog-close
+          
+  class="shadow-md inline-flex items-center px-4 py-2 bg-red-200 hover:bg-red-600 text-gray-800 text-sm font-medium rounded-md"
+>
+<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" />
+</svg>
+
+Cliquer pour modifier 
+</button>
+<button  mat-button (click)="saveCertificate()" cdkFocusInitial
+class="shadow-md inline-flex items-center ml-2 px-4 py-2 bg-green-400 hover:bg-teal-600 text-gray-800 text-sm font-medium rounded-md"
+>
+<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
+</svg>
+
+Cliquer pour sauvegarder 
+</button>
 </div>

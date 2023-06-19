@@ -49,6 +49,8 @@ export class NaissanceAddComponent implements OnInit {
   MaireSelected: any= [];
   NumeroCopie: number;
   heureregistre: string |null |undefined;
+  checked:boolean = true;
+  isPere:boolean = true;
 
 
   NumCopie: any;
@@ -78,6 +80,8 @@ export class NaissanceAddComponent implements OnInit {
     createdDate: this.today,
     lettreBirth: [''],
     LettreRegistre: [''],
+    avoirPere: true,
+    datePCopie: ['']
   });
 
   EnfantFormGroup = this._formBuilder.group({
@@ -154,6 +158,7 @@ export class NaissanceAddComponent implements OnInit {
       this.CopieFormGroup.value.idPremierCopie = this.NumeroCopie
       this.CopieFormGroup.value.lettreBirth = this.lettrenaiss
       this.CopieFormGroup.value.LettreRegistre = this.heureregistre
+      this.CopieFormGroup.value.avoirPere = this.isPere
       this.data = {
         ...this.CopieFormGroup.value,
         ...this.EnfantFormGroup.value,
@@ -287,6 +292,15 @@ export class NaissanceAddComponent implements OnInit {
 
   }
 
+  onCheckboxChange(event: any) {
+    this.checked = event.target.checked;
+    if (this.checked) {
+      this.isPere = true;
+     
+    } else {
+      this.isPere =false
+    }
+  }
 
   
 
