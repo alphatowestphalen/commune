@@ -38,6 +38,7 @@ export class NaissanceAddComponent implements OnInit {
   data: any;
   maire: any;
   datenaiss: string | null | undefined;
+  lettrenaiss: string | null | undefined;
   datenaissMere: string | null | undefined;
   datenaissPere: string | null | undefined;
   datenaissDeclarant: string | null | undefined;
@@ -46,6 +47,9 @@ export class NaissanceAddComponent implements OnInit {
   heurenaiss:string |null | undefined;
   dateregistre: string | null | undefined;
   MaireSelected: any= [];
+  NumeroCopie: number;
+  heureregistre: string |null |undefined;
+
 
   NumCopie: any;
    enableMeridian: boolean= true;
@@ -61,7 +65,7 @@ export class NaissanceAddComponent implements OnInit {
   });
   today = new Date();
   CopieFormGroup = this._formBuilder.group({
-    idPremierCopie: new FormControl(),
+    idPremierCopie: 0,
     description: [''],
     datePremierCopie: this.today.toLocaleDateString('fr-FR',{
       year: 'numeric',
@@ -71,8 +75,9 @@ export class NaissanceAddComponent implements OnInit {
         hour: 'numeric',
         minute: 'numeric'}),
     mention: [''],
-    createdDate: this.today
-
+    createdDate: this.today,
+    lettreBirth: [''],
+    LettreRegistre: [''],
   });
 
   EnfantFormGroup = this._formBuilder.group({
@@ -130,7 +135,8 @@ export class NaissanceAddComponent implements OnInit {
 
   openDialog() {
    this.FiveStep();
-
+  
+  
     if (
       this.EnfantFormGroup.valid &&
       this.DeclarantFormGroup.valid &&
@@ -145,6 +151,9 @@ export class NaissanceAddComponent implements OnInit {
       this.PereFormGroup.value.datePere =  this.datenaissPere
       this.DeclarantFormGroup.value.dateDeclarant =  this.datenaissDeclarant
       this.MaireFormGroup.value.dateregistre = this.dateregistre
+      this.CopieFormGroup.value.idPremierCopie = this.NumeroCopie
+      this.CopieFormGroup.value.lettreBirth = this.lettrenaiss
+      this.CopieFormGroup.value.LettreRegistre = this.heureregistre
       this.data = {
         ...this.CopieFormGroup.value,
         ...this.EnfantFormGroup.value,
@@ -153,6 +162,7 @@ export class NaissanceAddComponent implements OnInit {
         ...this.PereFormGroup.value,
         ...this.MereFormGroup.value,
         ...this.PiecesFormGroup.value,
+        
       };
       const dialogRef = this.dialog.open(AfficheCopieComponent, {
         maxWidth: '100vw',
@@ -176,6 +186,7 @@ export class NaissanceAddComponent implements OnInit {
    const minuteCopie = MinuteEnlettre(heure[1]);
    const ora = LeraEnLettre(heure[0]);
    this.heureCopie = heureCopie + minuteCopie + ora;
+   
   }
 
   FirstStep( ) {
@@ -186,9 +197,9 @@ export class NaissanceAddComponent implements OnInit {
     const minutenaiss = MinuteEnlettre(heure[1]);
     const oranaiss = LeraEnLettre(heure[0]);
     this.heurenaiss = heurenaiss + minutenaiss + oranaiss;
-    
-    console.log(this.heurenaiss, this.EnfantFormGroup.value.heurenaissEnfant)
- return this.datenaiss
+    this.lettrenaiss = date[2].concat(' ',MoisMalgache(date[1])).concat(' ',date[0])
+    console.log(this.heurenaiss, this.lettrenaiss)
+ return this.datenaiss, this.lettrenaiss
   }
 
   SecondStep( ) {
@@ -218,11 +229,12 @@ export class NaissanceAddComponent implements OnInit {
     const date =new Date(Date.now()).toLocaleString().split(',')[0];
     const enfant:any  = date.split(" ");
     const currentdate = enfant[0].split("/");
-   
+    const currenthour = enfant[1].split(":");
+    this.heureregistre = HeureEnLettre(currenthour[0]).concat(' ',MinuteEnlettre(currenthour[1]).concat(' ', LeraEnLettre(currenthour[0])));
    const datenaiss = NombreEnLettre(currentdate[0]).concat(' ',MoisMalgache(currentdate[1]))
     this.dateregistre = datenaiss.concat(' ',NombreEnLettre(currentdate[2]) )
     console.log(this.dateregistre)
- return this.dateregistre
+ return this.dateregistre, this.heureregistre
   }
 
   public openPDF(): void {
@@ -247,8 +259,8 @@ export class NaissanceAddComponent implements OnInit {
 
   getLastNumPremierCopie(){
     this.premierecopieservice.getLastIdCerticate().subscribe(data=>{
-      this.CopieFormGroup.value.idPremierCopie = data
-      console.log(data)
+      this.NumeroCopie = data
+      
     })
     this.PereFormGroup.value.avoirPere = true;
     }

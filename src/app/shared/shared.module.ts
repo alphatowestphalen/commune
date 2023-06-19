@@ -4,10 +4,11 @@ import { ResponsiveHelperComponent } from './components/responsive-helper/respon
 import { ClickOutsideDirective } from './directives/click-outside.directive';
 import { SearchPipe } from './pipes/search.pipe';
 import { TimeInputDirective } from './directives/time-input.directive';
+import { RemovenumberPipe } from './pipes/removenumber.pipe';
 
 @NgModule({
-  declarations: [ResponsiveHelperComponent, ClickOutsideDirective, SearchPipe, TimeInputDirective],
+  declarations: [ResponsiveHelperComponent, ClickOutsideDirective, SearchPipe, TimeInputDirective, RemovenumberPipe],
   imports: [CommonModule],
-  exports: [ResponsiveHelperComponent, ClickOutsideDirective,SearchPipe, TimeInputDirective],
+  exports: [ResponsiveHelperComponent, ClickOutsideDirective,SearchPipe, TimeInputDirective, RemovenumberPipe],
 })
 export class SharedModule {}
