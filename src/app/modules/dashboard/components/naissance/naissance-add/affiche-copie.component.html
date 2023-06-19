@@ -1,8 +1,11 @@
 
+
 <style>
-   .width{
-    max-width: 75%;
+
+.width{
+    max-width: 70%;
 }
+
 
 form{
   font-family: 'Roboto', 'Merriweather', sans-serif;
@@ -11,29 +14,37 @@ form{
   padding: 0;
   box-sizing: border-box;
 }
+
+.subhead{
+  display: inline-block;
+  font-size: 14px;
+}
+
 .page{
   position: relative;
   width: auto;
-  padding: 0mm 8mm 0mm 20mm;
+  padding: 0mm 10mm 0mm 10mm;
 }
 .heading{
-  display: inline-block;
-  font-size: 8px;
-  color: #010608;
+  padding: 2%;
+  margin-left: 20%;
+  display: block;
+  font-size: 12px;
   padding: 2px;
-  border: 2px black solid;
+  border: 2px rgba(5, 1, 1, 0.879) solid;
 }
 .repoblika{
-  display: inline-block;
-  margin-left: 30%;
-  height: 60px;
-  width: 100px;
+  display: block;
+  font-size: 14px;
+
 }
+
+
 .bongolava{
-  display: inline-block;
-  margin-left: 30%;
-  height: 60px;
-  width: 40px;
+  display: inline-flex;
+
+  height: 40mm;
+  width: 25mm;
 }
 .commune{
   display: inline-block;
@@ -56,6 +67,7 @@ form{
 }
 .main{
   display: flex;
+  
 }
 .main__left{
   width: 55mm;
@@ -124,181 +136,178 @@ form{
 }  
 </style>
 
-  <h2 mat-dialog-title>Première Copie</h2>
-<mat-dialog-content class="font-poppins">
-
-
-   
- 
-     
-        <div class="relative transform overflow-auto rounded-lg bg-white text-left  lg:h-full lg:max-w-[100%] shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
-          <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-            <div class="page" id="htmlData">
-              <header>
-                <h1 class="heading">Teny midina faha-788-MJ/CAB <br> tamin'ny 29 Desambra 1961 nataon'ny <br> Ministry ny
-                  Fitsarana sy ny Mpitahiry </h1>
-                <img class="repoblika" src="@/../../../../../../../assets/images/Repoblika.jpg" alt="">
-                <img class="bongolava" src="@/../../../../../../../assets/images/bongolava-logo.jpg" alt="">
-      
-              </header>
-      
-      
-              <main class="main">
-                <aside class="main__left">
-                  <section class="section">
-      
-                    <img class="commune" src="@/../../../../../../../assets/images/FIANARANTSOA.png" alt="">
-      
-                    <p class="kaominina">Kaominina Andrenivohitra Fianarantsoa</p>
-      
-                    <p class="section__title my-5">Faha : 451</p>
-      
-                    <p class="section__title mt-5">Tamin'ny <br> <span class="ml-0 pr-10">{{data.datenaissEnfant}}</span> </p>
-      
-                    <div class="section__content">
-                      <div class="section__entry">
-                        <div class="section_title">
-                          Fahaterahana
-      
-                        </div>
-                      </div>
-                      <div class="section__entry">
-                        <div class="section_content font-medium">
-                          {{data.nomEnfant}} {{data.prenomsEnfant}}
-                        </div>
-                      </div>
-      
-                      <div class="section__entry">
-                        <div class="section_content ml-5 my-20">
-                          {{data.datenaissEnfant}}
-                        </div>
-                      </div>
-      
-                    </div>
-                  </section>
-      
-                  <section class="section">
-      
-      
-                    <div class="section__content">
-                      <p class="section__entry">Tsy asiana hajia araka <br>
-                        ny and. 416-n'ny CGET</p>
-      
-                    </div>
-                  </section>
-      
-                  <section class="section">
-      
-      
-                    <div class="section__content">
-                      <p class="section__entry font-semibold">Soratra an-tsisiny</p>
-      
-                    </div>
-                  </section>
-      
-                </aside>
-      
-                <div class="main__right">
-                  <section class="section">
-                    <p class="faritra">FARITRA BONGOLAVA</p>
-                    <div class="timeline__title mt-10 ml-20">
-                      <span>KOPIAN'NY SORAM-PIANKOHONANA</span>
-                    </div>
-                    <div class="section__contentt">
-                      <div class="timeline">
-                        <div class="timeline__content">
-                          <p class="mb-5">
-                            <span class="pl-10">Nalaina tamin'ny bokim-pianakaviana , tamin'ny taona roa sy roa arivo
-                              ,</span>
-                            voatahiry ato amin'ny Kaominina Ambonivohitra Fianarantsoa izao soratra manaraka izao:
-                          </p>
-                        </div>
-                      </div>
-                      <div class="timeline">
-                        <div class="timeline__content ">
-                          <p class="mb-5">
-                            <span class="pl-10">Tamin'ny {{data.dateEnfant}} </span>, tamin'ny ira ora maraina sy efapolo
-                            minitra,
-                            no teraka tao Amin'ny {{data.lieuNaissEnfant}}, {{data.nomEnfant}} {{data.prenomsEnfant}}, {{data.sexeEnfant}},
-                            zanak'i
-                            {{data.nomPere}} {{data.prenomsPere}}
-                            ,{{data.professionPere}}, teraka tamin'ny {{data.datePere}} tao {{data.lieuNaissPere}}
-                            , sy {{data.nomMere}}, {{data.prenomsMere}}, teraka tamin'ny {{data.dateMere}} tao {{data.lieuNaissMere}}
-                            , samy monina ao {{data.adresseMere}}
-                          </p>
-      
-                        </div>
-                      </div>
-                      <div class="timeline">
-                        <div class="timeline__content ">
-                          <p class="mb-5">
-                            <span class="pl-10">Nosoratana androany {{data.dateregistre}} </span> 
-                            tamin'ny valo ora maraina sy folo minitra, araka ny fanamabarana nataon'i {{data.nomDeclarant}},
-                            Mampivelona,
-                            teraka
-                            tamin'ny {{data.dateDeclarant}} tao Antsirabe, monina ao
-                            {{data.adresseDeclarant}}, izay
-                            miaraka manao sonia aminay. {{data.nomMaire}},{{data.fonction}} 
-                            ao amin'ny
-                            Commune Rurale d'Ankadinondry, rehefa novakiana ity soratra ity.
-                          </p>
-      
-                        </div>
-                      </div>
-                    </div>
-      
-                    <div class=" text-sm font-normal ml-48">
-                      <span>-MANARAKA NY SONIA-</span>
-                    </div>
-                    <div class="section__contentt">
-                      <div class="timeline">
-                        <div class="timeline__content">
-                          <p class="mb-5">
-                            <span class="pl-10">Kopia manontolo nadika tamin'ny boky androany telo aprily roa sy roa arivo
-                            </span>
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-      
-                    <div class=" text-sm font-normal ml-20">
-                      <span>NY MPIANDRAIKITRA NY SORAM-PIANKOHONANA</span>
-                    </div>
-                  </section>
-                </div>
-              </main>
-            </div>
-      
-      
-          </form>
-      
+<div
+  class="relative transform overflow-auto rounded-lg bg-white text-left lg:h-full lg:max-w-[75%] shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg "
+>
+  <form class="bg-white shadow-md rounded ">
+    <div class="page" id="htmlData">
+      <header class="grid grid-rows-2 grid-flow-col gap-2">
+       
+        <div class="subhead row-start-2 row-span-2">
+          <table>
+           <tr>
+            <td>FARITRA </td>
+            <td>: BONGOLAVA</td>
+            <tr>
+              <td>PREFEKTIORA </td>
+              <td>: TSIROAMANDIDY</td>
+            </tr>
+          <tr>
+            <td>KAOMININA </td>
+            <td>: ANKADINONDRY SAKAY</td>
+           </tr>
+          </table>
+          <p class="pl-[25%]">------------------</p>
         </div>
-     
-
-  
-
-
-</mat-dialog-content>
-<mat-dialog-actions align="end">
- 
-  <button mat-button mat-dialog-close
+        <div class="repoblika row-end-2 pt-5 ">
+          <h3 class="ml-[4%]">REPOBLIKAN'NY MADAGASIKARA</h3>
+          <p class="italic">Fitiavana-Tanindrazana-Fandrosoana</p>
+          <p class="pl-[20%]">------------------</p>
           
-  class="shadow-md inline-flex items-center px-4 py-2 bg-red-200 hover:bg-red-600 text-gray-800 text-sm font-medium rounded-md"
->
-<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" />
-</svg>
+        </div>
+        <div class="row-start-2 row-end-3 pt-7" >
+          <h1 class="heading">
+            Teny midina faha-788-MJ/CAB 
+            tamin'ny 29 Desambra 1961 nataon'ny 
+            Ministry ny Fitsarana sy ny Mpitahiry ny Kasem-panjakana
+          </h1>
+        </div>
+        <div class="row-start-1 row-end-4 mr-5">
+          <img 
+          class="bongolava"
+          src="@/../../../../../../../assets/images/bongolava-logo.jpg"
+          alt=""
+        />
+          
+        </div>
+       
 
-Cliquer pour modifier 
-</button>
-<button  mat-button (click)="saveCertificate()" cdkFocusInitial
-class="shadow-md inline-flex items-center ml-2 px-4 py-2 bg-green-400 hover:bg-teal-600 text-gray-800 text-sm font-medium rounded-md"
->
-<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
-</svg>
+     
+       
+      </header>
 
-Cliquer pour sauvegarder 
-</button>
-</mat-dialog-actions>
+      <div class="text-4xl font-bold py-3">
+        <h1 class="ml-[25%] mr-[5%] font-dancing">Kopian'ny Soram-piankohonana</h1>
+      </div>
+      <main class="main">
+        
+        <aside class="main__left">
+          <section class="section">
+          
 
+            <p class="section__title my-5">Faha : {{ data.idPremierCopie }}</p>
+
+            <p class="section__title mt-5">
+              Tamin'ny <br />
+              <span class="ml-0 pr-10">{{ data.datenaissEnfant }}</span>
+            </p>
+
+            <div class="section__content">
+              <div class="section__entry">
+                <div class="section_title">Fahaterahana</div>
+              </div>
+              <div class="section__entry">
+                <div class="section_content font-medium">
+                  {{ data.nomEnfant }} {{ data.prenomsEnfant }}
+                </div>
+              </div>
+
+              <div class="section__entry">
+                <div class="section_content ml-5 my-20">
+                  {{ data.datenaissEnfant }}
+                </div>
+              </div>
+            </div>
+          </section>
+
+       
+        </aside>
+
+        <div class="main__right">
+          <section class="section">
+      
+            <div class="section__contentt">
+              <div class="timeline">
+                <div class="timeline__content">
+                  <p class="mb-5">
+                    <span class="pl-10"
+                      >Nalaina tamin'ny bokim-pianakaviana , tamin'ny taona roa
+                      sy roa arivo ,</span
+                    >
+                    voatahiry ato amin'ny Kaominina Ambonivohitra Ankandinondry
+                    izao soratra manaraka izao:
+                  </p>
+                </div>
+              </div>
+              <div class="timeline">
+                <div class="timeline__content">
+                  <p class="mb-5">
+                    <span class="pl-10"
+                      >Tamin'ny {{ data.dateEnfant }} </span
+                    >, tamin'ny {{data.heureEnfant}}, no teraka
+                    tao Amin'ny {{ data.lieuNaissEnfant }},
+                    {{ data.nomEnfant }}
+                    {{ data.prenomsEnfant }},
+                    {{ data.sexeEnfant }}, zanak'i
+                    {{ data.nomPere }} {{ data.prenomsPere }} ,{{
+                      data.professionPere
+                    }}, teraka tamin'ny {{ data.datePere }} tao
+                    {{ data.lieuNaissPere }} , sy
+                    {{ data.nomMere }}, {{ data.prenomsMere }},
+                    teraka tamin'ny {{ data.dateMere }} tao
+                    {{ data.lieuNaissMere }} , samy monina ao
+                    {{ data.adresseMere }}
+                  </p>
+                </div>
+              </div>
+              <div class="timeline">
+                <div class="timeline__content">
+                  <p class="mb-5">
+                    <span class="pl-10"
+                      >Nosoratana androany {{ data.datePremierCopie }}
+                    </span>
+                    tamin'ny valo ora maraina sy folo minitra, araka ny
+                    fanamabarana nataon'i {{ data.nomDeclarant }},
+                    Mampivelona, teraka tamin'ny
+                    {{ data.dateDeclarant }} tao Antsirabe, monina ao
+                    {{ data.adresseDeclarant }}, izay miaraka manao
+                    sonia aminay. {{ data.nomMaire }},{{
+                      data.fonction
+                    }}
+                    ao amin'ny Commune Rurale d'Ankadinondry, rehefa novakiana
+                    ity soratra ity.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="text-sm font-normal ml-48 mb-3">
+              <span>-MANARAKA NY SONIA-</span>
+            </div>
+            <span class="pl-10 text-sm font-normal">-SORATRA AN-TSISINY </span>
+            <div *ngFor="let mention of data.mentions">
+              <app-mention [mention]="mention"></app-mention>
+            </div>
+
+            <div class="section__contentt">
+              <div class="timeline">
+                <div class="timeline__content">
+                  <p class="mb-5">
+                    <span class="pl-10"
+                      >Kopia manontolo nadika tamin'ny boky androany telo aprily
+                      roa sy roa arivo
+                    </span>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="text-sm font-normal ml-20">
+              <span>NY MPIANDRAIKITRA NY SORAM-PIANKOHONANA</span>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+  </form>
+</div>

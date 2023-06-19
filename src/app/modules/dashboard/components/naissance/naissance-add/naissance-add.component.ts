@@ -25,7 +25,9 @@ import { Router } from '@angular/router';
 
 declare function NombreEnLettre(params:number)  : any;
 declare function MoisMalgache(params: string) : any;
-//declare function HeureMalgache(params:number) : any;
+declare function HeureEnLettre(params: number) : any;
+declare function MinuteEnlettre(params: number): any;
+declare function LeraEnLettre(params: number): any;
 @Component({
   selector: 'app-naissance-add',
   templateUrl: './naissance-add.component.html',
@@ -39,6 +41,9 @@ export class NaissanceAddComponent implements OnInit {
   datenaissMere: string | null | undefined;
   datenaissPere: string | null | undefined;
   datenaissDeclarant: string | null | undefined;
+  dateCopie:string | null | undefined;
+  heureCopie: string | null |undefined;
+  heurenaiss:string |null | undefined;
   dateregistre: string | null | undefined;
   MaireSelected: any= [];
 
@@ -58,8 +63,13 @@ export class NaissanceAddComponent implements OnInit {
   CopieFormGroup = this._formBuilder.group({
     idPremierCopie: new FormControl(),
     description: [''],
-    datePCopie: this.today,
-    datePremierCopie:this.today,
+    datePremierCopie: this.today.toLocaleDateString('fr-FR',{
+      year: 'numeric',
+      month: 'numeric',
+      day: 'numeric'}),
+    heurePremierCopie: this.today.toLocaleTimeString('fr-FR',{
+        hour: 'numeric',
+        minute: 'numeric'}),
     mention: [''],
     createdDate: this.today
 
@@ -72,6 +82,7 @@ export class NaissanceAddComponent implements OnInit {
     lieunaissEnfant: [''],
     heurenaissEnfant: [''], 
     dateEnfant: [''],
+    heureEnfant: [''],
     sexeEnfant: [''],
   });
 
@@ -129,6 +140,7 @@ export class NaissanceAddComponent implements OnInit {
       this.PiecesFormGroup.valid
     ) {
       this.EnfantFormGroup.value.dateEnfant =  this.datenaiss
+      this.EnfantFormGroup.value.heureEnfant = this.heurenaiss
       this.MereFormGroup.value.dateMere =  this.datenaissMere
       this.PereFormGroup.value.datePere =  this.datenaissPere
       this.DeclarantFormGroup.value.dateDeclarant =  this.datenaissDeclarant
@@ -155,13 +167,27 @@ export class NaissanceAddComponent implements OnInit {
     // console.log(this.data);
   }
 
+  Step(){
+    console.log(this.CopieFormGroup.value.datePremierCopie)
+    const date:any = this.CopieFormGroup.value.datePremierCopie?.split("/")
+    this.dateCopie =  NombreEnLettre(date[0]).concat(' ', MoisMalgache(date[1])).concat(' ', NombreEnLettre(date[2]));
+   const heure:any = this.CopieFormGroup.value.heurePremierCopie?.split(':') 
+   const heureCopie = HeureEnLettre(heure[0]);
+   const minuteCopie = MinuteEnlettre(heure[1]);
+   const ora = LeraEnLettre(heure[0]);
+   this.heureCopie = heureCopie + minuteCopie + ora;
+  }
+
   FirstStep( ) {
-    const enfant:any  = this.EnfantFormGroup.value.datenaissEnfant?.split("-") 
-    const heureEnfant:any = this.EnfantFormGroup.value.heurenaissEnfant?.split(":")
-   const datenaiss = NombreEnLettre(enfant[2]).concat(' ',MoisMalgache(enfant[1]))
-    this.datenaiss = datenaiss.concat(' ',NombreEnLettre(enfant[0]) )
-    // const heurenaiss = HeureMalgache(heureEnfant)
-    // console.log(this.EnfantFormGroup.value.heurenaissEnfant)
+    const date:any  = this.EnfantFormGroup.value.datenaissEnfant?.split("-") 
+    const heure:any = this.EnfantFormGroup.value.heurenaissEnfant?.split(":")
+    this.datenaiss = NombreEnLettre(date[2]).concat(' ',MoisMalgache(date[1])).concat(' ', NombreEnLettre(date[0]))
+    const heurenaiss = HeureEnLettre(heure[0]);
+    const minutenaiss = MinuteEnlettre(heure[1]);
+    const oranaiss = LeraEnLettre(heure[0]);
+    this.heurenaiss = heurenaiss + minutenaiss + oranaiss;
+    
+    console.log(this.heurenaiss, this.EnfantFormGroup.value.heurenaissEnfant)
  return this.datenaiss
   }
 
@@ -249,9 +275,7 @@ export class NaissanceAddComponent implements OnInit {
 
   }
 
- test(){
-  console.log(this.CopieFormGroup.value)
- }
+
   
 
 }
