@@ -1,21 +1,21 @@
 <div class="mx-auto px-4 py-4 sm:px-8 lg:container">
 <div class="mb-4 flex justify-between">
     <div class="inline-block">
-      <h3 class="font-semibold text-gray-900 dark:text-white uppercase">Naissance</h3>
+      <h3 class="font-semibold text-gray-900 dark:text-white uppercase">{{ 'Naissance' | transloco }}</h3>
       <div class="space-x-1 text-xs font-medium text-gray-400 dark:text-night-300">
-        <a href="" class="hover:text-primary-500"> Bureau Etat Civil</a>
-        <span>- Service de Traitement des Actes de Naissances</span>
+        <a href="" class="hover:text-primary-500"> {{ 'BureauEtatCivil' | transloco }}</a>
+        <span>-  {{ 'serviceActeNaiss' | transloco }}</span>
       </div>
     </div>
     <div class="inline-block space-x-4">
       <button
         class="flex-none rounded-md bg-white px-4 py-2.5 text-xs font-semibold text-gray-500 hover:text-primary-500 dark:bg-night-600 dark:text-night-200 dark:hover:bg-night-500">
-       Acceuil
+        {{ 'Acceuil' | transloco }}
       </button>
       <span class="flex-none rounded-md py-2.5 text-xs font-semibold text-night-400">>></span>
       <button
         class="flex-none rounded-md bg-primary-500 px-4 py-2.5 text-xs font-semibold text-white hover:bg-primary-600">
-      Naissance
+      
       </button>
     </div>
   </div>
@@ -33,7 +33,7 @@
             </a>
     
             <div class="flex  flex-col">
-              <h2 class="text-md  font-semibold text-gray-900 dark:text-night-300">1 ère Copie</h2>
+              <h2 class="text-md  font-semibold text-gray-900 dark:text-night-300">{{ '1ereCopie' | transloco }}</h2>
               <a href="" class="text-xs font-semibold text-gray-400 hover:text-primary-500 dark:text-night-100">
            2 000
               </a>
@@ -53,7 +53,7 @@
               </a>
       
               <div class="flex  flex-col">
-                <h2 class="text-md  font-semibold text-gray-900 dark:text-night-300">Adoption</h2>
+                <h2 class="text-md  font-semibold text-gray-900 dark:text-night-300"> {{ 'Adoption' | transloco }}</h2>
                 <a href="" class="text-xs font-semibold text-gray-400 hover:text-primary-500 dark:text-night-100">
                10 %
                 </a>
@@ -74,7 +74,7 @@
                 </a>
         
                 <div class="flex  flex-col">
-                  <h2 class="text-md  font-semibold text-gray-900 dark:text-night-300">Jugement</h2>
+                  <h2 class="text-md  font-semibold text-gray-900 dark:text-night-300"> {{ 'Jugement' | transloco }}</h2>
                   <a href="" class="text-xs font-semibold text-gray-400 hover:text-primary-500 dark:text-night-100">
                  41 230
                   </a>
@@ -94,11 +94,12 @@
                   </a>
           
                   <div class="flex  flex-col">
-                    <h2 class="text-md  font-semibold text-gray-900 dark:text-night-300">Reconnaissance</h2>
+                    <h2 class="text-md  font-semibold text-gray-900 dark:text-night-300"> {{ 'Reconnaissance' | transloco }}</h2>
                     <a href="" class="text-xs font-semibold text-gray-400 hover:text-primary-500 dark:text-night-100">
                      760
                     </a>
                   </div>
+                  
              
               </div>
             </div>
@@ -109,14 +110,14 @@
   <div class="flex-col rounded-lg bg-white mt-5 px-3 py-3 dark:bg-night-700 sm:flex-row">
     <div class="mb-1 flex items-center justify-between">
       <div class="flex-col items-center">
-        <h3 class="text-md font-bold pl-5 text-gray-900 dark:text-night-50 uppercase">Historique des dernières activités</h3>
+        <h3 class="text-md font-bold pl-5 text-gray-900 dark:text-night-50 uppercase">{{ 'historiqueAct' | transloco }}</h3>
       </div>
     </div>
     <mat-table [dataSource]="dataSource" matSort>
       <!-- ID Column -->
       <ng-container matColumnDef="id">
         <mat-header-cell *matHeaderCellDef mat-sort-header>
-          Entité
+          {{ 'Entité' | transloco }}
         </mat-header-cell>
         <mat-cell *matCellDef="let row">
           {{ row.entity }}
@@ -126,7 +127,7 @@
       <!-- Progress Column -->
       <ng-container matColumnDef="datenaiss">
         <mat-header-cell *matHeaderCellDef mat-sort-header>
-          Opération
+          {{ 'Opération' | transloco }}
         </mat-header-cell>
         <mat-cell *matCellDef="let row"> {{ row.operation }} </mat-cell>
       </ng-container>
@@ -134,7 +135,7 @@
       <!-- Name Column -->
       <ng-container matColumnDef="name">
         <mat-header-cell *matHeaderCellDef mat-sort-header>
-          Modifié par 
+          {{ 'modifiepar' | transloco }} 
         </mat-header-cell>
         <mat-cell *matCellDef="let row">{{ row.modifiedBy }} </mat-cell>
       </ng-container>
@@ -142,7 +143,7 @@
       <!-- Color Column -->
       <ng-container matColumnDef="dateenregistrement">
         <mat-header-cell *matHeaderCellDef mat-sort-header>
-          Modifié le 
+          {{ 'modifieLe' | transloco }} 
         </mat-header-cell>
         <mat-cell *matCellDef="let row" > {{ row.modifiedAt|date:'dd/MM/yyyy hh:mm' }} </mat-cell>
       </ng-container>

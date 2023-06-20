@@ -9,6 +9,7 @@ import { MariageService } from 'src/app/modules/dashboard/services/mariage.servi
 import { PremiereCopieService } from 'src/app/modules/dashboard/services/premiere-copie.service';
 import "../../../../../../../assets/js/nombrelettre.js";
 
+
 declare function NombreEnLettre(params: number): any;
 declare function MoisMalgache(params: string): any
 @Component({
@@ -227,6 +228,7 @@ export class MariageAddComponent implements OnInit {
     this.CopieSelected = "";
     this.filteredCopies = [];
   }
+
 
   getAllMaire(){
     this.maireservice.getAllMaire().subscribe(data=>{

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { TokenService } from 'src/app/core/services/token.service';
 import { Router } from '@angular/router';
+import { TranslocoService } from '@ngneat/transloco';
 
 @Component({
   selector: 'app-layout',
@@ -10,8 +11,11 @@ import { Router } from '@angular/router';
 })
 export class LayoutComponent implements OnInit {
 
-  constructor( ) {}
-
+  constructor(private translocoService: TranslocoService ) {}
+  switchLanguage(lang: string) {
+    this.translocoService.setActiveLang(lang);
+    // location.reload();
+  }
   ngOnInit(): void {
   
   }

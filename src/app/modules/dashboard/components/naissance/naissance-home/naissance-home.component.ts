@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { TranslocoService } from '@ngneat/transloco';
 import { MatTableDataSource } from '@angular/material/table';
 import { UtilisateurService } from '../../../services/utilisateur.service';
 
@@ -12,8 +13,9 @@ import { UtilisateurService } from '../../../services/utilisateur.service';
   styleUrls: ['./naissance-home.component.scss']
 })
 export class NaissanceHomeComponent implements OnInit {
+  
 
-  constructor(private  UserService:UtilisateurService){}
+  constructor(private  UserService:UtilisateurService,public translocoService: TranslocoService){}
 
   historique:any = "";
   displayedColumns = [
@@ -35,6 +37,11 @@ export class NaissanceHomeComponent implements OnInit {
   ngOnInit(): void {
     this.getAllHistorique();
    
+  }
+
+  switchLanguage(lang: string) {
+    this.translocoService.setActiveLang(lang);
+    location.reload();
   }
 
   getAllHistorique(){

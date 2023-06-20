@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Column } from '../../../models/column';
 import { MariageService } from '../../../services/mariage.service';
 import { Router } from '@angular/router';
+import { TranslocoService } from '@ngneat/transloco';
 
 @Component({
   selector: 'app-mariage',
@@ -54,7 +55,7 @@ export class MariageComponent implements OnInit {
 mariage: any = [];
 size: any ='';
 page = 0;
-  constructor(private mariageservice: MariageService, private router:Router) { }
+  constructor(private mariageservice: MariageService, private router:Router,public translocoService: TranslocoService) { }
 
   ngOnInit(): void {
 this.AllListMariages(this.size, this.page)
@@ -72,6 +73,11 @@ this.AllListMariages(this.size, this.page)
   showRow(element: any) {
     this.router.navigate(['/dashboard/mariage-show', element.idMariage])
 
+  }
+
+  switchLanguage(lang: string) {
+    this.translocoService.setActiveLang(lang);
+    location.reload();
   }
 
   editRow(element: any) {

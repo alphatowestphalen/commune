@@ -11,10 +11,6 @@ import { TokenService } from 'src/app/core/services/token.service';
 
 
 
-interface Food {
-  value: string;
-  viewValue: string;
-}
 
 @Component({
   selector: 'app-sign-in',

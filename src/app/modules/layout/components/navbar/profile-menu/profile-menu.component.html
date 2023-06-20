@@ -14,6 +14,8 @@
       src="https://avatars.githubusercontent.com/u/12519008?v=4"
       alt="" />
   </button>
+  
+
   <!-- Dropdown -->
   <div
     [ngClass]="
@@ -33,6 +35,7 @@
     </div>
 
     <div class="border-b border-dashed border-gray-200 dark:border-night-500"></div>
+    
 
     <ul class="my-2 mx-4">
       <li
@@ -41,7 +44,8 @@
       </li>
       <li
         class="block cursor-pointer rounded-md px-3 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-100 hover:text-primary-500 dark:text-night-200 dark:hover:bg-night-500 dark:hover:text-primary-500">
-        Langue
+        <button (click)="switchLanguage('fr')" class="mr-2">Français</button>
+        <button (click)="switchLanguage('mg')">Malagasy</button>
       </li>
       
       <li

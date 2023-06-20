@@ -59,6 +59,7 @@ import { CopieMariageComponent } from './pages/copie-mariage/copie-mariage.compo
 import { DecesListComponent } from './components/deces/deces-list/deces-list.component';
 import { DecesAddComponent } from './components/deces/deces-add/deces-add.component';
 import { DecesShowComponent } from './components/deces/deces-show/deces-show.component';
+import { TranslocoModule } from '@ngneat/transloco';
 
 @NgModule({
   exports: [SurveyCreatorModule, SurveyModule, BulletinNaissanceComponent],
@@ -122,6 +123,7 @@ import { DecesShowComponent } from './components/deces/deces-show/deces-show.com
     MatListModule,
     ReactiveFormsModule,
     MatAutocompleteModule,
+    TranslocoModule,
   
     AngularSvgIconModule.forRoot(),
   ],

@@ -2,20 +2,20 @@
   <div class="mb-4 flex justify-between">
     <div class="inline-block">
       <h3 class="font-semibold text-gray-900 dark:text-white uppercase">
-        Première Copie
+        {{'PremièreCopie'|transloco}}
       </h3>
       <div
         class="space-x-1 text-xs font-medium text-gray-400 dark:text-night-300"
       >
-        <a href="" class="hover:text-primary-500"> Bureau Etat Civil</a>
-        <span>- Service de Traitement des Actes de Naissances</span>
+        <a href="" class="hover:text-primary-500"> {{'BureauEtatCivil'|transloco}}</a>
+        <span>- {{'serviceActeNaiss'|transloco}}</span>
       </div>
     </div>
     <div class="inline-block space-x-2">
       <button
         class="flex-none rounded-md bg-white px-4 py-2.5 text-xs font-semibold text-gray-500 hover:text-primary-500 dark:bg-night-600 dark:text-night-200 dark:hover:bg-night-500"
       >
-        Acceuil
+        {{'Acceuil'|transloco}}
       </button>
       <span
         class="flex-none rounded-md py-2.5 text-xs font-semibold text-night-400"
@@ -24,7 +24,7 @@
       <button
         class="flex-none rounded-md bg-white px-4 py-2.5 text-xs font-semibold text-gray-500 hover:text-primary-500 dark:bg-night-600 dark:text-night-200 dark:hover:bg-night-500"
       >
-        Naissance
+        {{'Naissance'|transloco}}
       </button>
       <span
         class="flex-none rounded-md py-2.5 text-xs font-semibold text-night-400"
@@ -33,7 +33,7 @@
       <button
         class="flex-none rounded-md bg-primary-500 px-4 py-2.5 text-xs font-semibold text-white hover:bg-primary-600"
       >
-        Première Copie
+        {{'PremièreCopie'|transloco}}
       </button>
     </div>
   </div>
@@ -44,11 +44,11 @@
     <div class="mb-1 flex items-center justify-between">
       <div class="flex-col items-center">
         <h3 class="text-md font-bold pl-5 text-gray-900 dark:text-night-50">
-          Liste Des Copies Premières effectués
+          {{'ListeDesCopiesPremièreseffectués'|transloco}}
         </h3>
       </div>
       <mat-form-field>
-        <mat-label>Recherche...</mat-label>
+        <mat-label>{{'recherche'|transloco}}...</mat-label>
         <input matInput (keyup)="applyFilter($any($event.target).value)" />
         <mat-icon matSuffix>
           <div
@@ -91,7 +91,7 @@
             />
           </svg>
 
-          Ajouter une nouvelle
+          {{'Ajouterunenouvelle'|transloco}}
         </button>
       </div>
     </div>

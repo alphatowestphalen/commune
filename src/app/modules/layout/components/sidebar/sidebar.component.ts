@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { MenuItem } from 'src/app/core/models/menu.model';
 import { ThemeService } from 'src/app/core/services/theme.service';
-
+import { TranslocoService } from '@ngneat/transloco';
 import { MenuService } from '../../services/menu.service';
 
 @Component({
@@ -15,9 +15,14 @@ export class SidebarComponent implements OnInit {
   public pagesMenu$: Observable<MenuItem[]> = new Observable<MenuItem[]>();
  
 
-  constructor(public themeService: ThemeService, private menuService: MenuService) {
+  constructor(public themeService: ThemeService, private menuService: MenuService,public translocoService: TranslocoService) {
     this.showSideBar$ = this.menuService.showSideBar$;
     this.pagesMenu$ = this.menuService.pagesMenu$;
+  }
+
+  switchLanguage(lang: string) {
+    this.translocoService.setActiveLang(lang);
+    // location.reload();
   }
 
   ngOnInit(): void {}

@@ -16,7 +16,7 @@ export class UtilisateurListComponent implements OnInit {
   utilisateur: any;
 
   size:any = '';
- 
+
  page = 0;
  
  search: any;
@@ -42,6 +42,7 @@ export class UtilisateurListComponent implements OnInit {
    {
      columnDef: 'phone',
      header: 'N° Téléphone ',
+     
      cell: (element: Record<string, any>) => `${element['phone']}`
    },
    {

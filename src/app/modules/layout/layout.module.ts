@@ -17,6 +17,10 @@ import { SidebarSubmenuComponent } from './components/sidebar/sidebar-submenu/si
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { LayoutRoutingModule } from './layout-routing.module';
 import { LayoutComponent } from './layout.component';
+import { TranslocoModule } from '@ngneat/transloco';
+
+
+
 @NgModule({
   declarations: [
     LayoutComponent,
@@ -32,8 +36,11 @@ import { LayoutComponent } from './layout.component';
     NavbarMobileComponent,
     NavbarMobileMenuComponent,
     NavbarMobileSubmenuComponent,
+    
+ 
+  
   ],
-  imports: [CommonModule, LayoutRoutingModule, HttpClientModule, AngularSvgIconModule.forRoot(), SharedModule],
+  imports: [CommonModule, LayoutRoutingModule, HttpClientModule, AngularSvgIconModule.forRoot(), SharedModule,TranslocoModule],
   exports: [NavbarComponent, SidebarComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 
