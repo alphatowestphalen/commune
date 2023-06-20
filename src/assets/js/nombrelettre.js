@@ -123,123 +123,143 @@ function MoisMalgache(nombre) {
 	return moismalgache;
 }
 
-// function HeureMalgache(nombre) {
-// 	let heuremalgache;
-// 	switch (nombre) {
-// 		case "00": heuremalgache = "roa ambin'ny folo"; break;
-// 		case "01": heuremalgache = "iray"; break;
-// 		case "02": heuremalgache = "roa"; break;
-// 		case "03": heuremalgache = "telo"; break;
-// 		case "04": heuremalgache = "efatra"; break;
-// 		case "05": heuremalgache = "dimy"; break;
-// 		case "06": heuremalgache = "enina"; break;
-// 		case "07": heuremalgache = "fito"; break;
-// 		case "08": heuremalgache = "valo"; break;
-// 		case "09": heuremalgache = "sivy"; break;
-// 		case "10": heuremalgache = "folo"; break;
-// 		case "11": heuremalgache = "iraika amin'ny folo"; break;
-// 		case "12": heuremalgache = "roa ambin'ny folo"; break;
+function HeureMalgache(nombre) {
+	let heuremalgache;
+	switch (nombre) {
+		case "00": heuremalgache = "roa ambin'ny folo"; break;
+		case "01": heuremalgache = "iray"; break;
+		case "02": heuremalgache = "roa"; break;
+		case "03": heuremalgache = "telo"; break;
+		case "04": heuremalgache = "efatra"; break;
+		case "05": heuremalgache = "dimy"; break;
+		case "06": heuremalgache = "enina"; break;
+		case "07": heuremalgache = "fito"; break;
+		case "08": heuremalgache = "valo"; break;
+		case "09": heuremalgache = "sivy"; break;
+		case "10": heuremalgache = "folo"; break;
+		case "11": heuremalgache = "iraika amin'ny folo"; break;
+		case "12": heuremalgache = "roa ambin'ny folo"; break;
 
-// 	}
-// 	return heuremalgache;
-// }
-// function HeureMalgaches(nombre) {
-// 	let heuremalgaches;
-// 	switch (nombre) {
-// 		case "13": heuremalgaches = "iray"; break;
-// 		case "14": heuremalgaches = "roa"; break;
-// 		case "15": heuremalgaches = "telo"; break;
-// 		case "16": heuremalgaches = "efatra"; break;
-// 		case "17": heuremalgaches = "dimy"; break;
-// 		case "18": heuremalgaches = "enina"; break;
-// 		case "19": heuremalgaches = "fito"; break;
-// 		case "20": heuremalgaches = "valo"; break;
-// 		case "21": heuremalgaches = "sivy"; break;
-// 		case "22": heuremalgaches = "folo"; break;
-// 		case "23": heuremalgaches = "iraika amin'ny folo"; break;
+	}
+	return heuremalgache;
+}
+function HeureMalgaches(nombre) {
+	let heuremalgaches;
+	switch (nombre) {
+		case "13": heuremalgaches = "iray"; break;
+		case "14": heuremalgaches = "roa"; break;
+		case "15": heuremalgaches = "telo"; break;
+		case "16": heuremalgaches = "efatra"; break;
+		case "17": heuremalgaches = "dimy"; break;
+		case "18": heuremalgaches = "enina"; break;
+		case "19": heuremalgaches = "fito"; break;
+		case "20": heuremalgaches = "valo"; break;
+		case "21": heuremalgaches = "sivy"; break;
+		case "22": heuremalgaches = "folo"; break;
+		case "23": heuremalgaches = "iraika amin'ny folo"; break;
 
 
-// 	}
-// 	return heuremalgaches;
-// }
+	}
+	return heuremalgaches;
+}
 
-// function HeureEnLettre(nombre){
-// 	let heurelettre = "";
-// 	nb = parseFloat(nombre.toString().replace(/ /gi, ""));
-// 	n = nb.toString().length;
-// 	if ( 01 <= nb && nb <= 09  ){
+function HeureEnLettre(nombre){
+	let heurelettre = "";
+	nb = parseFloat(nombre.toString().replace(/ /gi, ""));
+	n = nb.toString().length;
+	if ( 1 <= nb && nb <= 9  ){
 		
-// 		heurelettre = HeureMalgache(nombre)+"maraina";
-// 		return heurelettre;
-// 	}
-// 	else if(10 <= nombre && nombre <= 12 ){
+		heurelettre = HeureMalgache(nombre)+" ora";
+		return heurelettre;
+	}
+	else if(10 <= nombre && nombre <= 12 ){
 		
-// 		heurelettre = HeureMalgache(nombre)+"atoandro";
-// 		return heurelettre;
-// 	}
-// 	else if(13<= nombre && nombre <= 16){
+		heurelettre = HeureMalgache(nombre)+" ora";
+		return heurelettre;
+	}
+	else if(13<= nombre && nombre <= 16){
 		
-// 		heurelettre = HeureMalgaches(nombre)+"tolakandro";
-// 		return heurelettre;
+		heurelettre = HeureMalgaches(nombre)+" ora";
+		return heurelettre;
 
-// 	}
-// 	else if (17 <= nombre && nombre <= 19){
+	}
+	else if (17 <= nombre && nombre <= 19){
 		
-// 		heurelettre = HeureMalgaches(nombre)+"hariva";
-// 		return heurelettre;
-// 	}
-// 	else {
+		heurelettre = HeureMalgaches(nombre)+" ora";
+		return heurelettre;
+	}
+	else {
 		
-// 			heurelettre = HeureMalgaches(nombre)+"alina";
-// 			return heurelettre;
+			heurelettre = HeureMalgaches(nombre)+" ora";
+			return heurelettre;
 
-// 		}
+		}
 
-// }
+}
 
-// function HeureEnLettre(nombre) {
-// 	let heureEnLettre = "";
-// 	nb = parseFloat(nombre.toString().replace(/ /gi, ""));
-// 	n = nb.toString().length;
-// 	switch (
-// 	n) {
-// 		case 1: if (nb >= 12) heureEnLettre = HeureMalgache(nb); break;
 
-// 		case 2: if (13 <= nb && nb >= 23) heureEnLettre = HeureMalgaches(nb); break;
+function MinuteEnlettre(nombre) {
+	let MinuteEnlettre = "";
+	nb = parseFloat(nombre.toString().replace(/ /gi, ""));
+	n = nb.toString().length;
+	switch (n) {
+		case 1:
+			if(nb == 0){
+				MinuteEnlettre = " ";
+			} 
+			else MinuteEnlettre = " sy " + Unite(nb); break;
+		case 2: if (nb > 19) {
+			quotient = Math.floor(nb / 10);
+			reste = nb % 10;
+			if (nb < 100) {
+				if (reste == 0) {
+					minute = quotient * 10;
+					if(minute == 10) MinuteEnlettre = " sy " + Dizaine(minute); 
+					if(minute == 20) MinuteEnlettre =  " sy fahahefany"; 
+					if(minute == 30) MinuteEnlettre = " sy sasany"; 
+					if(minute == 40) MinuteEnlettre = " sy " +Dizaine(minute);
+					if(minute == 50) MinuteEnlettre = " sy " +Dizaine(minute);
+				}
+				if (reste >= 1) MinuteEnlettre = " sy " + Unite(reste) + " amby " + Dizaine(quotient * 10);
+			} 
+			else MinuteEnlettre = " sy " + Dizaine((quotient - 1) * 10) + "-" + Dizaine(10 + reste); break;
+		} 
+		else MinuteEnlettre = " sy " + Dizaine(nb);break;
+	}
+	return MinuteEnlettre;
+}
 
-// 	}
 
-// 	return heureEnLettre;
+function LeraEnLettre(nombre){
+	let heurelettre = "";
+	nb = parseFloat(nombre.toString().replace(/ /gi, ""));
+	n = nb.toString().length;
+	if ( 1 <= nb && nb <= 9  ){
+		
+		heurelettre = " maraina";
+		return heurelettre;
+	}
+	else if(10 <= nombre && nombre <= 12 ){
+		
+		heurelettre = " atoandro";
+		return heurelettre;
+	}
+	else if(13<= nombre && nombre <= 16){
+		
+		heurelettre = " tolakandro";
+		return heurelettre;
 
-// }
+	}
+	else if (17 <= nombre && nombre <= 19){
+		
+		heurelettre = " hariva";
+		return heurelettre;
+	}
+	else {
+		
+			heurelettre = HeureMalgaches(nombre)+" alina";
+			return heurelettre;
 
-// function MinuteEnlettre(nombre) {
-// 	let MinuteEnlettre = "";
-// 	nb = parseFloat(nombre.toString().replace(/ /gi, ""));
-// 	n = nb.toString().length;
-// 	switch (n) {
-// 		case 1: MinuteEnlettre = Unite(nb); break;
-// 		case 2: if (nb > 19) {
-// 			quotient = Math.floor(nb / 10);
-// 			reste = nb % 10;
-// 			if (nb < 100) {
-// 				if (reste == 0) {
-// 					//minute = Dizaine(quotient * 10);
-// 					minute = quotient * 10;
-// 					switch(minute){
-// 						case "10": MinuteEnlettre = Dizaine(minute); break;
-// 						case "20": MinuteEnlettre = "fahahefany"; break;
-// 						case "30" : MinuteEnlettre = "sasany"; break; 
-// 						case "40": MinuteEnlettre = Dizaine(minute); break;
-// 						case "50": MinuteEnlettre = Dizaine(minute); break;
-// 					}
-// 					return MinuteEnlettre
+		}
 
-// 				}
-// 				if (reste >= 1) MinuteEnlettre = Unite(reste) + " amby " + Dizaine(quotient * 10);
-// 			} else MinuteEnlettre = Dizaine((quotient - 1) * 10) + "-" + Dizaine(10 + reste);
-// 		} else MinuteEnlettre = Dizaine(nb);
-// 			break;
-
-// 	}
-// }
+}

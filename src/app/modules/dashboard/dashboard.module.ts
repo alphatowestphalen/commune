@@ -61,7 +61,7 @@ import { DecesAddComponent } from './components/deces/deces-add/deces-add.compon
 import { DecesShowComponent } from './components/deces/deces-show/deces-show.component';
 
 @NgModule({
-  exports: [SurveyCreatorModule, SurveyModule, BulletinNaissanceComponent],
+  exports: [SurveyCreatorModule, SurveyModule, BulletinNaissanceComponent, CopieComponent],
   declarations: [
     BulletinComponent,
     DashboardComponent,
