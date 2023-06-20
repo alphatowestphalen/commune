@@ -62,7 +62,7 @@ import { DecesShowComponent } from './components/deces/deces-show/deces-show.com
 import { TranslocoModule } from '@ngneat/transloco';
 
 @NgModule({
-  exports: [SurveyCreatorModule, SurveyModule, BulletinNaissanceComponent],
+  exports: [SurveyCreatorModule, SurveyModule, BulletinNaissanceComponent, CopieComponent],
   declarations: [
     BulletinComponent,
     DashboardComponent,

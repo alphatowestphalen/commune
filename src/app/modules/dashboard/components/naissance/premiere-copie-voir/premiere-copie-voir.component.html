@@ -153,7 +153,7 @@
     </div>
 
      <div class="flex flex-col-reverse ml-3 sm:ml-6">
-      <dt class="text-sm font-medium text-slate-800">{{certificates.mere.profession}}</dt>
+      <dt class="text-sm font-medium text-slate-800">{{certificates.mere.professionMere}}</dt>
       <dd class="text-xs text-slate-500">Profession</dd>
     </div>
     <div class="flex flex-col-reverse ml-3 sm:ml-6">
@@ -192,7 +192,7 @@
       <dd class="text-xs text-slate-500">Date de Naissance</dd>
     </div>
     <div class="flex flex-col-reverse ml-3 sm:ml-6">
-      <dt class="text-sm font-medium text-slate-800">{{certificates.pere.lieunaissPere}}</dt>
+      <dt class="text-sm font-medium text-slate-800">{{certificates.pere.lieuNaissPere}}</dt>
       <dd class="text-xs text-slate-500">Lieu de Naissance</dd>
     </div>
      <div class="flex flex-col-reverse ml-3 sm:ml-6">
@@ -297,6 +297,7 @@
 
  Taper pour Télecharger 
     </button>
+    
     <button (click)="printPage()"
     class="shadow-md inline-flex items-center px-4 py-2 mt-3 bg-green-400 hover:bg-teal-600 text-gray-800 text-sm font-medium rounded-md"
   >
@@ -311,7 +312,7 @@ Taper pour Imprimer
   
       <button class=" hover:bg-red-500 text-white font-bold py-2 px-4 rounded-full absolute  bg-red-700 lg:h-10 lg:max-w-[8%] right-2 top-2" (click)="toggleModal()">x</button>
       <div class="mt-auto">
-        <app-copie [copie]="certificates"></app-copie>
+        <app-copie  [copie]="certificates" #htmlData ></app-copie>
       </div>  
      
     </div>

@@ -47,16 +47,17 @@ export class MariageAddComponent implements OnInit {
     typeHomme: new FormControl(),
     typeFemme: new FormControl(),
     idCopieMariage: new FormControl(),
+    dateCopieMariage: this.today.toLocaleDateString(),
     dateMariage: this.today.toLocaleDateString('fr-FR',{
       weekday: 'long',
       year: 'numeric',
       month: 'long',
       day: 'numeric'}),
-      dateCopieMariage: this.today.toLocaleDateString('fr-FR',{
-        weekday: 'long',
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'}),
+      // dateCopieMariage: this.today.toLocaleDateString('fr-FR',{
+      //   weekday: 'long',
+      //   year: 'numeric',
+      //   month: 'long',
+      //   day: 'numeric'}),
     heureCopieMariage: this.today.toLocaleTimeString('fr-FR',{
       hour: 'numeric',
       minute: 'numeric'}),
