@@ -5,7 +5,7 @@
         <h1
           class="inline mx-auto ml-0 text-left font-bold text-gray-100 text-2xl"
         >
-          Recherche dans la registre votre Copie
+           {{ 'rechercheRegistre' | transloco }}
         </h1>
         <button
           routerLink="/demande/scoped-board"
@@ -26,13 +26,12 @@
             />
           </svg>
 
-          tableau de bord
+          {{ 'tableauBord' | transloco }}
         </button>
       </span>
 
       <p class="mx-auto font-normal inline-flex text-sm my-6 max-w-lg">
-        Effectuer une recherche en saisant votre numèro de copie ou Nom et
-        Prènoms
+        {{ 'effectrecherche' | transloco }}
       </p>
       <div
         class="sm:flex items-center bg-white rounded-lg overflow-hidden px-2 py-1 justify-between"
@@ -43,14 +42,14 @@
           class="text-base text-black flex-grow outline-none px-2"
           type="text"
           [formControl]="searchDemande"
-          placeholder="Saisir ici votre numèro de Copie ou Nom "
+          placeholder="{{ 'saisieNumCopie' | transloco }}"
         />
         <div class="ms:flex items-center px-2 rounded-lg space-x-4 mx-auto">
           <button
             (click)="Search()"
             class="bg-indigo-500 text-white text-base rounded-lg px-4 py-2 font-bold"
           >
-            Recherche
+          {{ 'recherche' | transloco }}
           </button>
         </div>
       </div>
@@ -66,17 +65,17 @@
     >
       <mat-expansion-panel-header>
         <mat-panel-title>
-          <strong>N° Première Copie</strong>
+          <strong> {{ 'numPremierCopie' | transloco }}</strong>
         </mat-panel-title>
         <mat-panel-title>
-          <strong>Nom et Prènoms</strong>
+          <strong> {{ 'nomPrenom' | transloco }}</strong>
         </mat-panel-title>
         <mat-panel-description class="ml-3">
-          Date et Lieu de Naissance
+          {{ 'dateLieuNaiss' | transloco }}
         </mat-panel-description>
         <mat-panel-description>
-          <strong>Nom et Prenoms de Père</strong> <span class="px-2"></span
-          ><strong>Nom et Prènoms de Mère</strong>
+          <strong> {{ 'nomPrenomPere' | transloco }}</strong> <span class="px-2"></span
+          ><strong>{{ 'nomPrenomMere' | transloco }}</strong>
         </mat-panel-description>
       </mat-expansion-panel-header>
     </mat-expansion-panel>
@@ -271,7 +270,7 @@
             />
           </svg>
 
-          Cliquer pour imprimer
+         {{'Cliquerpourimprimer'|transloco}}
         </button>
         <button
           class="hover:bg-red-500 text-white font-bold py-2 px-4 rounded-full absolute bg-red-700 lg:h-10 lg:max-w-[8%] right-2 top-2"

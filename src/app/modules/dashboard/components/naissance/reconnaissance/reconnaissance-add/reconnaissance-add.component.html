@@ -1,16 +1,16 @@
 <div class="mx-auto px-2 py-2 sm:px-8 lg:container">
     <div class="mb-4 flex justify-between">
         <div class="inline-block">
-          <h3 class="font-semibold text-gray-900 dark:text-white uppercase">Copie de Réconnaissance</h3>
+          <h3 class="font-semibold text-gray-900 dark:text-white uppercase">{{'CopiedeRéconnaissance'|transloco}}</h3>
           <div class="space-x-1 text-xs font-medium text-gray-400 dark:text-night-300">
-            <a href="" class="hover:text-primary-500"> Bureau Etat Civil</a>
-            <span>- Service de Traitement des Actes de Naissances</span>
+            <a href="" class="hover:text-primary-500"> {{'BureauEtatCivil'|transloco}}</a>
+            <span>- {{'serviceActeNaiss'|transloco}}</span>
           </div>
         </div>
         <div class="inline-block space-x-1">
           <button
             class="flex-none rounded-md bg-white px-4 py-1.5 text-xs font-semibold text-gray-500 hover:text-primary-500 dark:bg-night-600 dark:text-night-200 dark:hover:bg-night-500">
-           Acceuil
+           {{'Acceuil'|transloco}}
           </button>
           <span class="flex-none rounded-md py-1 text-xs font-semibold text-night-400">>></span>
           <button
@@ -21,7 +21,7 @@
          
           <button
             class="flex-none rounded-md bg-primary-500 px-2 py-1.5 text-xs font-semibold text-white hover:bg-primary-600">
-         Formulaire Ajout Rconnaissance
+         {{'FormulaireAjoutReconnaissance'|transloco}}
           </button>
         </div>
       </div>
@@ -31,7 +31,7 @@
       <div class="flex-col rounded-lg mt-5 px-3 py-3 sm:flex-row">
         <div class="my-3 flex items-center justify-between">
           <div class="flex-col items-center">
-            <h3 class="text-md font-semibold pl-5 text-gray-900 dark:text-night-50">Formulaire à remplir pour l'ajoute de la copie de reconnaissance</h3>
+            <h3 class="text-md font-semibold pl-5 text-gray-900 dark:text-night-50">{{'Formulaireàremplirpourlajoutdelacopiedereconnaissance'|transloco}}</h3>
           </div>
      
     
@@ -139,20 +139,20 @@
 <mat-horizontal-stepper [linear]="true" #stepper>
   <mat-step [stepControl]="PiecesFormGroup">
     <form [formGroup]="PiecesFormGroup">
-      <ng-template matStepLabel> Dossier <br>
-        <span class="font-normal text-xs text-gray-400">Check Dossier</span>
+      <ng-template matStepLabel> {{'Dossier'|transloco}} <br>
+        <span class="font-normal text-xs text-gray-400">{{'CheckDossier'|transloco}}</span>
       </ng-template>
       <div class="lg:grid md:grid-flow-col grid-cols-2 gap-4 mt-20">
         <div class="mb-4  w-60">
           <label class="label cursor-pointer w-60">
             <input type="checkbox" checked="checked" class="checkbox" />
-            <span class="label-text"> Certificat d' accouchement</span>
+            <span class="label-text">{{'Certificataccouchement'|transloco}}</span>
           </label>
         </div>
         <div class="mb-4  w-60">
           <label class="label cursor-pointer">
             <input type="checkbox" checked="checked" class="checkbox" />
-            <span class="label-text">Livrée de Famille</span>
+            <span class="label-text">{{'LivréedeFamille'|transloco}}</span>
 
           </label>
         </div>
@@ -162,14 +162,14 @@
         <div class="mb-4 w-60">
           <label class="label cursor-pointer ">
             <input type="checkbox" checked="checked" class="checkbox" />
-            <span class="label-text">Photocopie CIN de la mère</span>
+            <span class="label-text">{{'PhotocopieCINdelamère'|transloco}}</span>
 
           </label>
         </div>
         <div class="mb-4 w-60">
           <label class="label cursor-pointer ">
             <input type="checkbox" checked="checked" class="checkbox" />
-            <span class="label-text">Photocopie de CIN declarant</span>
+            <span class="label-text">{{'PhotocopiedeCINdeclarant'|transloco}}</span>
 
           </label>
         </div>
@@ -183,14 +183,14 @@ bg-gray-100
 text-red-700 
 border duration-200 ease-in-out 
 border-red-600 transition">
-          Annuler</button>
+          {{'Annuler'|transloco}}</button>
         <div class="flex-auto flex flex-row-reverse">
           <button mat-button  matStepperNext class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
 hover:bg-teal-600  
 bg-teal-600 
 text-teal-100 
 border duration-200 ease-in-out 
-border-teal-600 transition">Suivant</button>
+border-teal-600 transition">{{'Suivant'|transloco}}</button>
 
         </div>
       </div>
@@ -199,13 +199,13 @@ border-teal-600 transition">Suivant</button>
   </mat-step>
   <mat-step [stepControl]="EnfantFormGroup">
   
-      <ng-template matStepLabel> Première copie<br>
-        <span class="font-normal text-xs text-gray-400">Recuperer Premiere Copie</span>
+      <ng-template matStepLabel> {{'Premièrecopie'|transloco}}<br>
+        <span class="font-normal text-xs text-gray-400">{{'RecupererPremiereCopie'|transloco}}</span>
       </ng-template>
       <mat-form-field class="w-full">
         <mat-select (formControl)="IdPremierCopie" name="reconnaissance" (selectionChange)="Onchange($event)" (closed)="clearreconnais()">
           <mat-form-field class="w-full">
-            <mat-label>Recherche</mat-label>
+            <mat-label>{{'recherche'|transloco}}</mat-label>
             <input matInput [(ngModel)]="CopieSelected" class="w-full" placeholder="Saisir le nom de Personne" (keydown.Space)="spacereconnaiss()">
           </mat-form-field>
           <mat-option *ngFor="let copie of reconnaissance|search:CopieSelected" [value]="copie.idPremierCopie"><span><b>{{copie.idPremierCopie}}</b> ({{copie.enfant.nomEnfant}} {{copie.enfant.prenomsEnfant}})</span></mat-option>
@@ -229,18 +229,18 @@ border-teal-600 transition">Suivant</button>
         <div class=" lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4"  *ngIf="certificate?.idPremierCopie">
           <div class="mb-4 w-4/5">
 
-            <label class="block mb-2 text-sm font-bold text-black">Nom de l'enfant</label>
+            <label class="block mb-2 text-sm font-bold text-black">{{'Nomenfant'|transloco}}</label>
             <input type="text"  readonly value="{{certificate?.enfant.nomEnfant}}"
               class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-              placeholder="Saisir nom de l'enfant" />
+              placeholder="{{'SaisirNomEnfant'|transloco}}" />
 
           </div>
           <div class="mb-4 w-4/5">
 
-            <label class="block mb-2 text-sm font-bold text-black">Prenoms de l'enfant</label>
+            <label class="block mb-2 text-sm font-bold text-black">{{'Prenomsenfant'|transloco}}</label>
             <input type="text"  readonly   value="{{certificate?.enfant.prenomsEnfant}}"
               class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-              placeholder="Saisir Prenoms de l'enfant" />
+              placeholder="{{'SaisirPrenomsEnfant'|transloco}}" />
 
           </div>
 
@@ -248,28 +248,28 @@ border-teal-600 transition">Suivant</button>
         <div class="lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
           <div class="mb-4 w-4/5">
 
-            <label class="block mb-2 text-sm font-bold text-black">Date de Naissance</label>
+            <label class="block mb-2 text-sm font-bold text-black">{{'DateNaissance'|transloco}}</label>
             <input type="text" readonly  value="{{certificate?.enfant?.datenaissEnfant}}"
               class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-              placeholder="Saisir Date de Naissance l'enfant" />
+              placeholder="{{'SaisirDatedenaissanceEnfant'|transloco}}" />
 
           </div>
           <div class="mb-4 w-4/5">
 
-            <label class="block mb-2 text-sm font-bold text-black">Heure de naissance</label>
+            <label class="block mb-2 text-sm font-bold text-black">{{'HeureNaissance'|transloco}}</label>
             <input type="text"  readonly value="{{certificate?.enfant?.heurenaissEnfant}}"
               class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-              placeholder="Saisir heure de Naissancede l'enfant" />
+              placeholder="{{'Saisirheuredenaissance'|transloco}}" />
 
           </div>
         </div>
         <div class="lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
           <div class="mb-4 w-4/5">
 
-            <label class="block mb-2 text-sm font-bold text-black">Lieu de Naissance</label>
+            <label class="block mb-2 text-sm font-bold text-black">{{'LieuNaissance'|transloco}}</label>
             <input type="text" readonly value="{{certificate?.enfant?.lieunaissEnfant}}"
                class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-              placeholder="Saisir Lieu de Naissance de l'enfant" />
+              placeholder="{{'SaisirLieuNaissanceEnfant'|transloco}}" />
 
           </div>
      
@@ -286,14 +286,14 @@ border-teal-600 transition">Suivant</button>
   text-red-700 
   border duration-200 ease-in-out 
   border-red-600 transition">
-            Annuler</button>
+            {{'Annuler'|transloco}}</button>
       <div class="flex-auto flex flex-row-reverse">
           <button mat-button  (click)="FirstStep()" matStepperNext class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
   hover:bg-teal-600  
   bg-teal-600 
   text-teal-100 
   border duration-200 ease-in-out 
-  border-teal-600 transition">Suivant</button>
+  border-teal-600 transition">{{'Suivant'|transloco}}</button>
         
       </div>
   </div>
@@ -304,17 +304,17 @@ border-teal-600 transition">Suivant</button>
 
   <mat-step [stepControl]="ReconnaissanceFormGroup">
     <form [formGroup]="ReconnaissanceFormGroup" >
-      <ng-template matStepLabel>  Reconnaissance <br>
-        <span class="font-normal text-xs text-gray-400">Information Reconnaissance</span>
+      <ng-template matStepLabel>  {{'Reconnaissance'|transloco}} <br>
+        <span class="font-normal text-xs text-gray-400">{{'InformationReconnaissance'|transloco}}</span>
       </ng-template>
       <div class=" lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
        
         <div class="mb-4 w-4/5">
 
-          <label class="block mb-2 text-sm font-bold text-black">Info de la Declarant</label>
+          <label class="block mb-2 text-sm font-bold text-black">{{'Informationadoption'|transloco}}</label>
           <input type="text" formControlName = "infoPersonDeclarant" id="infoPersonDeclarant"
             class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-            placeholder="Saisir Parents adoptifs" />
+            placeholder="{{'SaisirParentsadoptifs'|transloco}}" />
 
         </div>
        
@@ -323,18 +323,18 @@ border-teal-600 transition">Suivant</button>
       <div class="lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
         <div class="mb-4 w-4/5">
 
-          <label class="block mb-2 text-sm font-bold text-black">Date declaration</label>
+          <label class="block mb-2 text-sm font-bold text-black">{{'Datedeclaration'|transloco}}</label>
           <input type="date" formControlName = "dateDeclaration" id="dateDeclaration"
             class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-            placeholder="Saisir Date d'adoption" />
+            placeholder="{{'SaisirDateadoption'|transloco}}" />
 
         </div>
         <div class="mb-4 w-4/5">
 
-          <label class="block mb-2 text-sm font-bold text-black">Heure de declaration</label>
+          <label class="block mb-2 text-sm font-bold text-black">{{'Heureadoption'|transloco}}</label>
           <input type="time"  formControlName = "heureDeclaration" id="heureDeclaration"
             class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-            placeholder="Saisir heure d'adoption" />
+            placeholder="{{'Saisirheureadoption'|transloco}}" />
 
         </div>
       </div>
@@ -345,7 +345,7 @@ border-teal-600 transition">Suivant</button>
     text-red-700 
     border duration-200 ease-in-out 
     border-red-600 transition">
-              Annuler</button>
+              {{'Annuler'|transloco}}</button>
         <div class="flex-auto flex flex-row-reverse">
           <button   (click)="openDialog()"
           mat-button matStepperNext class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
@@ -353,7 +353,7 @@ border-teal-600 transition">Suivant</button>
   bg-blue-600 
   text-blue-100 
   border duration-200 ease-in-out 
-  border-blue-600 transition">Sauvegarder</button>
+  border-blue-600 transition">{{'Sauvegarder'|transloco}}</button>
           
         </div>
     </div>

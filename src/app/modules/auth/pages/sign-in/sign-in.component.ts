@@ -1,35 +1,55 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, NgModule, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { TranslocoService } from '@ngneat/transloco';
 import { ToastService } from 'angular-toastify';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { TokenService } from 'src/app/core/services/token.service';
 
+
+
+
+
+
 @Component({
   selector: 'app-sign-in',
+  
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.scss'],
+
 })
+
 export class SignInComponent implements OnInit {
   loginForm: FormGroup;
   errors: any;
   type: boolean;
+
+
+
 
   constructor(
     public router: Router,
     private formbuilder: FormBuilder,
     private authservice: AuthService,
     private token: TokenService,
-    private _toastService: ToastService
-  ) {}
+    private _toastService: ToastService,
+    public translocoService: TranslocoService,
+  ) { }
+
+  switchLanguage(lang: string) {
+    this.translocoService.setActiveLang(lang);
+  }
 
   ngOnInit(): void {
     this.loginForm = this.formbuilder.group({
       username: [''],
-      password: [''],
-    });
+      password: ['']
+    })
+
+
   }
+
 
   Login($event: any) {
     $event.preventDefault();
@@ -63,13 +83,7 @@ export class SignInComponent implements OnInit {
         }
       );
     }
-    // this.authservice.login(this.loginForm.value).then(
-    //  async (result)=>{
-    //    await this.responseHandler(result);
-    //     this.loginForm.reset();
-    //     this.router.navigate(['demande']);
-    //   }
-    // )
+
   }
 
   async responseHandler(data: any) {
