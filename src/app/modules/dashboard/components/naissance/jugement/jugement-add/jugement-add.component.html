@@ -1,261 +1,261 @@
 <div class="mx-auto px-2 py-2 sm:px-8 lg:container">
-    <div class="mb-4 flex justify-between">
-        <div class="inline-block">
-          <h3 class="font-semibold text-gray-900 dark:text-white uppercase">Copie de Jugement</h3>
-          <div class="space-x-1 text-xs font-medium text-gray-400 dark:text-night-300">
-            <a href="" class="hover:text-primary-500"> Bureau Etat Civil</a>
-            <span>- Service de Traitement des Actes de Naissances</span>
-          </div>
-        </div>
-        <div class="inline-block space-x-1">
-          <button
-            class="flex-none rounded-md bg-white px-4 py-1.5 text-xs font-semibold text-gray-500 hover:text-primary-500 dark:bg-night-600 dark:text-night-200 dark:hover:bg-night-500">
-           Acceuil
-          </button>
-          <span class="flex-none rounded-md py-1 text-xs font-semibold text-night-400">>></span>
-          <button
-            class="flex-none rounded-md bg-white px-4 py-1.5 text-xs font-semibold text-gray-500 hover:text-primary-500 dark:bg-night-600 dark:text-night-200 dark:hover:bg-night-500">
-        ...
-          </button>
-          <span class="flex-none rounded-md py-1 text-xs font-semibold text-night-400">>></span>
-         
-          <button
-            class="flex-none rounded-md bg-primary-500 px-2 py-1.5 text-xs font-semibold text-white hover:bg-primary-600">
-         Formulaire Ajout Jugement
-          </button>
-        </div>
+  <div class="mb-4 flex justify-between">
+    <div class="inline-block">
+      <h3 class="font-semibold text-gray-900 dark:text-white uppercase">{{'CopiedeJugement'|transloco}}</h3>
+      <div class="space-x-1 text-xs font-medium text-gray-400 dark:text-night-300">
+        <a href="" class="hover:text-primary-500"> {{'BureauEtatCivil'|transloco}}</a>
+        <span>- {{'serviceActeNaiss'|transloco}}</span>
       </div>
-    
-    
+    </div>
+    <div class="inline-block space-x-1">
+      <button
+        class="flex-none rounded-md bg-white px-4 py-1.5 text-xs font-semibold text-gray-500 hover:text-primary-500 dark:bg-night-600 dark:text-night-200 dark:hover:bg-night-500">
+        {{'Acceuil'|transloco}}
+      </button>
+      <span class="flex-none rounded-md py-1 text-xs font-semibold text-night-400">>></span>
+      <button
+        class="flex-none rounded-md bg-white px-4 py-1.5 text-xs font-semibold text-gray-500 hover:text-primary-500 dark:bg-night-600 dark:text-night-200 dark:hover:bg-night-500">
+        ...
+      </button>
+      <span class="flex-none rounded-md py-1 text-xs font-semibold text-night-400">>></span>
 
-      <div class="flex-col rounded-lg bg-slate-400 mt-5 px-3 py-3 dark:bg-night-700 sm:flex-row">
-        <div class="my-3 flex items-center justify-between">
-          <div class="flex-col items-center">
-            <h3 class="text-md font-semibold pl-5 text-gray-900 dark:text-night-50">Formulaire à remplir pour l'ajoute de la copie de jugement</h3>
+      <button
+        class="flex-none rounded-md bg-primary-500 px-2 py-1.5 text-xs font-semibold text-white hover:bg-primary-600">
+        {{'FormulaireAjoutJugement'|transloco}}
+      </button>
+    </div>
+  </div>
+
+
+
+  <div class="flex-col rounded-lg bg-slate-400 mt-5 px-3 py-3 dark:bg-night-700 sm:flex-row">
+    <div class="my-3 flex items-center justify-between">
+      <div class="flex-col items-center">
+        <h3 class="text-md font-semibold pl-5 text-gray-900 dark:text-night-50">
+          {{'Formulaireàremplirpourlajoutedelacopiedejugement'|transloco}}</h3>
+      </div>
+
+
+    </div>
+
+
+    <mat-horizontal-stepper #stepper>
+      <mat-step [stepControl]="PiecesFormGroup">
+        <form [formGroup]="PiecesFormGroup">
+          <ng-template matStepLabel> {{'Dossier'|transloco}} <br>
+            <span class="font-normal text-xs text-gray-400">{{'CheckDossier'|transloco}}</span>
+          </ng-template>
+          <div class="lg:grid md:grid-flow-col grid-cols-2 gap-4 mt-20">
+            <div class="mb-4  w-60">
+              <label class="label cursor-pointer w-60">
+                <input type="checkbox" checked="checked" class="checkbox" />
+                <span class="label-text">{{'Certificataccouchement'|transloco}}</span>
+              </label>
+            </div>
+            <div class="mb-4  w-60">
+              <label class="label cursor-pointer">
+                <input type="checkbox" checked="checked" class="checkbox" />
+                <span class="label-text">{{'LivréedeFamille'|transloco}}</span>
+
+              </label>
+            </div>
+
           </div>
-     
-    
-        </div>
+          <div class="lg:grid md:grid-flow-col grid-cols-2 gap-4">
+            <div class="mb-4 w-60">
+              <label class="label cursor-pointer ">
+                <input type="checkbox" checked="checked" class="checkbox" />
+                <span class="label-text">{{'PhotocopieCINdelamère'|transloco}}</span>
 
-   
- <mat-horizontal-stepper  #stepper>
-          <mat-step [stepControl]="PiecesFormGroup">
-            <form [formGroup]="PiecesFormGroup">
-              <ng-template matStepLabel> Dossier <br>
-                <span class="font-normal text-xs text-gray-400">Check Dossier</span>
-              </ng-template>
-              <div class="lg:grid md:grid-flow-col grid-cols-2 gap-4 mt-20">
-                <div class="mb-4  w-60">
-                  <label class="label cursor-pointer w-60">
-                    <input type="checkbox" checked="checked" class="checkbox" />
-                    <span class="label-text"> Certificat d' accouchement</span>
-                  </label>
-                </div>
-                <div class="mb-4  w-60">
-                  <label class="label cursor-pointer">
-                    <input type="checkbox" checked="checked" class="checkbox" />
-                    <span class="label-text">Livrée de Famille</span>
-  
-                  </label>
-                </div>
-  
-              </div>
-              <div class="lg:grid md:grid-flow-col grid-cols-2 gap-4">
-                <div class="mb-4 w-60">
-                  <label class="label cursor-pointer ">
-                    <input type="checkbox" checked="checked" class="checkbox" />
-                    <span class="label-text">Photocopie CIN de la mère</span>
-  
-                  </label>
-                </div>
-                <div class="mb-4 w-60">
-                  <label class="label cursor-pointer ">
-                    <input type="checkbox" checked="checked" class="checkbox" />
-                    <span class="label-text">Photocopie de CIN declarant</span>
-  
-                  </label>
-                </div>
-              </div>
-  
-           
-              <div class="flex p-2 mt-4">
-                <button routerLink="/dashboard/premiere-copie" class="text-md hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
+              </label>
+            </div>
+            <div class="mb-4 w-60">
+              <label class="label cursor-pointer ">
+                <input type="checkbox" checked="checked" class="checkbox" />
+                <span class="label-text">{{'PhotocopiedeCINdeclarant'|transloco}}</span>
+
+              </label>
+            </div>
+          </div>
+
+
+          <div class="flex p-2 mt-4">
+            <button routerLink="/dashboard/premiere-copie" class="text-md hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
             hover:bg-gray-200  
             bg-gray-100 
             text-red-700 
             border duration-200 ease-in-out 
             border-red-600 transition">
-                      Annuler</button>
-                <div class="flex-auto flex flex-row-reverse">
-                    <button mat-button matStepperNext class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
+              {{'Annuler'|transloco}}</button>
+            <div class="flex-auto flex flex-row-reverse">
+              <button mat-button matStepperNext class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
             hover:bg-teal-600  
             bg-teal-600 
             text-teal-100 
             border duration-200 ease-in-out 
-            border-teal-600 transition">Suivant</button>
-                  
-                </div>
-            </div>
-       
-            </form>
-          </mat-step>
-          <mat-step [stepControl]="EnfantFormGroup">
-            
-              <ng-template matStepLabel> Première copie<br>
-                <span class="font-normal text-xs text-gray-400">Recuperer Premiere Copie</span>
-              </ng-template>
-              <mat-form-field class="example-full-width">
-            
-                <mat-select   (formControl)="idPremierCopie" name="jugement" (selectionChange)="Onchange($event)"  (closed)="closedJugement()">
-                  <mat-form-field class="w-full">
-                    <mat-label>Recherche</mat-label>
-                    <input matInput [(ngModel)]="CopieSelected" placeholder="Saisir le Nom de personne" class="w-full" (keydown.Space)="spaceJugement()">
-                  </mat-form-field>
-                  <mat-option *ngFor="let copie of jugement|search:CopieSelected" [value]="copie.idPremierCopie"><span><b>{{copie.idPremierCopie}}</b> ({{copie.enfant.nomEnfant}} {{copie.enfant.prenomsEnfant}})</span></mat-option>
-                </mat-select>
-              </mat-form-field>
+            border-teal-600 transition">{{'Suivant'|transloco}}</button>
 
-              
-              <form [formGroup]="EnfantFormGroup">
-            <div class="wrapper">
-            
-        
-              <br>
-        
-              <ng-container *ngIf="errorMsg; else elseTemplate">
-                {{errorMsg}}
-              </ng-container>
-              <ng-template #elseTemplate>
-      
-                <div class=" lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4"  *ngIf="certificate?.idPremierCopie">
-                  <div class="mb-4 w-4/5">
-    
-                    <label class="block mb-2 text-sm font-bold text-black">Nom de l'enfant</label>
-                    <input type="text"  readonly value="{{certificate?.enfant.nomEnfant}}"
-                      class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                      placeholder="Saisir nom de l'enfant" />
-    
-                  </div>
-                  <div class="mb-4 w-4/5">
-    
-                    <label class="block mb-2 text-sm font-bold text-black">Prenoms de l'enfant</label>
-                    <input type="text"  readonly   value="{{certificate?.enfant.prenomsEnfant}}"
-                      class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                      placeholder="Saisir Prenoms de l'enfant" />
-    
-                  </div>
-    
-                </div>
-                <div class="lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
-                  <div class="mb-4 w-4/5">
-    
-                    <label class="block mb-2 text-sm font-bold text-black">Date de Naissance</label>
-                    <input type="text" readonly  value="{{certificate?.enfant?.datenaissEnfant}}"
-                      class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                      placeholder="Saisir Date de Naissance l'enfant" />
-    
-                  </div>
-                  <div class="mb-4 w-4/5">
-    
-                    <label class="block mb-2 text-sm font-bold text-black">Heure de naissance</label>
-                    <input type="text"  readonly value="{{certificate?.enfant?.heurenaissEnfant}}"
-                      class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                      placeholder="Saisir heure de Naissancede l'enfant" />
-    
-                  </div>
-                </div>
-                <div class="lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
-                  <div class="mb-4 w-4/5">
-    
-                    <label class="block mb-2 text-sm font-bold text-black">Lieu de Naissance</label>
-                    <input type="text" readonly value="{{certificate?.enfant?.lieunaissEnfant}}"
-                       class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                      placeholder="Saisir Lieu de Naissance de l'enfant" />
-    
-                  </div>
-             
-                </div>
-            
-              </ng-template>
-        
             </div>
-    
-            <div class="flex p-2 mt-4">
-              <button mat-button  matStepperPrevious class="text-md hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
+          </div>
+
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="EnfantFormGroup">
+
+        <ng-template matStepLabel> {{'Premièrecopie'|transloco}}<br>
+          <span class="font-normal text-xs text-gray-400">{{'RecupererPremiereCopie'|transloco}}</span>
+        </ng-template>
+        <mat-form-field class="example-full-width">
+
+          <mat-select (formControl)="idPremierCopie" name="jugement" (selectionChange)="Onchange($event)"
+            (closed)="closedJugement()">
+            <mat-form-field class="w-full">
+              <mat-label>{{'Recherche'|transloco}}</mat-label>
+              <input matInput [(ngModel)]="CopieSelected" placeholder="Saisir le Nom de personne" class="w-full"
+                (keydown.Space)="spaceJugement()">
+            </mat-form-field>
+            <mat-option *ngFor="let copie of jugement|search:CopieSelected"
+              [value]="copie.idPremierCopie"><span><b>{{copie.idPremierCopie}}</b> ({{copie.enfant.nomEnfant}}
+                {{copie.enfant.prenomsEnfant}})</span></mat-option>
+          </mat-select>
+        </mat-form-field>
+
+
+        <form [formGroup]="EnfantFormGroup">
+          <div class="wrapper">
+
+
+            <br>
+
+            <ng-container *ngIf="errorMsg; else elseTemplate">
+              {{errorMsg}}
+            </ng-container>
+            <ng-template #elseTemplate>
+
+              <div class=" lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4" *ngIf="certificate?.idPremierCopie">
+                <div class="mb-4 w-4/5">
+
+                  <label class="block mb-2 text-sm font-bold text-black">{{'Nomenfant'|transloco}}</label>
+                  <input type="text" readonly value="{{certificate?.enfant.nomEnfant}}"
+                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                    placeholder="{{'SaisirNomEnfant'|transloco}}" />
+
+                </div>
+                <div class="mb-4 w-4/5">
+
+                  <label class="block mb-2 text-sm font-bold text-black">{{'Prenomsenfant'|transloco}}</label>
+                  <input type="text" readonly value="{{certificate?.enfant.prenomsEnfant}}"
+                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                    placeholder="{{'SaisirPrenomsEnfant'|transloco}}" />
+
+                </div>
+
+              </div>
+              <div class="lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
+                <div class="mb-4 w-4/5">
+
+                  <label class="block mb-2 text-sm font-bold text-black">{{'DateNaissance'|transloco}}</label>
+                  <input type="text" readonly value="{{certificate?.enfant?.datenaissEnfant}}"
+                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                    placeholder="{{'SaisirDatedenaissanceEnfant'|transloco}}" />
+
+                </div>
+                <div class="mb-4 w-4/5">
+
+                  <label class="block mb-2 text-sm font-bold text-black">{{'HeureNaissance'|transloco}}</label>
+                  <input type="text" readonly value="{{certificate?.enfant?.heurenaissEnfant}}"
+                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                    placeholder="{{'Saisirheuredenaissance'|transloco}}" />
+
+                </div>
+              </div>
+              <div class="lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
+                <div class="mb-4 w-4/5">
+
+                  <label class="block mb-2 text-sm font-bold text-black">{{'LieuNaissance'|transloco}}</label>
+                  <input type="text" readonly value="{{certificate?.enfant?.lieunaissEnfant}}"
+                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                    placeholder="{{'SaisirLieuNaissanceEnfant'|transloco}}" />
+
+                </div>
+
+              </div>
+
+            </ng-template>
+
+          </div>
+
+          <div class="flex p-2 mt-4">
+            <button mat-button matStepperPrevious class="text-md hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
           hover:bg-gray-200  
           bg-gray-100 
           text-red-700 
           border duration-200 ease-in-out 
           border-red-600 transition">
-                    Annuler</button>
-              <div class="flex-auto flex flex-row-reverse">
-                  <button mat-button  (click)="FirstStep()" matStepperNext class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
+              {{'Annuler'|transloco}}</button>
+            <div class="flex-auto flex flex-row-reverse">
+              <button mat-button (click)="FirstStep()" matStepperNext class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
           hover:bg-teal-600  
           bg-teal-600 
           text-teal-100 
           border duration-200 ease-in-out 
-          border-teal-600 transition">Suivant</button>
-                
-              </div>
+          border-teal-600 transition">{{'Suivant'|transloco}}</button>
+
+            </div>
           </div>
-    
-            </form>
-    
-          </mat-step>
-    
-          <mat-step [stepControl]="JugementFormGroup">
-            <form [formGroup]="JugementFormGroup" >
-              <ng-template matStepLabel>  Jugement<br>
-                <span class="font-normal text-xs text-gray-400">Information jugement</span>
-              </ng-template>
-              <div class=" lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
-                <div class="mb-4 w-4/5">
-    
-                  <label class="block mb-2 text-sm font-bold text-black">Numero de jugement</label>
-                  <input type="text"  formControlName = "numJugement" 
-                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                    placeholder="Saisir Numero de jugement"/>
-    
-                </div>
-                <div class="mb-4 w-4/5">
-    
-                  <label class="block mb-2 text-sm font-bold text-black">Information Vhangement</label>
-                  <textarea type="text" formControlName = "infoChangement" id="infoChangement"
-                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                    placeholder="Saisir Information de Changement" >
+
+        </form>
+
+      </mat-step>
+
+      <mat-step [stepControl]="JugementFormGroup">
+        <form [formGroup]="JugementFormGroup">
+          <ng-template matStepLabel> {{'Jugement'|transloco}}<br>
+            <span class="font-normal text-xs text-gray-400">{{'Informationjugement'|transloco}}</span>
+          </ng-template>
+          <div class=" lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
+            <div class="mb-4 w-4/5">
+
+              <label class="block mb-2 text-sm font-bold text-black">{{'Numerodejugement'|transloco}}</label>
+              <input type="text" formControlName="numJugement"
+                class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                placeholder="{{'SaisirNumerodejugement'|transloco}}" />
+
+            </div>
+            <div class="mb-4 w-4/5">
+
+              <label class="block mb-2 text-sm font-bold text-black">{{'InformationChangement'|transloco}}</label>
+              <textarea type="text" formControlName="infoChangement" id="infoChangement"
+                class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                placeholder="{{'SaisirInformationdeChangement'|transloco}}">
                     </textarea>
-    
-                </div>
-               
-    
-              </div>
-            
-              <div class="flex p-2 mt-4">
-                <button mat-button  matStepperPrevious class="text-md hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
+
+            </div>
+
+
+          </div>
+
+          <div class="flex p-2 mt-4">
+            <button mat-button matStepperPrevious class="text-md hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
             hover:bg-gray-200  
             bg-gray-100 
             text-red-700 
             border duration-200 ease-in-out 
             border-red-600 transition">
-                      Annuler</button>
-                <div class="flex-auto flex flex-row-reverse">
-                  <button   (click)="openDialog()"
-                  mat-button matStepperNext class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
+              {{'Annuler'|transloco}}</button>
+            <div class="flex-auto flex flex-row-reverse">
+              <button (click)="openDialog()" mat-button matStepperNext class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
           hover:bg-blue-600  
           bg-blue-600 
           text-blue-100 
           border duration-200 ease-in-out 
-          border-blue-600 transition">Sauvegarder</button>
-                  
-                </div>
+          border-blue-600 transition">{{'Sauvegarder'|transloco}}</button>
+
             </div>
-            </form>
-          </mat-step>
-        </mat-horizontal-stepper>
+          </div>
+        </form>
+      </mat-step>
+    </mat-horizontal-stepper>
 
-        </div>
-        </div>
-    
-
-    
-    
+  </div>
+</div>
