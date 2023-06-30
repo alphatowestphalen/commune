@@ -7,6 +7,9 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class JugementService {
+  getCertificateAndJugementByID(id: any) {
+    throw new Error('Method not implemented.');
+  }
   private baseURl = environment.baseUrl+'/jugements';
 
   constructor( private http: HttpClient) { }
@@ -35,4 +38,5 @@ export class JugementService {
   getJugementById(id:number):Observable<any>{
     return this.http.get(`${this.baseURl}/${id}`)
   }
+
 }
