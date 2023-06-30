@@ -20,25 +20,28 @@ export class ReconnaissanceVoirComponent implements OnInit {
 
   @ViewChild('htmlData') htmlData!: ElementRef;
   ngOnInit(): void {
-    this.activatedroute.paramMap.subscribe(params => { 
-      this.id = params.get('id');
-    this.getCertificatesbyID();
-this.getReconnaissanceById()});
-  }
-
-getReconnaissanceById(){
-  this.reconnaissanceservice.getReconnaissanceById(this.id)
-  .subscribe(data=>{
-    this.reconnaissance = data;
-  })
-}
-  getCertificatesbyID() {
-    this.premierecopieservice.getCertificateByID(this.id)
-    .subscribe(data => {
-      this.certificates = data;
-     }
     
-)  }
+    this.activatedroute.paramMap.subscribe(params => {
+     this.id = params.get('id');
+ 
+     this.getReconnaissanceById();
+   });
+   }
+   getReconnaissanceById() {
+     this.reconnaissanceservice.getReconnaissanceById(this.id).subscribe(copie => {
+       this.reconnaissance = copie;
+       console.log({copie});
+       
+       
+       this.getCertificatesbyID(copie.premierecopie.idPremierCopie);
+     });
+   }
+ 
+   getCertificatesbyID(idCert: number) {
+     this.premierecopieservice.getCertificateByID(idCert).subscribe(data => {
+       this.certificates = data;
+     });
+   }
   OpenCopie = false;
   toggleModal(){
     this.OpenCopie = !this.OpenCopie;

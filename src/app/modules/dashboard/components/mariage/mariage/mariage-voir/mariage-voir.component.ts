@@ -10,65 +10,76 @@ import html2canvas from 'html2canvas';
   styleUrls: ['./mariage-voir.component.scss']
 })
 export class MariageVoirComponent implements OnInit {
-  id:any;
+  id: any;
   mariage: any;
 
-  constructor(private mariageservice:MariageService, private activatedroute:ActivatedRoute) { }
+  constructor(private mariageservice: MariageService, private activatedroute: ActivatedRoute) { }
 
   @ViewChild('htmlData') htmlData!: ElementRef;
 
   ngOnInit(): void {
-    this.activatedroute.paramMap.subscribe(params => { 
-    this.id = params.get('id');
-    this.getMariage();
-  });
+    this.activatedroute.paramMap.subscribe(params => {
+      this.id = params.get('id');
+      this.getMariageById();
+    });
+  }
+  getMariageById(){
+    this.mariageservice.getMariageById(this.id)
+    // this.mariageservice.getAllMariage(1,2)
+    .subscribe(data => {
+      console.log({data});
+      this.mariage = data;
+     
+      
+
+    })
   }
   OpenCopie = false;
-  toggleModal(){
+  toggleModal() {
     this.OpenCopie = !this.OpenCopie;
   }
   public openPDF(): void {
 
     let DATA: any = document.getElementById('htmlData')!.innerHTML;
- 
+
 
     const doc = new jsPDF();
-   
+
     html2canvas(DATA).then(canvas => {
-        const imgData = canvas.toDataURL('image/png');
-        const imgWidth = 210; 
-        const pageHeight = 295;  
-        const imgHeight = canvas.height * imgWidth / canvas.width;
-        let heightLeft = imgHeight;
-        
-        let position = 0;
+      const imgData = canvas.toDataURL('image/png');
+      const imgWidth = 210;
+      const pageHeight = 295;
+      const imgHeight = canvas.height * imgWidth / canvas.width;
+      let heightLeft = imgHeight;
+
+      let position = 0;
+      doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+      heightLeft -= pageHeight;
+      doc.setFont('times', 'normal');
+
+
+      while (heightLeft >= 0) {
+        position = heightLeft - imgHeight;
+        doc.addPage();
         doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
         heightLeft -= pageHeight;
-        doc.setFont('times', 'normal');
-     
-        
-        while (heightLeft >= 0) {
-          position = heightLeft - imgHeight;
-          doc.addPage();
-          doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-          heightLeft -= pageHeight;
-        }
-        doc.save('pdfName.pdf');
+      }
+      doc.save('pdfName.pdf');
     });
   }
-  
-  printPage(){
+
+  printPage() {
     var printContents = document.getElementById('htmlData')!.innerHTML;
-     var originalContents = document.body.innerHTML;
+    var originalContents = document.body.innerHTML;
 
-     document.body.innerHTML = printContents;
+    document.body.innerHTML = printContents;
 
-     window.print();
+    window.print();
 
-     document.body.innerHTML = originalContents;
+    document.body.innerHTML = originalContents;
   }
-  getMariage(){
-    this.mariageservice.getMariageById(this.id).subscribe(data=>{
+  getMariage() {
+    this.mariageservice.getMariageById(this.id).subscribe(data => {
       this.mariage = data;
       console.log(this.mariage);
     })
