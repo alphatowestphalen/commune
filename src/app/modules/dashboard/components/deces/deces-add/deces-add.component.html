@@ -101,63 +101,58 @@
             <ng-template matStepLabel> {{'acteDeces'|transloco}}<br>
                 <span class="font-normal text-xs text-gray-400">{{'RecupererPremiereCopie'|transloco}}</span>
             </ng-template>
-            
+
 
 
             <form>
 
+                <div class=" lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
+                    <div class="mb-4 w-4/5">
 
+                        <label class="block mb-2 text-sm font-bold text-black">{{'Nomenfant'|transloco}}</label>
+                        <input type="text"
+                            class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                            placeholder="{{'SaisirNomEnfant'|transloco}}" />
 
-                        <div class=" lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
-                            <div class="mb-4 w-4/5">
+                    </div>
+                    <div class="mb-4 w-4/5">
 
-                                <label class="block mb-2 text-sm font-bold text-black">{{'Nomenfant'|transloco}}</label>
-                                <input type="text"
-                                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                                    placeholder="{{'SaisirNomEnfant'|transloco}}" />
+                        <label class="block mb-2 text-sm font-bold text-black">{{'Prenomsenfant'|transloco}}</label>
+                        <input type="text"
+                            class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                            placeholder="{{'SaisirPrenomsEnfant'|transloco}}" />
 
-                            </div>
-                            <div class="mb-4 w-4/5">
+                    </div>
 
-                                <label
-                                    class="block mb-2 text-sm font-bold text-black">{{'Prenomsenfant'|transloco}}</label>
-                                <input type="text"
-                                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                                    placeholder="{{'SaisirPrenomsEnfant'|transloco}}" />
+                </div>
+                <div class="lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
+                    <div class="mb-4 w-4/5">
 
-                            </div>
+                        <label class="block mb-2 text-sm font-bold text-black">{{'DateNaissance'|transloco}}</label>
+                        <input type="text"
+                            class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                            placeholder="{{'SaisirDatedenaissanceEnfant'|transloco}}" />
 
-                        </div>
-                        <div class="lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
-                            <div class="mb-4 w-4/5">
+                    </div>
+                    <div class="mb-4 w-4/5">
 
-                                <label
-                                    class="block mb-2 text-sm font-bold text-black">{{'DateNaissance'|transloco}}</label>
-                                <input type="text"
-                                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                                    placeholder="{{'SaisirDatedenaissanceEnfant'|transloco}}" />
+                        <label class="block mb-2 text-sm font-bold text-black">{{'HeureNaissance'|transloco}}</label>
+                        <input type="text"
+                            class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                            placeholder="{{'Saisirheuredenaissance'|transloco}}" />
 
-                            </div>
-                            <div class="mb-4 w-4/5">
+                    </div>
+                </div>
+                <div class="lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
+                    <div class="mb-4 w-4/5">
 
-                                <label
-                                    class="block mb-2 text-sm font-bold text-black">{{'HeureNaissance'|transloco}}</label>
-                                <input type="text"
-                                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                                    placeholder="{{'Saisirheuredenaissance'|transloco}}" />
-
-                            </div>
-                        </div>
-                        <div class="lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
-                            <div class="mb-4 w-4/5">
-
-                                <label class="block mb-2 text-sm font-bold text-black">{{'Numerodedeces'|transloco}}</label>
+                        <label class="block mb-2 text-sm font-bold text-black">{{'Numerodedeces'|transloco}}</label>
                         <input type="text"
                             class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
                             placeholder="{{'SaisirNumerodejugement'|transloco}}" />
-                            </div>
+                    </div>
 
-                        </div>
+                </div>
 
 
                 <div class="flex p-2 mt-4">
@@ -199,8 +194,7 @@
                     </div>
                     <div class="mb-4 w-4/5">
 
-                        <label
-                            class="block mb-2 text-sm font-bold text-black">{{'Informationdeces'|transloco}}</label>
+                        <label class="block mb-2 text-sm font-bold text-black">{{'Informationdeces'|transloco}}</label>
                         <textarea type="text" formControlName="infoChangement" id="infoChangement"
                             class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
                             placeholder="{{'SaisirInformationdeChangement'|transloco}}">

@@ -1,0 +1,73 @@
+<h1>PARAMETRE COMPTE</h1>
+<h3>Changement du Profil</h3>
+<div >
+    <input type="file" (change)="loadFile($event)">
+    <img [src]="imageSrc" alt="Image preview" class="images">
+    
+    
+  </div>
+  <form [formGroup]="loginForm" (ngSubmit)="Login($event)">
+
+    <div class="text-center ">
+        <div class="mb-4 w-4/5">
+
+            <label class="block mb-2 text-sm font-bold text-black">Nom d'utilisateur:</label>
+            <input type="text" formControlName="username"
+                class="bg-gray-50 ml-15 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                placeholder="Saisir votre nom d' Utilisateur" />
+
+
+        </div>
+        <div class="mb-4 w-4/5">
+
+            <label class="block mb-2 text-sm font-bold text-black">Nouveau nom d'utilisateur:</label>
+            <input type="text" formControlName="newUsername"
+                class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                placeholder="Saisir votre nouveau Nom" />
+                <label></label>
+ 
+        </div>
+
+    </div>
+    <div class="text-center">
+        <div class="mb-4 w-4/5 justify-center">
+
+            <label class="block mb-2 text-sm font-bold text-black">Mot de passe actuel:</label>
+            <input type="password" formControlName="password"
+                class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                placeholder="Saisir votre Mot de passe" />
+
+        </div>
+        <div class="mb-4 w-4/5">
+
+            <label class="block mb-2 text-sm font-bold text-black">Nouveau mot de passe:</label>
+            <input type="password" formControlName="newPassword"
+                class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                placeholder="Saisir le nouveau Mot de passe" />
+                
+        </div>
+
+    </div>
+
+
+
+    <div class="flex p-2 mt-4">
+        <button mat-button matStepperPrevious class="text-md hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
+hover:bg-gray-200  
+bg-gray-100 
+text-red-700 
+border duration-200 ease-in-out 
+border-red-600 transition">
+            {{'Annuler'|transloco}}</button>
+        <div class="flex-auto flex flex-row-reverse">
+            <button type="submit" mat-button matStepperNext class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
+hover:bg-teal-600  
+bg-teal-600 
+text-teal-100 
+border duration-200 ease-in-out 
+border-teal-600 transition">{{'Sauvegarder'|transloco}}</button>
+
+        </div>
+    </div>
+
+</form>
