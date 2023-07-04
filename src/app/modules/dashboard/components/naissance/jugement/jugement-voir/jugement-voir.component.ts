@@ -15,31 +15,32 @@ export class JugementVoirComponent implements OnInit {
   certificates: any;
   jugement: any;
 
-  constructor( private activatedroute: ActivatedRoute, private router: Router, private premierecopieservice: PremiereCopieService, private jugementservice: JugementService) { }
+  constructor(private activatedroute: ActivatedRoute, private router: Router, private premierecopieservice: PremiereCopieService, private jugementservice: JugementService) { }
 
   @ViewChild('htmlData') htmlData!: ElementRef;
   ngOnInit(): void {
-    this.activatedroute.paramMap.subscribe(params => { 
+    this.activatedroute.paramMap.subscribe(params => {
       this.id = params.get('id');
-    this.getCertificatesbyID();
-  this.getjugementByID()});
+
+      this.getjugementByID();
+    });
   }
 
-  getjugementByID(){
-    this.jugementservice.getJugementById(this.id)
-      .subscribe(data=>{
-        this.jugement = data;
-      })
+  getjugementByID() {
+    this.jugementservice.getJugementById(this.id).subscribe(copie => {
+      this.jugement = copie;
+      
+      this.getCertificatesbyID(copie.premierCopie.idPremierCopie);
+    });
   }
-  getCertificatesbyID() {
-    this.premierecopieservice.getCertificateByID(this.id)
-    .subscribe(data => {
+
+  getCertificatesbyID(idCert: number) {
+    this.premierecopieservice.getCertificateByID(idCert).subscribe(data => {
       this.certificates = data;
-     }
-    
-)  }
+    });
+  }
   OpenCopie = false;
-  toggleModal(){
+  toggleModal() {
     this.OpenCopie = !this.OpenCopie;
   }
   public openPDF(): void {
@@ -56,16 +57,16 @@ export class JugementVoirComponent implements OnInit {
       PDF.save('angular-demo.pdf');
     });
   }
-  
-  printPage(){
+
+  printPage() {
     var printContents = document.getElementById('htmlData')!.innerHTML;
-     var originalContents = document.body.innerHTML;
+    var originalContents = document.body.innerHTML;
 
-     document.body.innerHTML = printContents;
+    document.body.innerHTML = printContents;
 
-     window.print();
+    window.print();
 
-     document.body.innerHTML = originalContents;
+    document.body.innerHTML = originalContents;
   }
 
 }

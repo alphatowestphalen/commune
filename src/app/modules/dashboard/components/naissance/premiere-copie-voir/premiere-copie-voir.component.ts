@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild , AfterViewInit} from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -11,20 +11,28 @@ import { CopieComponent } from '../../../pages/copie/copie.component';
   templateUrl: './premiere-copie-voir.component.html',
   styleUrls: ['./premiere-copie-voir.component.scss']
 })
-export class PremiereCopieVoirComponent implements OnInit{
+export class PremiereCopieVoirComponent implements OnInit {
   id: any;
   certificates: any;
   content: any;
 
-  constructor( private activatedroute: ActivatedRoute, private router: Router, private premierecopieservice: PremiereCopieService) { }
-  @ViewChild('htmlData', {static:false}) copiecomponent: CopieComponent;
+  constructor(private activatedroute: ActivatedRoute, private router: Router, private premierecopieservice: PremiereCopieService) { }
+  @ViewChild('htmlData', { static: false }) copiecomponent: CopieComponent;
 
   ngOnInit(): void {
-    this.activatedroute.paramMap.subscribe(params => { 
+    this.activatedroute.paramMap.subscribe(params => {
       this.id = params.get('id');
-    this.getCertificatesbyID();
-  });
+      this.getCertificatesbyID();
+    });
   }
+  getCertificatesbyID() {
+    this.premierecopieservice.getCertificateByID(this.id)
+      .subscribe(data => {
+        this.certificates = data;
+
+      })
+  }
+
 
   // ngAfterViewInit(){
   //   this.HtmlData = this.copiecomponent.HtmlData;
@@ -34,16 +42,16 @@ export class PremiereCopieVoirComponent implements OnInit{
   // }
 
   OpenCopie = false;
-  toggleModal(){
+  toggleModal() {
     this.OpenCopie = !this.OpenCopie;
   }
 
- 
+
 
   downloadPdf() {
-   
-   // this.copiecomponent.generatePDF();
-}
+
+    // this.copiecomponent.generatePDF();
+  }
 
   public openPDF(): void {
 
@@ -61,48 +69,41 @@ export class PremiereCopieVoirComponent implements OnInit{
     // });
 
     const doc = new jsPDF();
-   // const content = this.content.nativeElement;
+    // const content = this.content.nativeElement;
     html2canvas(DATA).then(canvas => {
-        const imgData = canvas.toDataURL('image/png');
-        const imgWidth = 210; 
-        const pageHeight = 295;  
-        const imgHeight = canvas.height * imgWidth / canvas.width;
-        let heightLeft = imgHeight;
-        
-        let position = 0;
+      const imgData = canvas.toDataURL('image/png');
+      const imgWidth = 210;
+      const pageHeight = 295;
+      const imgHeight = canvas.height * imgWidth / canvas.width;
+      let heightLeft = imgHeight;
+
+      let position = 0;
+      doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+      heightLeft -= pageHeight;
+      doc.setFont('times', 'normal');
+      //  doc.text(DATA.innerHTML, 10, 10);
+
+      while (heightLeft >= 0) {
+        position = heightLeft - imgHeight;
+        doc.addPage();
         doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
         heightLeft -= pageHeight;
-        doc.setFont('times', 'normal');
-      //  doc.text(DATA.innerHTML, 10, 10);
-        
-        while (heightLeft >= 0) {
-          position = heightLeft - imgHeight;
-          doc.addPage();
-          doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-          heightLeft -= pageHeight;
-        }
-        doc.save('pdfName.pdf');
+      }
+      doc.save('pdfName.pdf');
     });
   }
-  
-  printPage(){
+
+  printPage() {
     var printContents = document.getElementById('htmlData')!.innerHTML;
-     var originalContents = document.body.innerHTML;
+    var originalContents = document.body.innerHTML;
 
-     document.body.innerHTML = printContents;
+    document.body.innerHTML = printContents;
 
-     window.print();
+    window.print();
 
-     document.body.innerHTML = originalContents;
+    document.body.innerHTML = originalContents;
   }
 
-    getCertificatesbyID(){
-      this.premierecopieservice.getCertificateByID(this.id)
-      .subscribe(data => {
-        this.certificates = data;
-  
-      })     
-    }
 
-   
+
 }

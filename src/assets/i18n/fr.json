@@ -225,7 +225,25 @@
     "Aproposdupère":"Apropos du père",
     "Aproposdelamère":"Apropos de la mère",
     "Aproposdelenfant":"Apropos de l'enfant",
-    "ListeDesActesdeDecésEffectués":"Liste Des Actes de Decés Effectués"
+    "ListeDesActesdeDecésEffectués":"Liste Des Actes de Decés Effectués",
+
+    "CopiedeDeces":"Copie de Deces",
+    "serviceActeDeces":"service Acte de Deces",
+    "FormulaireAjoutDeces":"Formulaire Ajout de Deces",
+    "Formulaireàremplirpourlajoutedelacopiededeces":"Formulaire à remplir pour l'ajout de la copie du deces",
+    "Deces":"Deces",
+    "Informationdeces":"Information du deces",
+    "Numerodedeces":"Numero du deces",
+    "BulltindeNaissance":"Bulletin de Naissance",
+    "FormulaireBulletinNaissance":"Formulaire Bulletin Naissance",
+    "FormulaireàremplirpourlajoutedunebulletinNaissance":"Formulaire à remplir pour l'ajout d'une bulletin de Naissance",
+    "InformationBulletinNaissance":"service Bulltin Naissance",
+    "serviceBulltinNaissance":"serviceBulltinNaissance",
+    "serviceBulltinNaissance":"serviceBulltinNaissance",
+    "serviceBulltinNaissance":"serviceBulltinNaissance",
+    "serviceBulltinNaissance":"serviceBulltinNaissance",
+    "serviceBulltinNaissance":"serviceBulltinNaissance"
+
     
 
 }

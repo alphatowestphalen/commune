@@ -21,7 +21,7 @@ export class MariageService {
       return this.http.get(`${this.baseUrl}/?page=${page}&size=${size}`);
     }
 
-    getMariageById(idMariage: String):Observable<any>{
+    getMariageById(idMariage: number):Observable<any>{
     return this.http.get(`${this.baseUrl}/${idMariage}`);
     }
 
