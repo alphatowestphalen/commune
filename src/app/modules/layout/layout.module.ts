@@ -18,6 +18,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { LayoutRoutingModule } from './layout-routing.module';
 import { LayoutComponent } from './layout.component';
 import { TranslocoModule } from '@ngneat/transloco';
+import { ProfilComponent } from './components/profil/profil.component';
 
 
 
@@ -36,6 +37,7 @@ import { TranslocoModule } from '@ngneat/transloco';
     NavbarMobileComponent,
     NavbarMobileMenuComponent,
     NavbarMobileSubmenuComponent,
+    ProfilComponent,
     
  
   

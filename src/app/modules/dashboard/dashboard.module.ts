@@ -128,4 +128,6 @@ import { TranslocoModule } from '@ngneat/transloco';
     AngularSvgIconModule.forRoot(),
   ],
 })
-export class DashboardModule {}
+export class DashboardModule {
+  
+}
