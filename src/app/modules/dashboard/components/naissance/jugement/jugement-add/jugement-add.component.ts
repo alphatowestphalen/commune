@@ -46,6 +46,10 @@ export class JugementAddComponent implements OnInit {
   JugementFormGroup = this._formBuilder.group({
     infoChangement: [''],
     numJugement: [''],
+    decretJuridique: [''],
+    dateDecret: [''],
+    typeJugement:[''],
+
     createdDate: new Date()
   })
 

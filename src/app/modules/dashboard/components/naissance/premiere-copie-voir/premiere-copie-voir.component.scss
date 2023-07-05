@@ -6,6 +6,15 @@
     
 }
 
+@media print {
+  @page {
+    margin: 1%;
+  }
+
+  .page{
+      margin: 2px;
+  }
+}
 // * 
 //   margin: 0
 //   padding: 0

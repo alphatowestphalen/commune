@@ -177,9 +177,18 @@ export class AdoptionAddComponent implements OnInit {
 export class AdoptionCopieComponent {
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private adoptionservice: AdoptionService,
     public dialog: MatDialog, private router: Router) { }
+    sexe: string;
 
   ngOnInit() {
+    this.data.idPremierCopie = this.data.idPremierCopie.slice(0, -4);
     console.log("data",this.data.idPremierCopie)
+
+    if(this.data.sexeEnfant == "fille"){
+      return this.sexe == "zazavavy"
+
+    }else {
+      return this.sexe == "zazalahy"
+    }
   }
 
   saveCertificate() {

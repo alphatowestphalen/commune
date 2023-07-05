@@ -208,7 +208,7 @@
               <ng-template matStepLabel>  Jugement<br>
                 <span class="font-normal text-xs text-gray-400">Information jugement</span>
               </ng-template>
-              <div class=" lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
+              <div class=" lg:grid md:grid-flow-col grid-cols-3 mt-2 gap-4">
                 <div class="mb-4 w-4/5">
     
                   <label class="block mb-2 text-sm font-bold text-black">Numero de jugement</label>
@@ -219,17 +219,48 @@
                 </div>
                 <div class="mb-4 w-4/5">
     
-                  <label class="block mb-2 text-sm font-bold text-black">Information Vhangement</label>
+                  <label class="block mb-2 text-sm font-bold text-black">Décret Juridique</label>
+                  <textarea type="text" formControlName = "decretJuridique" id="decretJuridique"
+                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                    placeholder="Saisir Décret Juridique" >
+                    </textarea>
+    
+                </div>
+               
+                <div class="mb-4 w-4/5">
+    
+                  <label class="block mb-2 text-sm font-bold text-black">Date de Décret</label>
+                  <input type="date" formControlName = "dateDecret" id="dateDecret"
+                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                    placeholder="Saisir Date Décret" >
+                    />
+    
+                </div>
+    
+              </div>
+              <div class=" lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
+                <div class="mb-4 w-4/5">
+    
+                  <label class="block mb-2 text-sm font-bold text-black">Type de Jugement</label>
+  
+                  <select formControlName="typeJugement" id="typeJugement" 
+                    class="bg-gray-50 rounded-lg text-md border border-gray-300 block w-full p-2.5">
+                    <option selected disabled>Type de Jugementoption>
+                    <option value="modification">Modification</option>
+                    <option value="changement">Changement</option>
+                  </select>
+                </div>
+                <div class="mb-4 w-4/5">
+    
+                  <label class="block mb-2 text-sm font-bold text-black">Information de Changement</label>
                   <textarea type="text" formControlName = "infoChangement" id="infoChangement"
                     class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
                     placeholder="Saisir Information de Changement" >
                     </textarea>
     
                 </div>
-               
-    
+              
               </div>
-            
               <div class="flex p-2 mt-4">
                 <button mat-button  matStepperPrevious class="text-md hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
             hover:bg-gray-200  
