@@ -57,7 +57,7 @@
 
 
         <app-mat-table *ngIf="tableData && tableData.length >0" [search]="search"
-          [tableColumns]="tableColumns"
+          [tableColumns]="tableColumns" 
           [tableData]="tableData" (editEvent)="editRow($event)" (pageChange)="handlePageChange($event)" (deleteEvent)="deleteRow($event)"  (showEvent)="showRow($event)" >
         </app-mat-table>
           <p *ngIf="!tableData || tableData.length === 0"><app-loading></app-loading></p>

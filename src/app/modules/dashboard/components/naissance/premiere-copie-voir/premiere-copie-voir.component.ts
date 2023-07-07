@@ -14,7 +14,7 @@ import { CopieComponent } from '../../../pages/copie/copie.component';
 export class PremiereCopieVoirComponent implements OnInit {
   id: any;
   certificates: any;
-  content: any;
+  
 
   constructor(private activatedroute: ActivatedRoute, private router: Router, private premierecopieservice: PremiereCopieService) { }
   @ViewChild('htmlData', { static: false }) copiecomponent: CopieComponent;

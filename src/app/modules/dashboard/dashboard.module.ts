@@ -54,12 +54,16 @@ import { TableMariageComponent } from './pages/table-mariage/table-mariage.compo
 import { CelibataireComponent } from './components/mariage/celibataire/celibataire.component';
 import { UtilisateurListComponent } from './components/utilisateur/utilisateur-list/utilisateur-list.component';
 import { UtilisateurAddComponent } from './components/utilisateur/utilisateur-add/utilisateur-add.component';
+
 import { MariageVoirComponent } from './components/mariage/mariage/mariage-voir/mariage-voir.component';
 import { CopieMariageComponent } from './pages/copie-mariage/copie-mariage.component';
 import { DecesListComponent } from './components/deces/deces-list/deces-list.component';
 import { DecesAddComponent } from './components/deces/deces-add/deces-add.component';
 import { DecesShowComponent } from './components/deces/deces-show/deces-show.component';
 import { TranslocoModule } from '@ngneat/transloco';
+import { UtilisateurVoirComponent } from './components/utilisateur/utilisateur-voir/utilisateur-voir.component';
+
+import { UtilisateurEditComponent } from './components/utilisateur/utilisateur-edit/utilisateur-edit.component';
 
 @NgModule({
   exports: [SurveyCreatorModule, SurveyModule, BulletinNaissanceComponent, CopieComponent],
@@ -101,7 +105,8 @@ import { TranslocoModule } from '@ngneat/transloco';
     DecesListComponent,
     DecesAddComponent,
     DecesShowComponent,
-
+    UtilisateurVoirComponent,
+    UtilisateurEditComponent
   ],
   imports: [
     CommonModule,

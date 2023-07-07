@@ -4,35 +4,39 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class UtilisateurService {
 
-    
-private baseURl = environment.baseUrl+'/users'
-private Url = environment.baseUrl
 
-constructor(private http: HttpClient) { }
+    private baseURl = environment.baseUrl + '/users'
+    private Url = environment.baseUrl
 
-getAllUsers(size: number, page: number):Observable<any>{
-    return this.http.get(`${this.baseURl}?page=${page}&size=${size}`)
-}
+    constructor(private http: HttpClient) { }
 
-addUser(user:Object): Observable<any>{
-    return this.http.post(`${this.baseURl}`, user)
-}
+    getAllUsers(size: number, page: number): Observable<any> {
+        return this.http.get(`${this.baseURl}?page=${page}&size=${size}`)
+    }
+
+    addUser(user: Object): Observable<any> {
+        return this.http.post(`${this.baseURl}`, user)
+    }
 
 
-updateUser(user:Object, id:number):Observable<any>{
-    return this.http.put(`${this.baseURl}/${id}`,user);
-}
+    updateUser(user: Object, id: number): Observable<any> {
+        return this.http.put(`${this.baseURl}/${id}`, user);
+    }
 
-deleteUser(id:number){
-    return this.http.delete(`${this.baseURl}/${id}`)
-}
+    deleteUser(id: number) {
+        return this.http.delete(`${this.baseURl}/${id}`)
+    }
 
-historiqueUser(){
-    return this.http.get(`${this.Url}/historiques`)
-}
+    historiqueUser() {
+        return this.http.get(`${this.Url}/historiques`)
+    }
+    getUserByID(id: number): Observable<any> {
+        return this.http.get(`${this.baseURl}/${id}`)
+    }
+
 
 }

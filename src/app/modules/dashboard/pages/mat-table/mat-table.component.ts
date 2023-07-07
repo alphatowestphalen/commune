@@ -4,6 +4,7 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { Column } from '../../models/column';
 
+
 @Component({
   selector: 'app-mat-table',
   templateUrl: './mat-table.component.html',
@@ -23,6 +24,7 @@ export class MatTableComponent implements OnInit {
   @Output() showEvent = new EventEmitter<any>();
   @Output() deleteEvent = new EventEmitter<any>();
   @Output() askEvent = new EventEmitter<any>();
+  // @Output() 
 
  
   @Output() pageChange = new EventEmitter<PageEvent>();
@@ -66,6 +68,7 @@ export class MatTableComponent implements OnInit {
 
   deleteRow(element: any) {
     this.deleteEvent.emit(element);
+    this.pageChange.emit(element);
   }
 
  ngOnChanges(change: any){

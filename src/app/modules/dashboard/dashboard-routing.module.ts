@@ -22,6 +22,8 @@ import { DivorceComponent } from './components/mariage/divorce/divorce.component
 import { CelibataireComponent } from './components/mariage/celibataire/celibataire.component';
 import { UtilisateurListComponent } from './components/utilisateur/utilisateur-list/utilisateur-list.component';
 import { UtilisateurAddComponent } from './components/utilisateur/utilisateur-add/utilisateur-add.component';
+import { UtilisateurVoirComponent } from './components/utilisateur/utilisateur-voir/utilisateur-voir.component';
+import { UtilisateurEditComponent } from './components/utilisateur/utilisateur-edit/utilisateur-edit.component';
 import { AfterLoginService } from 'src/app/core/services/after-login.service';
 import { MariageVoirComponent } from './components/mariage/mariage/mariage-voir/mariage-voir.component';
 import { DecesListComponent } from './components/deces/deces-list/deces-list.component';
@@ -31,13 +33,13 @@ import { DecesShowComponent } from './components/deces/deces-show/deces-show.com
 const routes: Routes = [
   {
     path: '',
-    component: DashboardComponent, canActivate:[AfterLoginService],
+    component: DashboardComponent, canActivate: [AfterLoginService],
     children: [
       { path: '', redirectTo: 'naissance', pathMatch: 'full' },
       { path: 'premiere-copie', component: PremiereCopieComponent },
       { path: 'naissance', component: NaissanceHomeComponent },
       { path: 'bulletin-naissance-add', component: BulletinComponent },
-      { path: 'bulletin-naissance-list', component: BulletinListComponent},
+      { path: 'bulletin-naissance-list', component: BulletinListComponent },
       { path: 'add-naissance', component: NaissanceAddComponent },
       { path: 'add-adoption', component: AdoptionAddComponent },
       { path: 'add-jugement', component: JugementAddComponent },
@@ -55,16 +57,21 @@ const routes: Routes = [
         path: 'reconnaissance-copie-voir/:id',
         component: ReconnaissanceVoirComponent,
       },
-      {path: 'mariage-list', component: MariageComponent},
-      {path: 'mariage-add', component: MariageAddComponent},
-      {path: 'mariage-show/:id', component: MariageVoirComponent},
-      {path: 'divorce-list', component: DivorceComponent},
-      {path: 'celibat-list', component: CelibataireComponent},
-      {path: 'deces-list', component: DecesListComponent},
-      {path: 'add-deces', component: DecesAddComponent},
-      {path: 'show-deces/:id', component: DecesShowComponent},
-      {path: 'utilisateur-list', component: UtilisateurListComponent},
-      {path: 'utilisateur-add', component: UtilisateurAddComponent},
+      { path: 'utilisateur-voir/:id', component: UtilisateurVoirComponent },
+
+      { path: 'utilisateur-edit/:id', component: UtilisateurEditComponent },
+
+      { path: 'mariage-list', component: MariageComponent },
+      { path: 'mariage-add', component: MariageAddComponent },
+      { path: 'mariage-show/:id', component: MariageVoirComponent },
+      { path: 'divorce-list', component: DivorceComponent },
+      { path: 'celibat-list', component: CelibataireComponent },
+      { path: 'deces-list', component: DecesListComponent },
+      { path: 'add-deces', component: DecesAddComponent },
+      { path: 'show-deces/:id', component: DecesShowComponent },
+      { path: 'utilisateur-list', component: UtilisateurListComponent },
+      { path: 'utilisateur-add', component: UtilisateurAddComponent },
+      
 
       { path: '**', redirectTo: 'error/404' },
     ],
@@ -75,4 +82,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class DashboardRoutingModule {}
+export class DashboardRoutingModule { }
