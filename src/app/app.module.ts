@@ -13,6 +13,7 @@ import { LoadingInterceptor } from './core/interceptor/loading.interceptor';
 import { SpinnerComponent } from './shared/components/spinner/spinner.component';
 import { TokenInterceptor } from './core/interceptor/token.interceptor';
 
+
 @NgModule({
   declarations: [AppComponent, FeaturesComponent, SpinnerComponent],
   imports: [

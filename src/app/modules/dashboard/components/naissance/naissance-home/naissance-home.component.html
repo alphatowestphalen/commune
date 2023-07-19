@@ -112,46 +112,50 @@
         <h3 class="text-md font-bold pl-5 text-gray-900 dark:text-night-50 uppercase">Historique des dernières activités</h3>
       </div>
     </div>
-  <mat-table [dataSource]="dataSource" matSort>
-    <!-- ID Column -->
-    <ng-container matColumnDef="id">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{ row.id }} </mat-cell>
-    </ng-container>
+    <mat-table [dataSource]="dataSource" matSort>
+      <!-- ID Column -->
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          Entité
+        </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          {{ row.entity }}
+        </mat-cell>
+      </ng-container>
 
-    <!-- Progress Column -->
-    <ng-container matColumnDef="datenaiss">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>
-        Date de Naissance
-      </mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{ row.datenaiss }} </mat-cell>
-    </ng-container>
+      <!-- Progress Column -->
+      <ng-container matColumnDef="datenaiss">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          Opération
+        </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{ row.operation }} </mat-cell>
+      </ng-container>
 
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>
-        Nom et Prènoms
-      </mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{ row.name }} </mat-cell>
-    </ng-container>
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          Modifié par 
+        </mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.modifiedBy }} </mat-cell>
+      </ng-container>
 
-    <!-- Color Column -->
-    <ng-container matColumnDef="dateenregistrement">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>
-        Date d'Enregistrement
-      </mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{ row.dateenregitrement }} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="actions">
-      <mat-header-cell *matHeaderCellDef> Actions</mat-header-cell>
-      <mat-cell *matCellDef="let row; let i = index">
-        {{ row.dateenregitrement }}
-      </mat-cell>
-    </ng-container>
+      <!-- Color Column -->
+      <ng-container matColumnDef="dateenregistrement">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          Modifié le 
+        </mat-header-cell>
+        <mat-cell *matCellDef="let row" > {{ row.modifiedAt|date:'dd/MM/yyyy hh:mm' }} </mat-cell>
+      </ng-container>
+     
 
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns"> </mat-row>
-  </mat-table>
-  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"> </mat-row>
+    </mat-table>
+
+    <!-- <mat-paginator
+      (page)="pageChange($event)"
+      [pageSizeOptions]="[10, 20, 1, 5, 50]"
+      showFirstLastButtons
+    ></mat-paginator> -->
 </div>
 </div>

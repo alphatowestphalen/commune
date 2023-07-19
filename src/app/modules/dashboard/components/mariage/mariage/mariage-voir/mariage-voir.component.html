@@ -1,0 +1,323 @@
+
+<div class="mx-auto px-4 py-2 sm:px-8 lg:container">
+    <div class="mb-2 flex justify-between">
+      <div class="inline-block">
+          <button (click)="toggleModal()"
+          
+          class="shadow-md inline-flex items-center px-4 py-2 bg-red-200 hover:bg-red-600 text-gray-800 text-sm font-medium rounded-md"
+        >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" />
+        </svg>
+  
+      Cliquer pour afficher 
+        </button>
+      </div>
+      <div class="inline-block">
+        <button (click)="printPage()"
+        class="shadow-md inline-flex items-center px-4 py-2 bg-green-400 hover:bg-teal-600 text-gray-800 text-sm font-medium rounded-md"
+      >
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
+      </svg>
+  
+    Cliquer pour imprimer 
+      </button>
+    </div>
+      <div class="inline-block space-x-2">
+        <button
+          class="flex-none rounded-md bg-white px-4 py-0.5 text-xs font-semibold text-gray-500 hover:text-primary-500 dark:bg-night-600 dark:text-night-200 dark:hover:bg-night-500"
+        >
+          Acceuil
+        </button>
+        <span
+          class="flex-none rounded-md py-0.5 text-xs font-semibold text-night-400"
+          >>></span
+        >
+        <button
+          class="flex-none rounded-md bg-white px-4 py-0.5 text-xs font-semibold text-gray-500 hover:text-primary-500 dark:bg-night-600 dark:text-night-200 dark:hover:bg-night-500"
+        >
+          ...
+        </button>
+        <span
+          class="flex-none rounded-md py-2.5 text-xs font-semibold text-night-400"
+          >>></span
+        >
+        <button
+          class="flex-none rounded-md bg-primary-500 px-4 py-0.5 text-xs font-semibold text-white hover:bg-primary-600"
+        >
+          Voir une Première Copie
+        </button>
+      </div>
+    </div>
+  
+    <div *ngIf="mariage"
+      class="flex-col rounded-lg bg-white mt-2 dark:bg-night-700"
+    >
+      <div class="flex  justify-between">
+    
+  
+        <div class="flex bg-white p-2">
+          <div class="flex-col items-center ">
+            <h3 class="text-xs inline-flex font-normal pl-5 text-gray-900 dark:text-night-50">
+              Information details dans l'acte de Mariage
+            </h3>
+            <h3 class="text-xs  inline-flex font-normal pl-5 text-gray-900 dark:text-night-50">
+             Crée le : <span class=" ml-1 font-bold">15 Janvier 2023 11::23</span>.
+            </h3>
+            <h3 class="text-xs  inline-flex font-normal pl-5 text-gray-900 dark:text-night-50">
+              par  : <span class=" ml-1 font-bold">Gilbert</span>.
+             </h3>
+          </div>
+        </div>
+  
+        
+      </div>
+  
+  
+  <!-- component -->
+  <div
+    class="relative block p-3 overflow-hidden border bg-white border-slate-100 rounded-lg mx-2"
+    href=""
+  >
+    <span
+      class="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-blue-700 via-blue-300 to-yellow-600"
+    ></span>
+  
+    <div class="justify-between sm:flex">
+      <div class=" sm:pr-8">
+          <p class="text-sm text-slate-700 underline">
+            A propos de la Femme
+          </p>
+        </div>
+    </div>
+  
+    <dl class="flex mt-2">
+      <div class="flex flex-col-reverse">
+        <dt class="text-sm font-medium text-slate-800">{{mariage.femme.nomFemme}} {{mariage.femme.prenomsFemme}}</dt>
+        <dd class="text-xs text-slate-500">Nom et Prènoms</dd>
+      </div>
+  
+      <div class="flex flex-col-reverse ml-3 sm:ml-6">
+        <dt class="text-sm font-medium text-slate-800">{{mariage.femme.datenaissFemme}}</dt>
+        <dd class="text-xs text-slate-500">Date de Naissance</dd>
+      </div>
+      <div class="flex flex-col-reverse ml-3 sm:ml-6">
+        <dt class="text-sm font-medium text-slate-800">{{mariage.femme.lieunaissFemme}}</dt>
+        <dd class="text-xs text-slate-500">Lieu de Naissance</dd>
+      </div>
+       <div class="flex flex-col-reverse ml-3 sm:ml-6"> 
+        <dt class="text-sm font-medium text-slate-800">{{mariage.femme.professionFemme}}</dt>
+        <dd class="text-xs text-slate-500">Profession </dd>
+      </div>
+      <div class="flex flex-col-reverse ml-3 sm:ml-6"> 
+        <dt class="text-sm font-medium text-slate-800">{{mariage.femme.nationaliteFemme}}</dt>
+        <dd class="text-xs text-slate-500">Nationalité </dd>
+      </div>
+
+  
+    
+    </dl>
+  
+  </div>
+  
+  <div
+    class="relative block p-3 overflow-hidden border bg-white border-slate-100 rounded-lg mx-2"
+    href=""
+  >
+    <span
+      class="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-blue-700 via-blue-300 to-yellow-600"
+    ></span>
+  
+    <div class="justify-between sm:flex">
+      <div class=" sm:pr-8">
+          <p class="text-sm text-slate-700 underline">
+            A propos de la Parent
+          </p>
+        </div>
+    </div>
+  
+    <dl class="flex mt-2">
+      <div class="flex flex-col-reverse">
+        <dt class="text-sm font-medium text-slate-800"><span class="uppercase
+          ">{{mariage.femme.mereFemme.nomMere}}</span> {{mariage.femme.mereFemme.prenomsMere}}</dt>
+        <dd class="text-xs text-slate-500">Nom et Prènoms Mère de la Femme</dd>
+      </div>
+  
+      <div class="flex flex-col-reverse ml-3 sm:ml-6">
+        <dt class="text-sm font-medium text-slate-800"><span class="uppercase
+            ">{{mariage.femme.pereFemme.nomPere}}</span> {{mariage.femme.pereFemme.prenomsPere}}</dt>
+        <dd class="text-xs text-slate-500">Nom et Prènoms Père de la Père</dd>
+      </div>
+      <div class="flex flex-col-reverse ml-3 sm:ml-6">
+        <dt class="text-sm font-medium text-slate-800"><span class="uppercase
+            ">{{mariage.femme.temoinFemme.nomTemoin}}</span> {{mariage.femme.temoinFemme.prenomsTemoin}}</dt>
+        <dd class="text-xs text-slate-500">Nom et Prenoms de Témoin</dd>
+      </div>
+  
+       <div class="flex flex-col-reverse ml-3 sm:ml-6">
+        <dt class="text-sm font-medium text-slate-800">{{mariage.femme.temoinFemme.adresseTemoin}}</dt>
+        <dd class="text-xs text-slate-500">Adresse Témoin</dd>
+      </div>
+      <div class="flex flex-col-reverse ml-3 sm:ml-6">
+        <dt class="text-sm font-medium text-slate-800">{{mariage.femme.temoinFemme.datenaissTemoin}}</dt>
+        <dd class="text-xs text-slate-500">Agé de </dd>
+      </div>
+  
+    
+    </dl>
+  
+  </div>
+  <div
+    class="relative block p-3 overflow-hidden border bg-white border-slate-100 rounded-lg mx-2"
+    href=""
+  >
+    <span
+      class="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-blue-700 via-blue-300 to-yellow-600"
+    ></span>
+  
+    <div class="justify-between sm:flex">
+      <div class=" sm:pr-8">
+          <p class="text-sm text-slate-700 underline">
+            A propos de l'Homme
+          </p>
+        </div>
+    </div>
+  
+    <dl class="flex mt-2">
+      <div class="flex flex-col-reverse">
+        <dt class="text-sm font-medium text-slate-800">{{mariage.homme.nomHomme}} {{mariage.homme.prenomsHomme}}</dt>
+        <dd class="text-xs text-slate-500">Nom et Prènoms </dd>
+      </div>
+  
+      <div class="flex flex-col-reverse ml-3 sm:ml-6">
+        <dt class="text-sm font-medium text-slate-800">{{mariage.homme.datenaissHomme}} </dt>
+        <dd class="text-xs text-slate-500">Date de Naissance</dd>
+      </div>
+      <div class="flex flex-col-reverse ml-3 sm:ml-6">
+        <dt class="text-sm font-medium text-slate-800">{{mariage.homme.lieunaissHomme}}</dt>
+        <dd class="text-xs text-slate-500">Lieu de Naissance</dd>
+      </div>
+       <div class="flex flex-col-reverse ml-3 sm:ml-6">
+        <dt class="text-sm font-medium text-slate-800">{{mariage.homme.professionHomme}}</dt>
+        <dd class="text-xs text-slate-500">Profession</dd>
+      </div>
+      <div class="flex flex-col-reverse ml-3 sm:ml-6">
+        <dt class="text-sm font-medium text-slate-800">{{mariage.homme.nationaliteHomme}}</dt>
+        <dd class="text-xs text-slate-500">Nationalité</dd>
+      </div>
+    
+    </dl>
+  
+  </div>
+  <div
+    class="relative block p-3 overflow-hidden border bg-white border-slate-100 rounded-lg mx-2"
+    href=""
+  >
+    <span
+      class="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-blue-700 via-blue-300 to-yellow-600"
+    ></span>
+  
+    <div class="justify-between sm:flex">
+      <div class=" sm:pr-8">
+          <p class="text-sm text-slate-700 underline">
+            A propos des Parents de l'Homme
+          </p>
+        </div>
+    </div>
+  
+    <dl class="flex mt-2">
+      <div class="flex flex-col-reverse">
+        <dt class="text-sm font-medium text-slate-800">{{mariage.homme.pereHomme.nomPere}} {{mariage.homme.pereHomme.prenomsPere}}</dt>
+        <dd class="text-xs text-slate-500">Nom et Prènoms Père de l'Homme</dd>
+      </div>
+  
+      <div class="flex flex-col-reverse ml-3 sm:ml-6">
+        <dt class="text-sm font-medium text-slate-800">{{mariage.homme.mereHomme.nomMere}} {{mariage.homme.mereHomme.prenomsMere}}</dt>
+        <dd class="text-xs text-slate-500">Nom et Prènoms Mère de l'Homme</dd>
+      </div>
+      <div class="flex flex-col-reverse ml-3 sm:ml-6">
+        <dt class="text-sm font-medium text-slate-800">{{mariage.homme.temoinHomme.nomTemoin}}</dt>
+        <dd class="text-xs text-slate-500">Adresse Témoin</dd>
+      </div>
+      <div class="flex flex-col-reverse ml-3 sm:ml-6">
+        <dt class="text-sm font-medium text-slate-800">{{mariage.homme.temoinHomme.datenaissTemoin}}</dt>
+        <dd class="text-xs text-slate-500">Agé de </dd>
+      </div>
+  
+    
+    </dl>
+  
+  </div>
+  <div
+    class="relative block p-3 overflow-hidden border bg-white border-slate-100 rounded-lg mx-2"
+    href=""
+  >
+    <span
+      class="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-blue-700 via-blue-300 to-yellow-600"
+    ></span>
+  
+    <div class="justify-between sm:flex">
+      <div class=" sm:pr-8">
+          <p class="text-sm text-slate-700 underline">
+            A propos du maire
+          </p>
+        </div>
+    </div>
+  
+    <dl class="flex mt-2">
+      <div class="flex flex-col-reverse">
+        <dt class="text-sm font-medium text-slate-800">{{mariage.maire.nomMaire}} {{mariage.maire.prenomsMaire}}</dt>
+        <dd class="text-xs text-slate-500">Nom et Prènoms</dd>
+      </div>
+       <div class="flex flex-col-reverse ml-3 sm:ml-6">
+        <dt class="text-sm font-medium text-slate-800">{{mariage.maire.fonction}}</dt>
+        <dd class="text-xs text-slate-500">Fonction</dd>
+      </div>
+  
+    
+    </dl>
+  
+  </div>
+  </div>
+  
+  <p *ngIf="!mariage || mariage.length === 0">No data available</p>
+  </div>
+  <div *ngIf="OpenCopie" class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="fixed inset-0 bg-gray-700 bg-opacity-75 transition-opacity">
+   
+    <div class="fixed overflow-y-auto inset-0 z-10 ">
+      <div class="flex max-h-full w-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+      <div class="inline-block items-center m-3 mx-10">
+        <button (click)="openPDF()"
+          
+        class="shadow-md inline-flex items-center px-4 py-2 bg-red-200 hover:bg-red-600 text-gray-800 text-sm font-medium rounded-md"
+      >
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" />
+      </svg>
+  
+   Taper pour Télecharger 
+      </button>
+      <button (click)="printPage()"
+      class="shadow-md inline-flex items-center px-4 py-2 mt-3 bg-green-400 hover:bg-teal-600 text-gray-800 text-sm font-medium rounded-md"
+    >
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
+    </svg>
+  
+  Taper pour Imprimer 
+    </button>
+  
+      </div>
+    
+        <button class=" hover:bg-red-500 text-white font-bold py-2 px-4 rounded-full absolute  bg-red-700 lg:h-10 lg:max-w-[8%] right-2 top-2" (click)="toggleModal()">x</button>
+        <div class="mt-auto">
+          <app-copie-mariage [mariage]="mariage"></app-copie-mariage>
+        </div>  
+       
+      </div>
+    </div>
+  
+  </div>
+  </div>

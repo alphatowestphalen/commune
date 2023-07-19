@@ -29,6 +29,14 @@
     -moz-animation: cssload-spin 500ms infinite linear;
   }
   
+  .cssload-text {
+    font-weight: bold;
+    display: block;
+    position: absolute;
+    left: 45%;
+    top: 53%;
+    margin:  0 auto;
+  }
   @keyframes cssload-spin {
     100% {
       transform: rotate(360deg);

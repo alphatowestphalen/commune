@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DecesComponent } from './deces.component';
+import { CopieMariageComponent } from './copie-mariage.component';
 
-describe('DecesComponent', () => {
-  let component: DecesComponent;
-  let fixture: ComponentFixture<DecesComponent>;
+describe('CopieMariageComponent', () => {
+  let component: CopieMariageComponent;
+  let fixture: ComponentFixture<CopieMariageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DecesComponent ]
+      declarations: [ CopieMariageComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(DecesComponent);
+    fixture = TestBed.createComponent(CopieMariageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

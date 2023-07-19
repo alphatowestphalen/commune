@@ -66,7 +66,7 @@
         </mat-form-field>
         <div class="flex bg-white p-4">
           <button
-            routerLink="/dashboard/mariage-add"
+            routerLink="/dashboard/add-deces"
             class="shadow-md inline-flex items-center px-4 py-4 bg-blue-200 hover:bg-gray-300 text-gray-800 text-sm font-medium rounded-md"
           >
             <svg
@@ -88,7 +88,12 @@
           </button>
         </div>
       </div>
-  
+      
+      <app-mat-table *ngIf="tableData && tableData.length >0"
+        [tableColumns]="tableColumns"
+        [tableData]="tableData"  (editEvent)="editRow($event)" (deleteEvent)="deleteRow($event)"  (showEvent)="showRow($event)"  >
+      </app-mat-table>
+        <p *ngIf="!tableData || tableData.length === 0"><app-loading></app-loading></p>
 </div>
   </div>
   

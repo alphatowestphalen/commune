@@ -44,7 +44,6 @@ import { AdoptionMentionComponent } from './pages/adoption-mention/adoption-ment
 import { JugementMentionComponent } from './pages/jugement-mention/jugement-mention.component';
 import { ReconnaissanceMentionComponent } from './pages/reconnaissance-mention/reconnaissance-mention.component';
 import { LoadingComponent } from './pages/loading/loading.component';
-import { DecesComponent } from './components/deces/deces/deces.component';
 import { MariageComponent } from './components/mariage/mariage/mariage.component';
 import { BulletinComponent } from './components/naissance/bulletin/bulletin.component';
 import { BulletinListComponent } from './components/naissance/bulletin/bulletin-list/bulletin-list.component';
@@ -55,9 +54,14 @@ import { TableMariageComponent } from './pages/table-mariage/table-mariage.compo
 import { CelibataireComponent } from './components/mariage/celibataire/celibataire.component';
 import { UtilisateurListComponent } from './components/utilisateur/utilisateur-list/utilisateur-list.component';
 import { UtilisateurAddComponent } from './components/utilisateur/utilisateur-add/utilisateur-add.component';
+import { MariageVoirComponent } from './components/mariage/mariage/mariage-voir/mariage-voir.component';
+import { CopieMariageComponent } from './pages/copie-mariage/copie-mariage.component';
+import { DecesListComponent } from './components/deces/deces-list/deces-list.component';
+import { DecesAddComponent } from './components/deces/deces-add/deces-add.component';
+import { DecesShowComponent } from './components/deces/deces-show/deces-show.component';
 
 @NgModule({
-  exports: [SurveyCreatorModule, SurveyModule, BulletinNaissanceComponent],
+  exports: [SurveyCreatorModule, SurveyModule, BulletinNaissanceComponent, CopieComponent],
   declarations: [
     BulletinComponent,
     DashboardComponent,
@@ -82,7 +86,6 @@ import { UtilisateurAddComponent } from './components/utilisateur/utilisateur-ad
     JugementMentionComponent,
     ReconnaissanceMentionComponent,
     LoadingComponent,
-    DecesComponent,
     MariageComponent,
     BulletinListComponent,
     BulletinNaissanceComponent,
@@ -92,6 +95,11 @@ import { UtilisateurAddComponent } from './components/utilisateur/utilisateur-ad
     CelibataireComponent,
     UtilisateurListComponent,
     UtilisateurAddComponent,
+    MariageVoirComponent,
+    CopieMariageComponent,
+    DecesListComponent,
+    DecesAddComponent,
+    DecesShowComponent,
 
   ],
   imports: [
@@ -114,6 +122,7 @@ import { UtilisateurAddComponent } from './components/utilisateur/utilisateur-ad
     MatListModule,
     ReactiveFormsModule,
     MatAutocompleteModule,
+  
     AngularSvgIconModule.forRoot(),
   ],
 })

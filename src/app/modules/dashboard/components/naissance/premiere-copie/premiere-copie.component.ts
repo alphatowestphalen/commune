@@ -21,7 +21,7 @@ export class PremiereCopieComponent implements OnInit {
       header: 'N° Première Copie',
       cell: (element: Record<string, any>) => {
         const idPremierCopie  = element['idPremierCopie']
-        const numPremierCopie = idPremierCopie.slice(0,1)
+        const numPremierCopie = idPremierCopie.slice(0,-4)
         return `${numPremierCopie}`
       },
     },
@@ -54,9 +54,10 @@ export class PremiereCopieComponent implements OnInit {
 
       cell: (element: Record<string, any>) => {
         const datenaissEnfant = element['datePremierCopie'];
-        const dateObj = new Date(datenaissEnfant);
-        const formattedDate = `${dateObj.getDate().toString().padStart(2, '0')}/${(dateObj.getMonth() + 1).toString().padStart(2, '0')}/${dateObj.getFullYear()}`;
-        return formattedDate;
+        // const dateObj = new Date(datenaissEnfant);
+        // const formattedDate = `${dateObj.getDate().toString().padStart(2, '0')}/${(dateObj.getMonth() + 1).toString().padStart(2, '0')}/${dateObj.getFullYear()}`;
+        // return formattedDate;
+        return datenaissEnfant;
       }
     }
   ];

@@ -74,7 +74,7 @@ export class ReconnaissanceComponent implements OnInit {
   getAllReconnaissances(size: number, page: number) {
     this.reconnaissanceservice.getReconnaissances(size, page)
     .subscribe(data=>{
-      this.reconnaissance = data.reconnaissance;
+      this.tableData = data.reconnaissance;
       console.log(this.tableData)
     })
 

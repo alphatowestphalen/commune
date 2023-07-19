@@ -10,6 +10,7 @@ export class UtilisateurService {
 
     
 private baseURl = environment.baseUrl+'/users'
+private Url = environment.baseUrl
 
 constructor(private http: HttpClient) { }
 
@@ -29,4 +30,9 @@ updateUser(user:Object, id:number):Observable<any>{
 deleteUser(id:number){
     return this.http.delete(`${this.baseURl}/${id}`)
 }
+
+historiqueUser(){
+    return this.http.get(`${this.Url}/historiques`)
+}
+
 }
