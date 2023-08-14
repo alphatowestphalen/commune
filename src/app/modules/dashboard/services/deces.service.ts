@@ -17,8 +17,13 @@ export class DecesService {
     return this.http.get(`${this.baseURl}?page=${page}&size=${size}`);
   }
 
-  addDeces(id:number, deces: Object ): Observable<Object>{
-    return this.http.post(`${this.baseURl}/${id}`, deces);
+  // addDeces(id:number, deces: Object ): Observable<Object>{
+  //   return this.http.post(`${this.baseURl}/${id}`, deces);
+  // }
+
+  addDeces(data: any, idPremierCopie: string): Observable<any> {
+    const url = `http://localhost:8080/api/deces/${idPremierCopie}`;
+    return this.http.post(url, data);
   }
 
   updateDeces(id:number, deces:Object):Observable<any>{

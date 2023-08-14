@@ -96,112 +96,94 @@
 
             </form>
         </mat-step>
-        <mat-step>
 
-            <ng-template matStepLabel> {{'acteDeces'|transloco}}<br>
+        <mat-step [stepControl]="EnfantFormGroup">
+
+            <ng-template matStepLabel> {{'Premièrecopie'|transloco}}<br>
                 <span class="font-normal text-xs text-gray-400">{{'RecupererPremiereCopie'|transloco}}</span>
             </ng-template>
+            <mat-form-field class="example-full-width">
+
+                <mat-select (formControl)="idPremierCopie" name="jugement" (selectionChange)="Onchange($event)"
+                    (closed)="closedDeces()">
+                    <mat-form-field class="w-full">
+                        <mat-label>{{'Recherche'|transloco}}</mat-label>
+                        <input matInput [(ngModel)]="CopieSelected" placeholder="Saisir le Nom de personne"
+                            class="w-full" (keydown.Space)="spaceDeces()">
+                    </mat-form-field>
+                    <mat-option *ngFor="let copie of deces|search:CopieSelected"
+                        [value]="copie.idPremierCopie"><span><b>{{copie.idPremierCopie}}</b> ({{copie.enfant.nomEnfant}}
+                            {{copie.enfant.prenomsEnfant}})</span></mat-option>
+                </mat-select>
+            </mat-form-field>
 
 
-
-            <form>
-
-                <div class=" lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
-                    <div class="mb-4 w-4/5">
-
-                        <label class="block mb-2 text-sm font-bold text-black">{{'Nomenfant'|transloco}}</label>
-                        <input type="text"
-                            class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                            placeholder="{{'SaisirNomEnfant'|transloco}}" />
-
-                    </div>
-                    <div class="mb-4 w-4/5">
-
-                        <label class="block mb-2 text-sm font-bold text-black">{{'Prenomsenfant'|transloco}}</label>
-                        <input type="text"
-                            class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                            placeholder="{{'SaisirPrenomsEnfant'|transloco}}" />
-
-                    </div>
-
-                </div>
-                <div class="lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
-                    <div class="mb-4 w-4/5">
-
-                        <label class="block mb-2 text-sm font-bold text-black">{{'DateNaissance'|transloco}}</label>
-                        <input type="text"
-                            class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                            placeholder="{{'SaisirDatedenaissanceEnfant'|transloco}}" />
-
-                    </div>
-                    <div class="mb-4 w-4/5">
-
-                        <label class="block mb-2 text-sm font-bold text-black">{{'HeureNaissance'|transloco}}</label>
-                        <input type="text"
-                            class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                            placeholder="{{'Saisirheuredenaissance'|transloco}}" />
-
-                    </div>
-                </div>
-                <div class="lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
-                    <div class="mb-4 w-4/5">
-
-                        <label class="block mb-2 text-sm font-bold text-black">{{'Numerodedeces'|transloco}}</label>
-                        <input type="text"
-                            class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                            placeholder="{{'SaisirNumerodejugement'|transloco}}" />
-                    </div>
-
-                </div>
+            <form [formGroup]="EnfantFormGroup">
+                <div class="wrapper">
 
 
-                <div class="flex p-2 mt-4">
-                    <button mat-button matStepperPrevious class="text-md hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
-            hover:bg-gray-200  
-            bg-gray-100 
-            text-red-700 
-            border duration-200 ease-in-out 
-            border-red-600 transition">
-                        {{'Annuler'|transloco}}</button>
-                    <div class="flex-auto flex flex-row-reverse">
-                        <button mat-button matStepperNext class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
-            hover:bg-teal-600  
-            bg-teal-600 
-            text-teal-100 
-            border duration-200 ease-in-out 
-            border-teal-600 transition">{{'Suivant'|transloco}}</button>
+                    <br>
 
-                    </div>
-                </div>
+                    <ng-container *ngIf="errorMsg; else elseTemplate">
+                        {{errorMsg}}
+                    </ng-container>
+                    <ng-template #elseTemplate>
 
-            </form>
+                        <div class=" lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4"
+                            *ngIf="certificate?.idPremierCopie">
+                            <div class="mb-4 w-4/5">
 
-        </mat-step>
+                                <label class="block mb-2 text-sm font-bold text-black">{{'Nomenfant'|transloco}}</label>
+                                <input type="text" readonly value="{{certificate?.enfant.nomEnfant}}"
+                                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                                    placeholder="{{'SaisirNomEnfant'|transloco}}" />
 
-        <mat-step>
-            <form>
-                <ng-template matStepLabel> {{'Deces'|transloco}}<br>
-                    <span class="font-normal text-xs text-gray-400">{{'Informationdeces'|transloco}}</span>
-                </ng-template>
-                <div class=" lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
-                    <div class="mb-4 w-4/5">
+                            </div>
+                            <div class="mb-4 w-4/5">
 
-                        <label class="block mb-2 text-sm font-bold text-black">{{'Numerodedeces'|transloco}}</label>
-                        <input type="text"
-                            class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                            placeholder="{{'SaisirNumerodejugement'|transloco}}" />
+                                <label
+                                    class="block mb-2 text-sm font-bold text-black">{{'Prenomsenfant'|transloco}}</label>
+                                <input type="text" readonly value="{{certificate?.enfant.prenomsEnfant}}"
+                                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                                    placeholder="{{'SaisirPrenomsEnfant'|transloco}}" />
 
-                    </div>
-                    <div class="mb-4 w-4/5">
+                            </div>
 
-                        <label class="block mb-2 text-sm font-bold text-black">{{'Informationdeces'|transloco}}</label>
-                        <textarea type="text" formControlName="infoChangement" id="infoChangement"
-                            class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                            placeholder="{{'SaisirInformationdeChangement'|transloco}}">
-                      </textarea>
+                        </div>
+                        <div class="lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
+                            <div class="mb-4 w-4/5">
 
-                    </div>
+                                <label
+                                    class="block mb-2 text-sm font-bold text-black">{{'DateNaissance'|transloco}}</label>
+                                <input type="text" readonly value="{{certificate?.enfant?.datenaissEnfant}}"
+                                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                                    placeholder="{{'SaisirDatedenaissanceEnfant'|transloco}}" />
 
+                            </div>
+                            <div class="mb-4 w-4/5">
+
+                                <label
+                                    class="block mb-2 text-sm font-bold text-black">{{'HeureNaissance'|transloco}}</label>
+                                <input type="text" readonly value="{{certificate?.enfant?.heurenaissEnfant}}"
+                                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                                    placeholder="{{'Saisirheuredenaissance'|transloco}}" />
+
+                            </div>
+                        </div>
+                        <div class="lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
+                            <div class="mb-4 w-4/5">
+
+                                <label
+                                    class="block mb-2 text-sm font-bold text-black">{{'LieuNaissance'|transloco}}</label>
+                                <input type="text" readonly value="{{certificate?.enfant?.lieunaissEnfant}}"
+                                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                                    placeholder="{{'SaisirLieuNaissanceEnfant'|transloco}}" />
+
+                            </div>
+
+                        </div>
+
+                    </ng-template>
 
                 </div>
 
@@ -214,12 +196,165 @@
               border-red-600 transition">
                         {{'Annuler'|transloco}}</button>
                     <div class="flex-auto flex flex-row-reverse">
-                        <button mat-button matStepperNext class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
-            hover:bg-blue-600  
-            bg-blue-600 
-            text-blue-100 
+                        <button mat-button (click)="FirstStep()" matStepperNext class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
+              hover:bg-teal-600  
+              bg-teal-600 
+              text-teal-100 
+              border duration-200 ease-in-out 
+              border-teal-600 transition">{{'Suivant'|transloco}}</button>
+
+                    </div>
+                </div>
+
+            </form>
+
+        </mat-step>
+
+
+        <mat-step [stepControl]="DeclarantFormGroup">
+            <form [formGroup]="DeclarantFormGroup">
+              <ng-template matStepLabel> {{'Declarante'|transloco}} <br>
+                <span class="font-normal text-xs text-gray-400">{{'Informationpersonnel'|transloco}}</span>
+              </ng-template>
+              <div class=" lg:grid md:grid-flow-col grid-cols-2 mt-2  gap-4">
+                <div class="mb-4 w-4/5">
+  
+                  <label class="block mb-2 text-sm font-bold text-black">{{'Nom'|transloco}} </label>
+                  <input type="text" formControlName="nomDeclarant"
+                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                    placeholder="{{'SaisirNomduDeclarante'|transloco}}" />
+  
+                </div>
+                <div class="mb-4 w-4/5">
+  
+                  <label class="block mb-2 text-sm font-bold text-black">{{'Prenoms'|transloco}} </label>
+                  <input type="text" formControlName="prenomsDeclarant"
+                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                    placeholder="{{'SaisirPrènomsduDeclarante'|transloco}}" />
+  
+                </div>
+  
+              </div>
+              <div class="lg:grid md:grid-flow-col grid-cols-2 mt-2  gap-4">
+                <div class="mb-4 w-4/5">
+  
+                  <label class="block mb-2 text-sm font-bold text-black">{{'DateNaissance'|transloco}}</label>
+                  <input type="date" formControlName="datenaissDeclarant"
+                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                    placeholder="{{'SaisirDatedeNaissanceduDeclarante'|transloco}}" />
+  
+                </div>
+                <div class="mb-4 w-4/5">
+  
+                  <label class="block mb-2 text-sm font-bold text-black">{{'LieuNaissance'|transloco}}</label>
+                  <input type="text" formControlName="lieuNaissDeclarant"
+                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                    placeholder="{{'SaisirLieudeNaissanceduDeclarante'|transloco}} " />
+  
+                </div>
+  
+              </div>
+              <div class="lg:grid md:grid-flow-col grid-cols-2 mt-2  gap-4">
+             
+                <div class="mb-4 w-4/5">
+                  <label class="block mb-2 text-sm font-bold text-black">{{'AdresseExacte'|transloco}}</label>
+                  <input type="text" formControlName="adressDeclarant"
+                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                    placeholder="{{'SaisirAdresseduDeclarante'|transloco}}" />
+                </div>
+  
+              </div>
+              <div class="flex p-2 mt-4">
+                <button mat-button matStepperPrevious class="text-md hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
+            hover:bg-gray-200  
+            bg-gray-100 
+            text-gray-700 
             border duration-200 ease-in-out 
-            border-blue-600 transition">{{'Sauvegarder'|transloco}}</button>
+            border-gray-600 transition">{{'Prècedent'|transloco}}</button>
+                <div class="flex-auto flex flex-row-reverse">
+                    <button (click)="FortyStep()" mat-button matStepperNext class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
+            hover:bg-teal-600  
+            bg-teal-600 
+            text-teal-100 
+            border duration-200 ease-in-out 
+            border-teal-600 transition">{{'Suivant'|transloco}}</button>
+                    
+                </div>
+            </div>
+            </form>
+          </mat-step>
+
+        <mat-step [stepControl]="DecesFormGroup">
+            <form [formGroup]="DecesFormGroup">
+                <ng-template matStepLabel> Deces<br>
+                    <span
+                        class="font-normal text-xs text-gray-400">I{{'SaisirInformationdeChangement'|transloco}}t</span>
+                </ng-template>
+                <div class=" lg:grid md:grid-flow-col grid-cols-3 mt-2 gap-4">
+                    <div class="mb-4 w-4/5">
+
+                        <label class="block mb-2 text-sm font-bold text-black">date de Deces</label>
+                        <input type="date" formControlName="dateDeces"
+                            class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                            placeholder="Entrer le date de Deces" />
+
+                    </div>
+                    <div class="mb-4 w-4/5">
+
+                        <label class="block mb-2 text-sm font-bold text-black"> Lieu de Deces</label>
+                        <textarea type="text" formControlName="lieuDeces"
+                            class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                            placeholder="Entrer le lieu de Deces">
+                        </textarea>
+
+                    </div>
+
+                    <div class="mb-4 w-4/5">
+
+                        <label class="block mb-2 text-sm font-bold text-black">Heure de Deces</label>
+                        <input type="time" formControlName="heureDeces"
+                            class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                            placeholder="Entrer l'heure de deces">
+
+
+                    </div>
+
+                </div>
+                <div class=" lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
+                    <div class="mb-4 w-4/5">
+
+                        <label class="block mb-2 text-sm font-bold text-black">Adresse de defunt</label>
+
+                        <input type="text" formControlName="adresseDefunt"
+                            class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                            placeholder="Entrer l'Adresse de defunt">
+                    </div>
+                    <div class="mb-4 w-4/5">
+
+                        <label class="block mb-2 text-sm font-bold text-black">Profession du defunt</label>
+                        <textarea type="text" formControlName="professionDefunt"
+                            class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                            placeholder="Entrer le Profession de defunt">
+                        </textarea>
+
+                    </div>
+
+                </div>
+                <div class="flex p-2 mt-4">
+                    <button mat-button matStepperPrevious class="text-md hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
+                hover:bg-gray-200  
+                bg-gray-100 
+                text-red-700 
+                border duration-200 ease-in-out 
+                border-red-600 transition">
+                        {{'Annuler'|transloco}}</button>
+                    <div class="flex-auto flex flex-row-reverse">
+                        <button (click)="openDialog()"  mat-button matStepperNext class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
+              hover:bg-blue-600  
+              bg-blue-600 
+              text-blue-100 
+              border duration-200 ease-in-out 
+              border-blue-600 transition">{{'Sauvegarder'|transloco}}</button>
 
                     </div>
                 </div>

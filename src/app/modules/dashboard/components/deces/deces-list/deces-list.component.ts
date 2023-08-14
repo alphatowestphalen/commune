@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DecesService } from '../../../services/deces.service';
 import { Router } from '@angular/router';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-deces-list',
@@ -11,7 +12,7 @@ export class DecesListComponent implements OnInit {
 
   tableColumns: Array<any> = [
     {
-      columnDef: 'Numèro Mariage',
+      columnDef: 'idActeDeces',
       header: 'Numèro',
       cell: (element: Record<string, any>) => `${element['idActeDeces'] }`
     },
@@ -36,10 +37,10 @@ export class DecesListComponent implements OnInit {
       },
     },
     {
-      columnDef: 'Date Enregistrement',
-      header: 'Date Enregistrement',
+      columnDef: 'dateDeces',
+      header: 'Date de Deces',
      cell: (element: Record<string, any>) => {
-        const datenaissEnfant = element['createdDate'];
+        const datenaissEnfant = element['dateDeces'];
         const dateObj = new Date(datenaissEnfant);
         const formattedDate = `${dateObj.getDate().toString().padStart(2, '0')}/${(dateObj.getMonth() + 1).toString().padStart(2, '0')}/${dateObj.getFullYear()}`;
         return formattedDate;
@@ -56,6 +57,7 @@ export class DecesListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllDeces(this.page, this.size);
+    console.log(this.tableData)
   }
 
   getAllDeces(page:number, size:number){
@@ -65,7 +67,7 @@ export class DecesListComponent implements OnInit {
     })
   }
   showRow(element: any) {
-    this.router.navigate(['/dashboard/mariage-show', element.idMariage])
+    this.router.navigate(['/dashboard/deces-list', element.idActeDeces])
 
   }
 
@@ -74,5 +76,10 @@ export class DecesListComponent implements OnInit {
 
   deleteRow(element: any){
 
+  }
+  handlePageChange(event: PageEvent) {
+    this.page = event.pageIndex;
+    this.size = event.pageSize;
+    this.getAllDeces(this.page, this.size);
   }
 }
