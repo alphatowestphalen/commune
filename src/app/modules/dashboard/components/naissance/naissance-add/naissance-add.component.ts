@@ -68,7 +68,7 @@ export class NaissanceAddComponent implements OnInit {
   today = new Date();
   CopieFormGroup = this._formBuilder.group({
     idPremierCopie: 0,
-    description: [''],
+    description: ['', [Validators.required]],
     datePremierCopie: this.today.toLocaleDateString('fr-FR',{
       year: 'numeric',
       month: 'numeric',
@@ -76,12 +76,12 @@ export class NaissanceAddComponent implements OnInit {
     heurePremierCopie: this.today.toLocaleTimeString('fr-FR',{
         hour: 'numeric',
         minute: 'numeric'}),
-    mention: [''],
+    mention: ['', [Validators.required]],
     createdDate: this.today,
-    lettreBirth: [''],
-    LettreRegistre: [''],
+    lettreBirth: ['', ],
+    LettreRegistre: ['',  ],
     avoirPere: true,
-    datePCopie: ['']
+    datePCopie: ['',  [Validators.required]]
   });
 
   EnfantFormGroup = this._formBuilder.group({
