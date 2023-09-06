@@ -17,7 +17,7 @@ export class Menu {
         {
           icon: 'assets/icons/outline/bookmark.svg',
           label: 'Service Général',
-          route: '/dashboard/adoption-naissance'  ,
+          route: '/dashboard/adoption-naissance',
           children: [
             { label: 'Adoption ', route: '/dashboard/adoption-naissance' },
             { label: 'Jugement', route: '/dashboard/jugement-naissance' },
