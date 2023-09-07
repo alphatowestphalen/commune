@@ -1,236 +1,406 @@
-<div class="mx-auto px-2 py-2 sm:px-8 lg:container">
-  <div class="mb-4 flex justify-between">
+<div class="mx-auto px-4 py-2 sm:px-8 lg:container">
+    <div class="mb-4 flex justify-between">
       <div class="inline-block">
-          <h3 class="font-semibold text-gray-900 dark:text-white uppercase">{{'BulltindeNaissance'|transloco}}</h3>
-          <div class="space-x-1 text-xs font-medium text-gray-400 dark:text-night-300">
-              <a href="" class="hover:text-primary-500"> {{'BureauEtatCivil'|transloco}}</a>
-              <span>- {{'serviceBulltinNaissance'|transloco}}</span>
-          </div>
+        <h3 class="font-semibold text-gray-900 dark:text-white uppercase">
+          Bulletin de naissance
+        </h3>
+        <div
+          class="space-x-1 text-xs font-medium text-gray-400 dark:text-night-300"
+        >
+          <a href="" class="hover:text-primary-500"> Bureau Etat Civil</a>
+          <span>- Service de Traitement des Actes de Naissances</span>
+        </div>
       </div>
-      <div class="inline-block space-x-1">
-          <button
-              class="flex-none rounded-md bg-white px-4 py-1.5 text-xs font-semibold text-gray-500 hover:text-primary-500 dark:bg-night-600 dark:text-night-200 dark:hover:bg-night-500">
-              {{'Acceuil'|transloco}}
-          </button>
-          <span class="flex-none rounded-md py-1 text-xs font-semibold text-night-400">>></span>
-          <button
-              class="flex-none rounded-md bg-white px-4 py-1.5 text-xs font-semibold text-gray-500 hover:text-primary-500 dark:bg-night-600 dark:text-night-200 dark:hover:bg-night-500">
-              ...
-          </button>
-          <span class="flex-none rounded-md py-1 text-xs font-semibold text-night-400">>></span>
-
-          <button
-              class="flex-none rounded-md bg-primary-500 px-2 py-1.5 text-xs font-semibold text-white hover:bg-primary-600">
-              {{'FormulaireBulletinNaissance'|transloco}}
-          </button>
+      <div class="inline-block space-x-2">
+        <button
+          class="flex-none rounded-md bg-white px-4 py-2.5 text-xs font-semibold text-gray-500 hover:text-primary-500 dark:bg-night-600 dark:text-night-200 dark:hover:bg-night-500"
+        >
+          Acceuil
+        </button>
+        <span
+          class="flex-none rounded-md py-2.5 text-xs font-semibold text-night-400"
+          >>></span
+        >
+        <button
+          class="flex-none rounded-md bg-white px-4 py-2.5 text-xs font-semibold text-gray-500 hover:text-primary-500 dark:bg-night-600 dark:text-night-200 dark:hover:bg-night-500"
+        >
+          ...
+        </button>
+        <span
+          class="flex-none rounded-md py-2.5 text-xs font-semibold text-night-400"
+          >>></span
+        >
+        <button
+          class="flex-none rounded-md bg-primary-500 px-4 py-2.5 text-xs font-semibold text-white hover:bg-primary-600"
+        >
+          Bulletin de naissance
+        </button>
       </div>
-  </div>
-
-  <div class="flex-col rounded-lg bg-slate-400 mt-5 px-3 py-3 dark:bg-night-700 sm:flex-row">
-      <div class="my-3 flex items-center justify-between">
-          <div class="flex-col items-center">
-              <h3 class="text-md font-semibold pl-5 text-gray-900 dark:text-night-50">
-                  {{'FormulaireàremplirpourlajoutedunebulletinNaissance'|transloco}}</h3>
-          </div>
-      </div>
-  </div>
-
-  <mat-horizontal-stepper #stepper>
-      <mat-step>
-          <form>
-              <ng-template matStepLabel> {{'Dossier'|transloco}} <br>
-                  <span class="font-normal text-xs text-gray-400">{{'CheckDossier'|transloco}}</span>
-              </ng-template>
-              <div class="lg:grid md:grid-flow-col grid-cols-2 gap-4 mt-20">
-                  <div class="mb-4  w-60">
+    </div>
+    <div id="surveyCreator"  class="mat-elevation-z4  ">
+      <h3 _ngcontent-soh-c348="" class="bg-white pr-5 pt-7 text-md font-semibold pl-5 text-gray-900 ">Formulaire à remplir pour l'ajoute de la bulettin de naissance</h3>
+      <mat-horizontal-stepper [linear]="true" #stepper>
+          <form #addForm="ngForm" (ngSubmit)="saveBulletinNaissance()">
+              <mat-step >
+                  <ng-template matStepLabel> Dossier <br>
+                    <span class="font-normal text-xs text-gray-400">Liste Information</span>
+                  </ng-template>
+                  <div class="lg:grid md:grid-flow-col grid-cols-2 gap-4 mt-20">
+                    <div class="mb-4  w-60">
                       <label class="label cursor-pointer w-60">
-                          <input type="checkbox" checked="checked" class="checkbox" />
-                          <span class="label-text">{{'Certificataccouchement'|transloco}}</span>
+                        <input type="checkbox" checked="checked" class="checkbox ml-5" />
+                        <span class="label-text"> Information du person</span>
                       </label>
-                  </div>
-                  <div class="mb-4  w-60">
+                    </div>
+                    <div class="mb-4  w-60">
                       <label class="label cursor-pointer">
-                          <input type="checkbox" checked="checked" class="checkbox" />
-                          <span class="label-text">{{'LivréedeFamille'|transloco}}</span>
-
+                        <input type="checkbox" checked="checked"   class="checkbox" />
+                        <span class="label-text">Information de la mere</span>
+      
                       </label>
-                  </div>
-
-              </div>
-              <div class="lg:grid md:grid-flow-col grid-cols-2 gap-4">
-                  <div class="mb-4 w-60">
+                    </div>
+                    <div class="mb-4 w-60">
                       <label class="label cursor-pointer ">
-                          <input type="checkbox" checked="checked" class="checkbox" />
-                          <span class="label-text">{{'PhotocopieCINdelamère'|transloco}}</span>
-
+                        <input type="checkbox" checked="checked" class="checkbox" />
+                        <span class="label-text">Informationf du pere</span>
+      
                       </label>
+                    </div>
+                    <div class="mb-4 w-60 flex gap-10">
+                      <label class="flex items-center">
+                        <input type="radio" class="form-radio text-green-700 h-5 w-5 " name="type" [(ngModel)]="buletinNaissance.type" value="Interne">
+                        <span class="ml-2 text-gray-700">Interne</span>
+                      </label>
+                      <label class="flex items-center ">
+                        <input type="radio" class="form-radio text-green-700 h-5 w-5" name="type" [(ngModel)]="buletinNaissance.type" value="Externe">
+                        <span class="ml-2 text-gray-700">Externe</span>
+                      </label>
+                    </div>
+      
                   </div>
-                  <div class="mb-4 w-60">
+                  <!-- <div class="lg:grid md:grid-flow-col grid-cols-2 gap-4">
+                    <div class="mb-4 w-60">
                       <label class="label cursor-pointer ">
-                          <input type="checkbox" checked="checked" class="checkbox" />
-                          <span class="label-text">{{'PhotocopiedeCINdeclarant'|transloco}}</span>
-
+                        <input type="checkbox" checked="checked" class="checkbox" />
+                        <span class="label-text"></span>
+      
                       </label>
+                    </div>
+                    
                   </div>
-              </div>
-
-
-              <div class="flex p-2 mt-4">
-                  <button routerLink="/dashboard/premiere-copie" class="text-md hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
-            hover:bg-gray-200  
-            bg-gray-100 
-            text-red-700 
-            border duration-200 ease-in-out 
-            border-red-600 transition">
-                      {{'Annuler'|transloco}}</button>
-                  <div class="flex-auto flex flex-row-reverse">
-                      <button mat-button matStepperNext class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
-            hover:bg-teal-600  
-            bg-teal-600 
-            text-teal-100 
-            border duration-200 ease-in-out 
-            border-teal-600 transition">{{'Suivant'|transloco}}</button>
-
+                  <div class="lg:grid md:grid-flow-col grid-cols-2 gap-4">
+                    <div class="mb-4 w-60">
+                      <label class="label cursor-pointer ">
+                        <input type="checkbox" checked="checked" class="checkbox" />
+                        <span class="label-text"></span>
+      
+                      </label>
+                    </div>
+                    <div class="mb-4 w-60">
+                      <label class="label cursor-pointer ">
+                        <input type="checkbox" checked="checked" class="checkbox" />
+                        <span class="label-text">Information du pere</span>
+      
+                      </label>
+                    </div>
+                  </div> -->
+      
+               
+                  <div class="flex p-2 mt-4">
+                    <button routerLink="/dashboard/premiere-copie" class="text-md hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
+                hover:bg-gray-200  
+                bg-gray-100 
+                text-red-700 
+                border duration-200 ease-in-out 
+                border-red-600 transition">
+                          Annuler</button>
+                    <div class="flex-auto flex flex-row-reverse">
+                        <button mat-button matStepperNext  class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
+                hover:bg-teal-600  
+                bg-teal-600 
+                text-teal-100 
+                border duration-200 ease-in-out 
+                border-teal-600 transition">Suivant</button>
+                      
+                    </div>
+                </div>
+              </mat-step>
+              <mat-step >
+                  <ng-template matStepLabel >Personne <br>
+                    <span class="font-normal text-xs text-gray-400">Information personnel </span>
+                  </ng-template>
+                  <div class="lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
+                    <div class="mb-4 w-4/5">
+      
+                      <label class="block mb-2 text-sm font-bold text-black">Code Premier Copie</label>
+                      <input type="number" name="idPremierCopie" [(ngModel)]="buletinNaissance.idPremierCopie" id="dateEnfant"
+                        class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                        placeholder="Saisir Date de Naissance l'enfant" />
+                     
+      
+                    </div>
+                    <div class="mb-4 w-4/5">
+      
+                      <label class="block mb-2 text-sm font-bold text-black">Date Premier Copie</label>
+                    <input type="date" name="dateCopie" [(ngModel)]="buletinNaissance.dateCopie"  id="heureEnfant"
+                        class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                        placeholder="Saisir heure de Naissance de l'enfant" />
+                    </div>
                   </div>
-              </div>
-
+                  <div class=" lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
+                    <div class="mb-4 w-4/5">
+      
+                      <label class="block mb-2 text-sm font-bold text-black">Nom de la Personne</label>
+                      <input type="text" name="nomPersonne" [(ngModel)]="buletinNaissance.nomPersonne" id="nomEnfant"
+                        class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                        placeholder="Saisir nom de la Personne" />
+      
+                    </div>
+                    <div class="mb-4 w-4/5">
+      
+                      <label class="block mb-2 text-sm font-bold text-black">Prenoms de la Personne</label>
+                      <input type="text" name="prenomsPersonne" [(ngModel)]="buletinNaissance.prenomsPersonne"
+                        class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                        placeholder="Saisir Prenoms de la Personne" />
+      
+                    </div>
+      
+                  </div>
+                  <div class="lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
+                    <div class="mb-4 w-4/5">
+      
+                      <label class="block mb-2 text-sm font-bold text-black">Date de Naissance</label>
+                      <input type="date" name="dateNaissPersonne" [(ngModel)]="buletinNaissance.dateNaissPersonne" id="dateEnfant"
+                        class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                        placeholder="Saisir Date de Naissance la Personne" />
+                     
+      
+                    </div>
+                    <div class="mb-4 w-4/5">
+      
+                      <label class="block mb-2 text-sm font-bold text-black">Lieu de Naissance</label>
+                    <input type="text" name="lieuNaissPersonne" [(ngModel)]="buletinNaissance.lieuNaissPersonne"   id="heureEnfant"
+                        class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                        placeholder="Saisir heure de Naissance de la Personne" />
+                    </div>
+                  </div>
+                  <div class="flex p-2 mt-4">
+                    <button mat-button matStepperPrevious class="text-md hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
+                hover:bg-gray-200  
+                bg-gray-100 
+                text-gray-700 
+                border duration-200 ease-in-out 
+                border-gray-600 transition">Prècedent</button>
+                    <div class="flex-auto flex flex-row-reverse">
+                        <button  mat-button matStepperNext class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
+               
+                        hover:bg-teal-600  
+                bg-teal-600 
+                text-teal-100 
+                border duration-200 ease-in-out 
+                border-teal-600 transition">Suivant</button>
+                        
+                    </div>
+                </div>
+                  <div>
+      
+                  </div>
+              </mat-step>
+              <mat-step >
+                  <ng-template matStepLabel> Parent <br>
+                    <span class="font-normal text-xs text-gray-400">Information du parent</span>
+                  </ng-template>
+      
+      
+                  <div class=" lg:grid md:grid-flow-col grid-cols-2  mt-2 gap-4">
+                    <div class="mb-4 w-4/5">
+      
+                      <label class="block mb-2 text-sm font-bold text-black">Nom du mère </label>
+                      <input type="text" name="nomMere" [(ngModel)]="buletinNaissance.nomMere" 
+                        class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                        placeholder="Saisir Nom du mère" />
+      
+                    </div>
+                    <div class="mb-4 w-4/5">
+      
+                      <label class="block mb-2 text-sm font-bold text-black">Nom du père</label>
+                      <input type="text" name="nomPere" [(ngModel)]="buletinNaissance.nomPere"
+                        class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                        placeholder="Saisir nom du père" />
+      
+                    </div>
+      
+                  </div>
+                  <div class=" lg:grid md:grid-flow-col grid-cols-2  mt-2 gap-4">
+                    <div class="mb-4 w-4/5">
+      
+                      <label class="block mb-2 text-sm font-bold text-black">Prenom du mère </label>
+                      <input type="text" name="prenomsMere" [(ngModel)]="buletinNaissance.prenomsMere"
+                        class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                        placeholder="Saisir Nom du mère" />
+      
+                    </div>
+                    <div class="mb-4 w-4/5">
+      
+                      <label class="block mb-2 text-sm font-bold text-black">Prenom du père</label>
+                      <input type="text" name="prenomsPere" [(ngModel)]="buletinNaissance.prenomsPere"
+                        class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                        placeholder="Saisir Prènoms du père" />
+      
+                    </div>
+      
+                  </div>
+                  <div class="flex p-2 mt-4">
+                    <button mat-button matStepperPrevious class="text-md hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
+                hover:bg-gray-200  
+                bg-gray-100 
+                text-gray-700 
+                border duration-200 ease-in-out 
+                border-gray-600 transition">Prècedent</button>
+                <div class="flex-auto flex flex-row-reverse">
+                          <button  [disabled]="addForm.invalid"  (click)="saveBulletinNaissance()"
+                          class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
+                          hover:bg-blue-600  
+                          bg-blue-600 
+                          text-blue-100 
+                          border duration-200 ease-in-out 
+                          border-blue-600 transition">Sauvegarder</button>
+                          
+                </div>
+                </div>
+      
+              </mat-step>
+              <!-- <mat-step >
+                  <ng-template matStepLabel> Declarante <br>
+                    <span class="font-normal text-xs text-gray-400">Information personnel</span>
+                  </ng-template>
+                  <div class=" lg:grid md:grid-flow-col grid-cols-2 mt-2  gap-4">
+                    <div class="mb-4 w-4/5">
+      
+                      <label class="block mb-2 text-sm font-bold text-black">Nom </label>
+                      <input type="text"  name=""
+                        class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                        placeholder="Saisir Nom du Declarante" />
+      
+                    </div>
+                    <div class="mb-4 w-4/5">
+      
+                      <label class="block mb-2 text-sm font-bold text-black">Prenoms </label>
+                      <input type="text" 
+                        class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                        placeholder="Saisir Prènoms du Declarante" />
+      
+                    </div>
+      
+                  </div>
+                  <div class="lg:grid md:grid-flow-col grid-cols-2 mt-2  gap-4">
+                    <div class="mb-4 w-4/5">
+      
+                      <label class="block mb-2 text-sm font-bold text-black">Date de Naissance</label>
+                      <input type="date" 
+                        class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                        placeholder="Saisir Date de Naissance du Declarante" />
+      
+                    </div>
+                    <div class="mb-4 w-4/5">
+      
+                      <label class="block mb-2 text-sm font-bold text-black">Lieu de Naissance</label>
+                      <input type="text" 
+                        class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                        placeholder="Saisir Lieu de Naissance du Declarante " />
+      
+                    </div>
+      
+                  </div>
+                  <div class="lg:grid md:grid-flow-col grid-cols-2 mt-2  gap-4">
+                 
+                    <div class="mb-4 w-4/5">
+                      <label class="block mb-2 text-sm font-bold text-black">Adresse Exacte</label>
+                      <input type="text" 
+                        class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                        placeholder="Saisir Adresse du Declarante" />
+                    </div>
+      
+                  </div>
+                  <div class="flex p-2 mt-4">
+                    <button mat-button matStepperPrevious class="text-md hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
+                hover:bg-gray-200  
+                bg-gray-100 
+                text-gray-700 
+                border duration-200 ease-in-out 
+                border-gray-600 transition">Prècedent</button>
+                    <div class="flex-auto flex flex-row-reverse">
+                        <button  mat-button matStepperNext class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
+                hover:bg-teal-600  
+                bg-teal-600 
+                text-teal-100 
+                border duration-200 ease-in-out 
+                border-teal-600 transition">Suivant</button>
+                        
+                    </div>
+                </div>
+              </mat-step>
+              <mat-step>
+                  <ng-template matStepLabel> Maire <br>
+                    <span class="font-normal text-xs text-gray-400">Information personnel</span>
+                  </ng-template>
+                  <div class=" lg:grid md:grid-flow-col grid-cols-2 mt-2  gap-4">
+                    <div class="mb-4 w-4/5">
+      
+                      <mat-form-field appearance="fill">
+                        <mat-label>Nom du Maire</mat-label>
+                        <mat-select  name="Nom du Maire">
+                          <mat-option>teset maire</mat-option>
+                          <mat-option>teset maire</mat-option>
+                          <mat-option>teset maire</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    
+                    </div>
+                    <div class="mb-4 w-4/5">
+      
+                      <label class="block mb-2 text-sm font-bold text-black">Prenoms </label>
+                      <input type="text"   readonly
+                        class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                        placeholder="Saisir Prènoms du Maire" />
+      
+                    </div>
+      
+                  </div>
+                  <div class="lg:grid md:grid-flow-col grid-cols-2 mt-2  gap-4">
+                    <div class="mb-4 w-4/5">
+      
+                      <label class="block mb-2 text-sm font-bold text-black">Fonction</label>
+                      <input type="text" id="fonction" readonly
+                        class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                        placeholder="Saisir Fonction du Maire" />
+      
+                    </div>
+                  </div>
+      
+                  <div class="flex p-2 mt-4">
+                    <button mat-button matStepperPrevious class="text-md hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
+                hover:bg-gray-200  
+                bg-gray-100 
+                text-gray-700 
+                border duration-200 ease-in-out 
+                border-gray-600 transition">Prècedent</button>
+                    <div class="flex-auto flex flex-row-reverse">
+                        <button 
+                        mat-button matStepperNext class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
+                hover:bg-blue-600  
+                bg-blue-600 
+                text-blue-100 
+                border duration-200 ease-in-out 
+                border-blue-600 transition">Sauvegarder</button>
+                        
+                    </div>
+                </div>
+              </mat-step> -->
           </form>
-      </mat-step>
-      <mat-step>
-
-          <ng-template matStepLabel> {{'BulltindeNaissance'|transloco}}<br>
-              <span class="font-normal text-xs text-gray-400">{{'RecupererPremiereCopie'|transloco}}</span>
-          </ng-template>
-          
-
-
-          <form>
-
-
-
-                      <div class=" lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
-                          <div class="mb-4 w-4/5">
-
-                              <label class="block mb-2 text-sm font-bold text-black">{{'Nomenfant'|transloco}}</label>
-                              <input type="text"
-                                  class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                                  placeholder="{{'SaisirNomEnfant'|transloco}}" />
-
-                          </div>
-                          <div class="mb-4 w-4/5">
-
-                              <label
-                                  class="block mb-2 text-sm font-bold text-black">{{'Prenomsenfant'|transloco}}</label>
-                              <input type="text"
-                                  class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                                  placeholder="{{'SaisirPrenomsEnfant'|transloco}}" />
-
-                          </div>
-
-                      </div>
-                      <div class="lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
-                          <div class="mb-4 w-4/5">
-
-                              <label
-                                  class="block mb-2 text-sm font-bold text-black">{{'DateNaissance'|transloco}}</label>
-                              <input type="text"
-                                  class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                                  placeholder="{{'SaisirDatedenaissanceEnfant'|transloco}}" />
-
-                          </div>
-                          <div class="mb-4 w-4/5">
-
-                              <label
-                                  class="block mb-2 text-sm font-bold text-black">{{'HeureNaissance'|transloco}}</label>
-                              <input type="text"
-                                  class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                                  placeholder="{{'Saisirheuredenaissance'|transloco}}" />
-
-                          </div>
-                      </div>
-                      <div class="lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
-                          <div class="mb-4 w-4/5">
-
-                              <label class="block mb-2 text-sm font-bold text-black">{{'Numerodedeces'|transloco}}</label>
-                      <input type="text"
-                          class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                          placeholder="{{'SaisirNumerodejugement'|transloco}}" />
-                          </div>
-
-                      </div>
-
-
-              <div class="flex p-2 mt-4">
-                  <button mat-button matStepperPrevious class="text-md hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
-          hover:bg-gray-200  
-          bg-gray-100 
-          text-red-700 
-          border duration-200 ease-in-out 
-          border-red-600 transition">
-                      {{'Annuler'|transloco}}</button>
-                  <div class="flex-auto flex flex-row-reverse">
-                      <button mat-button matStepperNext class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
-          hover:bg-teal-600  
-          bg-teal-600 
-          text-teal-100 
-          border duration-200 ease-in-out 
-          border-teal-600 transition">{{'Suivant'|transloco}}</button>
-
-                  </div>
-              </div>
-
-          </form>
-
-      </mat-step>
-
-      <mat-step>
-          <form>
-              <ng-template matStepLabel> {{'Deces'|transloco}}<br>
-                  <span class="font-normal text-xs text-gray-400">{{'InformationBulletinNaissance'|transloco}}</span>
-              </ng-template>
-              <div class=" lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
-                  <div class="mb-4 w-4/5">
-
-                      <label class="block mb-2 text-sm font-bold text-black">{{'Numerodedeces'|transloco}}</label>
-                      <input type="text"
-                          class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                          placeholder="{{'SaisirNumerodejugement'|transloco}}" />
-
-                  </div>
-                  <div class="mb-4 w-4/5">
-
-                      <label
-                          class="block mb-2 text-sm font-bold text-black">{{'Informationdeces'|transloco}}</label>
-                      <textarea type="text" formControlName="infoChangement" id="infoChangement"
-                          class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                          placeholder="{{'SaisirInformationdeChangement'|transloco}}">
-                    </textarea>
-
-                  </div>
-
-
-              </div>
-
-              <div class="flex p-2 mt-4">
-                  <button mat-button matStepperPrevious class="text-md hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
-            hover:bg-gray-200  
-            bg-gray-100 
-            text-red-700 
-            border duration-200 ease-in-out 
-            border-red-600 transition">
-                      {{'Annuler'|transloco}}</button>
-                  <div class="flex-auto flex flex-row-reverse">
-                      <button mat-button matStepperNext class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
-          hover:bg-blue-600  
-          bg-blue-600 
-          text-blue-100 
-          border duration-200 ease-in-out 
-          border-blue-600 transition">{{'Sauvegarder'|transloco}}</button>
-
-                  </div>
-              </div>
-          </form>
-      </mat-step>
-  </mat-horizontal-stepper>
-
-</div>
+    </mat-horizontal-stepper>
+      <!-- <survey [model]="surveyModel"></survey>
+      <survey-creator [model]="surveyCreatorModel"></survey-creator> -->
+    </div>
+  </div>
+  
