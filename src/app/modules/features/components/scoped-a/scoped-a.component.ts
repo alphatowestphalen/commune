@@ -69,7 +69,7 @@ export class ScopedAComponent implements OnInit {
    this.Demandefilter.value.idPremierCopie = id;
    this.Demandefilter.value.typeDemande = 'ACTE_DE_NAISSANCE'
    this.demandeservice.addDemandeCertificates(this.Demandefilter.value)?.subscribe(()=>{
-   this.panelOpenState = !this.panelOpenState;
+   //this.panelOpenState = !this.panelOpenState;
     })
   }
 
