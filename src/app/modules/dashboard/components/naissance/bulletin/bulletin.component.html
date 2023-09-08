@@ -40,7 +40,7 @@
     <div id="surveyCreator"  class="mat-elevation-z4  ">
       <h3 _ngcontent-soh-c348="" class="bg-white pr-5 pt-7 text-md font-semibold pl-5 text-gray-900 ">Formulaire à remplir pour l'ajoute de la bulettin de naissance</h3>
       <mat-horizontal-stepper [linear]="true" #stepper>
-          <form #addForm="ngForm" (ngSubmit)="saveBulletinNaissance()">
+          <form #addForm="ngForm">
               <mat-step >
                   <ng-template matStepLabel> Dossier <br>
                     <span class="font-normal text-xs text-gray-400">Liste Information</span>
@@ -140,7 +140,6 @@
       
                     </div>
                     <div class="mb-4 w-4/5">
-      
                       <label class="block mb-2 text-sm font-bold text-black">Date Premier Copie</label>
                     <input type="date" name="dateCopie" [(ngModel)]="buletinNaissance.dateCopie"  id="heureEnfant"
                         class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"

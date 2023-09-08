@@ -71,8 +71,6 @@ const routes: Routes = [
       { path: 'show-deces/:id', component: DecesShowComponent },
       { path: 'utilisateur-list', component: UtilisateurListComponent },
       { path: 'utilisateur-add', component: UtilisateurAddComponent },
-      
-
       { path: '**', redirectTo: 'error/404' },
     ],
   },

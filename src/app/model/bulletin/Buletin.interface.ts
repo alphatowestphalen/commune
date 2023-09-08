@@ -11,5 +11,5 @@ export interface BulletinNaicensse{
     nomMere: string;
     prenomsMere: string;
     dateCopie: string;
-    createdDate: "2023-09-07T13:21:55.708Z"
+    createdDate: string
   }

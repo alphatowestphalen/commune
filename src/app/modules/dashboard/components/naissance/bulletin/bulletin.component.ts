@@ -7,6 +7,8 @@ import { PageEvent } from '@angular/material/paginator';
 import { Router } from '@angular/router';
 import { Column } from '../../../models/column';
 import { BulletinNaissanceService } from '../../../services/bulletin-naissance.service';
+import { BulletinNaicensse } from 'src/app/model/bulletin/Buletin.interface';
+import { BulletinService } from 'src/app/service/bulletin/bulletin.service';
 
 @Component({
   selector: 'app-bulletin',
@@ -20,6 +22,24 @@ export class BulletinComponent implements OnInit {
   surveyModel: any;
   surveyCreatorModel: any;
   size: any = '';
+
+  // variable alphato
+  buletinNaissance:BulletinNaicensse = {
+    idBulletinNaissance: 0,
+    idPremierCopie: "",
+    type: "",
+    nomPersonne: "",
+    prenomsPersonne: "",
+    dateNaissPersonne: "",
+    lieuNaissPersonne: "",
+    nomPere: "",
+    prenomsPere: "",
+    nomMere: "",
+    prenomsMere: "",
+    dateCopie: "",
+    createdDate: "2023-09-07T14:27:20.053Z"
+  }
+  // end
 
   page = 0;
 
@@ -60,7 +80,8 @@ export class BulletinComponent implements OnInit {
     public dialog: MatDialog,
     private bulletinService: BulletinNaissanceService,
     private formService: FormService,
-    private router: Router
+    private router: Router,
+    private bulletinservice: BulletinService,
   ) {}
 
   @ViewChild('htmlData') htmlData!: ElementRef;
@@ -95,6 +116,13 @@ export class BulletinComponent implements OnInit {
     });
 
   } 
+
+  public saveBulletinNaissance(){
+    this.bulletinservice.saveBulletin(this.buletinNaissance).subscribe(data=>{
+      this.buletinNaissance = data;
+      
+    });
+  }
 }
 
 

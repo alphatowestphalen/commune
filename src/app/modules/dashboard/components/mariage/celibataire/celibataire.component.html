@@ -1,94 +1,142 @@
 <div class="mx-auto px-4 py-2 sm:px-8 lg:container">
-    <div class="mb-4 flex justify-between">
-      <div class="inline-block">
-        <h3 class="font-semibold text-gray-900 dark:text-white uppercase">
+  <div class="mb-4 flex justify-between">
+    <div class="inline-block">
+      <h3 class="font-semibold text-gray-900 dark:text-white uppercase">
         Acte de Célibataire
-        </h3>
-        <div
-          class="space-x-1 text-xs font-medium text-gray-400 dark:text-night-300"
-        >
-          <a href="" class="hover:text-primary-500"> Bureau Etat Civil</a>
-          <span>- Service de Traitement des Actes de Mariage</span>
-        </div>
-      </div>
-      <div class="inline-block space-x-2">
-        <button
-          class="flex-none rounded-md bg-white px-4 py-2.5 text-xs font-semibold text-gray-500 hover:text-primary-500 dark:bg-night-600 dark:text-night-200 dark:hover:bg-night-500"
-        >
-          Acceuil
-        </button>
-        <span
-          class="flex-none rounded-md py-2.5 text-xs font-semibold text-night-400"
-          >>></span
-        >
-        <button
-          class="flex-none rounded-md bg-blue-500 px-4 py-2.5 text-xs font-semibold text-gray-100"
-        >
-          Célibataire
-        </button>
-       
-        
+      </h3>
+      <div class="space-x-1 text-xs font-medium text-gray-400 dark:text-night-300">
+        <a href="" class="hover:text-primary-500"> Bureau Etat Civil</a>
+        <span>- Service de Traitement des Actes de Mariage</span>
       </div>
     </div>
-  
-    <div
-      class="flex-col rounded-lg bg-white mt-5 px-3 py-3 dark:bg-night-700 sm:flex-row"
-    >
-      <div class="mb-1 flex items-center justify-between">
-        <div class="flex-col items-center">
-          <h3 class="text-md font-bold pl-5 text-gray-900 dark:text-night-50">
-            Liste Des Actes de Célibataire Effectués
-          </h3>
-        </div>
-        <mat-form-field>
-          <mat-label>Recherche...</mat-label>
-          <input matInput />
-          <mat-icon matSuffix>
-            <div
-              class="absolute inset-y-0 -left-2 bottom-3 flex items-center pointer-events-none"
-            >
-              <svg
-                aria-hidden="true"
-                class="w-5 h-5 text-gray-500 dark:text-gray-400"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                ></path>
-              </svg></div
-          ></mat-icon>
-        </mat-form-field>
-        <div class="flex bg-white p-4">
-          <button
-            routerLink="/dashboard/mariage-add"
-            class="shadow-md inline-flex items-center px-4 py-4 bg-blue-200 hover:bg-gray-300 text-gray-800 text-sm font-medium rounded-md"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-5 w-5 mr-2"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"
-              />
-            </svg>
-  
-            Ajouter une nouvelle
-          </button>
-        </div>
-      </div>
-  
-</div>
+    <div class="inline-block space-x-2">
+      <button
+        class="flex-none rounded-md bg-white px-4 py-2.5 text-xs font-semibold text-gray-500 hover:text-primary-500 dark:bg-night-600 dark:text-night-200 dark:hover:bg-night-500">
+        Acceuil
+      </button>
+      <span class="flex-none rounded-md py-2.5 text-xs font-semibold text-night-400">>></span>
+      <button class="flex-none rounded-md bg-blue-500 px-4 py-2.5 text-xs font-semibold text-gray-100">
+        Célibataire
+      </button>
+
+
+    </div>
   </div>
-  
+
+  <div class="flex-col rounded-lg bg-white mt-5 px-3 py-3 dark:bg-night-700 sm:flex-row">
+    <div class="mb-1 flex items-center justify-between">
+      <div class="flex-col items-center">
+        <h3 class="text-md font-bold pl-5 text-gray-900 dark:text-night-50">
+          Liste Des Actes de Célibataire Effectués
+        </h3>
+      </div>
+      <mat-form-field>
+        <mat-label>Recherche...</mat-label>
+        <input matInput />
+        <mat-icon matSuffix>
+          <div class="absolute inset-y-0 -left-2 bottom-3 flex items-center pointer-events-none">
+            <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor"
+              viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+            </svg>
+          </div>
+        </mat-icon>
+      </mat-form-field>
+      <div class="flex bg-white p-4">
+        <button routerLink="/dashboard/mariage-add"
+          class="shadow-md inline-flex items-center px-4 py-4 bg-blue-200 hover:bg-gray-300 text-gray-800 text-sm font-medium rounded-md">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
+          </svg>
+
+          Ajouter une nouvelle
+        </button>
+      </div>
+    </div>
+    <mat-table [dataSource]="dataSource" matSort>
+      <!-- ID Column -->
+      <ng-container matColumnDef="idActeCelibataire">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          ID
+        </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          {{ row.idActeCelibataire }}
+        </mat-cell>
+      </ng-container>
+
+      <!-- Progress Column -->
+      <ng-container matColumnDef="nomFkt">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          Nom Fokontany
+        </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{ row.nomFkt }} </mat-cell>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="numCin">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          Numero CIN
+        </mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.numCin }} </mat-cell>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="dateCin">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          Date CIN
+        </mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.dateCin }} </mat-cell>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="lieuCin">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          Date CIN
+        </mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.lieuCin }} </mat-cell>
+      </ng-container>
+      
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef> Actions</mat-header-cell>
+        <mat-cell *matCellDef="let row; let i = index">
+          <label
+            class="btn btn-sm font-normal lowercase modal-button text-xs bg-blue-600 px-4 py-2 text-white rounded-md mr-2"
+            for="my-modal"
+          >
+            voir
+          </label>
+          <button
+            mat-icon-button
+            class="btn btn-sm font-normal lowercase text-xs bg-green-600 px-4 py-2 text-white rounded-md mr-2"
+          >
+            editer
+          </button>
+          <!-- <button mat-icon-button
+              class="btn btn-sm font-normal lowercase text-xs bg-red-600 px-4 py-2 text-white rounded-md"
+              >
+            supprimer
+            </button> -->
+          <button
+            mat-icon-button
+            (click)="AskRow(row)"
+            class="btn btn-sm font-normal lowercase modal-button text-xs bg-orange-500 px-4 py-2 text-white rounded-md mr-2"
+          >
+            Demande
+          </button>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"> </mat-row>
+    </mat-table>
+
+    <mat-paginator
+      (page)="pageChange($event)"
+      [pageSizeOptions]="[10, 20, 1, 5, 50]"
+      showFirstLastButtons
+    ></mat-paginator>
+  </div>
+</div>

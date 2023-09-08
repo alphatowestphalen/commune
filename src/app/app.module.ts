@@ -13,6 +13,8 @@ import { LoadingInterceptor } from './core/interceptor/loading.interceptor';
 import { SpinnerComponent } from './shared/components/spinner/spinner.component';
 import { TokenInterceptor } from './core/interceptor/token.interceptor';
 import { TranslocoRootModule } from './transloco-root.module';
+import { FormsModule } from '@angular/forms';
+
 
 
 
@@ -29,6 +31,7 @@ import { TranslocoRootModule } from './transloco-root.module';
     SurveyCreatorModule,
     AngularToastifyModule,
     TranslocoRootModule,
+    FormsModule,
    
   ],
   providers: [SurveyCreatorModule, SurveyModule, ToastService,

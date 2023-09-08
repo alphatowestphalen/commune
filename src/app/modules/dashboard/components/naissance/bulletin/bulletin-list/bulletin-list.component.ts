@@ -43,6 +43,9 @@ export class BulletinListComponent implements OnInit {
   getAllService(size: number, page: number){
     this.bulletinservice.getAllBulletin(size, page)
     .subscribe(data=>{
+      console.log('====================================');
+      console.log(data);
+      console.log('====================================');
       this.tableData = data.BulletinNaiss 
       this.dataSource = new MatTableDataSource(this.tableData);
      this.dataSource.paginator = this.paginator
