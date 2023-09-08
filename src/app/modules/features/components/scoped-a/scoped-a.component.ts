@@ -1,7 +1,7 @@
 import { BulletinNaissanceService } from './../../../dashboard/services/bulletin-naissance.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormBuilder, FormControl } from '@angular/forms';
 import {
   debounceTime,
   distinctUntilChanged,
@@ -22,7 +22,6 @@ export class ScopedAComponent implements OnInit {
   bulletin: any;
   panelOpenState = false;
   demande: any = [];
-  demandefilter: any = [];
   searchDemande = new FormControl();
   CopieSelected: any = '';
   //  errorMsg: string;
@@ -36,33 +35,17 @@ export class ScopedAComponent implements OnInit {
     private router: Router,
     private demandeservice: DemandeService,
     private bulletinService: BulletinNaissanceService,
-    private premiercopieservice: PremiereCopieService
+    private premiercopieservice: PremiereCopieService,
+    private formbuilder: FormBuilder,
   ) {}
+
+  Demandefilter = this.formbuilder.group({
+    idPremierCopie: [''],
+    typeDemande : ['']
+  })
 
   ngOnInit(): void {
     this.getallCertificates();
-
-    // this.searchDemande.valueChanges
-    // .pipe(
-    //   filter(res => {
-    //     if(res == null){
-    //       this.getallCertificates();
-    //     }
-    //     return res !== null
-    //   }),
-    //   switchMap(value => this.demandeservice.SearchCertificateByIdPremierCopie(value)
-    //     .pipe(
-    //       finalize(() => {
-    //         this.isLoading = false
-    //       }),
-    //     )
-    //   )
-    // )
-    // .subscribe((data: any) => {
-
-    //   this.demande = data.premierCopies;
-    //   console.log(data);
-    // });
   }
   nextDialog(nombre: any) {
     console.log(nombre);
@@ -82,7 +65,12 @@ export class ScopedAComponent implements OnInit {
   }
 
   Birthcertif(id: string) {
-    this.router.navigate(['/dashboard/premiere-copie-voir', id]);
+   // this.router.navigate(['/dashboard/premiere-copie-voir', id]);
+   this.Demandefilter.value.idPremierCopie = id;
+   this.Demandefilter.value.typeDemande = 'ACTE_DE_NAISSANCE'
+   this.demandeservice.addDemandeCertificates(this.Demandefilter.value)?.subscribe(()=>{
+   this.panelOpenState = !this.panelOpenState;
+    })
   }
 
   Weddingcertif(id: string) {
