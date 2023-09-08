@@ -35,4 +35,24 @@
     margin: 10px;
     padding: 5px;
 }
+*{
+  font-family: 'Poppins', 'system-ui', 'sans-serif';
+} 
+
+::ng-deep .mat-horizontal-stepper-header {
+  box-sizing: border-box;
+  height: auto;
+  pointer-events: none !important;
+  padding: 24px;
+
+}
+
+::ng-deep .mat-step-header .mat-step-icon {
+  display: none !important;
+} 
+
+.custom-theme {
+  background-color: #f2f2f2;
+  color: #333;
+} 
 

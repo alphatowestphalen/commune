@@ -34,7 +34,6 @@ export class AuthService {
   // }
 
   logout():void{
-   
       this.token.removeToken();
       this.router.navigate(['sign-in']);
     }
