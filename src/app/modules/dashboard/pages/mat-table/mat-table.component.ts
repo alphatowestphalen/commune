@@ -72,7 +72,6 @@ export class MatTableComponent implements OnInit {
   }
 
  ngOnChanges(change: any){
-
   this.dataSource.filter = change.search.currentValue.toLowerCase();
   
  }

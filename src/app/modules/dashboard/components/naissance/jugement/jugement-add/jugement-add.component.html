@@ -114,7 +114,7 @@
               <input matInput [(ngModel)]="CopieSelected" placeholder="Saisir le Nom de personne" class="w-full"
                 (keydown.Space)="spaceJugement()">
             </mat-form-field>
-            <mat-option *ngFor="let copie of jugement|search:CopieSelected"
+            <mat-option *ngFor="let copie of premierCopie|search:CopieSelected"
               [value]="copie.idPremierCopie"><span><b>{{copie.idPremierCopie}}</b> ({{copie.enfant.nomEnfant}}
                 {{copie.enfant.prenomsEnfant}})</span></mat-option>
           </mat-select>

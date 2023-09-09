@@ -49,8 +49,8 @@ export class JugementComponent implements OnInit {
   ];
   
   tableData: any = [];
-  page: number= 0;
-  size: any = '';
+  page= 1;
+  size= 10;
   search: any;
 
 
@@ -77,8 +77,7 @@ export class JugementComponent implements OnInit {
   getAllJugements(size: number, page: number){
     this.jugementservice.getJugements(size, page)
     .subscribe(data=>{
-      this.tableData = data.jugement;
-      console.log(this.tableData)
+      this.tableData = data.data;
     })
   }
 

@@ -20,8 +20,9 @@ export class PremiereCopieService {
   }
 
   getFirstCertificates( ): Observable<any> {
-    return this.http.get(`${this.baseUrl}`);
+    return this.http.get(`${this.baseUrl}/`);
   }
+  
 
 
   addFirstCertificates(premiereCopie: Object):Observable<Object> {

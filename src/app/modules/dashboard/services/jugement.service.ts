@@ -11,6 +11,7 @@ export class JugementService {
     throw new Error('Method not implemented.');
   }
   private baseURl = environment.baseUrl+'/jugements';
+  private baseURL2 = environment.baseUrl+'/premierCopies';
 
   constructor( private http: HttpClient) { }
 
@@ -22,9 +23,11 @@ export class JugementService {
     return this.http.get(`${this.baseURl}`)
     
   }
-
-  addJugement(jugement:any, id: number): Observable<any> {
-    return this.http.post(`${this.baseURl}/${id}`, jugement)
+  getAllPremierCopieNotIn(size: number, page: number ): Observable<any> {
+    return this.http.get(`${this.baseURl}/premierCopies?page=${page}&size=${size}&haveJugement=false`);
+  }
+  addJugement(jugement:any): Observable<any> {
+    return this.http.post(`${this.baseURl}/`, jugement)
   }
 
   updateJugement(jugement: any, id: number): Observable<any>{
@@ -39,4 +42,7 @@ export class JugementService {
     return this.http.get(`${this.baseURl}/${id}`)
   }
 
+  getAllPremierCopies():Observable<any>{
+    return this.http.get(`${this.baseURL2}`)
+  } 
 }

@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { filter, distinctUntilChanged, debounceTime, tap, switchMap, finalize } from 'rxjs';
+import { JugementInterface } from 'src/app/model/jusement/Jugement.inteface';
 import { JugementService } from 'src/app/modules/dashboard/services/jugement.service';
 import { PremiereCopieService } from 'src/app/modules/dashboard/services/premiere-copie.service';
 
@@ -16,6 +17,7 @@ declare function MoisMalgache(params: string): any
 export class JugementAddComponent implements OnInit {
   jugement: any;
   certificate: any;
+  premierCopie: any;
   idPremierCopie = new FormControl();
 
   filteredMovies: any = [];
@@ -25,13 +27,15 @@ export class JugementAddComponent implements OnInit {
   CopieSelected: any = "";
   data: any;
 
+  
+
   datenaiss: string | null | undefined;
   datenaissMere: string | null | undefined;
   datenaissPere: string | null | undefined;
   datenaissDeclarant: string | null | undefined;
   dateregistre: string | null | undefined;
 
-  constructor(private _formBuilder: FormBuilder, private premierecopie: PremiereCopieService, public dialog: MatDialog) { }
+  constructor(private _formBuilder: FormBuilder,private jugmentService: JugementService, private premierecopie: PremiereCopieService, public dialog: MatDialog) { }
 
   PiecesFormGroup = this._formBuilder.group({});
 
@@ -52,17 +56,19 @@ export class JugementAddComponent implements OnInit {
 
     createdDate: new Date()
   })
+ 
+  size = 10;
+  page = 1;
 
   ngOnInit(): void {
-    this.getAllFirstCertificate();
+    this.getAllJugement(this.size, this.page);
   }
 
-  getAllFirstCertificate() {
-    this.premierecopie.getFirstCertificates()
-      .subscribe(data => {
-        this.jugement = data.premierCopies
-        console.log(this.jugement)
-      })
+  getAllJugement (size: number, page: number)   {
+   this.jugmentService.getAllPremierCopieNotIn(size, page).subscribe(data => {
+      this.premierCopie = data.data;
+      console.log(this.premierCopie)
+   });
   }
 
 
@@ -84,8 +90,6 @@ export class JugementAddComponent implements OnInit {
     this.CopieSelected = "";
   }
   FirstStep() {
-
-
     const enfant: any = this.certificate['enfant']['datenaissEnfant']?.split("-")
     const datenaiss = NombreEnLettre(enfant[2]).concat(' ', MoisMalgache(enfant[1]))
     this.datenaiss = datenaiss.concat(' ', NombreEnLettre(enfant[0]))
@@ -160,21 +164,34 @@ export class JugementAddComponent implements OnInit {
 
 })
 export class AdoptionCopieComponent {
+ jusemant: JugementInterface= {
+  numJugement: '',
+  idPremierCopie: '',
+  decretJuridique: '',
+  dateDecret: '',
+  typeJugement: '',
+  infoChangement: [] // Valeur par défaut : tableau vide
+}
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private jugementservice: JugementService,
     public dialog: MatDialog, private router: Router) { }
 
   ngOnInit() {
-    console.log("data", this.data.idPremierCopie)
+    console.log("data", this.data)
+
   }
 
   saveCertificate() {
-
-    this.jugementservice.addJugement(this.data, this.data.idPremierCopie).subscribe(data => {
-
+   this.jusemant.numJugement = this.data.numJugement;
+   this.jusemant.idPremierCopie = this.data.idPremierCopie;
+  this.jusemant.decretJuridique = this.data.decretJuridique;
+   this.jusemant.dateDecret = this.data.dateDecret;
+  this.jusemant.dateDecret = this.data.dateDecret;
+  this.jusemant.typeJugement = this.data.typeJugement;
+  this.jusemant.infoChangement.push(this.data.infoChangement); 
+    this.jugementservice.addJugement(this.jusemant).subscribe(data => {
       const dialogRef = this.dialog.closeAll();
       this.router.navigate(['/dashboard/jugement-naissance']);
     })
-    console.log(this.data)
 
   }
 }
