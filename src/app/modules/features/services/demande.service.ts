@@ -10,6 +10,7 @@ import { PremiereCopieService } from '../../dashboard/services/premiere-copie.se
 export class DemandeService {
 
   private baseUrl = environment.baseUrl+'/premierCopies';
+  private Url = environment.baseUrl;
 
   constructor( private http:HttpClient) { }
 
@@ -29,5 +30,9 @@ export class DemandeService {
 
   getAllHistoriques(): Observable<any>{
     return this.http.get(`${this.baseUrl}/historiques`)
+  }
+
+  addDemandeCertificates(demande : any): Observable<any>{
+    return this.http.post(`${this.Url}/DemandeEtatCivil`, demande);
   }
 }

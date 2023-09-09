@@ -68,7 +68,7 @@ export class NaissanceAddComponent implements OnInit {
   today = new Date();
   CopieFormGroup = this._formBuilder.group({
     idPremierCopie: 0,
-    description: ['', [Validators.required]],
+    description: [''],
     datePremierCopie: this.today.toLocaleDateString('fr-FR',{
       year: 'numeric',
       month: 'numeric',
@@ -76,12 +76,12 @@ export class NaissanceAddComponent implements OnInit {
     heurePremierCopie: this.today.toLocaleTimeString('fr-FR',{
         hour: 'numeric',
         minute: 'numeric'}),
-    mention: ['', [Validators.required]],
+    mention: [''],
     createdDate: this.today,
     lettreBirth: ['', ],
     LettreRegistre: ['',  ],
     avoirPere: true,
-    datePCopie: ['',  [Validators.required]]
+    datePCopie: ['', ]
   });
 
   EnfantFormGroup = this._formBuilder.group({
@@ -135,6 +135,7 @@ export class NaissanceAddComponent implements OnInit {
   @ViewChild('htmlData') htmlData!: ElementRef;
   ngOnInit(): void {
    this.getAllMaire();
+   this.getLastNumPremierCopie();
   }
 
   openDialog() {
@@ -268,6 +269,7 @@ export class NaissanceAddComponent implements OnInit {
       
     })
     this.PereFormGroup.value.avoirPere = true;
+    this.CopieFormGroup.value.idPremierCopie = this.NumeroCopie
     }
     
   printPage() {
