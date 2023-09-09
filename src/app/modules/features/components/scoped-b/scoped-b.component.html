@@ -132,15 +132,25 @@
                 </ng-container>
           
                 <!-- Progress Column -->
-                <ng-container matColumnDef="datenaiss">
+                <ng-container matColumnDef="operation">
                   <mat-header-cell *matHeaderCellDef mat-sort-header>
                      {{ 'Opération' | transloco }}
                   </mat-header-cell>
-                  <mat-cell *matCellDef="let row"> {{ row.operation }} </mat-cell>
+                  <mat-cell *matCellDef="let row">
+                    <div *ngIf="row.operation === 'CREATE'">
+                        CREER
+                    </div>
+                    <div *ngIf="row.operation === 'UPDATE'">
+                          MODIFIER
+                       </div>
+                       <div *ngIf="row.operation === 'DELETE'">
+                        SUPPRIMER
+                     </div>
+                </mat-cell>
                 </ng-container>
           
                 <!-- Name Column -->
-                <ng-container matColumnDef="name">
+                <ng-container matColumnDef="modifyby">
                   <mat-header-cell *matHeaderCellDef mat-sort-header>
                     {{ 'modifiepar' | transloco }}
                   </mat-header-cell>
@@ -153,7 +163,15 @@
                     {{ 'modifieLe' | transloco }}
                   </mat-header-cell>
                   <mat-cell *matCellDef="let row" > {{ row.modifiedAt|date:'dd/MM/yyyy hh:mm' }} </mat-cell>
+               
                 </ng-container>
+                <!-- <ng-container matColumnDef="type">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header>
+                    {{ 'modifieLe' | transloco }}
+                  </mat-header-cell>
+                  <mat-cell *matCellDef="let row" > {{ row.payload.idPremierCopie }} </mat-cell>
+               
+                </ng-container> -->
                
           
                 <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

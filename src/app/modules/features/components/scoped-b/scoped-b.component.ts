@@ -18,9 +18,10 @@ export class ScopedBComponent implements OnInit {
   historique:any = "";
   displayedColumns = [
     'id',
-    'name',
-    'datenaiss',
+    'modifyby',
+    'operation',
     'dateenregistrement',
+    
    
   ];
 
