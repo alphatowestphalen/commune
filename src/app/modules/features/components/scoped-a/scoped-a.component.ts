@@ -59,7 +59,7 @@ export class ScopedAComponent implements OnInit {
 
   getallCertificates() {
     this.demandeservice.getAllCertificates().subscribe((data) => {
-      this.demande = data.premierCopies;
+      this.demande = data.data;
       console.log('data', this.demande);
     });
   }

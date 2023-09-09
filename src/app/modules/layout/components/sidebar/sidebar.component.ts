@@ -13,6 +13,7 @@ import { MenuService } from '../../services/menu.service';
 export class SidebarComponent implements OnInit {
   public showSideBar$: Observable<boolean> = new Observable<boolean>();
   public pagesMenu$: Observable<MenuItem[]> = new Observable<MenuItem[]>();
+  show: boolean = false;
  
 
   constructor(public themeService: ThemeService, private menuService: MenuService,public translocoService: TranslocoService) {

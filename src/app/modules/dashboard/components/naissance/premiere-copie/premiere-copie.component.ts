@@ -66,8 +66,8 @@ export class PremiereCopieComponent implements OnInit {
 
   showModal = false;
 
-  size: any = '';
-  page = 0;
+  size = 10;
+  page = 1;
 
   search: any = "";
 
@@ -102,9 +102,12 @@ export class PremiereCopieComponent implements OnInit {
 
 
   getfirstCertificates(size: number, page: number) {
+    console.log('====================================');
+    console.log('size', size, 'page', page);
+    console.log('====================================');
     this.premierecopieservice.getCertificates(size, page)
       .subscribe(data => {
-        this.tableData = data.premierCopies;
+        this.tableData = data.data;
         this.tableData.map((d: any) => {
           d.descriptionRow = d.enfant.nomEnfant + ' ' + d.enfant.prenomsEnfant
         })

@@ -10,6 +10,7 @@ import { MenuService } from '../../../services/menu.service';
 })
 export class SidebarSubmenuComponent implements OnInit {
   @Input() public submenu = <SubMenuItem>{};
+ 
   public showSideBar$: Observable<boolean> = new Observable<boolean>();
 
   constructor(private menuService: MenuService) {

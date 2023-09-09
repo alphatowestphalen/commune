@@ -15,7 +15,7 @@ export class Menu {
          
         },
         {
-          icon: 'assets/icons/outline/bookmark.svg',
+          icon: 'assets/icons/outline/view-grid.svg',
           label: 'Service Général',
           route: '/dashboard/adoption-naissance',
           children: [
