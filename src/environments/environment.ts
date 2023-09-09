@@ -4,8 +4,11 @@
 
 export const environment = {
   production: false,
+  // big
   baseUrl: 'http://192.168.185.150:8080/api',
   modulesUrl: 'http://192.168.185.150:8000/api',
+  // baseUrl: 'http://192.168.185.68:8080/api',
+  // modulesUrl: 'http://192.168.185.68:8000/api',
 };
 
 /*

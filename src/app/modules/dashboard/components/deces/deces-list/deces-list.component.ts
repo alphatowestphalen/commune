@@ -17,7 +17,7 @@ export class DecesListComponent implements OnInit {
       cell: (element: Record<string, any>) => `${element['idActeDeces'] }`
     },
     {
-      columnDef: 'Nom et Prènoms ',
+      columnDef: 'Nom et Prènoms  ',
       header: 'Nom et Prènoms ',
         cell: (element: Record<string, any>) => {
         const nomEnfant = element['premierCopie']['enfant']['nomEnfant']
@@ -27,8 +27,8 @@ export class DecesListComponent implements OnInit {
       },
     },
     {
-      columnDef: 'Nome et Prènoms Declarant',
-      header: 'Nome et Prènoms',
+      columnDef: 'Nome et Prènoms ',
+      header: 'Nome et Prènoms Declarant',
       cell: (element: Record<string, any>) => {
         const NomFemme = element['nomDeclarant']
         const prenomsFemme = element['prenomsDeclarant']
@@ -40,14 +40,14 @@ export class DecesListComponent implements OnInit {
       columnDef: 'dateDeces',
       header: 'Date de Deces',
      cell: (element: Record<string, any>) => {
-        const datenaissEnfant = element['dateDeces'];
+        const datenaissEnfant = element['defunt']['dateDeces'];
         const dateObj = new Date(datenaissEnfant);
         const formattedDate = `${dateObj.getDate().toString().padStart(2, '0')}/${(dateObj.getMonth() + 1).toString().padStart(2, '0')}/${dateObj.getFullYear()}`;
         return formattedDate;
       }
     }
   ];
-  tableData: any = [];
+  tableData: any;
   mariage: any = [];
   size: any ='';
   page = 0;
@@ -56,14 +56,16 @@ export class DecesListComponent implements OnInit {
   
 
   ngOnInit(): void {
-    this.getAllDeces(this.page, this.size);
+    this.getAllDeces();
     console.log(this.tableData)
   }
 
-  getAllDeces(page:number, size:number){
-    this.decesservice.getAllDeces(page,size).subscribe(data=>{
-      this.tableData = data.deces
-      console.log(this.tableData)
+  getAllDeces(){
+    this.decesservice.getAllDeces().subscribe(data=>{
+      console.log('====================================');
+      console.log(data);
+      console.log('====================================');
+      this.tableData = data
     })
   }
   showRow(element: any) {
@@ -80,6 +82,6 @@ export class DecesListComponent implements OnInit {
   handlePageChange(event: PageEvent) {
     this.page = event.pageIndex;
     this.size = event.pageSize;
-    this.getAllDeces(this.page, this.size);
+    this.getAllDeces();
   }
 }

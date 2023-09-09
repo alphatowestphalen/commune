@@ -13,8 +13,8 @@ export class DecesService {
 
   constructor(private http: HttpClient) { }
 
-  getAllDeces(size: number, page: number ): Observable<any> {
-    return this.http.get(`${this.baseURl}?page=${page}&size=${size}`);
+  getAllDeces(): Observable<any> {
+    return this.http.get(`${this.baseURl}`);
   }
 
   // addDeces(id:number, deces: Object ): Observable<Object>{

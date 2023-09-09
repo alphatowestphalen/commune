@@ -269,6 +269,7 @@ export class NaissanceAddComponent implements OnInit {
     })
     this.PereFormGroup.value.avoirPere = true;
     }
+    
   printPage() {
     var printContents = document.getElementById('htmlData')!.innerHTML;
     var originalContents = document.body.innerHTML;
