@@ -65,12 +65,13 @@ export class ScopedAComponent implements OnInit {
   }
 
   Birthcertif(id: string) {
-   // this.router.navigate(['/dashboard/premiere-copie-voir', id]);
-   this.Demandefilter.value.idPremierCopie = id;
-   this.Demandefilter.value.typeDemande = 'ACTE_DE_NAISSANCE'
-   this.demandeservice.addDemandeCertificates(this.Demandefilter.value)?.subscribe(()=>{
-   //this.panelOpenState = !this.panelOpenState;
-    })
+   this.router.navigate(['/dashboard/premiere-copie-voir', id]);
+  //  this.Demandefilter.value.idPremierCopie = id;
+  //  this.Demandefilter.value.typeDemande = 'ACTE_DE_NAISSANCE'
+  //  this.panelOpenState = !this.panelOpenState;
+  //  this.demandeservice.addDemandeCertificates(this.Demandefilter.value)?.subscribe(()=>{
+  //  //this.panelOpenState = !this.panelOpenState;
+  //   })
   }
 
   Weddingcertif(id: string) {
