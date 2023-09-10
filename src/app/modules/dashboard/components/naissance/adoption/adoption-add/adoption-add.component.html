@@ -178,13 +178,12 @@
         </div>
 
         <div class="flex p-2 mt-4">
-          <button mat-button  matStepperPrevious class="text-md hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
-      hover:bg-gray-200  
-      bg-gray-100 
-      text-red-700 
-      border duration-200 ease-in-out 
-      border-red-600 transition">
-                {{'Annuler'|transloco}}</button>
+          <button mat-button matStepperPrevious class="text-md hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
+          hover:bg-gray-200  
+          bg-gray-100 
+          text-gray-700 
+          border duration-200 ease-in-out 
+          border-gray-600 transition">{{'Prècedent'|transloco}}</button>
           <div class="flex-auto flex flex-row-reverse">
               <button mat-button  (click)="FirstStep()" matStepperNext class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
       hover:bg-teal-600  
@@ -216,20 +215,20 @@
             </div>
             <div class="mb-4 w-4/5">
 
-              <label class="block mb-2 text-sm font-bold text-black">{{'PereAdoptif'|transloco}}</label>
-              <input type="text" formControlName = "pereAdoptif" id="pereAdoptif"
+              <label class="block mb-2 text-sm font-bold text-black">{{'Parents Adoptif'|transloco}}</label>
+              <input type="text" formControlName = "parentAdoptif" id="parentAdoptif"
                 class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
                 placeholder="{{'SaisirParentsadoptifs'|transloco}}" />
 
             </div>
-            <div class="mb-4 w-4/5">
+            <!-- <div class="mb-4 w-4/5">
 
               <label class="block mb-2 text-sm font-bold text-black">{{'MereAdoptif'|transloco}}</label>
               <input type="text" formControlName = "mereAdoptif" id="mereAdoptif"
                 class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
                 placeholder="{{'SaisirParentsadoptifs'|transloco}}" />
 
-            </div>
+            </div> -->
            
            
 
@@ -253,13 +252,12 @@
             </div>
           </div>
           <div class="flex p-2 mt-4">
-            <button mat-button  matStepperPrevious class="text-md hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
-        hover:bg-gray-200  
-        bg-gray-100 
-        text-red-700 
-        border duration-200 ease-in-out 
-        border-red-600 transition">
-                  {{'Annuler'|transloco}}</button>
+            <button mat-button matStepperPrevious class="text-md hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
+            hover:bg-gray-200  
+            bg-gray-100 
+            text-gray-700 
+            border duration-200 ease-in-out 
+            border-gray-600 transition">{{'Prècedent'|transloco}}</button>
             <div class="flex-auto flex flex-row-reverse">
               <button   (click)="openDialog()"
               mat-button matStepperNext class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 

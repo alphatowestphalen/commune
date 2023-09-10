@@ -113,8 +113,8 @@ tableData: any = [];
 
 
   handlePageChange(event: PageEvent) {
-
     this.getAllAdoptions(event.pageSize, event.pageIndex)
+
   }
 }
 

@@ -47,8 +47,7 @@ export class AdoptionAddComponent implements OnInit {
    
   });
   AdoptionFormGroup = this._formBuilder.group({
-    mereAdoptif: [''],
-    pereAdoptif: [''],
+    parentAdoptif: [''],
     dateAdoption: [''],
     heureAdoption: [''],
     numAdoption: [''],
@@ -61,18 +60,15 @@ export class AdoptionAddComponent implements OnInit {
   getAllFirstCertificate() {
     this.premierecopie.getFirstCertificates()
       .subscribe(data => {
-        this.adoption = data.premierCopies
-        console.log(this.adoption.premierCopies)
+        this.adoption = data.data
       })
   }
 
   onChange(event: any) {
-
     this.premierecopie.getCertificateByID(event)
       .subscribe(data => {
         this.certificate = data;
         this.EnfantFormGroup.value.dateEnfant = this.certificate.enfant.datenaissEnfant;
-        console.log( this.EnfantFormGroup.value.dateEnfant)
       })
   }
 
@@ -180,8 +176,8 @@ export class AdoptionCopieComponent {
     sexe: string;
 
   ngOnInit() {
-    this.data.idPremierCopie = this.data.idPremierCopie.slice(0, -4);
-    console.log("data",this.data.idPremierCopie)
+  //  this.data.idPremierCopie = this.data.idPremierCopie.slice(0, -4);
+   // console.log("data",this.data.idPremierCopie)
 
     if(this.data.sexeEnfant == "fille"){
       return this.sexe == "zazavavy"
@@ -198,7 +194,6 @@ export class AdoptionCopieComponent {
       const dialogRef = this.dialog.closeAll();
       this.router.navigate(['/dashboard/adoption-naissance']);
     })
-    console.log(this.data)
 
   }
 }
