@@ -21,7 +21,6 @@ export class BulletinComponent implements OnInit {
   bulletin: any;
   surveyModel: any;
   surveyCreatorModel: any;
-  size: any = '';
 
   // variable alphato
   buletinNaissance:BulletinNaicensse = {
@@ -40,8 +39,8 @@ export class BulletinComponent implements OnInit {
     createdDate: "2023-09-07T14:27:20.053Z"
   }
   // end
-
-  page = 0;
+  size: 5;
+  page = 1;
 
   search: any;
 
@@ -87,35 +86,26 @@ export class BulletinComponent implements OnInit {
   @ViewChild('htmlData') htmlData!: ElementRef;
 
   ngOnInit(): void {
-    const $ = this;
-    this.formService.getFormByTitle(this.formName).subscribe((data: any) => {
-      this.defaultJson = data.form.content;
-      const survey = new Model(this.defaultJson);
-
-      survey.onComplete.add(function (sender, options) {
-      //  options.showDataSaving();
-        $.OpenDialog(sender,options);
-   
-      });
-      this.surveyModel = survey;
-    });
-    // const creator = new SurveyCreatorModel(this.creatorOptions);
-    // creator.text = JSON.stringify(this.defaultJson);
-    // this.surveyCreatorModel = creator;
+    this.getAllBulletinNaissance(this.size, this.page);
   }
 
-  OpenDialog(sender: any, options:any){
+  OpenDialog(){
     const dialogRef = this.dialog.open(AfficheCopieComponent, {
       maxWidth: '100vw',
       maxHeight: '100vh',
       height: '90%',
       width: '85%',
       panelClass: 'full-screen-modal',
-      data : [sender, options]
-
+      data : [this.buletinNaissance, this.creatorOptions]
     });
 
   } 
+  public getAllBulletinNaissance(size:number, page:number) {
+    this.bulletinService.getAllBulletin(size,page).subscribe((data: any) => {
+      this.tableData = data;
+      console.log(data);
+    });
+  }
 
   public saveBulletinNaissance(){
     this.bulletinservice.saveBulletin(this.buletinNaissance).subscribe(data=>{
@@ -143,23 +133,24 @@ sender:any; options: any;
   }
 
   saveBulletin(){
-  
-    // this.bulletinservice.addFirstCertificates(this.data).subscribe(data=>{
-
-    //   const dialogRef = this.dialog.closeAll();
-    //   this.router.navigate(['/dashboard/premiere-copie']);
-    // })
-    this.bulletinservice.saveBulletin(this.sender, this.options).subscribe(
-      (data) => {
-        this.options.showDataSavingSuccess();   
-        const dialogRef = this.dialog.closeAll();
-         this.router.navigate(['/dashboard/bulletin-naissance-list']);  
-      },
-      (error) => {
-        this.options.showDataSavingError();
-      }
-    );
-    console.log(this.data)
+    console.log('=============== saveBulletin =====================');
+    console.log(this.data[0]);
+    console.log('====================================');
+    this.bulletinservice.addBuletinNessanace(this.data[0]).subscribe(data=>{
+      const dialogRef = this.dialog.closeAll();
+      this.router.navigate(['/dashboard/bulletin-naissance-list']);
+    })
+  //   this.bulletinservice.saveBulletin(this.sender, this.options).subscribe(
+  //     (data) => {
+  //       this.options.showDataSavingSuccess();   
+  //       const dialogRef = this.dialog.closeAll();
+  //        this.router.navigate(['/dashboard/bulletin-naissance-list']);  
+  //     },
+  //     (error) => {
+  //       this.options.showDataSavingError();
+  //     }
+  //   );
+  //   console.log(this.data)
 
   }
 }

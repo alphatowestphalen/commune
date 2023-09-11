@@ -45,9 +45,9 @@ export class ReconnaissanceComponent implements OnInit {
   
   tableData: any = [];
 
-  size: any = '';
+  size=5;
 
-  page = 0;
+  page = 1;
 
   search: any;
 
@@ -74,7 +74,7 @@ export class ReconnaissanceComponent implements OnInit {
   getAllReconnaissances(size: number, page: number) {
     this.reconnaissanceservice.getReconnaissances(size, page)
     .subscribe(data=>{
-      this.tableData = data.reconnaissance;
+      this.tableData = data.data;
       console.log(this.tableData)
     })
 

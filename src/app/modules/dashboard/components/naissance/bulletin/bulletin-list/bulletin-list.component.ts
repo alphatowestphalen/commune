@@ -14,16 +14,36 @@ import { PremiereCopieService } from 'src/app/modules/dashboard/services/premier
 export class BulletinListComponent implements OnInit {
  Opendemande=  false;
   bulletin: any;
-  displayedColumns = [
-    'id',
-    'name',
-    'datenaiss',
-    'dateenregistrement',
-    'actions',
+  search: any;
+  tableColumns: Array<Column> = [
+    {
+      columnDef: 'idbulletin',
+      header: 'N° bulletin Copie',
+      cell: (element: Record<string, any>) => `${element['idBulletinNaissance']}`,
+    },
+    {
+      columnDef: 'nom',
+      header: 'Nom et Prénoms',
+      cell: (element: Record<string, any>) =>
+        `${element['nomPersonne']} ${element['prenomsPersonne']}`,
+    },
+    {
+      columnDef: 'dateAdoption',
+      header: 'Date de Bulletin  ',
+     cell: (element: Record<string, any>) => {
+        const datenaissEnfant = element['createdDate'];
+        const dateObj = new Date(datenaissEnfant);
+        const formattedDate = `${dateObj.getDate().toString().padStart(2, '0')}/${(dateObj.getMonth() + 1).toString().padStart(2, '0')}/${dateObj.getFullYear()}`;
+        return formattedDate;
+      }
+    },
+    {
+      columnDef: 'datePremierCopie',
+      header: 'Date 1ère Copie',
+      cell: (element: Record<string, any>) =>
+        `${element['dateCopie']}`,
+    },
   ];
-  dataSource!: MatTableDataSource<any>;
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  
   tableData: any;
   size:any = '';
   page = 0;
@@ -43,13 +63,10 @@ export class BulletinListComponent implements OnInit {
   getAllService(size: number, page: number){
     this.bulletinservice.getAllBulletin(size, page)
     .subscribe(data=>{
-      console.log('====================================');
-      console.log(data);
-      console.log('====================================');
-      this.tableData = data.BulletinNaiss 
-      this.dataSource = new MatTableDataSource(this.tableData);
-     this.dataSource.paginator = this.paginator
-      console.log(this.tableData,)
+      this.tableData = data.data 
+     console.log('====================================');
+     console.log(this.tableData);
+     console.log('====================================');
       
     })
 
@@ -58,13 +75,35 @@ export class BulletinListComponent implements OnInit {
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
     filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
-    this.dataSource.filter = filterValue;
   }
 
   showRow(element: any) {
     this.router.navigate(['/dashboard/premiere-copie-voir', element.idPremierCopie ])
 
   }
+  handlePageChange(event: PageEvent){
+    this.getAllService(event.pageSize, event.pageIndex)
+  
+  }
+  
+
+  // editRow(element: any) {
+  //   console.log('Edit row', element);
+  //   this.bulletinservice.updateJugement(element.idJugement, element)
+  //     .subscribe((data: any)=> {
+  //       this.getAllJugements(this.size, this.page)
+        
+  //     })
+  // }
+
+  // deleteRow(element: any) {
+  //   this.jugementservice.deleteJugement(element.idJugement)
+  //     .subscribe((data: any)=> { 
+  //       this.getAllJugements(this.size, this.page)
+  //       console.log('Delete row', data);
+  //     })
+  
+  // }
 
 
 

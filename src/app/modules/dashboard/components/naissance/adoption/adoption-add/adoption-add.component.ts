@@ -188,9 +188,10 @@ export class AdoptionCopieComponent {
   }
 
   saveCertificate() {
-
-    this.adoptionservice.addAdoption(this.data.idPremierCopie, this.data).subscribe(data => {
-
+    console.log('====================================');
+    console.log(this.data);
+    console.log('====================================');
+    this.adoptionservice.addAdoption(this.data).subscribe(data => {
       const dialogRef = this.dialog.closeAll();
       this.router.navigate(['/dashboard/adoption-naissance']);
     })

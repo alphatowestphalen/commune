@@ -139,9 +139,6 @@ export class NaissanceAddComponent implements OnInit {
   }
 
   openDialog() {
-   this.FiveStep();
-  
-  
     if (
       this.EnfantFormGroup.valid &&
       this.DeclarantFormGroup.valid &&
@@ -180,7 +177,7 @@ export class NaissanceAddComponent implements OnInit {
       });
     }
 
-    // console.log(this.data);
+    console.log(this.data);
   }
 
   Step(){
@@ -240,7 +237,7 @@ export class NaissanceAddComponent implements OnInit {
    const datenaiss = NombreEnLettre(currentdate[0]).concat(' ',MoisMalgache(currentdate[1]))
     this.dateregistre = datenaiss.concat(' ',NombreEnLettre(currentdate[2]) )
     console.log(this.dateregistre)
- return this.dateregistre, this.heureregistre
+    return this.dateregistre, this.heureregistre
   }
 
   public openPDF(): void {
@@ -325,9 +322,7 @@ export class AfficheCopieComponent {
   console.log(this.data)
   }
   saveCertificate(){
-  
     this.premierecopieservice.addFirstCertificates(this.data).subscribe(data=>{
-
       const dialogRef = this.dialog.closeAll();
       this.router.navigate(['/dashboard/premiere-copie']);
     })

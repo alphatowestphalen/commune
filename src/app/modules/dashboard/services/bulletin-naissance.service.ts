@@ -10,21 +10,12 @@ enum typeDemandeur {
   providedIn: 'root',
 })
 export class BulletinNaissanceService {
+  private baseURl: string = environment.baseUrl + '/bulletinNaissances';
   constructor(private readonly http: HttpClient) {}
 
-  private baseURl: string = environment.baseUrl + '/bulletinNaissances';
 
-  saveBulletin(sender: any, options: any) {
-    const type = typeDemandeur.externe;
-    const createdDate = new Date();
-
-    return this.http.post(
-      this.baseURl,
-      { type, createdDate, ...sender.data },
-      {
-        headers: { 'Content-Type': 'application/json; charset=utf-8' },
-      }
-    );
+  addBuletinNessanace(bulletinNaissances: Object ): Observable<any>{
+    return this.http.post(`${this.baseURl}`, bulletinNaissances);
   }
 
   getAllBulletin(size: number, page: number): Observable<any> {

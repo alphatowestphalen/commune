@@ -19,9 +19,9 @@ export class AdoptionComponent implements OnInit {
 
  adoption: any;
 
- size:any = '';
+ size = 5;
 
-page = 0;
+page = 1;
 
 search: any;
 
@@ -84,8 +84,7 @@ tableData: any = [];
   getAllAdoptions(size: number, page: number){
     this.adoptionservice.getAdoptions(size, page)
     .subscribe(data=>{
-      this.tableData = data.adoption;
-      console.log(this.tableData)
+      this.tableData = data.data;
     })
   }
   showRow(element: any) {

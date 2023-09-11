@@ -60,7 +60,8 @@
           [tableColumns]="tableColumns"
           [tableData]="tableData" (editEvent)="editRow($event)" (pageChange)="handlePageChange($event)" (deleteEvent)="deleteRow($event)"  (showEvent)="showRow($event)" >
         </app-mat-table>
-          <p *ngIf="!tableData || tableData.length === 0"><app-loading></app-loading></p>
+        <p *ngIf="!tableData || tableData.length === 0" class="text-gray-500 my-5 flex text-sm text-center items-center justify-center">Aucun valeur dans cette tableau ! <br> Veuillez ajouter le bulletin de naissance.</p>
+
 
         </div>
         </div>

@@ -19,8 +19,8 @@ private baseURl = environment.baseUrl+'/reconnaissances'
     return this.http.get(`${this.baseURl}`)
   }
 
-  addReconnaissance(id:number, Reconnaissance: Object ): Observable<Object>{
-    return this.http.post(`${this.baseURl}/${id}`, Reconnaissance);
+  addReconnaissance(Reconnaissance: Object ): Observable<any>{
+    return this.http.post(`${this.baseURl}`, Reconnaissance);
   }
 
   updateReconnaissance(id:number, Reconnaissance:Object):Observable<any>{

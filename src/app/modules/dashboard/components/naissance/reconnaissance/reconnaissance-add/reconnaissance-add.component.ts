@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { filter, distinctUntilChanged, debounceTime, tap, switchMap, finalize } from 'rxjs';
+import { ReconnaissanceInterface } from 'src/app/model/reconnaissence/Reconnaissance.interface';
 
 import { PremiereCopieService } from 'src/app/modules/dashboard/services/premiere-copie.service';
 import { ReconnaissanceService } from 'src/app/modules/dashboard/services/reconnaissance.service';
@@ -58,7 +59,7 @@ export class ReconnaissanceAddComponent implements OnInit {
   getAllFirstCertificate() {
     this.premierecopie.getFirstCertificates()
       .subscribe(data => {
-        this.reconnaissance = data.premierCopies
+        this.reconnaissance = data.data
         console.log(this.reconnaissance)
       })
   }
@@ -114,8 +115,6 @@ export class ReconnaissanceAddComponent implements OnInit {
 
   openDialog() {
 
-
-
     if (
       this.EnfantFormGroup.valid &&
       this.PiecesFormGroup.valid &&
@@ -157,15 +156,26 @@ export class ReconnaissanceAddComponent implements OnInit {
 export class AdoptionCopieComponent {
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private reconnaissanceService: ReconnaissanceService,
     public dialog: MatDialog, private router: Router) { }
+    reconnaissance: ReconnaissanceInterface = {
+      dateDeclaration: "",
+      idPremierCopie: "",
+      heureDeclaration: "",
+      infoPersonDeclarant: ""
+    };
 
   ngOnInit() {
     console.log("data", this.data.idPremierCopie)
   }
 
   saveCertificate() {
-
-    this.reconnaissanceService.addReconnaissance(this.data.idPremierCopie, this.data,).subscribe(data => {
-
+    this.reconnaissance.dateDeclaration = this.data.dateDeclaration;
+    this.reconnaissance.idPremierCopie = this.data.idPremierCopie;
+    this.reconnaissance.heureDeclaration = this.data.heureDeclaration;
+    this.reconnaissance.infoPersonDeclarant = this.data.infoPersonDeclarant;
+    console.log('==================add reconnaissance==================');
+    console.log(this.reconnaissance);
+    console.log('====================================');
+    this.reconnaissanceService.addReconnaissance(this.reconnaissance).subscribe(data => {
       const dialogRef = this.dialog.closeAll();
       this.router.navigate(['/dashboard/reconnaissance-naissance']);
     })

@@ -188,6 +188,9 @@ export class AdoptionCopieComponent {
   this.jusemant.dateDecret = this.data.dateDecret;
   this.jusemant.typeJugement = this.data.typeJugement;
   this.jusemant.infoChangement.push(this.data.infoChangement); 
+  console.log('====================================');
+  console.log(this.jusemant);
+  console.log('====================================');
     this.jugementservice.addJugement(this.jusemant).subscribe(data => {
       const dialogRef = this.dialog.closeAll();
       this.router.navigate(['/dashboard/jugement-naissance']);
