@@ -29,6 +29,7 @@ import { MariageVoirComponent } from './components/mariage/mariage/mariage-voir/
 import { DecesListComponent } from './components/deces/deces-list/deces-list.component';
 import { DecesAddComponent } from './components/deces/deces-add/deces-add.component';
 import { DecesShowComponent } from './components/deces/deces-show/deces-show.component';
+import { CelibataireAddComponent } from './components/mariage/celibataire/celibataire-add/celibataire-add.component';
 
 const routes: Routes = [
   {
@@ -66,6 +67,7 @@ const routes: Routes = [
       { path: 'mariage-show/:id', component: MariageVoirComponent },
       { path: 'divorce-list', component: DivorceComponent },
       { path: 'celibat-list', component: CelibataireComponent },
+      { path: 'celibataire-add', component: CelibataireAddComponent },
       { path: 'deces-list', component: DecesListComponent },
       { path: 'add-deces', component: DecesAddComponent },
       { path: 'show-deces/:id', component: DecesShowComponent },

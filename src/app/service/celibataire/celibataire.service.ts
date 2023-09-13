@@ -15,4 +15,7 @@ export class CelibataireService {
   getAllCellibataire(size: number, page: number):Observable<any> {
     return this._http.get<any>(this.url + '/acteCelibataires?page='+page+'&size='+size);
   }
+  addCellibataires(acteCelibataire:Object):Observable<any> {
+    return this._http.post(this.url + '/acteCelibataires', acteCelibataire);
+  }
 }

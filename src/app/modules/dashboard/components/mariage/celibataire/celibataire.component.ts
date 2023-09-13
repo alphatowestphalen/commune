@@ -1,9 +1,8 @@
-import { Component, OnInit,ViewChild } from '@angular/core';
+import { Component, Inject, OnInit,ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { CelibataireService } from 'src/app/service/celibataire/celibataire.service';
 import { Router } from '@angular/router';
-import { ActeCelibataire } from 'src/app/model/acteCelibataire/ActeCelibataire.interface';
 
 @Component({
   selector: 'app-celibataire',
@@ -26,8 +25,8 @@ export class CelibataireComponent implements OnInit {
   
   tableData: any;
 
-  size:number = 5;
-  page = 0;
+  size = 5;
+  page = 1;
   nombre: number = 0;
   constructor(private acteCelibataire:CelibataireService,private router: Router ) { }
 
@@ -48,6 +47,9 @@ export class CelibataireComponent implements OnInit {
     getAllService(size: number, page: number){
       this.acteCelibataire.getAllCellibataire(size, page)
       .subscribe(data=>{
+        console.log('============ getAllService celibataire ========================');
+        console.log(data);
+        console.log('====================================');
         this.tableData = data.data;
         this.dataSource = new MatTableDataSource(this.tableData);
        this.dataSource.paginator = this.paginator
@@ -57,3 +59,4 @@ export class CelibataireComponent implements OnInit {
   
     }
 }
+

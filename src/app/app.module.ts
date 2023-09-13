@@ -14,6 +14,7 @@ import { SpinnerComponent } from './shared/components/spinner/spinner.component'
 import { TokenInterceptor } from './core/interceptor/token.interceptor';
 import { TranslocoRootModule } from './transloco-root.module';
 import { FormsModule } from '@angular/forms';
+import { MatStepperModule } from '@angular/material/stepper';
 
 
 
@@ -27,6 +28,7 @@ import { FormsModule } from '@angular/forms';
     SharedModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    MatStepperModule,
     SurveyModule,
     SurveyCreatorModule,
     AngularToastifyModule,

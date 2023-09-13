@@ -62,9 +62,6 @@ export class DecesListComponent implements OnInit {
 
   getAllDeces(){
     this.decesservice.getAllDeces().subscribe(data=>{
-      console.log('====================================');
-      console.log(data);
-      console.log('====================================');
       this.tableData = data
     })
   }

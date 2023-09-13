@@ -64,6 +64,7 @@ import { TranslocoModule } from '@ngneat/transloco';
 import { UtilisateurVoirComponent } from './components/utilisateur/utilisateur-voir/utilisateur-voir.component';
 
 import { UtilisateurEditComponent } from './components/utilisateur/utilisateur-edit/utilisateur-edit.component';
+import { CelibataireAddComponent } from './components/mariage/celibataire/celibataire-add/celibataire-add.component';
 
 @NgModule({
   exports: [SurveyCreatorModule, SurveyModule, BulletinNaissanceComponent, CopieComponent],
@@ -98,6 +99,7 @@ import { UtilisateurEditComponent } from './components/utilisateur/utilisateur-e
     MariageAddComponent,
     TableMariageComponent,
     CelibataireComponent,
+    CelibataireAddComponent,
     UtilisateurListComponent,
     UtilisateurAddComponent,
     MariageVoirComponent,
