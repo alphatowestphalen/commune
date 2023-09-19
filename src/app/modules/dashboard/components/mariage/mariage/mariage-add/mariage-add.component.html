@@ -113,12 +113,12 @@
 
           </form>
           <div class="flex p-2 mt-4">
-            <button mat-button matStepperPrevious class="text-md hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
+            <button mat-button routerLink="/dashboard/mariage-list" class="text-md hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
         hover:bg-gray-200  
         bg-gray-100 
-        text-gray-700 
+        text-red-700 
         border duration-200 ease-in-out 
-        border-gray-600 transition">{{'Prècedent'|transloco}}</button>
+        border-red-600 transition ">{{'Annuler'|transloco}}</button>
             <div class="flex-auto flex flex-row-reverse">
               <button mat-button matStepperNext (click)="FirstStep" class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
                 hover:bg-teal-600  
@@ -154,13 +154,13 @@
 
 
           <div class="flex p-2 mt-4">
-            <button routerLink="/dashboard/premiere-copie" class="text-md hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
+            <button mat-button matStepperPrevious class="text-md hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
   hover:bg-gray-200  
   bg-gray-100 
   text-red-700 
   border duration-200 ease-in-out 
   border-red-600 transition">
-              {{'Annuler'|transloco}}</button>
+              {{'Precedant'|transloco}}</button>
             <div class="flex-auto flex flex-row-reverse">
               <button mat-button (click)="HommeStep()" matStepperNext class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
   hover:bg-teal-600  
@@ -290,6 +290,25 @@
                 <div class=" lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
                   <div class="mb-4 w-4/5">
 
+                    <label class="block mb-2 text-sm font-bold text-black">{{'Code premier Copier'|transloco}}</label>
+                    <input type="text" readonly value="{{CopieSelected?.idPremierCopie}}"
+                      class="bg-gray-50 block uppercase w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                      placeholder="{{'SaisirNomEnfant'|transloco}}" />
+
+                  </div>
+                  <div class="mb-4 w-4/5">
+
+                    <label class="block mb-2 text-sm font-bold text-black">{{'Date de naissance'|transloco}}</label>
+                    <input type="date" readonly value="{{CopieSelected?.enfant.datenaissEnfant}}"
+                      class="bg-gray-50 block capitalize w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                      placeholder="{{'SaisirPrenomsEnfant'|transloco}}" />
+
+                  </div>
+
+                </div>
+                <div class=" lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
+                  <div class="mb-4 w-4/5">
+
                     <label class="block mb-2 text-sm font-bold text-black">{{'Nomenfant'|transloco}}</label>
                     <input type="text" readonly value="{{CopieSelected?.enfant.nomEnfant}}"
                       class="bg-gray-50 block uppercase w-full p-2.5 border-gray-300 rounded-lg text-md border"
@@ -306,6 +325,7 @@
                   </div>
 
                 </div>
+                
                 <div class="lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
                   <div class="mb-4 w-4/5">
 
@@ -648,7 +668,6 @@
                 </mat-select>
               </mat-form-field>
             </div>
-
 
           </div>
 

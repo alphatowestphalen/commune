@@ -53,9 +53,8 @@ export class NaissanceAddComponent implements OnInit {
   isPere:boolean = true;
 
 
-  NumCopie: any;
-   enableMeridian: boolean= true;
-
+    NumCopie: any;
+    enableMeridian: boolean= true;
   constructor(private _formBuilder: FormBuilder, public dialog: MatDialog, private maireservice: MaireService,  private premierecopieservice: PremiereCopieService  ) {}
 
   PiecesFormGroup = this._formBuilder.group({
@@ -263,7 +262,6 @@ export class NaissanceAddComponent implements OnInit {
   getLastNumPremierCopie(){
     this.premierecopieservice.getLastIdCerticate().subscribe(data=>{
       this.NumeroCopie = data
-      
     })
     this.PereFormGroup.value.avoirPere = true;
     this.CopieFormGroup.value.idPremierCopie = this.NumeroCopie
@@ -319,9 +317,11 @@ export class AfficheCopieComponent {
    public dialog: MatDialog, private router:Router  ) {}
 
   ngOnInit() {
-  console.log(this.data)
   }
   saveCertificate(){
+    console.log('====================================');
+    console.log(this.data);
+    console.log('====================================');
     this.premierecopieservice.addFirstCertificates(this.data).subscribe(data=>{
       const dialogRef = this.dialog.closeAll();
       this.router.navigate(['/dashboard/premiere-copie']);

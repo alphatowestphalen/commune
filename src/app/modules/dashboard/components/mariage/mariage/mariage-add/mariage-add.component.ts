@@ -34,6 +34,7 @@ export class MariageAddComponent implements OnInit {
   isLoading = false;
   errorMsg!: string;
   minLengthTerm = 1;
+  idCopieSelected:any = "";
   CopieSelected: any = "";
   isTypeHomme = false;
   isTypeFemme = false;
@@ -192,8 +193,7 @@ export class MariageAddComponent implements OnInit {
         //   this.errorMsg = "";
 
         // }
-        this.filteredCopies = data.premierCopies;
-        console.log(data);
+        this.filteredCopies = data.data;
       });
   }
 
@@ -216,9 +216,10 @@ export class MariageAddComponent implements OnInit {
   }
 
   onSelected() {
-    console.log(this.CopieSelected);
-    this.CopieSelected = this.CopieSelected;
-
+    console.log('====================================');
+    console.log(this.CopieSelected.idPremierCopie);
+    console.log('====================================');
+    this.CopieSelected = this.CopieSelected.idPremierCopie;
   }
 
   displayWith(value: any) {
