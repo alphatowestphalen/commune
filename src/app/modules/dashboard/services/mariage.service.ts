@@ -14,11 +14,11 @@ export class MariageService {
     constructor(private http :HttpClient){}
 
     addMariage(mariage : Object, homme: String , femme: String):Observable<any>{
-      return this.http.post(`${this.baseUrl}/${homme}/${femme}`, mariage);
+      return this.http.post(`${this.baseUrl}/${homme}-${femme}`, mariage);
     }
  
-    getAllMariage(page: number, size: number):Observable<any>{
-      return this.http.get(`${this.baseUrl}/?page=${page}&size=${size}`);
+    getAllMariage(size: number, page: number):Observable<any>{
+      return this.http.get(`${this.baseUrl}?page=${page}&size=${size}`);
     }
 
     getMariageById(idMariage: number):Observable<any>{

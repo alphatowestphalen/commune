@@ -17,7 +17,7 @@ export class MariageComponent implements OnInit {
     {
       columnDef: 'Numèro Mariage',
       header: 'Numèro',
-      cell: (element: Record<string, any>) => `${element['numero'] }`
+      cell: (element: Record<string, any>) => `${element['idMariage'] }`
     },
     {
       columnDef: 'Nom et Prènoms Homme',
@@ -51,22 +51,24 @@ export class MariageComponent implements OnInit {
     }
   ];
 
-  tableData: any = [];
+tableData: any = [];
 mariage: any = [];
-size: any ='';
-page = 0;
+size= 5;
+page = 1;
   constructor(private mariageservice: MariageService, private router:Router,public translocoService: TranslocoService) { }
 
   ngOnInit(): void {
-this.AllListMariages(this.size, this.page)
+    this.AllListMariages(this.size, this.page)
   }
 
   AllListMariages(size: number, page: number){
-    this.mariageservice.getAllMariage(page, size)
+    this.mariageservice.getAllMariage(size, page)
     .subscribe(data=>{
-      this.tableData = data.mariages,
+      console.log('================AllListMariages====================');
+      console.log(data.data);
+      console.log('====================================');
+      this.tableData = data.data,
       this.size = data.length
-      console.log(this.tableData, this.size)
     })
   }
 
@@ -85,5 +87,13 @@ this.AllListMariages(this.size, this.page)
 
   deleteRow(element: any){
 
+  }
+
+  getAllService(){
+    this.mariageservice.getAllMariage(this.page, this.size).subscribe(data=>{
+      console.log('====================================');
+      console.log(data);
+      console.log('====================================');
+    })
   }
 }

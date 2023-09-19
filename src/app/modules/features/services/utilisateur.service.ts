@@ -18,8 +18,8 @@ getAllUsers(size: number, page: number):Observable<any>{
     return this.http.get(`${this.baseURl}?page=${page}&size=${size}`)
 }
 
-historiqueUser(){
-    return this.http.get(`${this.Url}/historiques`)
-}
+// historiqueUser(){
+//     return this.http.get(`${this.Url}/historiques`)
+// }
 
 }

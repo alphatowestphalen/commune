@@ -5,6 +5,7 @@ import { MatSort } from '@angular/material/sort';
 import { TranslocoService } from '@ngneat/transloco';
 import { MatTableDataSource } from '@angular/material/table';
 import { UtilisateurService } from '../../../services/utilisateur.service';
+import { DashboardService } from '../../../services/dashboard.service';
 
 
 @Component({
@@ -15,7 +16,7 @@ import { UtilisateurService } from '../../../services/utilisateur.service';
 export class NaissanceHomeComponent implements OnInit {
   
 
-  constructor(private  UserService:UtilisateurService,public translocoService: TranslocoService){}
+  constructor(private  UserService:UtilisateurService,private dashboardService:DashboardService , public translocoService: TranslocoService){}
 
   historique:any = "";
   displayedColumns = [
@@ -33,10 +34,15 @@ export class NaissanceHomeComponent implements OnInit {
   size:any = '';
   page = 0;
   nombre: number = 0;
+  statistiquePremierCopie:number ;
+  statistiqueAdoption:number ;
+  statistiqueJugement:number ;
+  statistiqueReconaissance:number ;
+
 
   ngOnInit(): void {
     this.getAllHistorique();
-   
+   this.getAllState();
   }
 
   switchLanguage(lang: string) {
@@ -52,6 +58,17 @@ export class NaissanceHomeComponent implements OnInit {
     })
   }
 
+  /**
+   * name
+   */
+  public getAllState() {
+    this.dashboardService.getAllStatus().subscribe((status) => {
+      this.statistiquePremierCopie = status.premierCopie.nombre.nombre;
+      this.statistiqueJugement = status.jugement.nombre.nombre;
+      this.statistiqueReconaissance = status.reconnaissance.nombre.nombre;
+      this.statistiqueAdoption = status.adoption.nombre.nombre;
+    })
+  }
 
   } 
   

@@ -3,6 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { UtilisateurService } from '../../services/utilisateur.service';
+import { DashboardService } from 'src/app/modules/dashboard/services/dashboard.service';
 
 
 @Component({
@@ -11,9 +12,16 @@ import { UtilisateurService } from '../../services/utilisateur.service';
   styleUrls: ['./scoped-b.component.scss']
 })
 export class ScopedBComponent implements OnInit {
+  tableData: any;
+  size:any = '';
+  page = 0;
+  nombre: number = 0;
+  acteDeNaisse: number; // acte de naissance
+  acteDeMariage: number; // acte de mariage
+  acteDeDecee: number; // acte de dece
+  nbrUser:number; // nbr user 
 
-  constructor( private userservice:UtilisateurService ) {
-  } 
+  constructor( private userservice:UtilisateurService, private dashboardService: DashboardService) {} 
  
   historique:any = "";
   displayedColumns = [
@@ -29,21 +37,19 @@ export class ScopedBComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   
-  tableData: any;
-  size:any = '';
-  page = 0;
-  nombre: number = 0;
+ 
 
   ngOnInit(): void {
-    this.getAllHistorique();
-   
+    // this.getAllHistorique();
+    this.getAllState();
   }
 
-  getAllHistorique(){
-    this.userservice.historiqueUser().subscribe((data: any)=>{
-      this.historique = data
-      this.dataSource = new MatTableDataSource(this.historique);
-      this.dataSource.paginator = this.paginator;
+  getAllState(){
+    this.dashboardService.getAllStatus().subscribe((data: any)=>{
+      this.acteDeNaisse = data.bulletinNaissance.nombre.nombre;
+      this.acteDeMariage = data.mariage.nombre.nombre;
+      this.acteDeDecee = data.acteDeces.nombre.nombre;
+      this.nbrUser = data.nbrUser;
     })
   }
 }

@@ -102,9 +102,6 @@ export class PremiereCopieComponent implements OnInit {
 
 
   getfirstCertificates(size: number, page: number) {
-    console.log('====================================');
-    console.log('size', size, 'page', page);
-    console.log('====================================');
     this.premierecopieservice.getCertificates(size, page)
       .subscribe(data => {
         this.tableData = data.data;

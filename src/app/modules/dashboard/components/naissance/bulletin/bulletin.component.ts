@@ -126,7 +126,6 @@ export class AfficheCopieComponent {
    public dialog: MatDialog, private router:Router  ) {}
 sender:any; options: any;
   ngOnInit() {
- 
   this.sender = this.data[0],
   this.options = this.data[1]
  console.log(this.sender.valuesHash)

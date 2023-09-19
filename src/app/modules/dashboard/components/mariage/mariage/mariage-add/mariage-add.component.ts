@@ -219,7 +219,7 @@ export class MariageAddComponent implements OnInit {
     console.log('====================================');
     console.log(this.CopieSelected.idPremierCopie);
     console.log('====================================');
-    this.CopieSelected = this.CopieSelected.idPremierCopie;
+    this.CopieSelected = this.CopieSelected;
   }
 
   displayWith(value: any) {
@@ -235,6 +235,9 @@ export class MariageAddComponent implements OnInit {
   getAllMaire(){
     this.maireservice.getAllMaire().subscribe(data=>{
       this.maire = data;
+      console.log('================maire add mariage====================');
+      console.log(this.maire);
+      console.log('====================================');
     })
   }
 
