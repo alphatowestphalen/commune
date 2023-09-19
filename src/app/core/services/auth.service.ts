@@ -12,13 +12,9 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService {
-
-  
-   private baseUrl = environment.baseUrl;
-
+  private baseUrl = environment.baseUrl;
   constructor(private http: HttpClient, private token: TokenService, public router: Router) { }
 
- 
   login(user: User): Observable<any> {
     return this.http.post(`${this.baseUrl}/auth/login`,user);
   }
@@ -27,16 +23,8 @@ export class AuthService {
     return this.http.post(`${this.baseUrl}/auth/register`, user);
   }
 
-
-  // logout():{
-  //  // return this.http.post(`${this.baseUrl}/auth/logout`,{})
-
-  // }
-
   logout():void{
       this.token.removeToken();
       this.router.navigate(['sign-in']);
     }
-  
-
 }
