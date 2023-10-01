@@ -1,52 +1,19 @@
 <div class="bg-gray-100 flex justify-center items-center">
-  <div class="container mx-auto bg-yellow-300 rounded-lg p-10 pt-3">
+  <div class="container mx-auto  rounded-lg pt-3">
     <form>
-      <span class="inline-flex w-full">
-        <h1
-          class="inline mx-auto ml-0 text-left font-bold text-gray-100 text-2xl"
-        >
-           {{ 'rechercheRegistre' | transloco }}
-        </h1>
-        <button
-          routerLink="/demande/scoped-board"
-          class="shadow-md inline-flex items-center capitalize mr-0 px-4 bg-blue-400 hover:bg-blue-800 text-gray-100 text-sm font-medium rounded-md"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-5 w-5 mr-2"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"
-            />
-          </svg>
-
-          {{ 'tableauBord' | transloco }}
-        </button>
-      </span>
-
-      <p class="mx-auto font-normal inline-flex text-sm my-6 max-w-lg">
-        {{ 'effectrecherche' | transloco }}
-      </p>
       <div
         class="sm:flex items-center bg-white rounded-lg overflow-hidden px-2 py-1 justify-between"
       >
         <input
-          matInput
-          [(ngModel)]="CopieSelected"
+          [(ngModel)]="serach"
+          name="serach"
           class="text-base text-black flex-grow outline-none px-2"
           type="text"
-          [formControl]="searchDemande"
           placeholder="{{ 'saisieNumCopie' | transloco }}"
         />
         <div class="ms:flex items-center px-2 rounded-lg space-x-4 mx-auto">
           <button
-            (click)="Search()"
+            (click)="Search()" 
             class="bg-indigo-500 text-white text-base rounded-lg px-4 py-2 font-bold"
           >
           {{ 'recherche' | transloco }}

@@ -79,7 +79,7 @@ export class SignInComponent implements OnInit {
         () => {
           this.loginForm.reset();
           // this._toastService.success('Vous êtes la bienvenue');
-          this.router.navigate(['demande']);
+          this.router.navigate(['dashboard/naissance']);
         }
       );
     }

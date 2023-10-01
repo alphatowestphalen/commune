@@ -34,91 +34,175 @@
             </div>
         </div>
     </div>
+    <form #addForm="ngForm">
+        <mat-horizontal-stepper #stepper>
 
-    <mat-horizontal-stepper #stepper>
-        <mat-step>
-            <form>
-                <ng-template matStepLabel> {{'Dossier'|transloco}} <br>
-                    <span class="font-normal text-xs text-gray-400">{{'CheckDossier'|transloco}}</span>
+            <!-- information Dossier-->
+            <mat-step>
+                <form>
+                    <ng-template matStepLabel> {{'Dossier'|transloco}} <br>
+                        <span class="font-normal text-xs text-gray-400">{{'CheckDossier'|transloco}}</span>
+                    </ng-template>
+                    <div class="lg:grid md:grid-flow-col grid-cols-2 gap-4 mt-20">
+                        <div class="mb-4  w-60">
+                            <label class="label cursor-pointer w-60">
+                                <input type="checkbox" checked="checked" class="checkbox" />
+                                <span class="label-text">{{'Certificataccouchement'|transloco}}</span>
+                            </label>
+                        </div>
+                        <div class="mb-4  w-60">
+                            <label class="label cursor-pointer">
+                                <input type="checkbox" checked="checked" class="checkbox" />
+                                <span class="label-text">{{'LivréedeFamille'|transloco}}</span>
+
+                            </label>
+                        </div>
+
+                    </div>
+                    <div class="lg:grid md:grid-flow-col grid-cols-2 gap-4">
+                        <div class="mb-4 w-60">
+                            <label class="label cursor-pointer ">
+                                <input type="checkbox" checked="checked" class="checkbox" />
+                                <span class="label-text">{{'PhotocopieCINdelamère'|transloco}}</span>
+
+                            </label>
+                        </div>
+                        <div class="mb-4 w-60">
+                            <label class="label cursor-pointer ">
+                                <input type="checkbox" checked="checked" class="checkbox" />
+                                <span class="label-text">{{'PhotocopiedeCINdeclarant'|transloco}}</span>
+
+                            </label>
+                        </div>
+                    </div>
+
+
+                    <div class="flex p-2 mt-4">
+                        <button routerLink="/dashboard/premiere-copie" class="text-md hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
+                  hover:bg-gray-200  
+                  bg-gray-100 
+                  text-red-700 
+                  border duration-200 ease-in-out 
+                  border-red-600 transition">
+                            {{'Annuler'|transloco}}</button>
+                        <div class="flex-auto flex flex-row-reverse">
+                            <button mat-button matStepperNext class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
+                  hover:bg-teal-600  
+                  bg-teal-600 
+                  text-teal-100 
+                  border duration-200 ease-in-out 
+                  border-teal-600 transition">{{'Suivant'|transloco}}</button>
+
+                        </div>
+                    </div>
+
+                </form>
+            </mat-step>
+            <!-- information Declarante -->
+            <mat-step>
+                <ng-template matStepLabel> {{'Declarante'|transloco}} <br>
+                    <span class="font-normal text-xs text-gray-400">{{'Informationpersonnel'|transloco}}</span>
                 </ng-template>
-                <div class="lg:grid md:grid-flow-col grid-cols-2 gap-4 mt-20">
-                    <div class="mb-4  w-60">
-                        <label class="label cursor-pointer w-60">
-                            <input type="checkbox" checked="checked" class="checkbox" />
-                            <span class="label-text">{{'Certificataccouchement'|transloco}}</span>
-                        </label>
-                    </div>
-                    <div class="mb-4  w-60">
-                        <label class="label cursor-pointer">
-                            <input type="checkbox" checked="checked" class="checkbox" />
-                            <span class="label-text">{{'LivréedeFamille'|transloco}}</span>
+                <div class=" lg:grid md:grid-flow-col grid-cols-2 mt-2  gap-4">
+                    <div class="mb-4 w-4/5">
 
-                        </label>
+                        <label class="block mb-2 text-sm font-bold text-black">{{'Nom'|transloco}} </label>
+                        <input type="text" name="nomDeclarante" [(ngModel)]="deceInterface.nomDeclarant"
+                            class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                            placeholder="{{'SaisirNomduDeclarante'|transloco}}" />
+
+                    </div>
+                    <div class="mb-4 w-4/5">
+
+                        <label class="block mb-2 text-sm font-bold text-black">{{'Prenoms'|transloco}} </label>
+                        <input type="text" name="prenomsDeclarante" [(ngModel)]="deceInterface.prenomsDeclarant"
+                            class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                            placeholder="{{'SaisirPrènomsduDeclarante'|transloco}}" />
+
                     </div>
 
                 </div>
-                <div class="lg:grid md:grid-flow-col grid-cols-2 gap-4">
-                    <div class="mb-4 w-60">
-                        <label class="label cursor-pointer ">
-                            <input type="checkbox" checked="checked" class="checkbox" />
-                            <span class="label-text">{{'PhotocopieCINdelamère'|transloco}}</span>
-
-                        </label>
+                <div class="lg:grid md:grid-flow-col grid-cols-3 mt-2  gap-4">
+                    <div class="mb-4 w-4/5">
+                        <label class="block mb-2 text-sm font-bold text-black">{{'DateNaissance'|transloco}}</label>
+                        <input type="date" name="dateNaissanceDeclarant" [(ngModel)]="deceInterface.dateNaissanceDeclarant"
+                            class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                            placeholder="{{'SaisirDatedeNaissanceduDeclarante'|transloco}}" />
                     </div>
-                    <div class="mb-4 w-60">
-                        <label class="label cursor-pointer ">
-                            <input type="checkbox" checked="checked" class="checkbox" />
-                            <span class="label-text">{{'PhotocopiedeCINdeclarant'|transloco}}</span>
-
-                        </label>
+                    <div class="mb-4 w-4/5">
+                        <label class="block mb-2 text-sm font-bold text-black">{{'LieuNaissance'|transloco}}</label>
+                        <input type="text" name="lieuNaissanceDeclarant" [(ngModel)]="deceInterface.lieuNaissanceDeclarant"
+                            class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                            placeholder="{{'SaisirLieudeNaissanceduDeclarante'|transloco}} " />
                     </div>
+                    <div class="mb-4 w-4/5">
+                        <label class="block mb-2 text-sm font-bold text-black">{{'ProfessionDeclarant'|transloco}}</label>
+                        <input type="text" name="professionDeclarant" [(ngModel)]="deceInterface.professionDeclarant"
+                            class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                            placeholder="{{'SaisirLieudeNaissanceduDeclarante'|transloco}} " />
+                    </div>
+
                 </div>
+                <div class="lg:grid md:grid-flow-col grid-cols-3 mt-2  gap-4">
 
+                    <div class="mb-4 w-4/5">
+                        <label class="block mb-2 text-sm font-bold text-black">{{'AdresseExacte'|transloco}}</label>
+                        <input type="text" name="adresseDeclarant" [(ngModel)]="deceInterface.adresseDeclarant"
+                            class=" bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                            placeholder="{{'SaisirAdresseduDeclarante'|transloco}}" />
+                    </div>
+                    <div class="mb-4 w-4/5">
+                        <label class="block mb-2 text-sm font-bold text-black">{{'date de declaration'|transloco}}</label>
+                        <input type="date" name="dateDeclaration" [(ngModel)]="deceInterface.dateDeclaration"
+                            class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                            placeholder="{{'SaisirAdresseduDeclarante'|transloco}}" />
+                    </div>
+                    <div class="mb-4 w-4/5">
+                        <label class="block mb-2 text-sm font-bold text-black">{{'heurs de declaration'|transloco}}</label>
+                        <input type="time" name="heureDeclaration" [(ngModel)]="deceInterface.heureDeclaration"
+                            class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                            placeholder="{{'SaisirAdresseduDeclarante'|transloco}}" />
+                    </div>
 
+                </div>
                 <div class="flex p-2 mt-4">
-                    <button routerLink="/dashboard/premiere-copie" class="text-md hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
-              hover:bg-gray-200  
-              bg-gray-100 
-              text-red-700 
-              border duration-200 ease-in-out 
-              border-red-600 transition">
-                        {{'Annuler'|transloco}}</button>
+                    <button mat-button matStepperPrevious class="text-md hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
+                hover:bg-gray-200  
+                bg-gray-100 
+                text-gray-700 
+                border duration-200 ease-in-out 
+                border-gray-600 transition">{{'Prècedent'|transloco}}</button>
                     <div class="flex-auto flex flex-row-reverse">
-                        <button mat-button matStepperNext class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
-              hover:bg-teal-600  
-              bg-teal-600 
-              text-teal-100 
-              border duration-200 ease-in-out 
-              border-teal-600 transition">{{'Suivant'|transloco}}</button>
+                        <button (click)="FortyStep()" mat-button matStepperNext class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
+                hover:bg-teal-600  
+                bg-teal-600 
+                text-teal-100 
+                border duration-200 ease-in-out 
+                border-teal-600 transition">{{'Suivant'|transloco}}</button>
 
                     </div>
                 </div>
+            </mat-step>
+            <!-- information Premièrecopie -->
+            <mat-step>
+                <ng-template matStepLabel> {{'PremièreCopie'|transloco}} <br>
+                    <span class="font-normal text-xs text-gray-400">{{'RecupererPremiereCopie'|transloco}}</span>
+                </ng-template>
+                <mat-form-field class="w-full">
+                    <mat-select [(ngModel)]="deceInterface.idPremierCopie" class="w-full" name="idPremierCopie"
+                        (selectionChange)="Onchange($event)" (closed)="closedDeces()">
+                        <mat-form-field class="w-full">
+                            <mat-label>{{'Recherche'|transloco}}</mat-label>
+                            <input matInput name="idPremierCopie" [(ngModel)]="deceInterface.idPremierCopie" placeholder="Saisir le Nom de personne"
+                                class="w-full" (keydown.Space)="spaceDeces()">
+                        </mat-form-field>
+                        <mat-option *ngFor="let copie of deces|search:CopieSelected"
+                            [value]="copie.idPremierCopie"><span><b>{{copie.idPremierCopie}}</b>
+                                ({{copie.enfant.nomEnfant}}
+                                {{copie.enfant.prenomsEnfant}})</span></mat-option>
+                    </mat-select>
+                </mat-form-field>
 
-            </form>
-        </mat-step>
-
-        <mat-step [stepControl]="EnfantFormGroup">
-
-            <ng-template matStepLabel> {{'Premièrecopie'|transloco}}<br>
-                <span class="font-normal text-xs text-gray-400">{{'RecupererPremiereCopie'|transloco}}</span>
-            </ng-template>
-            <mat-form-field class="example-full-width">
-
-                <mat-select (formControl)="idPremierCopie" name="jugement" (selectionChange)="Onchange($event)"
-                    (closed)="closedDeces()">
-                    <mat-form-field class="w-full">
-                        <mat-label>{{'Recherche'|transloco}}</mat-label>
-                        <input matInput [(ngModel)]="CopieSelected" placeholder="Saisir le Nom de personne"
-                            class="w-full" (keydown.Space)="spaceDeces()">
-                    </mat-form-field>
-                    <mat-option *ngFor="let copie of deces|search:CopieSelected"
-                        [value]="copie.idPremierCopie"><span><b>{{copie.idPremierCopie}}</b> ({{copie.enfant.nomEnfant}}
-                            {{copie.enfant.prenomsEnfant}})</span></mat-option>
-                </mat-select>
-            </mat-form-field>
-
-
-            <form [formGroup]="EnfantFormGroup">
                 <div class="wrapper">
 
 
@@ -129,24 +213,21 @@
                     </ng-container>
                     <ng-template #elseTemplate>
 
-                        <div class=" lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4"
-                            *ngIf="certificate?.idPremierCopie">
+                        <div class=" lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
                             <div class="mb-4 w-4/5">
 
                                 <label class="block mb-2 text-sm font-bold text-black">{{'Nomenfant'|transloco}}</label>
-                                <input type="text" readonly value="{{certificate?.enfant.nomEnfant}}"
+                                <input type="text" readonly name="nomDefunt" [(ngModel)]="deceInterface.nomDefunt"
                                     class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
                                     placeholder="{{'SaisirNomEnfant'|transloco}}" />
 
                             </div>
                             <div class="mb-4 w-4/5">
-
                                 <label
                                     class="block mb-2 text-sm font-bold text-black">{{'Prenomsenfant'|transloco}}</label>
-                                <input type="text" readonly value="{{certificate?.enfant.prenomsEnfant}}"
+                                <input type="text" readonly name="prenomDefunt" [(ngModel)]="deceInterface.prenomDefunt"
                                     class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
                                     placeholder="{{'SaisirPrenomsEnfant'|transloco}}" />
-
                             </div>
 
                         </div>
@@ -155,7 +236,7 @@
 
                                 <label
                                     class="block mb-2 text-sm font-bold text-black">{{'DateNaissance'|transloco}}</label>
-                                <input type="text" readonly value="{{certificate?.enfant?.datenaissEnfant}}"
+                                <input type="text" readonly name="dateDeNaissDefunt" [(ngModel)]="deceInterface.dateDeNaissDefunt"
                                     class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
                                     placeholder="{{'SaisirDatedenaissanceEnfant'|transloco}}" />
 
@@ -163,24 +244,46 @@
                             <div class="mb-4 w-4/5">
 
                                 <label
-                                    class="block mb-2 text-sm font-bold text-black">{{'HeureNaissance'|transloco}}</label>
-                                <input type="text" readonly value="{{certificate?.enfant?.heurenaissEnfant}}"
-                                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                                    placeholder="{{'Saisirheuredenaissance'|transloco}}" />
-
-                            </div>
-                        </div>
-                        <div class="lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
-                            <div class="mb-4 w-4/5">
-
-                                <label
                                     class="block mb-2 text-sm font-bold text-black">{{'LieuNaissance'|transloco}}</label>
-                                <input type="text" readonly value="{{certificate?.enfant?.lieunaissEnfant}}"
+                                <input type="text" readonly name="lieuDeNaissDefunt" [(ngModel)]="deceInterface.lieuDeNaissDefunt"
                                     class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
                                     placeholder="{{'SaisirLieuNaissanceEnfant'|transloco}}" />
 
                             </div>
 
+                        </div>
+                        <div class="lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
+                            <div class="mb-4 w-4/5">
+
+                                <label class="block mb-2 text-sm font-bold text-black">{{'Numero CIN'|transloco}}</label>
+                                <input type="text" name="cinDefunt" [(ngModel)]="deceInterface.cinDefunt"
+                                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                                    placeholder="{{'Saisirheuredenaissance'|transloco}}" />
+
+                            </div>
+                            <div class="mb-4 w-4/5">
+
+                                <label class="block mb-2 text-sm font-bold text-black">{{'Lieu de CIN'|transloco}}</label>
+                                <input type="text"  name="lieuCinDefunt" [(ngModel)]="deceInterface.lieuCinDefunt"
+                                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                                    placeholder="{{'Saisirheuredenaissance'|transloco}}" />
+
+                            </div>
+
+                        </div>
+                        <div class="lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
+                            <div class="mb-4 w-4/5">
+                                <label class="block mb-2 text-sm font-bold text-black">{{'Date de CIN'|transloco}}</label>
+                                <input type="date"  name="dateCinDefunt" [(ngModel)]="deceInterface.dateCinDefunt"
+                                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                                    placeholder="{{'Saisirheuredenaissance'|transloco}}" />
+                            </div>                            
+                            <div class="mb-4 w-4/5">
+                                <label class="block mb-2 text-sm font-bold text-black">{{'Proffession Dufunt'|transloco}}</label>
+                                <input type="text"  name="professionDefunt" [(ngModel)]="deceInterface.professionDefunt"
+                                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                                    placeholder="{{'Saisirheuredenaissance'|transloco}}" />
+                            </div>                            
                         </div>
 
                     </ng-template>
@@ -189,153 +292,45 @@
 
                 <div class="flex p-2 mt-4">
                     <button mat-button matStepperPrevious class="text-md hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
-              hover:bg-gray-200  
-              bg-gray-100 
-              text-red-700 
-              border duration-200 ease-in-out 
-              border-red-600 transition">
+                  hover:bg-gray-200  
+                  bg-gray-100 
+                  text-red-700 
+                  border duration-200 ease-in-out 
+                  border-red-600 transition">
                         {{'Annuler'|transloco}}</button>
                     <div class="flex-auto flex flex-row-reverse">
                         <button mat-button (click)="FirstStep()" matStepperNext class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
-              hover:bg-teal-600  
-              bg-teal-600 
-              text-teal-100 
-              border duration-200 ease-in-out 
-              border-teal-600 transition">{{'Suivant'|transloco}}</button>
+                  hover:bg-teal-600  
+                  bg-teal-600 
+                  text-teal-100 
+                  border duration-200 ease-in-out 
+                  border-teal-600 transition">{{'Suivant'|transloco}}</button>
 
                     </div>
                 </div>
 
-            </form>
 
-        </mat-step>
-
-
-        <mat-step [stepControl]="DeclarantFormGroup">
-            <form [formGroup]="DeclarantFormGroup">
-              <ng-template matStepLabel> {{'Declarante'|transloco}} <br>
-                <span class="font-normal text-xs text-gray-400">{{'Informationpersonnel'|transloco}}</span>
-              </ng-template>
-              <div class=" lg:grid md:grid-flow-col grid-cols-2 mt-2  gap-4">
-                <div class="mb-4 w-4/5">
-  
-                  <label class="block mb-2 text-sm font-bold text-black">{{'Nom'|transloco}} </label>
-                  <input type="text" formControlName="nomDeclarant"
-                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                    placeholder="{{'SaisirNomduDeclarante'|transloco}}" />
-  
-                </div>
-                <div class="mb-4 w-4/5">
-  
-                  <label class="block mb-2 text-sm font-bold text-black">{{'Prenoms'|transloco}} </label>
-                  <input type="text" formControlName="prenomsDeclarant"
-                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                    placeholder="{{'SaisirPrènomsduDeclarante'|transloco}}" />
-  
-                </div>
-  
-              </div>
-              <div class="lg:grid md:grid-flow-col grid-cols-2 mt-2  gap-4">
-                <div class="mb-4 w-4/5">
-  
-                  <label class="block mb-2 text-sm font-bold text-black">{{'DateNaissance'|transloco}}</label>
-                  <input type="date" formControlName="datenaissDeclarant"
-                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                    placeholder="{{'SaisirDatedeNaissanceduDeclarante'|transloco}}" />
-  
-                </div>
-                <div class="mb-4 w-4/5">
-  
-                  <label class="block mb-2 text-sm font-bold text-black">{{'LieuNaissance'|transloco}}</label>
-                  <input type="text" formControlName="lieuNaissDeclarant"
-                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                    placeholder="{{'SaisirLieudeNaissanceduDeclarante'|transloco}} " />
-  
-                </div>
-  
-              </div>
-              <div class="lg:grid md:grid-flow-col grid-cols-2 mt-2  gap-4">
-             
-                <div class="mb-4 w-4/5">
-                  <label class="block mb-2 text-sm font-bold text-black">{{'AdresseExacte'|transloco}}</label>
-                  <input type="text" formControlName="adressDeclarant"
-                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                    placeholder="{{'SaisirAdresseduDeclarante'|transloco}}" />
-                </div>
-  
-              </div>
-              <div class="flex p-2 mt-4">
-                <button mat-button matStepperPrevious class="text-md hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
-            hover:bg-gray-200  
-            bg-gray-100 
-            text-gray-700 
-            border duration-200 ease-in-out 
-            border-gray-600 transition">{{'Prècedent'|transloco}}</button>
-                <div class="flex-auto flex flex-row-reverse">
-                    <button (click)="FortyStep()" mat-button matStepperNext class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
-            hover:bg-teal-600  
-            bg-teal-600 
-            text-teal-100 
-            border duration-200 ease-in-out 
-            border-teal-600 transition">{{'Suivant'|transloco}}</button>
-                    
-                </div>
-            </div>
-            </form>
-          </mat-step>
-
-        <mat-step [stepControl]="DecesFormGroup">
-            <form [formGroup]="DecesFormGroup">
-                <ng-template matStepLabel> Deces<br>
-                    <span
-                        class="font-normal text-xs text-gray-400">I{{'SaisirInformationdeChangement'|transloco}}t</span>
+            </mat-step>
+            <!-- information Parant -->
+            <mat-step>
+                <ng-template matStepLabel> {{'Parant'|transloco}} <br>
+                    <span class="font-normal text-xs text-gray-400">{{'Informationpersonnel'|transloco}}</span>
                 </ng-template>
-                <div class=" lg:grid md:grid-flow-col grid-cols-3 mt-2 gap-4">
+                <div class=" lg:grid md:grid-flow-col grid-cols-2 mt-2  gap-4">
                     <div class="mb-4 w-4/5">
 
-                        <label class="block mb-2 text-sm font-bold text-black">date de Deces</label>
-                        <input type="date" formControlName="dateDeces"
+                        <label class="block mb-2 text-sm font-bold text-black">{{'Nom et Prenom Pere'|transloco}} </label>
+                        <input type="text" name="nomPereDefunt" [(ngModel)]="deceInterface.nomPereDefunt"
                             class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                            placeholder="Entrer le date de Deces" />
+                            placeholder="{{'SaisirNomduDeclarante'|transloco}}" />
 
                     </div>
                     <div class="mb-4 w-4/5">
 
-                        <label class="block mb-2 text-sm font-bold text-black"> Lieu de Deces</label>
-                        <textarea type="text" formControlName="lieuDeces"
+                        <label class="block mb-2 text-sm font-bold text-black">{{'Nom et Prenom Pere'|transloco}} </label>
+                        <input type="text" name="nomMereDefunt" [(ngModel)]="deceInterface.nomMereDefunt"
                             class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                            placeholder="Entrer le lieu de Deces">
-                        </textarea>
-
-                    </div>
-
-                    <div class="mb-4 w-4/5">
-
-                        <label class="block mb-2 text-sm font-bold text-black">Heure de Deces</label>
-                        <input type="time" formControlName="heureDeces"
-                            class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                            placeholder="Entrer l'heure de deces">
-
-
-                    </div>
-
-                </div>
-                <div class=" lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
-                    <div class="mb-4 w-4/5">
-
-                        <label class="block mb-2 text-sm font-bold text-black">Adresse de defunt</label>
-
-                        <input type="text" formControlName="adresseDefunt"
-                            class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                            placeholder="Entrer l'Adresse de defunt">
-                    </div>
-                    <div class="mb-4 w-4/5">
-
-                        <label class="block mb-2 text-sm font-bold text-black">Profession du defunt</label>
-                        <textarea type="text" formControlName="professionDefunt"
-                            class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                            placeholder="Entrer le Profession de defunt">
-                        </textarea>
+                            placeholder="{{'SaisirPrènomsduDeclarante'|transloco}}" />
 
                     </div>
 
@@ -344,22 +339,223 @@
                     <button mat-button matStepperPrevious class="text-md hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
                 hover:bg-gray-200  
                 bg-gray-100 
-                text-red-700 
+                text-gray-700 
                 border duration-200 ease-in-out 
-                border-red-600 transition">
-                        {{'Annuler'|transloco}}</button>
+                border-gray-600 transition">{{'Prècedent'|transloco}}</button>
                     <div class="flex-auto flex flex-row-reverse">
-                        <button (click)="openDialog()"  mat-button matStepperNext class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
-              hover:bg-blue-600  
-              bg-blue-600 
-              text-blue-100 
-              border duration-200 ease-in-out 
-              border-blue-600 transition">{{'Sauvegarder'|transloco}}</button>
+                        <button (click)="FortyStep()" mat-button matStepperNext class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
+                hover:bg-teal-600  
+                bg-teal-600 
+                text-teal-100 
+                border duration-200 ease-in-out 
+                border-teal-600 transition">{{'Suivant'|transloco}}</button>
 
                     </div>
                 </div>
-            </form>
-        </mat-step>
-    </mat-horizontal-stepper>
+            </mat-step>
+            <!-- information Deces -->
+            <mat-step>
+                <ng-template matStepLabel> Deces<br>
+                    <span
+                        class="font-normal text-xs text-gray-400">I{{'SaisirInformationdeChangement'|transloco}}t</span>
+                </ng-template>
+                <div class=" lg:grid md:grid-flow-col grid-cols-3 mt-2 gap-4">
+                    <div class="mb-4 w-4/5">
+
+                        <label class="block mb-2 text-sm font-bold text-black">date de Deces</label>
+                        <input type="date" name="dateDeces" [(ngModel)]="deceInterface.dateDeces"
+                            class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                            placeholder="Entrer le date de Deces" />
+
+                    </div>
+                    <div class="mb-4 w-4/5">
+                        <label class="block mb-2 text-sm font-bold text-black"> Lieu de Deces</label>
+                        <input type="text"  name="lieuDeces" [(ngModel)]="deceInterface.lieuDeces"
+                        class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                        placeholder="Entrer le lieu de Deces">
+                    </div>
+
+                    <div class="mb-4 w-4/5">
+                        <label class="block mb-2 text-sm font-bold text-black">Heure de Deces</label>
+                        <input type="time" name="heureDeces" [(ngModel)]="deceInterface.heureDeces"
+                            class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                            placeholder="Entrer l'heure de deces">
+                    </div>
+
+                </div>
+                <div class=" lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
+                    <div class="mb-4 w-4/5">
+                        <label class="block mb-2 text-sm font-bold text-black">Adresse de defunt</label>
+                        <input type="text" name="adresseDefunt" [(ngModel)]="deceInterface.adresseDefunt"
+                            class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                            placeholder="Entrer l'Adresse de defunt">
+                    </div>
+                </div>
+                <div class="flex p-2 mt-4">
+                    <button mat-button matStepperPrevious class="text-md hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
+                    hover:bg-gray-200  
+                    bg-gray-100 
+                    text-red-700 
+                    border duration-200 ease-in-out 
+                    border-red-600 transition">
+                        {{'Annuler'|transloco}}</button>
+                    <div class="flex-auto flex flex-row-reverse">
+                        <button mat-button matStepperNext class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
+                  hover:bg-blue-600  
+                  bg-blue-600 
+                  text-blue-100 
+                  border duration-200 ease-in-out 
+                  border-blue-600 transition">{{'Suivant'|transloco}}</button>
+
+                    </div>
+                </div>
+            </mat-step>
+            <!-- information Enterement -->
+            <mat-step>
+                <ng-template matStepLabel> Enterement<br>
+                    <span
+                        class="font-normal text-xs text-gray-400">I{{'SaisirInformationdeChangement'|transloco}}t</span>
+                </ng-template>
+                <div class=" lg:grid md:grid-flow-col grid-cols-3 mt-2 gap-4">
+                    <div class="mb-4 w-4/5">
+
+                        <label class="block mb-2 text-sm font-bold text-black">date de Enterement</label>
+                        <input type="date" name="dateEnterement" [(ngModel)]="deceInterface.dateEnterement"
+                            class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                            placeholder="Entrer le date de Enterement" />
+
+                    </div>
+                    <div class="mb-4 w-4/5">
+                        <label class="block mb-2 text-sm font-bold text-black"> Lieu de Enterement</label>
+                        <input type="text" name="lieuEnterement" [(ngModel)]="deceInterface.lieuEnterement"
+                            class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                            placeholder="Entrer le lieu de Enterement">
+                    </div>
+
+                    <div class="mb-4 w-4/5">
+                        <label class="block mb-2 text-sm font-bold text-black">Heure de Enterement</label>
+                        <input type="time" name="heureEnterement" [(ngModel)]="deceInterface.heureEnterement"
+                            class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                            placeholder="Entrer l'heure de Enterement">
+                    </div>
+
+                </div>
+                <div class=" lg:grid md:grid-flow-col grid-cols-3 mt-2 gap-4">
+                    
+                    <div class="mb-4 w-4/5">
+
+                        <label class="block mb-2 text-sm font-bold text-black">Commune de Deces</label>
+                        <input type="text" name="communeEnterement" [(ngModel)]="deceInterface.communeEnterement"
+                            class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                            placeholder="Entrer l'Adresse de defunt">
+                    </div>
+                    <div class="mb-4 w-4/5">
+                        <label class="block mb-2 text-sm font-bold text-black">District de Enterement</label>
+                        <input type="text" name="districtEnterement" 
+                            class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                            placeholder="Entrer l'Adresse de defunt">
+                        <!-- <input type="text" name="districtEnterement" [(ngModel)]="deceInterface.districtEnterement"
+                            class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                            placeholder="Entrer l'Adresse de defunt"> -->
+                    </div>
+
+                </div>
+                <div class=" lg:grid md:grid-flow-col grid-cols-3 mt-2 gap-4">
+                    <div class="mb-4 w-4/5">
+                        <label class="block mb-2 text-sm font-bold text-black">Region de Enterement</label>
+                        <input type="text" name="regionEnterement" [(ngModel)]="deceInterface.regionEnterement"
+                            class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                            placeholder="Entrer l'Adresse de defunt">
+                    </div>
+                    <div class="mb-4 w-4/5">
+                        <label class="block mb-2 text-sm font-bold text-black">Fasana Lehibe</label>
+                        <div class="flex gap-3">
+                            <label class="mb-2 text-sm font-bold text-black">
+                                <input type="radio" name="fasana" value="true">
+                                Lehibe
+                            </label>
+                            <label class="mb-2 text-sm font-bold text-black">
+                                <input type="radio" name="fasana" value="false">
+                                Anirotra
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex p-2 mt-4">
+                    <button mat-button matStepperPrevious class="text-md hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
+                    hover:bg-gray-200  
+                    bg-gray-100 
+                    text-red-700 
+                    border duration-200 ease-in-out 
+                    border-red-600 transition">
+                        {{'Annuler'|transloco}}</button>
+                    <div class="flex-auto flex flex-row-reverse">
+                        <button mat-button matStepperNext class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
+                        hover:bg-blue-600  
+                        bg-blue-600 
+                        text-blue-100 
+                        border duration-200 ease-in-out 
+                        border-blue-600 transition">{{'Suivant'|transloco}}</button>
+
+                    </div>
+                </div>
+            </mat-step>
+            <!-- information Maire -->
+            <mat-step >
+                  <ng-template matStepLabel> {{'Maire'|transloco}} <br>
+                    <span class="font-normal text-xs text-gray-400">{{'Informationpersonnel'|transloco}}</span>
+                  </ng-template>
+                  <div class=" lg:grid md:grid-flow-col grid-cols-2 mt-2  gap-4">
+                    <div class="mb-4 w-4/5">
+                        <label class="block mb-2 text-sm font-bold text-black">{{'NomduMaire'|transloco}}</label>
+                        <select class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border" name="idMaire" [(ngModel)]="deceInterface.idMaire"  (ngModelChange)="onSelectedMaire($event)">
+                          <option *ngFor="let maires of maireInterface" [value]="maires.idMaire">
+                            {{maires.idMaire}} - {{maires.nomMaire}}
+                          </option>
+                        </select>
+                    </div>
+                    <div class="mb-4 w-4/5">
+      
+                      <label class="block mb-2 text-sm font-bold text-black">{{'Prenoms'|transloco}} </label>
+                      <input type="text" readonly
+                        class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                        placeholder="{{'SaisirPrènomsduMaire'|transloco}}" />
+      
+                    </div>
+      
+                  </div>
+                  <div class="lg:grid md:grid-flow-col grid-cols-2 mt-2  gap-4">
+                    <div class="mb-4 w-4/5">
+      
+                      <label class="block mb-2 text-sm font-bold text-black">{{'Fonction'|transloco}}</label>
+                      <input type="text" readonly
+                        class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                        placeholder="{{'SaisirFonctionduMaire'|transloco}}" />
+      
+                    </div>
+                  </div>
+      
+                  <div class="flex p-2 mt-4">
+                    <button mat-button matStepperPrevious class="text-md hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
+                hover:bg-gray-200  
+                bg-gray-100 
+                text-gray-700 
+                border duration-200 ease-in-out 
+                border-gray-600 transition">{{'Prècedent'|transloco}}</button>
+                    <div class="flex-auto flex flex-row-reverse">
+                        <button  type="submit" (click)="saveDecee()"
+                        mat-button class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
+                hover:bg-blue-600  
+                bg-blue-600 
+                text-blue-100 
+                border duration-200 ease-in-out 
+                border-blue-600 transition">{{'Sauvegarder'|transloco}}</button>
+                        
+                    </div>
+                </div>
+              </mat-step>
+
+        </mat-horizontal-stepper>
+    </form>
 
 </div>

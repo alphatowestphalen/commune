@@ -64,9 +64,6 @@ export class BulletinListComponent implements OnInit {
     this.bulletinservice.getAllBulletin(size, page)
     .subscribe(data=>{
       this.tableData = data.data 
-     console.log('====================================');
-     console.log(this.tableData);
-     console.log('====================================');
       
     })
 
@@ -78,7 +75,10 @@ export class BulletinListComponent implements OnInit {
   }
 
   showRow(element: any) {
-    this.router.navigate(['/dashboard/premiere-copie-voir', element.idPremierCopie ])
+    console.log('====================================');
+    console.log('okkoksqdfqsdf');
+    console.log('===================================='); 
+    this.router.navigate(['/dashboard/bulletin-naissance-voir', element.idBulletinNaissance ])
 
   }
   handlePageChange(event: PageEvent){

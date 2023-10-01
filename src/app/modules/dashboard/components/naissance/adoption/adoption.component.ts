@@ -25,6 +25,8 @@ page = 1;
 
 search: any;
 
+
+ 
  tableColumns: Array<Column> = [
   {
     columnDef: 'idAdoption',
@@ -42,6 +44,9 @@ search: any;
     header: 'Date et Heure d\'Adoption ',
     cell: (element: Record<string, any>) => {
       const datenaissEnfant = element['dateAdoption'];
+      console.log('====================================');
+      console.log(datenaissEnfant);
+      console.log('====================================');
       const heurenaissEnfant = element['heureAdoption'];
       const dateObj = new Date(`${datenaissEnfant}T${heurenaissEnfant}:00`); 
       const formattedDate = `${dateObj.getDate().toString().padStart(2, '0')}/${(dateObj.getMonth() + 1).toString().padStart(2, '0')}/${dateObj.getFullYear()}`;
@@ -54,9 +59,13 @@ search: any;
     header: 'Date 1ère Copie',
     cell: (element: Record<string, any>) => {
       const datenaissEnfant = element['premierecopie']['datePremierCopie'];
-      const dateObj = new Date(datenaissEnfant);
-      const formattedDate = `${dateObj.getDate().toString().padStart(2, '0')}/${(dateObj.getMonth() + 1).toString().padStart(2, '0')}/${dateObj.getFullYear()}`;
-      return formattedDate;
+      // const dateObj = new Date(datenaissEnfant);
+      // this.convertDateFormat(dateObj);
+      // console.log('=============== datenaissEnfant =====================');
+      // console.log(dateObj );
+      // console.log('====================================');
+      // const formattedDate = `${dateObj.getDate().toString().padStart(2, '0')}/${(dateObj.getMonth() + 1).toString().padStart(2, '0')}/${dateObj.getFullYear()}`;
+      return datenaissEnfant;
     }
   }
 ];
@@ -85,6 +94,9 @@ tableData: any = [];
     this.adoptionservice.getAdoptions(size, page)
     .subscribe(data=>{
       this.tableData = data.data;
+      console.log('==============getAllAdoptions======================');
+      console.log(this.tableData);
+      console.log('====================================');
     })
   }
   showRow(element: any) {

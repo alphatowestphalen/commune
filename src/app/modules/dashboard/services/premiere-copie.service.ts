@@ -23,6 +23,9 @@ export class PremiereCopieService {
     return this.http.get(`${this.baseUrl}`);
   }
   
+  getAllPersonliving():Observable<any>{
+    return this.http.get(`${this.baseUrl}/living`);
+  }
 
 
   addFirstCertificates(premiereCopie: Object):Observable<any> {

@@ -10,6 +10,7 @@ import { environment } from 'src/environments/environment';
 export class DecesService {
   
   private baseURl = environment.baseUrl+'/deces'
+  
 
   constructor(private http: HttpClient) { }
 
@@ -21,9 +22,8 @@ export class DecesService {
   //   return this.http.post(`${this.baseURl}/${id}`, deces);
   // }
 
-  addDeces(data: any, idPremierCopie: string): Observable<any> {
-    const url = `http://localhost:8080/api/deces/${idPremierCopie}`;
-    return this.http.post(url, data);
+  addDeces(data: any): Observable<any> {
+    return this.http.post(`${this.baseURl}`, data)
   }
 
   updateDeces(id:number, deces:Object):Observable<any>{

@@ -14,35 +14,38 @@ export class AdoptionVoirComponent implements OnInit {
   certificates: any;
   adoption: any;
 
-  constructor( private activatedroute: ActivatedRoute, private router: Router, private premierecopieservice: PremiereCopieService, private adoptionservice: AdoptionService ) { }
+  constructor(private activatedroute: ActivatedRoute, private router: Router, private premierecopieservice: PremiereCopieService, private adoptionservice: AdoptionService) { }
 
   @ViewChild('htmlData') htmlData!: ElementRef;
   ngOnInit(): void {
-    this.activatedroute.paramMap.subscribe(params => { 
+    this.activatedroute.paramMap.subscribe(params => {
       this.id = params.get('id');
-   // this.getCertificatesbyID();
-  this.getAdoptionById()});
+      // this.getCertificatesbyID();
+      this.getAdoptionById()
+    });
 
   }
 
 
-  getAdoptionById(){
+  getAdoptionById() {
     this.adoptionservice.getAdoptionById(this.id)
-    .subscribe(data=>{
-      this.adoption = data
-      //console.log("adoption",this.adoption)
-      this.getCertificatesbyID(this.adoption.premierecopie.idPremierCopie)
-    })
+      .subscribe(data => {
+        this.adoption = data
+        // console.log("adoption",this.adoption)
+        this.getCertificatesbyID(this.adoption.premierecopie.idPremierCopie)
+      })
   }
   getCertificatesbyID(idpremierecopie: any) {
     this.premierecopieservice.getCertificateByID(idpremierecopie)
-    .subscribe(data => {
-      this.certificates = data;
-      console.log("adoption",this.certificates)}
-    
-)  }
+      .subscribe(data => {
+        this.certificates = data;
+        console.log("adoption", this.certificates)
+      }
+
+      )
+  }
   OpenCopie = false;
-  toggleModal(){
+  toggleModal() {
     this.OpenCopie = !this.OpenCopie;
   }
   public openPDF(): void {
@@ -59,16 +62,16 @@ export class AdoptionVoirComponent implements OnInit {
       PDF.save('angular-demo.pdf');
     });
   }
-  
-  printPage(){
+
+  printPage() {
     var printContents = document.getElementById('htmlData')!.innerHTML;
-     var originalContents = document.body.innerHTML;
+    var originalContents = document.body.innerHTML;
 
-     document.body.innerHTML = printContents;
+    document.body.innerHTML = printContents;
 
-     window.print();
+    window.print();
 
-     document.body.innerHTML = originalContents;
+    document.body.innerHTML = originalContents;
   }
 
 }

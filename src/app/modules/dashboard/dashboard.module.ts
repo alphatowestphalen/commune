@@ -64,8 +64,10 @@ import { TranslocoModule } from '@ngneat/transloco';
 import { UtilisateurVoirComponent } from './components/utilisateur/utilisateur-voir/utilisateur-voir.component';
 
 import { UtilisateurEditComponent } from './components/utilisateur/utilisateur-edit/utilisateur-edit.component';
-import { CelibataireAddComponent } from './components/mariage/celibataire/celibataire-add/celibataire-add.component';
 import { AddMariageComponent } from './components/mariage/mariage/add-mariage/add-mariage.component';
+import { CelibataireAddComponent } from './components/mariage/celibataire/celibataire-add/celibataire-add.component';
+import { BulletinVoirComponent } from './components/naissance/bulletin/bulletin-voir/bulletin-voir.component';
+import { CelibataireShowComponent } from './components/mariage/celibataire/celibataire-show/celibataire-show.component';
 
 @NgModule({
   exports: [SurveyCreatorModule, SurveyModule, BulletinNaissanceComponent, CopieComponent],
@@ -94,6 +96,7 @@ import { AddMariageComponent } from './components/mariage/mariage/add-mariage/ad
     ReconnaissanceMentionComponent,
     LoadingComponent,
     MariageComponent,
+    BulletinVoirComponent,
     AddMariageComponent,
     BulletinListComponent,
     BulletinNaissanceComponent,
@@ -102,6 +105,7 @@ import { AddMariageComponent } from './components/mariage/mariage/add-mariage/ad
     TableMariageComponent,
     CelibataireComponent,
     CelibataireAddComponent,
+    CelibataireShowComponent,
     UtilisateurListComponent,
     UtilisateurAddComponent,
     MariageVoirComponent,

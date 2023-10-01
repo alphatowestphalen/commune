@@ -57,14 +57,14 @@ export class ObjectMariageService {
     mariageInterfaceInterneExterne.professionFemme = mariageInterface.professionFemme;
     mariageInterfaceInterneExterne.dateNaissFemme = mariageInterface.dateNaissFemme;
     mariageInterfaceInterneExterne.lieuNaissFemme = mariageInterface.lieuNaissFemme;
-    mariageInterfaceInterneExterne.idPereFemme = mariageInterface.idPereFemme;
+    // mariageInterfaceInterneExterne.idPereFemme = mariageInterface.idPereFemme;
     mariageInterfaceInterneExterne.nomPereFemme = mariageInterface.nomPereFemme;
     mariageInterfaceInterneExterne.prenomsPereFemme = mariageInterface.prenomsPereFemme;
     mariageInterfaceInterneExterne.dateNaissPereFemme = mariageInterface.dateNaissPereFemme;
     mariageInterfaceInterneExterne.lieuNaissPereFemme = mariageInterface.lieuNaissPereFemme;
     mariageInterfaceInterneExterne.professionPereFemme = mariageInterface.professionPereFemme;
     mariageInterfaceInterneExterne.adressePereFemme = mariageInterface.adressePereFemme;
-    mariageInterfaceInterneExterne.idMereFemme = mariageInterface.idMereFemme;
+    // mariageInterfaceInterneExterne.idMereFemme = mariageInterface.idMereFemme;
     mariageInterfaceInterneExterne.nomMereFemme = mariageInterface.nomMereFemme;
     mariageInterfaceInterneExterne.prenomsMereFemme = mariageInterface.prenomsMereFemme;
     mariageInterfaceInterneExterne.dateNaissMereFemme = mariageInterface.dateNaissMereFemme;

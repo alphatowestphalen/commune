@@ -22,7 +22,7 @@ export class ScopedAComponent implements OnInit {
   bulletin: any;
   panelOpenState = false;
   demande: any = [];
-  searchDemande = new FormControl();
+  serach:string;
   CopieSelected: any = '';
   //  errorMsg: string;
   isLoading = false;
@@ -99,30 +99,41 @@ export class ScopedAComponent implements OnInit {
     ////this.bulletinService.getBulletinByActeId(id)
     );
   }
-  Search() {
-    if (this.CopieSelected == ' ') {
-      return this.getallCertificates();
-    } else {
-      if (this.containsOnlyNumbers(this.CopieSelected) == true) {
-        console.log(this.CopieSelected);
-        this.demandeservice
-          .SearchCertificateByIdPremierCopie(this.CopieSelected)
-          .subscribe((data) => {
-            this.demande = data.premierCopies;
-            console.log(data);
-          });
-      } else {
-        console.log(this.CopieSelected);
-        this.demandeservice
-          .SearchCertificateByNomEnfant(this.CopieSelected, this.CopieSelected)
-          .subscribe((data) => {
-            this.demande = data.premierCopies;
-            console.log(data);
-          });
-      }
+  // Search() {
+  //   if (this.CopieSelected == ' ') {
+  //     return this.getallCertificates();
+  //   } else {
+  //     if (this.containsOnlyNumbers(this.CopieSelected) == true) {
+  //       console.log(this.CopieSelected);
+  //       this.demandeservice
+  //         .SearchCertificateByIdPremierCopie(this.CopieSelected)
+  //         .subscribe((data) => {
+  //           this.demande = data.premierCopies;
+  //           console.log(data);
+  //         });
+  //     } else {
+  //       console.log(this.CopieSelected);
+  //       this.demandeservice
+  //         .SearchCertificateByNomEnfant(this.CopieSelected, this.CopieSelected)
+  //         .subscribe((data) => {
+  //           this.demande = data.premierCopies;
+  //           console.log(data);
+  //         });
+  //     }
+  //   }
+  // }
+  Search(){
+    if (this.serach == ' ') {
+        return this.getallCertificates();
+    }else{
+      this.demandeservice.SearchCertificate(this.serach).subscribe((data)=>{
+        console.log('====================================');
+        console.log(data);
+        console.log('====================================');
+        this.demande = data.data;
+      })
     }
   }
-
   containsOnlyNumbers(str: string) {
     // console.log(str)
     return /^(\d+-)*(\d+)$/.test(str);

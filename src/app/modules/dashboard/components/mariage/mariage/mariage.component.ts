@@ -40,13 +40,14 @@ export class MariageComponent implements OnInit {
       },
     },
     {
-      columnDef: 'Date et Heure Mariage',
+      columnDef: 'Date et Heure de Mariage',
       header: 'Date et Heure Mariage',
      cell: (element: Record<string, any>) => {
-        const datenaissEnfant = element['createdDate'];
-        const dateObj = new Date(datenaissEnfant);
-        const formattedDate = `${dateObj.getDate().toString().padStart(2, '0')}/${(dateObj.getMonth() + 1).toString().padStart(2, '0')}/${dateObj.getFullYear()}`;
-        return formattedDate;
+        const datenaissEnfant = element['dateMariage'];
+        const HeurEnfant = element['heureMariage'];
+        // const dateObj = new Date(datenaissEnfant);
+        // const formattedDate = `${dateObj.getDate().toString().padStart(2, '0')}/${(dateObj.getMonth() + 1).toString().padStart(2, '0')}/${dateObj.getFullYear()}`;
+        return `${datenaissEnfant} ${HeurEnfant}`;
       }
     }
   ];
@@ -65,7 +66,7 @@ page = 1;
     this.mariageservice.getAllMariage(size, page)
     .subscribe(data=>{
       console.log('================AllListMariages====================');
-      console.log(data.data);
+      console.log(data);
       console.log('====================================');
       this.tableData = data.data,
       this.size = data.length

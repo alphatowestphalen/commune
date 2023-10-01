@@ -5,14 +5,14 @@
 export const environment = {
   production: false,
   // local
-  baseUrl: 'http://192.168.243.150:8080/api',
-  modulesUrl: 'http://192.168.243.150:8080/api',
+  baseUrl: 'http://192.168.3.150:8080/api',
+  modulesUrl: 'http://192.168.3.150:8080/api',
   // baseUrl: 'http://localhost:8080/api',
   // modulesUrl: 'http://localhost:8000/api',
 };
 
 /*
- * For easier debugging in development mode, you can import the following file
+ * ?For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
  *
  * This import should be commented out in production mode because it will have a negative impact

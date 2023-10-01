@@ -9,6 +9,7 @@ import { Column } from '../../../models/column';
 import { BulletinNaissanceService } from '../../../services/bulletin-naissance.service';
 import { BulletinNaicensse } from 'src/app/model/bulletin/Buletin.interface';
 import { BulletinService } from 'src/app/service/bulletin/bulletin.service';
+import { PremiereCopieService } from '../../../services/premiere-copie.service';
 
 @Component({
   selector: 'app-bulletin',
@@ -21,10 +22,12 @@ export class BulletinComponent implements OnInit {
   bulletin: any;
   surveyModel: any;
   surveyCreatorModel: any;
+  premierCopie: any;
+  typePressonne: string="";
+  readonly: boolean=false;
 
   // variable alphato
   buletinNaissance:BulletinNaicensse = {
-    idBulletinNaissance: 0,
     idPremierCopie: "",
     type: "",
     nomPersonne: "",
@@ -36,10 +39,9 @@ export class BulletinComponent implements OnInit {
     nomMere: "",
     prenomsMere: "",
     dateCopie: "",
-    createdDate: "2023-09-07T14:27:20.053Z"
   }
   // end
-  size: 5;
+  size= 5;
   page = 1;
 
   search: any;
@@ -81,14 +83,75 @@ export class BulletinComponent implements OnInit {
     private formService: FormService,
     private router: Router,
     private bulletinservice: BulletinService,
+    private premierCopieService: PremiereCopieService
   ) {}
 
   @ViewChild('htmlData') htmlData!: ElementRef;
 
   ngOnInit(): void {
     this.getAllBulletinNaissance(this.size, this.page);
+    this.getAllPremierCopier(this.size,this.page);
   }
-
+  
+  handleSelectedValue(value:any) {
+    const valeursType = value;
+    this.typePressonne=value;
+    if (this.typePressonne == "interne") {
+      this.buletinNaissance = {
+        idPremierCopie: "",
+        type: "",
+        nomPersonne: "",
+        prenomsPersonne: "",
+        dateNaissPersonne: "",
+        lieuNaissPersonne: "",
+        nomPere: "",
+        prenomsPere: "",
+        nomMere: "",
+        prenomsMere: "",
+        dateCopie: "",
+      };
+      this.readonly = true;
+    }
+    else if(this.typePressonne == "externe"){
+      this.buletinNaissance = {
+        idPremierCopie: "",
+        type: "",
+        nomPersonne: "",
+        prenomsPersonne: "",
+        dateNaissPersonne: "",
+        lieuNaissPersonne: "",
+        nomPere: "",
+        prenomsPere: "",
+        nomMere: "",
+        prenomsMere: "",
+        dateCopie: "",
+      };
+      this.readonly = false;
+    }
+    
+  }
+  public getAllPremierCopier(size:number,page:number){
+    this.premierCopieService.getCertificates(size, page).subscribe(data => {
+      this.premierCopie = data.data;
+    });
+  }
+  changerId(value:any){
+    this.premierCopieService.getCertificateByID(value).subscribe(data=>{
+      this.buletinNaissance.idPremierCopie = data.idPremierCopie;
+      this.buletinNaissance.nomPersonne = data.enfant.nomEnfant;
+      this.buletinNaissance.prenomsPersonne = data.enfant.prenomsEnfant;
+      this.buletinNaissance.dateNaissPersonne = data.enfant.datenaissEnfant;
+      this.buletinNaissance.lieuNaissPersonne = data.enfant.lieunaissEnfant;
+      this.buletinNaissance.nomPere = data.pere.nomPere;
+      this.buletinNaissance.prenomsPere = data.pere.prenomsPere;
+      this.buletinNaissance.nomMere = data.mere.nomMere;
+      this.buletinNaissance.prenomsMere = data.mere.prenomsMere;
+      this.buletinNaissance.dateCopie = data.datePremierCopie;
+      console.log('================ changerId ====================');
+      console.log(this.buletinNaissance);
+      console.log('================ changerId ====================');
+    })
+  }
   OpenDialog(){
     const dialogRef = this.dialog.open(AfficheCopieComponent, {
       maxWidth: '100vw',
@@ -103,14 +166,12 @@ export class BulletinComponent implements OnInit {
   public getAllBulletinNaissance(size:number, page:number) {
     this.bulletinService.getAllBulletin(size,page).subscribe((data: any) => {
       this.tableData = data;
-      console.log(data);
     });
   }
 
   public saveBulletinNaissance(){
     this.bulletinservice.saveBulletin(this.buletinNaissance).subscribe(data=>{
       this.buletinNaissance = data;
-      
     });
   }
 }

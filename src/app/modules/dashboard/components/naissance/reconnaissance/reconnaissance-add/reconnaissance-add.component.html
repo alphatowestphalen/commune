@@ -1,44 +1,45 @@
 <div class="mx-auto px-2 py-2 sm:px-8 lg:container">
-    <div class="mb-4 flex justify-between">
-        <div class="inline-block">
-          <h3 class="font-semibold text-gray-900 dark:text-white uppercase">{{'CopiedeRéconnaissance'|transloco}}</h3>
-          <div class="space-x-1 text-xs font-medium text-gray-400 dark:text-night-300">
-            <a href="" class="hover:text-primary-500"> {{'BureauEtatCivil'|transloco}}</a>
-            <span>- {{'serviceActeNaiss'|transloco}}</span>
-          </div>
-        </div>
-        <div class="inline-block space-x-1">
-          <button
-            class="flex-none rounded-md bg-white px-4 py-1.5 text-xs font-semibold text-gray-500 hover:text-primary-500 dark:bg-night-600 dark:text-night-200 dark:hover:bg-night-500">
-           {{'Acceuil'|transloco}}
-          </button>
-          <span class="flex-none rounded-md py-1 text-xs font-semibold text-night-400">>></span>
-          <button
-            class="flex-none rounded-md bg-white px-4 py-1.5 text-xs font-semibold text-gray-500 hover:text-primary-500 dark:bg-night-600 dark:text-night-200 dark:hover:bg-night-500">
-        ...
-          </button>
-          <span class="flex-none rounded-md py-1 text-xs font-semibold text-night-400">>></span>
-         
-          <button
-            class="flex-none rounded-md bg-primary-500 px-2 py-1.5 text-xs font-semibold text-white hover:bg-primary-600">
-         {{'FormulaireAjoutReconnaissance'|transloco}}
-          </button>
-        </div>
+  <div class="mb-4 flex justify-between">
+    <div class="inline-block">
+      <h3 class="font-semibold text-gray-900 dark:text-white uppercase">{{'CopiedeRéconnaissance'|transloco}}</h3>
+      <div class="space-x-1 text-xs font-medium text-gray-400 dark:text-night-300">
+        <a href="" class="hover:text-primary-500"> {{'BureauEtatCivil'|transloco}}</a>
+        <span>- {{'serviceActeNaiss'|transloco}}</span>
       </div>
-    
-    
+    </div>
+    <div class="inline-block space-x-1">
+      <button
+        class="flex-none rounded-md bg-white px-4 py-1.5 text-xs font-semibold text-gray-500 hover:text-primary-500 dark:bg-night-600 dark:text-night-200 dark:hover:bg-night-500">
+        {{'Acceuil'|transloco}}
+      </button>
+      <span class="flex-none rounded-md py-1 text-xs font-semibold text-night-400">>></span>
+      <button
+        class="flex-none rounded-md bg-white px-4 py-1.5 text-xs font-semibold text-gray-500 hover:text-primary-500 dark:bg-night-600 dark:text-night-200 dark:hover:bg-night-500">
+        ...
+      </button>
+      <span class="flex-none rounded-md py-1 text-xs font-semibold text-night-400">>></span>
 
-      <div class="flex-col rounded-lg mt-5 px-3 py-3 sm:flex-row">
-        <div class="my-3 flex items-center justify-between">
-          <div class="flex-col items-center">
-            <h3 class="text-md font-semibold pl-5 text-gray-900 dark:text-night-50">{{'Formulaireàremplirpourlajoutdelacopiedereconnaissance'|transloco}}</h3>
-          </div>
-     
-    
-        </div>
+      <button
+        class="flex-none rounded-md bg-primary-500 px-2 py-1.5 text-xs font-semibold text-white hover:bg-primary-600">
+        {{'FormulaireAjoutReconnaissance'|transloco}}
+      </button>
+    </div>
+  </div>
 
-   
-<!-- <div class="p-5">
+
+
+  <div class="flex-col rounded-lg mt-5 px-3 py-3 sm:flex-row">
+    <div class="my-3 flex items-center justify-between">
+      <div class="flex-col items-center">
+        <h3 class="text-md font-semibold pl-5 text-gray-900 dark:text-night-50">
+          {{'Formulaireàremplirpourlajoutdelacopiedereconnaissance'|transloco}}</h3>
+      </div>
+
+
+    </div>
+
+
+    <!-- <div class="p-5">
     <div class="mx-4 p-4">
         <div class="flex items-center">
             <div class="flex items-center text-teal-600 relative">
@@ -136,235 +137,234 @@
 </div> -->
 
 
-<mat-horizontal-stepper [linear]="true" #stepper>
-  <mat-step [stepControl]="PiecesFormGroup">
-    <form [formGroup]="PiecesFormGroup">
-      <ng-template matStepLabel> {{'Dossier'|transloco}} <br>
-        <span class="font-normal text-xs text-gray-400">{{'CheckDossier'|transloco}}</span>
-      </ng-template>
-      <div class="lg:grid md:grid-flow-col grid-cols-2 gap-4 mt-20">
-        <div class="mb-4  w-60">
-          <label class="label cursor-pointer w-60">
-            <input type="checkbox" checked="checked" class="checkbox" />
-            <span class="label-text">{{'Certificataccouchement'|transloco}}</span>
-          </label>
-        </div>
-        <div class="mb-4  w-60">
-          <label class="label cursor-pointer">
-            <input type="checkbox" checked="checked" class="checkbox" />
-            <span class="label-text">{{'LivréedeFamille'|transloco}}</span>
+    <mat-horizontal-stepper [linear]="true" #stepper>
+      <mat-step [stepControl]="PiecesFormGroup">
+        <form [formGroup]="PiecesFormGroup">
+          <ng-template matStepLabel> {{'Dossier'|transloco}} <br>
+            <span class="font-normal text-xs text-gray-400">{{'CheckDossier'|transloco}}</span>
+          </ng-template>
+          <div class="lg:grid md:grid-flow-col grid-cols-2 gap-4 mt-20">
+            <div class="mb-4  w-60">
+              <label class="label cursor-pointer w-60">
+                <input type="checkbox" checked="checked" class="checkbox" />
+                <span class="label-text">{{'Certificataccouchement'|transloco}}</span>
+              </label>
+            </div>
+            <div class="mb-4  w-60">
+              <label class="label cursor-pointer">
+                <input type="checkbox" checked="checked" class="checkbox" />
+                <span class="label-text">{{'LivréedeFamille'|transloco}}</span>
 
-          </label>
-        </div>
+              </label>
+            </div>
 
-      </div>
-      <div class="lg:grid md:grid-flow-col grid-cols-2 gap-4">
-        <div class="mb-4 w-60">
-          <label class="label cursor-pointer ">
-            <input type="checkbox" checked="checked" class="checkbox" />
-            <span class="label-text">{{'PhotocopieCINdelamère'|transloco}}</span>
+          </div>
+          <div class="lg:grid md:grid-flow-col grid-cols-2 gap-4">
+            <div class="mb-4 w-60">
+              <label class="label cursor-pointer ">
+                <input type="checkbox" checked="checked" class="checkbox" />
+                <span class="label-text">{{'PhotocopieCINdelamère'|transloco}}</span>
 
-          </label>
-        </div>
-        <div class="mb-4 w-60">
-          <label class="label cursor-pointer ">
-            <input type="checkbox" checked="checked" class="checkbox" />
-            <span class="label-text">{{'PhotocopiedeCINdeclarant'|transloco}}</span>
+              </label>
+            </div>
+            <div class="mb-4 w-60">
+              <label class="label cursor-pointer ">
+                <input type="checkbox" checked="checked" class="checkbox" />
+                <span class="label-text">{{'PhotocopiedeCINdeclarant'|transloco}}</span>
 
-          </label>
-        </div>
-      </div>
+              </label>
+            </div>
+          </div>
 
 
-      <div class="flex p-2 mt-4">
-        <button routerLink="/dashboard/premiere-copie" class="text-md hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
-hover:bg-gray-200  
-bg-gray-100 
-text-red-700 
-border duration-200 ease-in-out 
-border-red-600 transition">
-          {{'Annuler'|transloco}}</button>
-        <div class="flex-auto flex flex-row-reverse">
-          <button mat-button  matStepperNext class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
+          <div class="flex p-2 mt-4">
+            <button routerLink="/dashboard/premiere-copie" class="text-md hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
+            hover:bg-gray-200  
+            bg-gray-100 
+            text-red-700 
+            border duration-200 ease-in-out 
+            border-red-600 transition">
+              {{'Annuler'|transloco}}</button>
+            <div class="flex-auto flex flex-row-reverse">
+              <button mat-button matStepperNext class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
 hover:bg-teal-600  
 bg-teal-600 
 text-teal-100 
 border duration-200 ease-in-out 
 border-teal-600 transition">{{'Suivant'|transloco}}</button>
 
-        </div>
-      </div>
-
-    </form>
-  </mat-step>
-  <mat-step [stepControl]="EnfantFormGroup">
-  
-      <ng-template matStepLabel> {{'Premièrecopie'|transloco}}<br>
-        <span class="font-normal text-xs text-gray-400">{{'RecupererPremiereCopie'|transloco}}</span>
-      </ng-template>
-      <mat-form-field class="w-full">
-        <mat-select (formControl)="IdPremierCopie" name="reconnaissance" (selectionChange)="Onchange($event)" (closed)="clearreconnais()">
-          <mat-form-field class="w-full">
-            <mat-label>{{'recherche'|transloco}}</mat-label>
-            <input matInput [(ngModel)]="CopieSelected" class="w-full" placeholder="Saisir le nom de Personne" (keydown.Space)="spacereconnaiss()">
-          </mat-form-field>
-          <mat-option *ngFor="let copie of reconnaissance|search:CopieSelected" [value]="copie.idPremierCopie"><span><b>{{copie.idPremierCopie}}</b> ({{copie.enfant.nomEnfant}} {{copie.enfant.prenomsEnfant}})</span></mat-option>
-        </mat-select>
-
-      </mat-form-field>
-
-
-      <form [formGroup]="EnfantFormGroup">
-    
-    <div class="wrapper">
-  
-
-      <br>
-
-      <ng-container *ngIf="errorMsg; else elseTemplate">
-        {{errorMsg}}
-      </ng-container>
-      <ng-template #elseTemplate>
-
-        <div class=" lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4"  *ngIf="certificate?.idPremierCopie">
-          <div class="mb-4 w-4/5">
-
-            <label class="block mb-2 text-sm font-bold text-black">{{'Nomenfant'|transloco}}</label>
-            <input type="text"  readonly value="{{certificate?.enfant.nomEnfant}}"
-              class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-              placeholder="{{'SaisirNomEnfant'|transloco}}" />
-
-          </div>
-          <div class="mb-4 w-4/5">
-
-            <label class="block mb-2 text-sm font-bold text-black">{{'Prenomsenfant'|transloco}}</label>
-            <input type="text"  readonly   value="{{certificate?.enfant.prenomsEnfant}}"
-              class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-              placeholder="{{'SaisirPrenomsEnfant'|transloco}}" />
-
+            </div>
           </div>
 
-        </div>
-        <div class="lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
-          <div class="mb-4 w-4/5">
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="EnfantFormGroup">
 
-            <label class="block mb-2 text-sm font-bold text-black">{{'DateNaissance'|transloco}}</label>
-            <input type="text" readonly  value="{{certificate?.enfant?.datenaissEnfant}}"
-              class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-              placeholder="{{'SaisirDatedenaissanceEnfant'|transloco}}" />
+        <ng-template matStepLabel> {{'Premièrecopie'|transloco}}<br>
+          <span class="font-normal text-xs text-gray-400">{{'RecupererPremiereCopie'|transloco}}</span>
+        </ng-template>
+        <mat-form-field class="w-full">
+          <mat-select (formControl)="IdPremierCopie" name="reconnaissance" (selectionChange)="Onchange($event)"
+            (closed)="clearreconnais()">
+            <mat-form-field class="w-full">
+              <mat-label>{{'recherche'|transloco}}</mat-label>
+              <input matInput [(ngModel)]="CopieSelected" class="w-full" placeholder="Saisir le nom de Personne"
+                (keydown.Space)="spacereconnaiss()">
+            </mat-form-field>
+            <mat-option *ngFor="let copie of reconnaissance|search:CopieSelected"
+              [value]="copie.idPremierCopie"><span><b>{{copie.idPremierCopie}}</b> ({{copie.enfant.nomEnfant}}
+                {{copie.enfant.prenomsEnfant}})</span></mat-option>
+          </mat-select>
+
+        </mat-form-field>
+
+
+        <form [formGroup]="EnfantFormGroup">
+
+          <div class="wrapper">
+
+
+            <br>
+
+            <ng-container *ngIf="errorMsg; else elseTemplate">
+              {{errorMsg}}
+            </ng-container>
+            <ng-template #elseTemplate>
+
+              <div class=" lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4" *ngIf="certificate?.idPremierCopie">
+                <div class="mb-4 w-4/5">
+
+                  <label class="block mb-2 text-sm font-bold text-black">{{'Nomenfant'|transloco}}</label>
+                  <input type="text" readonly value="{{certificate?.enfant.nomEnfant}}"
+                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                    placeholder="{{'SaisirNomEnfant'|transloco}}" />
+
+                </div>
+                <div class="mb-4 w-4/5">
+
+                  <label class="block mb-2 text-sm font-bold text-black">{{'Prenomsenfant'|transloco}}</label>
+                  <input type="text" readonly value="{{certificate?.enfant.prenomsEnfant}}"
+                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                    placeholder="{{'SaisirPrenomsEnfant'|transloco}}" />
+
+                </div>
+
+              </div>
+              <div class="lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
+                <div class="mb-4 w-4/5">
+
+                  <label class="block mb-2 text-sm font-bold text-black">{{'DateNaissance'|transloco}}</label>
+                  <input type="text" readonly value="{{certificate?.enfant?.datenaissEnfant}}"
+                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                    placeholder="{{'SaisirDatedenaissanceEnfant'|transloco}}" />
+
+                </div>
+                <div class="mb-4 w-4/5">
+
+                  <label class="block mb-2 text-sm font-bold text-black">{{'HeureNaissance'|transloco}}</label>
+                  <input type="text" readonly value="{{certificate?.enfant?.heurenaissEnfant}}"
+                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                    placeholder="{{'Saisirheuredenaissance'|transloco}}" />
+
+                </div>
+              </div>
+              <div class="lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
+                <div class="mb-4 w-4/5">
+
+                  <label class="block mb-2 text-sm font-bold text-black">{{'LieuNaissance'|transloco}}</label>
+                  <input type="text" readonly value="{{certificate?.enfant?.lieunaissEnfant}}"
+                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                    placeholder="{{'SaisirLieuNaissanceEnfant'|transloco}}" />
+
+                </div>
+
+              </div>
+
+            </ng-template>
 
           </div>
-          <div class="mb-4 w-4/5">
 
-            <label class="block mb-2 text-sm font-bold text-black">{{'HeureNaissance'|transloco}}</label>
-            <input type="text"  readonly value="{{certificate?.enfant?.heurenaissEnfant}}"
-              class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-              placeholder="{{'Saisirheuredenaissance'|transloco}}" />
-
-          </div>
-        </div>
-        <div class="lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
-          <div class="mb-4 w-4/5">
-
-            <label class="block mb-2 text-sm font-bold text-black">{{'LieuNaissance'|transloco}}</label>
-            <input type="text" readonly value="{{certificate?.enfant?.lieunaissEnfant}}"
-               class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-              placeholder="{{'SaisirLieuNaissanceEnfant'|transloco}}" />
-
-          </div>
-     
-        </div>
-    
-      </ng-template>
-
-    </div>
-
-    <div class="flex p-2 mt-4">
-      <button mat-button  matStepperPrevious class="text-md hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
+          <div class="flex p-2 mt-4">
+            <button mat-button matStepperPrevious class="text-md hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
   hover:bg-gray-200  
   bg-gray-100 
   text-red-700 
   border duration-200 ease-in-out 
   border-red-600 transition">
-            {{'Annuler'|transloco}}</button>
-      <div class="flex-auto flex flex-row-reverse">
-          <button mat-button  (click)="FirstStep()" matStepperNext class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
+              {{'Annuler'|transloco}}</button>
+            <div class="flex-auto flex flex-row-reverse">
+              <button mat-button (click)="FirstStep()" matStepperNext class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
   hover:bg-teal-600  
   bg-teal-600 
   text-teal-100 
   border duration-200 ease-in-out 
   border-teal-600 transition">{{'Suivant'|transloco}}</button>
-        
-      </div>
-  </div>
 
-    </form>
+            </div>
+          </div>
 
-  </mat-step>
+        </form>
 
-  <mat-step [stepControl]="ReconnaissanceFormGroup">
-    <form [formGroup]="ReconnaissanceFormGroup" >
-      <ng-template matStepLabel>  {{'Reconnaissance'|transloco}} <br>
-        <span class="font-normal text-xs text-gray-400">{{'InformationReconnaissance'|transloco}}</span>
-      </ng-template>
-      <div class=" lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
-       
-        <div class="mb-4 w-4/5">
+      </mat-step>
 
-          <label class="block mb-2 text-sm font-bold text-black">{{'Informationadoption'|transloco}}</label>
-          <input type="text" formControlName = "infoPersonDeclarant" id="infoPersonDeclarant"
-            class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-            placeholder="{{'SaisirParentsadoptifs'|transloco}}" />
+      <mat-step [stepControl]="ReconnaissanceFormGroup">
+        <form [formGroup]="ReconnaissanceFormGroup">
+          <ng-template matStepLabel> {{'Reconnaissance'|transloco}} <br>
+            <span class="font-normal text-xs text-gray-400">{{'InformationReconnaissance'|transloco}}</span>
+          </ng-template>
+          <div class=" lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
 
-        </div>
-       
+            <div class="mb-4 w-4/5">
 
-      </div>
-      <div class="lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
-        <div class="mb-4 w-4/5">
+              <label class="block mb-2 text-sm font-bold text-black">{{'Informationadoption'|transloco}}</label>
+              <input type="text" formControlName="infoPersonDeclarant" id="infoPersonDeclarant"
+                class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                placeholder="{{'SaisirParentsadoptifs'|transloco}}" />
 
-          <label class="block mb-2 text-sm font-bold text-black">{{'Datedeclaration'|transloco}}</label>
-          <input type="date" formControlName = "dateDeclaration" id="dateDeclaration"
-            class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-            placeholder="{{'SaisirDateadoption'|transloco}}" />
+            </div>
 
-        </div>
-        <div class="mb-4 w-4/5">
 
-          <label class="block mb-2 text-sm font-bold text-black">{{'Heureadoption'|transloco}}</label>
-          <input type="time"  formControlName = "heureDeclaration" id="heureDeclaration"
-            class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-            placeholder="{{'Saisirheureadoption'|transloco}}" />
+          </div>
+          <div class="lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
+            <div class="mb-4 w-4/5">
 
-        </div>
-      </div>
-      <div class="flex p-2 mt-4">
-        <button mat-button  matStepperPrevious class="text-md hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
+              <label class="block mb-2 text-sm font-bold text-black">{{'Datedeclaration'|transloco}}</label>
+              <input type="date" formControlName="dateDeclaration" id="dateDeclaration"
+                class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                placeholder="{{'SaisirDateadoption'|transloco}}" />
+
+            </div>
+            <div class="mb-4 w-4/5">
+
+              <label class="block mb-2 text-sm font-bold text-black">{{'Heureadoption'|transloco}}</label>
+              <input type="time" formControlName="heureDeclaration" id="heureDeclaration"
+                class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                placeholder="{{'Saisirheureadoption'|transloco}}" />
+
+            </div>
+          </div>
+          <div class="flex p-2 mt-4">
+            <button mat-button matStepperPrevious class="text-md hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
     hover:bg-gray-200  
     bg-gray-100 
     text-red-700 
     border duration-200 ease-in-out 
     border-red-600 transition">
               {{'Annuler'|transloco}}</button>
-        <div class="flex-auto flex flex-row-reverse">
-          <button   (click)="openDialog()"
-          mat-button matStepperNext class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
+            <div class="flex-auto flex flex-row-reverse">
+              <button (click)="openDialog()" mat-button matStepperNext class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
   hover:bg-blue-600  
   bg-blue-600 
   text-blue-100 
   border duration-200 ease-in-out 
   border-blue-600 transition">{{'Sauvegarder'|transloco}}</button>
-          
-        </div>
-    </div>
-    </form>
-  </mat-step>
-</mat-horizontal-stepper>
+
+            </div>
+          </div>
+        </form>
+      </mat-step>
+    </mat-horizontal-stepper>
 
 
-        </div>
-        </div>
-    
-
-    
-    
+  </div>
+</div>

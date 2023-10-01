@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component,ViewChild, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
@@ -16,7 +16,6 @@ declare function MoisMalgache(params: string): any
   styleUrls: ['./reconnaissance-add.component.scss']
 })
 export class ReconnaissanceAddComponent implements OnInit {
-
   reconnaissance: any;
   certificate: any;
   IdPremierCopie = new FormControl();
@@ -26,6 +25,7 @@ export class ReconnaissanceAddComponent implements OnInit {
   minLengthTerm = 1;
   CopieSelected: any = "";
   data: any;
+  typePersone:string="";
 
   datenaiss: string | null | undefined;
   datenaissMere: string | null | undefined;
@@ -51,6 +51,7 @@ export class ReconnaissanceAddComponent implements OnInit {
     infoPersonDeclarant: [''],
     createdDate: new Date()
   })
+  
 
   ngOnInit(): void {
     this.getAllFirstCertificate();
@@ -63,7 +64,7 @@ export class ReconnaissanceAddComponent implements OnInit {
         console.log(this.reconnaissance)
       })
   }
-
+  
   clearreconnais() {
     this.CopieSelected += "";
   }
@@ -172,9 +173,6 @@ export class AdoptionCopieComponent {
     this.reconnaissance.idPremierCopie = this.data.idPremierCopie;
     this.reconnaissance.heureDeclaration = this.data.heureDeclaration;
     this.reconnaissance.infoPersonDeclarant = this.data.infoPersonDeclarant;
-    console.log('==================add reconnaissance==================');
-    console.log(this.reconnaissance);
-    console.log('====================================');
     this.reconnaissanceService.addReconnaissance(this.reconnaissance).subscribe(data => {
       const dialogRef = this.dialog.closeAll();
       this.router.navigate(['/dashboard/reconnaissance-naissance']);

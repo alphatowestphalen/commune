@@ -20,8 +20,8 @@ export class DecesListComponent implements OnInit {
       columnDef: 'Nom et Prènoms  ',
       header: 'Nom et Prènoms ',
         cell: (element: Record<string, any>) => {
-        const nomEnfant = element['premierCopie']['enfant']['nomEnfant']
-        const prenomEnfant = element['premierCopie']['enfant']['prenomsEnfant']
+        const nomEnfant = element['defunt']['nomDefunt']
+        const prenomEnfant = element['defunt']['prenomDefunt']
         const NomEnfant = nomEnfant.toUpperCase()
         return `${NomEnfant} ${prenomEnfant}`
       },
@@ -62,11 +62,11 @@ export class DecesListComponent implements OnInit {
 
   getAllDeces(){
     this.decesservice.getAllDeces().subscribe(data=>{
-      this.tableData = data
+      this.tableData = data.data;
     })
   }
   showRow(element: any) {
-    this.router.navigate(['/dashboard/deces-list', element.idActeDeces])
+    this.router.navigate(['/dashboard/show-deces', element.idActeDeces])
 
   }
 

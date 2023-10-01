@@ -68,11 +68,11 @@
                     </div>
                     <div class="mb-4 w-60 flex gap-10">
                       <label class="flex items-center">
-                        <input type="radio" class="form-radio text-green-700 h-5 w-5 " name="type" [(ngModel)]="buletinNaissance.type" value="Interne">
+                        <input type="radio" class="form-radio text-green-700 h-5 w-5 "  (ngModelChange)="handleSelectedValue($event)" [(ngModel)]="typePressonne" name="type" value="interne">
                         <span class="ml-2 text-gray-700">Interne</span>
                       </label>
                       <label class="flex items-center ">
-                        <input type="radio" class="form-radio text-green-700 h-5 w-5" name="type" [(ngModel)]="buletinNaissance.type" value="Externe">
+                        <input type="radio" class="form-radio text-green-700 h-5 w-5" (ngModelChange)="handleSelectedValue($event)" name="type" [(ngModel)]="typePressonne" value="externe">
                         <span class="ml-2 text-gray-700">Externe</span>
                       </label>
                     </div>
@@ -130,19 +130,32 @@
                     <span class="font-normal text-xs text-gray-400">Information personnel </span>
                   </ng-template>
                   <div class="lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
-                    <div class="mb-4 w-4/5">
-      
+                    <div class="mb-4 w-4/5" *ngIf="typePressonne === 'interne' ">
                       <label class="block mb-2 text-sm font-bold text-black">Code Premier Copie</label>
-                      <input type="number" name="idPremierCopie" [(ngModel)]="buletinNaissance.idPremierCopie" id="dateEnfant"
-                        class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                        placeholder="Saisir Date de Naissance l'enfant" />
+                      <select [(ngModel)]="premierCopie.idPremierCopieFemme" name="idPremierCopieFemme" (ngModelChange)="changerId($event)" class="w-full ml-auto p-2.5  border-gray-300 rounded-lg bg-gray-50 text-md border">
+                        <option *ngFor="let copiers of premierCopie" class="p-6 "  [value]="copiers.idPremierCopie">{{copiers.idPremierCopie}}- {{copiers.enfant.nomEnfant}} {{copiers.enfant.prenomsEnfant}}</option>
+                      </select>
+                      <!-- <select  name="idPremierCopieFemme" class="w-full ml-auto p-2.5  border-gray-300 rounded-lg bg-gray-50 text-md border">
+                        <option  class="p-6 "  >sdfsqdfqsdfqsd</option>
+                      </select> -->
+                     
+      
+                    </div>
+                    <div class="mb-4 w-4/5" *ngIf="typePressonne === 'externe' ">
+                      <label class="block mb-2 text-sm font-bold text-black">Code Bulletin de Naissance</label>
+                    <input type="number" [(ngModel)]="premierCopie.idPremierCopieFemme" name="idPremierCopieFemme" id="heureEnfant"
+                        class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border "
+                        placeholder="Saisir heure de Naissance de l'enfant" />
+                      <!-- <select  name="idPremierCopieFemme" class="w-full ml-auto p-2.5  border-gray-300 rounded-lg bg-gray-50 text-md border">
+                        <option  class="p-6 "  >sdfsqdfqsdfqsd</option>
+                      </select> -->
                      
       
                     </div>
                     <div class="mb-4 w-4/5">
                       <label class="block mb-2 text-sm font-bold text-black">Date Premier Copie</label>
-                    <input type="date" name="dateCopie" [(ngModel)]="buletinNaissance.dateCopie"  id="heureEnfant"
-                        class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                    <input type="date" name="dateCopie" [(ngModel)]="buletinNaissance.dateCopie" [readonly]="readonly" id="heureEnfant"
+                        class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border "
                         placeholder="Saisir heure de Naissance de l'enfant" />
                     </div>
                   </div>
@@ -150,7 +163,7 @@
                     <div class="mb-4 w-4/5">
       
                       <label class="block mb-2 text-sm font-bold text-black">Nom de la Personne</label>
-                      <input type="text" name="nomPersonne" [(ngModel)]="buletinNaissance.nomPersonne" id="nomEnfant"
+                      <input type="text" name="nomPersonne" [readonly]="readonly" [(ngModel)]="buletinNaissance.nomPersonne"  id="nomEnfant"
                         class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
                         placeholder="Saisir nom de la Personne" />
       
@@ -158,7 +171,7 @@
                     <div class="mb-4 w-4/5">
       
                       <label class="block mb-2 text-sm font-bold text-black">Prenoms de la Personne</label>
-                      <input type="text" name="prenomsPersonne" [(ngModel)]="buletinNaissance.prenomsPersonne"
+                      <input type="text" name="prenomsPersonne" [readonly]="readonly" [(ngModel)]="buletinNaissance.prenomsPersonne"
                         class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
                         placeholder="Saisir Prenoms de la Personne" />
       
@@ -169,7 +182,7 @@
                     <div class="mb-4 w-4/5">
       
                       <label class="block mb-2 text-sm font-bold text-black">Date de Naissance</label>
-                      <input type="date" name="dateNaissPersonne" [(ngModel)]="buletinNaissance.dateNaissPersonne" id="dateEnfant"
+                      <input type="date" name="dateNaissPersonne" [readonly]="readonly" [(ngModel)]="buletinNaissance.dateNaissPersonne" id="dateEnfant"
                         class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
                         placeholder="Saisir Date de Naissance la Personne" />
                      
@@ -178,7 +191,7 @@
                     <div class="mb-4 w-4/5">
       
                       <label class="block mb-2 text-sm font-bold text-black">Lieu de Naissance</label>
-                    <input type="text" name="lieuNaissPersonne" [(ngModel)]="buletinNaissance.lieuNaissPersonne"   id="heureEnfant"
+                    <input type="text" name="lieuNaissPersonne" [readonly]="readonly" [(ngModel)]="buletinNaissance.lieuNaissPersonne"   id="heureEnfant"
                         class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
                         placeholder="Saisir heure de Naissance de la Personne" />
                     </div>
@@ -215,7 +228,7 @@
                     <div class="mb-4 w-4/5">
       
                       <label class="block mb-2 text-sm font-bold text-black">Nom du mère </label>
-                      <input type="text" name="nomMere" [(ngModel)]="buletinNaissance.nomMere" 
+                      <input type="text" name="nomMere" [readonly]="readonly" [(ngModel)]="buletinNaissance.nomMere" 
                         class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
                         placeholder="Saisir Nom du mère" />
       
@@ -223,7 +236,7 @@
                     <div class="mb-4 w-4/5">
       
                       <label class="block mb-2 text-sm font-bold text-black">Nom du père</label>
-                      <input type="text" name="nomPere" [(ngModel)]="buletinNaissance.nomPere"
+                      <input type="text" name="nomPere" [readonly]="readonly" [(ngModel)]="buletinNaissance.nomPere"
                         class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
                         placeholder="Saisir nom du père" />
       
@@ -234,7 +247,7 @@
                     <div class="mb-4 w-4/5">
       
                       <label class="block mb-2 text-sm font-bold text-black">Prenom du mère </label>
-                      <input type="text" name="prenomsMere" [(ngModel)]="buletinNaissance.prenomsMere"
+                      <input type="text" name="prenomsMere" [readonly]="readonly" [(ngModel)]="buletinNaissance.prenomsMere"
                         class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
                         placeholder="Saisir Nom du mère" />
       
@@ -242,7 +255,7 @@
                     <div class="mb-4 w-4/5">
       
                       <label class="block mb-2 text-sm font-bold text-black">Prenom du père</label>
-                      <input type="text" name="prenomsPere" [(ngModel)]="buletinNaissance.prenomsPere"
+                      <input type="text" name="prenomsPere" [readonly]="readonly" [(ngModel)]="buletinNaissance.prenomsPere"
                         class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
                         placeholder="Saisir Prènoms du père" />
       

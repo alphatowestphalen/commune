@@ -27,6 +27,9 @@ export class DemandeService {
     return this.http.get(`${this.baseUrl}/nomEnfant?NomEnfant=${nomEnfant}&PrenomsEnfant=${PrenomsEnfant}`)
  
   }
+   SearchCertificate(serach:string): Observable<any>{
+    return this.http.get(`${this.baseUrl}/?q=${serach}`)
+  }
 
   getAllHistoriques(): Observable<any>{
     return this.http.get(`${this.baseUrl}/historiques`)

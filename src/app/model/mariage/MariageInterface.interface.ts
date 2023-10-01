@@ -15,7 +15,7 @@ export interface MariageInterface {
     numeroCopieMariage: string;
     dateMariage: string;
     heureMariage: string;
-    idMaire: number;
+    idMaire: string;
     nationaliteHomme: string;
     idPremierCopieHomme: string;
     nomHomme: string;
@@ -85,7 +85,7 @@ export interface MariageInterfaceInterneInterne{
         numeroCopieMariage: string;
         dateMariage: string;
         heureMariage: string;
-        idMaire: number;
+        idMaire: string;
         idPremierCopieHomme: string;
         idPremierCopieFemme: string;
 }
@@ -107,7 +107,7 @@ export interface MariageInterfaceInterneExterne{
     numeroCopieMariage: string;
     dateMariage: string;
     heureMariage: string;
-    idMaire: number;
+    idMaire: string;
     idPremierCopieHomme: string;
     nationaliteFemme: string;
     nomFemme: string;
@@ -117,14 +117,12 @@ export interface MariageInterfaceInterneExterne{
     lieuNaissFemme: string;
     adresseFemme: string;
     typeFemme: string;
-    idPereFemme: number;
     nomPereFemme: string;
     prenomsPereFemme: string;
     dateNaissPereFemme: string;
     lieuNaissPereFemme: string;
     professionPereFemme: string;
     adressePereFemme: string;
-    idMereFemme: number;
     nomMereFemme: string;
     prenomsMereFemme: string;
     dateNaissMereFemme: string;
@@ -150,7 +148,7 @@ export interface MariageInterfaceExterneInterne{
     numeroCopieMariage: string;
     dateMariage: string;
     heureMariage: string;
-    idMaire: number;
+    idMaire: string;
     idPremierCopieFemme: string;
     nationaliteHomme: string;
     nomHomme: string;
@@ -159,15 +157,12 @@ export interface MariageInterfaceExterneInterne{
     dateNaissHomme: string;
     lieuNaissHomme: string;
     adresseHomme: string;
-    typeHomme: string;
-    idPereHomme: number;
     nomPereHomme: string;
     prenomsPereHomme: string;
     dateNaissPereHomme: string;
     lieuNaissPereHomme: string;
     professionPereHomme: string;
     adressePereHomme: string;
-    idMereHomme: number;
     nomMereHomme: string;
     prenomsMereHomme: string;
     dateNaissMereHomme: string;

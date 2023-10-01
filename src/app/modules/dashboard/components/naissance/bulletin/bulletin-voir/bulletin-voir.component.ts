@@ -1,45 +1,37 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { PremiereCopieService } from '../../../services/premiere-copie.service';
-import { CopieComponent } from '../../../pages/copie/copie.component';
-import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
-import { DecesService } from '../../../services/deces.service';
+import jsPDF from 'jspdf';
+import { CopieComponent } from 'src/app/modules/dashboard/pages/copie/copie.component';
+import { BulletinNaissanceService } from 'src/app/modules/dashboard/services/bulletin-naissance.service';
+import { PremiereCopieService } from 'src/app/modules/dashboard/services/premiere-copie.service';
 
 @Component({
-  selector: 'app-deces-show',
-  templateUrl: './deces-show.component.html',
-  styleUrls: ['./deces-show.component.scss']
+  selector: 'app-bulletin-voir',
+  templateUrl: './bulletin-voir.component.html',
+  styleUrls: ['./bulletin-voir.component.css']
 })
-export class DecesShowComponent implements OnInit {
+export class BulletinVoirComponent implements OnInit {
   id: any;
   certificates: any;
-  
 
-  constructor(private activatedroute: ActivatedRoute, private router: Router, private deceService: DecesService) { }
+  constructor(private activatedroute: ActivatedRoute, private router: Router, private bulletinNaissanceService: BulletinNaissanceService) { }
   @ViewChild('htmlData', { static: false }) copiecomponent: CopieComponent;
 
   ngOnInit(): void {
     this.activatedroute.paramMap.subscribe(params => {
       this.id = params.get('id');
-      this.getCertificatesbyID(this.id);
+      this.getCertificatesbyID();
     });
   }
-  getCertificatesbyID(id: number) {
-    this.deceService.getDecesById(id)
-      .subscribe(data => {
-        this.certificates = data;
-        console.log(this.certificates);
-      })
+  getCertificatesbyID() {
+    this.bulletinNaissanceService.getBulletinById(this.id).subscribe((data: any) => {
+      this.certificates = data;
+      console.log('====================================');
+      console.log(this.certificates);
+      console.log('====================================');
+    });
   }
-
-
-  // ngAfterViewInit(){
-  //   this.HtmlData = this.copiecomponent.HtmlData;
-  //   const htmlDataElement = this.HtmlData.nativeElement.querySelector('#htmlData');
-  //   console.log(htmlDataElement);
-
-  // }
 
   OpenCopie = false;
   toggleModal() {
@@ -69,6 +61,7 @@ export class DecesShowComponent implements OnInit {
     // });
 
     const doc = new jsPDF();
+    // const content = this.content.nativeElement;
     html2canvas(DATA).then(canvas => {
       const imgData = canvas.toDataURL('image/png');
       const imgWidth = 210;
@@ -80,6 +73,7 @@ export class DecesShowComponent implements OnInit {
       doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
       heightLeft -= pageHeight;
       doc.setFont('times', 'normal');
+      //  doc.text(DATA.innerHTML, 10, 10);
 
       while (heightLeft >= 0) {
         position = heightLeft - imgHeight;
@@ -101,7 +95,6 @@ export class DecesShowComponent implements OnInit {
 
     document.body.innerHTML = originalContents;
   }
-
 
 
 }

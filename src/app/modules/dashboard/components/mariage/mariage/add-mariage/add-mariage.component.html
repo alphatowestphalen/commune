@@ -99,12 +99,12 @@
             <span class="font-normal text-xs text-gray-400">Information Mariage et Maire </span>
           </ng-template>
           <div class="lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
-            <div class="mb-4 w-4/5">
+            <!-- <div class="mb-4 w-4/5">
               <label class="block mb-2 text-sm font-bold text-black">Numero Copie Mariage</label>
               <input type="number" name="numeroCopieMariage" [(ngModel)]="mariageInterface.numeroCopieMariage" id="dateEnfant"
                 class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
                 placeholder="Saisir Date de Naissance l'enfant" />
-            </div>
+            </div> -->
             <div class="mb-4 w-4/5">
               <label class="block mb-2 text-sm font-bold text-black">Date de Mariage</label>
               <input type="date" name="dateMariage" [(ngModel)]="mariageInterface.dateMariage" id="heureEnfant"
@@ -203,7 +203,7 @@
               <div class="pl-80  w-full ">
                   <label name="typeHomme" class="block mb-2 text-sm font-bold text-black">Numero de Copie de Homme</label>
                   <select  name="idPremierCopie" [(ngModel)]="mariageInterface.idPremierCopieHomme" class="w-2/4 ml-auto p-2.5  border-gray-300 rounded-lg bg-gray-50 text-md border">
-                    <option *ngFor="let copiers of premierCopiers" class="p-6 "  [value]="copiers.idPremierCopie">{{copiers.idPremierCopie}}</option>
+                    <option *ngFor="let copiers of premierCopiers" class="p-6 "  [value]="copiers.idPremierCopie">{{copiers.idPremierCopie}}- {{copiers.enfant.nomEnfant}} {{copiers.enfant.prenomsEnfant}}</option>
                   </select>
                   <!-- <div class=" w-2/4">
                     <input name="idPremierCopieHomme" [(ngModel)]="idCopier"  type="number" name="numeroCopieMariage" id="dateEnfant" (click)="ClickOptionCopierHome()"
@@ -250,12 +250,12 @@
               <span class="font-normal text-xs text-gray-400">Information du Homme </span>
             </ng-template>
             <div class="lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
-              <div class="mb-4 w-4/5">
+              <!-- <div class="mb-4 w-4/5">
                 <label class="block mb-2 text-sm font-bold text-black">id Premier Copie Homme</label>
                 <input type="number" [(ngModel)]="mariageInterface.numeroCopieMariage" name="numeroCopieMariage" id="dateEnfant"
                   class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
                   placeholder="Saisir Date de Naissance l'enfant" />
-              </div>
+              </div> -->
               <div class="mb-4 w-4/5">
                 <label class="block mb-2 text-sm font-bold text-black">Nom Homme</label>
                 <input type="text" [(ngModel)]="mariageInterface.nomHomme" name="nomHomme" id="heureEnfant"
@@ -585,7 +585,7 @@
               <div class="pl-80  w-full ">
                   <label name="typeHomme" class="block mb-2 text-sm font-bold text-black">Numero de Copie de Femme</label>
                   <select [(ngModel)]="mariageInterface.idPremierCopieFemme" name="idPremierCopieFemme" class="w-2/4 ml-auto p-2.5  border-gray-300 rounded-lg bg-gray-50 text-md border">
-                    <option *ngFor="let copiers of premierCopiers" class="p-6 "  [value]="copiers.idPremierCopie">{{copiers.idPremierCopie}}</option>
+                    <option *ngFor="let copiers of premierCopiers" class="p-6 "  [value]="copiers.idPremierCopie">{{copiers.idPremierCopie}}- {{copiers.enfant.nomEnfant}} {{copiers.enfant.prenomsEnfant}}</option>
                   </select>
                   <!-- <div class=" w-2/4">
                     <input name="idPremierCopieHomme" [(ngModel)]="idCopier"  type="number" name="numeroCopieMariage" id="dateEnfant" (click)="ClickOptionCopierHome()"
@@ -631,12 +631,12 @@
               <span class="font-normal text-xs text-gray-400">Information du Femme </span>
             </ng-template>
             <div class="lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
-              <div class="mb-4 w-4/5">
+              <!-- <div class="mb-4 w-4/5">
                 <label class="block mb-2 text-sm font-bold text-black">id Premier Copie Femme</label>
                 <input type="number" name="idPremierCopieFemme" id="dateEnfant" [(ngModel)]="mariageInterface.idPremierCopieFemme"
                   class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
                   placeholder="Saisir Date de Naissance l'enfant" />
-              </div>
+              </div> -->
               <div class="mb-4 w-4/5">
                 <label class="block mb-2 text-sm font-bold text-black">Nom Femme</label>
                 <input type="text" name="nomFemme" id="heureEnfant" [(ngModel)]="mariageInterface.nomFemme"

@@ -15,6 +15,8 @@ import { TokenInterceptor } from './core/interceptor/token.interceptor';
 import { TranslocoRootModule } from './transloco-root.module';
 import { FormsModule } from '@angular/forms';
 import { MatStepperModule } from '@angular/material/stepper';
+import { DatePipe } from "@angular/common";
+
 
 
 
@@ -36,7 +38,7 @@ import { MatStepperModule } from '@angular/material/stepper';
     FormsModule,
    
   ],
-  providers: [SurveyCreatorModule, SurveyModule, ToastService,
+  providers: [SurveyCreatorModule, SurveyModule, ToastService,DatePipe,
     {provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi:true  },
      {provide: HTTP_INTERCEPTORS, useClass:TokenInterceptor, multi:true}
   ],
