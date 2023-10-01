@@ -1,20 +1,14 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, NgModule, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TranslocoService } from '@ngneat/transloco';
 import { ToastService } from 'angular-toastify';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { TokenService } from 'src/app/core/services/token.service';
 
-
-
-
-
-
 @Component({
   selector: 'app-sign-in',
-  
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.scss'],
 
@@ -22,11 +16,8 @@ import { TokenService } from 'src/app/core/services/token.service';
 
 export class SignInComponent implements OnInit {
   loginForm: FormGroup;
-  errors: any;
+  errors: boolean = false;
   type: boolean;
-
-
-
 
   constructor(
     public router: Router,
@@ -43,56 +34,43 @@ export class SignInComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm = this.formbuilder.group({
-      username: [''],
-      password: ['']
+      username: ['', Validators.required],
+      password: ['', Validators.required]
     })
-
-
   }
-
-
   Login($event: any) {
     $event.preventDefault();
-    const isNotEmpty = Object.values(this.loginForm.value).every(
-      (element) => !!element
+    this.authservice.login(this.loginForm.value).subscribe(
+      (result) => {
+        this.responseHandler(result.token);
+      },
+      (error) => {
+        if (error.status === 401)
+          this.errors = true;
+        else{
+          this._toastService.error('Erreur de connexion');
+        }
+      },
+      () => {
+        this.loginForm.reset();
+        this.router.navigate(['dashboard']);
+      }
     );
-    if (!isNotEmpty) {
-      Object.values(this.loginForm.value).every((element) => {
-        if (element == '') {
-          this._toastService.error('Remplissez les champs requis');
-          return;
-        }
-      });
-    } else {
-      console.log(this.loginForm.value);
-      this.authservice.login(this.loginForm.value).subscribe(
-        (result) => {
-          console.log(result);
-          this.responseHandler(result.token);
-        },
-        (error) => {
-          this.errors = error.error;
-          if (error.status === 401)
-            this._toastService.error('Votre information sont incorrectes');
-          console.log('aaa', this.errors);
-        },
-        () => {
-          this.loginForm.reset();
-          // this._toastService.success('Vous êtes la bienvenue');
-          this.router.navigate(['dashboard/naissance']);
-        }
-      );
-    }
+  }
 
+  get username() {
+    return this.loginForm.get('username');
+  }
+  get password() {
+    return this.loginForm.get('password');
   }
 
   async responseHandler(data: any) {
-    console.log('mydata', data);
+    if(this.errors) this.errors = false;
     this.token.handleData(data);
   }
 
-  toggleFieldTextType() {
-    console.log(this.type);
+  toggleShowPassword() {
     return (this.type = !this.type);
   }
 }
