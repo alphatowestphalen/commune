@@ -13,6 +13,7 @@ import { Column } from '../../../models/column';
 export class CelibataireComponent implements OnInit {
   Opendemande = false;
   bulletin: any;
+  search:string;
   tableColumns: Array<Column> = [
     {
       columnDef: 'idCelibataire',
@@ -63,9 +64,6 @@ export class CelibataireComponent implements OnInit {
     this.acteCelibataire.getAllCellibataire(size, page)
       .subscribe(data => {
         this.tableData = data.data;
-        console.log('===============getAllService=====================');
-        console.log(this.tableData);
-        console.log('====================================');
       })
 
   }
@@ -76,6 +74,18 @@ export class CelibataireComponent implements OnInit {
   handlePageChange(event: PageEvent){
     this.getAllService(event.pageSize, event.pageIndex)
   
+  }
+  applyFilter(filterValue: string) {
+    filterValue = filterValue.trim(); // Remove whitespace
+    filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
+    this.search = filterValue
+    if(this.search == '') {
+      this.getAllService(this.size, this.page);
+    }else{
+      this.acteCelibataire.Search(this.search).subscribe((data)=>{
+        this.tableData = data.data;
+      })
+    }
   }
 }
 

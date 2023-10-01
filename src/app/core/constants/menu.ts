@@ -56,11 +56,11 @@ export class Menu {
           label: 'Acte de Mariage ',
           route: '/dashboard/mariage-list',
         },
-        {
-          icon: 'assets/icons/outline/gift.svg',
-          label: 'Acte de Divorce',
-          route: '/dashboard/divorce-list',
-        },
+        // {
+        //   icon: 'assets/icons/outline/gift.svg',
+        //   label: 'Acte de Divorce',
+        //   route: '/dashboard/divorce-list',
+        // },
         {
           icon: 'assets/icons/outline/users.svg',
           label: 'Acte de Celibataire',

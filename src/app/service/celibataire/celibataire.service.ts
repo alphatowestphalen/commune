@@ -23,4 +23,8 @@ export class CelibataireService {
   getAllCelibataireById(id: number): Observable<any> {
     return this._http.get(`${this.url}/acteCelibataires/${id}`)
   }
+
+  Search(searchTerm: string): Observable<any> {
+    return this._http.get(`${this.url}/acteCelibataires/?q${searchTerm}`);
+  }
 }
