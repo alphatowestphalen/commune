@@ -96,7 +96,6 @@ export class ScopedAComponent implements OnInit {
       this.bulletin.createdDate = data!.createdDate
       console.log(data);
     }
-    ////this.bulletinService.getBulletinByActeId(id)
     );
   }
   Search() {
