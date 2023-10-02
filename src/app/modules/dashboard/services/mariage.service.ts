@@ -24,5 +24,8 @@ export class MariageService {
     getMariageById(idMariage: number):Observable<any>{
     return this.http.get(`${this.baseUrl}/${idMariage}`);
     }
+    Search(search:string):Observable<any>{
+      return this.http.get(`${this.baseUrl}/?q=${search}`);
+    }
 
 }

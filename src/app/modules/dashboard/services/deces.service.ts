@@ -38,5 +38,8 @@ export class DecesService {
     return this.http.get(`${this.baseURl}/${id}`)
   }
 
+  Search(search:any): Observable<any>{
+    return  this.http.get(`${this.baseURl}/?q=${search}`)
+  }
 
 }

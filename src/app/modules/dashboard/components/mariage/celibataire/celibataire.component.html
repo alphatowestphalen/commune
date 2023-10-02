@@ -32,7 +32,7 @@
       </div>
       <mat-form-field>
         <mat-label>Recherche...</mat-label>
-        <input matInput />
+        <input matInput (keyup)="applyFilter($any($event.target).value)" />
         <mat-icon matSuffix>
           <div class="absolute inset-y-0 -left-2 bottom-3 flex items-center pointer-events-none">
             <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor"
@@ -62,11 +62,5 @@
     </app-mat-table>
       <p *ngIf="!tableData || tableData.length === 0"><app-loading></app-loading></p>
 
-
-    <!-- <mat-paginator
-      (page)="pageChange($event)"
-      [pageSizeOptions]="[10, 20, 1, 5, 50]"
-      showFirstLastButtons
-    ></mat-paginator> -->
   </div>
 </div>

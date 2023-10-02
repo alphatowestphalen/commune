@@ -11,7 +11,7 @@ import { TranslocoService } from '@ngneat/transloco';
 })
 export class MariageComponent implements OnInit {
 
-
+  search:string;
 
   tableColumns: Array<Column> = [
     {
@@ -65,9 +65,6 @@ page = 1;
   AllListMariages(size: number, page: number){
     this.mariageservice.getAllMariage(size, page)
     .subscribe(data=>{
-      console.log('================AllListMariages====================');
-      console.log(data);
-      console.log('====================================');
       this.tableData = data.data,
       this.size = data.length
     })
@@ -76,6 +73,22 @@ page = 1;
   showRow(element: any) {
     this.router.navigate(['/dashboard/mariage-show', element.idMariage])
 
+  }
+
+  applyFilter(filterValue: string) {
+    filterValue = filterValue.trim(); // Remove whitespace
+    filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
+    this.search = filterValue
+    if(this.search == '') {
+      this.AllListMariages(this.size, this.page);
+    }else{
+      console.log('====================================');
+      console.log(this.search);
+      console.log('====================================');
+      this.mariageservice.Search(this.search).subscribe((data)=>{
+        this.tableData = data.data;
+      })
+    }
   }
 
   switchLanguage(lang: string) {
