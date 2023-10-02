@@ -29,7 +29,6 @@ export class JugementVoirComponent implements OnInit {
   getjugementByID() {
     this.jugementservice.getJugementById(this.id).subscribe(copie => {
       this.jugement = copie;
-      
       this.getCertificatesbyID(copie.premierCopie.idPremierCopie);
     });
   }
@@ -37,6 +36,9 @@ export class JugementVoirComponent implements OnInit {
   getCertificatesbyID(idCert: number) {
     this.premierecopieservice.getCertificateByID(idCert).subscribe(data => {
       this.certificates = data;
+      console.log('===============getCertificatesbyID=====================');
+      console.log(this.certificates);
+      console.log('====================================');
     });
   }
   OpenCopie = false;

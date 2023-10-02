@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Column } from '../../../models/column';
 import { JugementService } from '../../../services/jugement.service';
+import { filter } from 'rxjs';
 
 
 @Component({
@@ -55,24 +56,26 @@ export class JugementComponent implements OnInit {
 
 
   constructor( public dialog: MatDialog, private router:Router, private jugementservice: JugementService) {
-    
     }
-
-  
     @ViewChild('htmlData') htmlData!: ElementRef;
-
-  
     applyFilter(filterValue: string) {
       filterValue = filterValue.trim(); // Remove whitespace
-  
+      if(filterValue){
+        this.getSearchAllJugements(filterValue)
+      }else{
+        this.getAllJugements(this.size, this.page)
+      }
     }
-  
+    ngOnInit(): void {
+    this.getAllJugements(this.size, this.page)
+    }
 
-  ngOnInit(): void {
-   this.getAllJugements(this.size, this.page)
-  }
-
-
+    getSearchAllJugements(query: string){
+      this.jugementservice.getSearchJugements(this.size, this.page, query)
+      .subscribe(data=>{
+        this.tableData = data.data;
+      })
+    }
 
   getAllJugements(size: number, page: number){
     this.jugementservice.getJugements(size, page)
@@ -92,23 +95,20 @@ export class JugementComponent implements OnInit {
     this.jugementservice.updateJugement(element.idJugement, element)
       .subscribe((data: any)=> {
         this.getAllJugements(this.size, this.page)
-        
       })
   }
 
   deleteRow(element: any) {
     this.jugementservice.deleteJugement(element.idJugement)
-      .subscribe((data: any)=> { 
+      .subscribe((data: any)=> {
         this.getAllJugements(this.size, this.page)
         console.log('Delete row', data);
       })
-  
   }
 
-handlePageChange(event: PageEvent){
-  this.getAllJugements(event.pageSize, event.pageIndex)
+  handlePageChange(event: PageEvent){
+    this.getAllJugements(event.pageSize, event.pageIndex)
 
-}
-  
+  }
 }
 

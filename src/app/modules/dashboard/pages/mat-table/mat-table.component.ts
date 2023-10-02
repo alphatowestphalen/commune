@@ -22,7 +22,7 @@ export class MatTableComponent implements OnInit {
 
   @Output() editEvent = new EventEmitter<any>();
   @Output() showEvent = new EventEmitter<any>();
-  @Output() deleteEvent = new EventEmitter<any>();
+  // @Output() deleteEvent = new EventEmitter<any>();
   @Output() askEvent = new EventEmitter<any>();
   // @Output() 
 
@@ -66,10 +66,10 @@ export class MatTableComponent implements OnInit {
     this.showEvent.emit(element);
   }
 
-  deleteRow(element: any) {
-    this.deleteEvent.emit(element);
-    this.pageChange.emit(element);
-  }
+  // deleteRow(element: any) {
+  //   this.deleteEvent.emit(element);
+  //   this.pageChange.emit(element);
+  // }
 
  ngOnChanges(change: any){
   this.dataSource.filter = change.search.currentValue.toLowerCase();

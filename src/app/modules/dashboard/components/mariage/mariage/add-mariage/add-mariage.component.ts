@@ -31,7 +31,7 @@ mariageInterface:MariageInterface= {
   numeroCopieMariage: "1",
   dateMariage: "2023-09-18",
   heureMariage: "15:00",
-  idMaire: 1,
+  idMaire: "",
   nationaliteHomme: "US",
   idPremierCopieHomme: "3",
   nomHomme: "Michael",
@@ -96,7 +96,7 @@ mariageInterfaceInterneInterne:MariageInterfaceInterneInterne ={
       numeroCopieMariage: "",
       dateMariage: "",
       heureMariage: "",
-      idMaire: 0,
+      idMaire: "",
       idPremierCopieHomme: "",
       idPremierCopieFemme: "",
 }
@@ -118,7 +118,7 @@ mariageInterfaceInterneExterne:MariageInterfaceInterneExterne ={
   numeroCopieMariage: "",
   dateMariage: "",
   heureMariage: "",
-  idMaire: 0,
+  idMaire: "",
   idPremierCopieHomme: "",
   nationaliteFemme: "",
   nomFemme: "",
@@ -128,14 +128,12 @@ mariageInterfaceInterneExterne:MariageInterfaceInterneExterne ={
   lieuNaissFemme: "",
   adresseFemme: "",
   typeFemme: "",
-  idPereFemme: 0,
   nomPereFemme: "",
   prenomsPereFemme: "",
   dateNaissPereFemme: "",
   lieuNaissPereFemme: "",
   professionPereFemme: "",
   adressePereFemme: "",
-  idMereFemme: 0,
   nomMereFemme: "",
   prenomsMereFemme: "",
   dateNaissMereFemme: "",
@@ -161,7 +159,7 @@ mariageIterfaceExterneInterne:MariageInterfaceExterneInterne ={
   numeroCopieMariage: "",
   dateMariage: "",
   heureMariage: "",
-  idMaire: 0,
+  idMaire: "",
   idPremierCopieFemme: "",
   nationaliteHomme: "",
   nomHomme: "",
@@ -170,15 +168,12 @@ mariageIterfaceExterneInterne:MariageInterfaceExterneInterne ={
   dateNaissHomme: "",
   lieuNaissHomme: "",
   adresseHomme: "",
-  typeHomme: "",
-  idPereHomme: 0,
   nomPereHomme: "",
   prenomsPereHomme: "",
   dateNaissPereHomme: "",
   lieuNaissPereHomme: "",
   professionPereHomme: "",
   adressePereHomme: "",
-  idMereHomme: 0,
   nomMereHomme: "",
   prenomsMereHomme: "",
   dateNaissMereHomme: "",
@@ -211,6 +206,9 @@ interfaces:any[] = [];
   public getAllPremierCopier(size:number,page:number){
     this.premierCopier.getCertificates(size, page).subscribe(data => {
       this.premierCopiers = data.data;
+      console.log('=================^ppo===================');
+      console.log(this.premierCopiers);
+      console.log('====================================');
     });
   }
   ClickOptionCopierHome(){
@@ -226,10 +224,10 @@ interfaces:any[] = [];
   }
   sauvegarderMariage(){
     this.objectMariage.InterneInterne(this.mariageInterface,this.mariageInterfaceInterneInterne);
-    console.log('====================================');
-    console.log(this.mariageInterfaceInterneInterne);
-    console.log('====================================');
     if (this.typeHomme == "interne" && this.typeFemme == "interne") {
+      console.log('===============interne interne=====================');
+      console.log(this.mariageInterfaceInterneInterne);
+      console.log('====================================');
       this.mariageService.addMariage(this.mariageInterfaceInterneInterne,this.typeFemme,this.typeHomme).subscribe(data =>{
         this.route.navigate(['/dashboard/mariage-list']);
       });      

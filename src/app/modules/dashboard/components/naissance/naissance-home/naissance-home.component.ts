@@ -34,10 +34,15 @@ export class NaissanceHomeComponent implements OnInit {
   size:any = '';
   page = 0;
   nombre: number = 0;
-  statistiquePremierCopie:number ;
-  statistiqueAdoption:number ;
-  statistiqueJugement:number ;
-  statistiqueReconaissance:number ;
+  statistiquePremierCopie:string;
+  statistiqueAdoption:string;
+  statistiqueJugement:string ;
+  statistiqueReconaissance:string ;
+  statistiqueBulletinDeNaiss:string ;
+  statistiqueMariage:string;
+  statistiqueDivorce:string ;
+  statistiqueCelibat:string ;
+  statistiqueDece:string;
 
 
   ngOnInit(): void {
@@ -63,10 +68,19 @@ export class NaissanceHomeComponent implements OnInit {
    */
   public getAllState() {
     this.dashboardService.getAllStatus().subscribe((status) => {
+      console.log('====================================');
+      console.log(status);
+      console.log('====================================');
+      this.statistiqueDece = status.acteDeces.nombre.nombre;
       this.statistiquePremierCopie = status.premierCopie.nombre.nombre;
       this.statistiqueJugement = status.jugement.nombre.nombre;
       this.statistiqueReconaissance = status.reconnaissance.nombre.nombre;
       this.statistiqueAdoption = status.adoption.nombre.nombre;
+      this.statistiqueBulletinDeNaiss = status.bulletinNaissance.nombre.nombre;
+      this.statistiqueMariage = status.mariage.nombre.nombre;
+      this.statistiqueCelibat = status.acteCalibataire.nombre.nombre;
+      // this.statistiqueDece = 1;
+      this.statistiqueDivorce = status.divorce.nombre.nombre;      
     })
   }
 

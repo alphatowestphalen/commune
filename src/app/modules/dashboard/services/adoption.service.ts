@@ -15,6 +15,9 @@ private baseURl = environment.baseUrl+'/adoptions'
   getAdoptions(size: number, page: number ): Observable<any> {
     return this.http.get(`${this.baseURl}?page=${page}&size=${size}`);
   }
+  getSearchAdoptions(size: number, page: number, query: string ): Observable<any> {
+    return this.http.get(`${this.baseURl}?page=${page}&size=${size}&q=${query}`);
+  }
 
   getAllAdoption(): Observable<any>{
     return this.http.get(`${this.baseURl}`)

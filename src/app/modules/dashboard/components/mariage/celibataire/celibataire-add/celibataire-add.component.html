@@ -58,32 +58,6 @@
             </div>
 
           </div>
-          <!-- <div class="lg:grid md:grid-flow-col grid-cols-2 gap-4">
-                    <div class="mb-4 w-60">
-                      <label class="label cursor-pointer ">
-                        <input type="checkbox" checked="checked" class="checkbox" />
-                        <span class="label-text"></span>
-      
-                      </label>
-                    </div>
-                    
-                  </div>
-                  <div class="lg:grid md:grid-flow-col grid-cols-2 gap-4">
-                    <div class="mb-4 w-60">
-                      <label class="label cursor-pointer ">
-                        <input type="checkbox" checked="checked" class="checkbox" />
-                        <span class="label-text"></span>
-      
-                      </label>
-                    </div>
-                    <div class="mb-4 w-60">
-                      <label class="label cursor-pointer ">
-                        <input type="checkbox" checked="checked" class="checkbox" />
-                        <span class="label-text">Information du pere</span>
-      
-                      </label>
-                    </div>
-                  </div> -->
 
 
           <div class="flex p-2 mt-4">
@@ -110,58 +84,87 @@
             <ng-template matStepLabel>Information <br>
               <span class="font-normal text-xs text-gray-400">Tous les information Besion</span>
             </ng-template>
-            <div class="lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
+            <div *ngIf="typePressonne==='interne'" class="lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
               <div class="mb-4 w-4/5">
-  
                 <label class="block mb-2 text-sm font-bold text-black">N° Premier Copie</label>
-                <input type="number" name="idPremierCopie" [(ngModel)]="acteCelibataire.idPremierCopie"  id="dateEnfant"
-                  class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                  placeholder="Saisir Date de Naissance l'enfant" />
-  
-  
+                <select [(ngModel)]="acteCelibataire.idPremierCopie" name="idPremierCopieFemme"
+                  (ngModelChange)="changerId($event)"
+                  class="w-full ml-auto p-2.5  border-gray-300 rounded-lg bg-gray-50 text-md border">
+                  <option *ngFor="let copiers of premiserCopie" class="p-6 " [value]="copiers.idPremierCopie">
+                    {{copiers.idPremierCopie}}- {{copiers.enfant.nomEnfant}} {{copiers.enfant.prenomsEnfant}}</option>
+                </select>
               </div>
               <div class="mb-4 w-4/5">
-                <label class="block mb-2 text-sm font-bold text-black">Date CIN</label>
-                <input type="date" name="dateCopie" [(ngModel)]="acteCelibataire.dateCin" id="heureEnfant"
-                  class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                  placeholder="Saisir heure de Naissance de l'enfant" />
-              </div>
-            </div>
-            <div class=" lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
-              <div class="mb-4 w-4/5">
-  
-                <label class="block mb-2 text-sm font-bold text-black">Nom Fokontany </label>
-                <input type="text" name="nomPersonne" [(ngModel)]="acteCelibataire.nomFkt" id="nomEnfant"
-                  class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                  placeholder="Saisir nom de la Personne" />
-  
-              </div>
-              <div class="mb-4 w-4/5">
-  
-                <label class="block mb-2 text-sm font-bold text-black">Numero CIN </label>
-                <input type="text" [(ngModel)]="acteCelibataire.numCin" name="prenomsPersonne"
-                  class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                  placeholder="Saisir Prenoms de la Personne" />
-  
-              </div>
-  
-            </div>
-            <div class="lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
-              <div class="mb-4 w-4/5">
-  
                 <label class="block mb-2 text-sm font-bold text-black">Date de Acte de Celibataire </label>
                 <input type="date" name="dateNaissPersonne" [(ngModel)]="acteCelibataire.dateActe" id="dateEnfant"
                   class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
                   placeholder="Saisir Date de Naissance la Personne" />
-  
-  
+              </div>
+            </div>
+            <div class=" lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
+              <div class="mb-4 w-4/5">
+                <label class="block mb-2 text-sm font-bold text-black">Numero CIN </label>
+                <input type="text" [(ngModel)]="acteCelibataire.numCin" name="prenomsPersonne"
+                  class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                  placeholder="Saisir Prenoms de la Personne" />
               </div>
               <div class="mb-4 w-4/5">
-  
-                <label class="block mb-2 text-sm font-bold text-black">Lieu CIN</label>
-                <input type="text" name="lieuNaissPersonne" [(ngModel)]="acteCelibataire.lieuCin" id="heureEnfant"
+                <label class="block mb-2 text-sm font-bold text-black">Date de Naissance Personne</label>
+                <input type="date" name="prenomsPere" [(ngModel)]="acteCelibataire.dateDeNaiss" id="dateEnfant"
+                  class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                  placeholder="Saisir Prènoms du père" />
+              </div>
+            </div>
+            <div class="lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
+              <div class="mb-4 w-4/5">
+
+                <label class="block mb-2 text-sm font-bold text-black">Date de CIN </label>
+                <input type="date" name="dateCin" [(ngModel)]="acteCelibataire.dateCin" id="dateEnfant"
+                  class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                  placeholder="Saisir Date de Naissance la Personne" />
+
+
+              </div>
+
+              <div class="mb-4 w-4/5">
+
+                <label class="block mb-2 text-sm font-bold text-black">Lieu Naissace Personne</label>
+                <input type="text" name="lieuDeNaiss" [(ngModel)]="acteCelibataire.lieuDeNaiss" id="heureEnfant"
                   class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
                   placeholder="Saisir heure de Naissance de la Personne" />
+              </div>
+            </div>
+            <div class="lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
+
+              <div class="mb-4 w-4/5">
+
+                <label class="block mb-2 text-sm font-bold text-black">Lieu CIN</label>
+                <input type="text" name="lieuCin" [(ngModel)]="acteCelibataire.lieuCin" id="heureEnfant"
+                  class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                  placeholder="Saisir heure de Naissance de la Personne" />
+              </div>
+              <div class="mb-4 w-4/5">
+
+                <label class="block mb-2 text-sm font-bold text-black">Nom Personne </label>
+                <input type="text" name="nom" [(ngModel)]="acteCelibataire.nom" id="nomEnfant"
+                  class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                  placeholder="Saisir Nom du mère" />
+
+              </div>
+            </div>
+            <div class="lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
+                <div class="mb-4 w-4/5">
+                  <label class="block mb-2 text-sm font-bold text-black">Nom Fokontany </label>
+                  <input type="text" name="nomPersonne" [(ngModel)]="acteCelibataire.nomFkt" id="nomEnfant"
+                    class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                    placeholder="Saisir nom de la Personne" />
+              </div>
+              <div class="mb-4 w-4/5">
+                <label class="block mb-2 text-sm font-bold text-black">Genre Personne</label>
+                <select [(ngModel)]="acteCelibataire.genre" name="genre" (ngModelChange)="handelChageGenre($event)">
+                  <option value="FEMME">FEMME</option>
+                  <option value="HOMME">HOMME</option>
+                </select>
               </div>
             </div>
             <div class="flex p-2 mt-4">
@@ -172,212 +175,71 @@
                   border duration-200 ease-in-out 
                   border-gray-600 transition">Prècedent</button>
               <div class="flex-auto flex flex-row-reverse">
-                <button type="submit" (click)="OpenDialog()" class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
-                 
-                          hover:bg-teal-600  
-                  bg-teal-600 
-                  text-teal-100 
-                  border duration-200 ease-in-out 
-                  border-teal-600 transition">Sauvegarder </button>
-  
+                <button *ngIf="typePressonne === 'interne'" (click)="saveActeCelibataire()" [disabled]="addForm.invalid"
+                  class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
+                            hover:bg-blue-600  
+                            bg-blue-600 
+                            text-blue-100 
+                            border duration-200 ease-in-out 
+                            border-blue-600 transition">Sauvegarder</button>
+                <button *ngIf="typePressonne==='externe'" mat-button matStepperNext [disabled]="addForm.invalid" class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
+                            hover:bg-blue-600  
+                            bg-blue-600 
+                            text-blue-100 
+                            border duration-200 ease-in-out 
+                            border-blue-600 transition">suivant </button>
+
               </div>
-            </div>            
+            </div>
           </form>
         </mat-step>
-        <!-- <mat-step >
-                  <ng-template matStepLabel> Parent <br>
-                    <span class="font-normal text-xs text-gray-400">Information du parent</span>
-                  </ng-template>
-      
-      
-                  <div class=" lg:grid md:grid-flow-col grid-cols-2  mt-2 gap-4">
-                    <div class="mb-4 w-4/5">
-      
-                      <label class="block mb-2 text-sm font-bold text-black">Nom du mère </label>
-                      <input type="text" name="nomMere"  
-                        class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                        placeholder="Saisir Nom du mère" />
-      
-                    </div>
-                    <div class="mb-4 w-4/5">
-      
-                      <label class="block mb-2 text-sm font-bold text-black">Nom du père</label>
-                      <input type="text" name="nomPere" 
-                        class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                        placeholder="Saisir nom du père" />
-      
-                    </div>
-      
-                  </div>
-                  <div class=" lg:grid md:grid-flow-col grid-cols-2  mt-2 gap-4">
-                    <div class="mb-4 w-4/5">
-      
-                      <label class="block mb-2 text-sm font-bold text-black">Prenom du mère </label>
-                      <input type="text" name="prenomsMere" 
-                        class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                        placeholder="Saisir Nom du mère" />
-      
-                    </div>
-                    <div class="mb-4 w-4/5">
-      
-                      <label class="block mb-2 text-sm font-bold text-black">Prenom du père</label>
-                      <input type="text" name="prenomsPere" 
-                        class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                        placeholder="Saisir Prènoms du père" />
-      
-                    </div>
-      
-                  </div>
-                  <div class="flex p-2 mt-4">
-                    <button mat-button matStepperPrevious class="text-md hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
-                hover:bg-gray-200  
-                bg-gray-100 
-                text-gray-700 
-                border duration-200 ease-in-out 
-                border-gray-600 transition">Prècedent</button>
-                <div class="flex-auto flex flex-row-reverse">
-                          <button  [disabled]="addForm.invalid" 
-                          class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
-                          hover:bg-blue-600  
-                          bg-blue-600 
-                          text-blue-100 
-                          border duration-200 ease-in-out 
-                          border-blue-600 transition">Sauvegarder</button>
-                          
-                </div>
-                </div>
-      
-              </mat-step> -->
-        <!-- <mat-step >
-                  <ng-template matStepLabel> Declarante <br>
-                    <span class="font-normal text-xs text-gray-400">Information personnel</span>
-                  </ng-template>
-                  <div class=" lg:grid md:grid-flow-col grid-cols-2 mt-2  gap-4">
-                    <div class="mb-4 w-4/5">
-      
-                      <label class="block mb-2 text-sm font-bold text-black">Nom </label>
-                      <input type="text"  name=""
-                        class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                        placeholder="Saisir Nom du Declarante" />
-      
-                    </div>
-                    <div class="mb-4 w-4/5">
-      
-                      <label class="block mb-2 text-sm font-bold text-black">Prenoms </label>
-                      <input type="text" 
-                        class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                        placeholder="Saisir Prènoms du Declarante" />
-      
-                    </div>
-      
-                  </div>
-                  <div class="lg:grid md:grid-flow-col grid-cols-2 mt-2  gap-4">
-                    <div class="mb-4 w-4/5">
-      
-                      <label class="block mb-2 text-sm font-bold text-black">Date de Naissance</label>
-                      <input type="date" 
-                        class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                        placeholder="Saisir Date de Naissance du Declarante" />
-      
-                    </div>
-                    <div class="mb-4 w-4/5">
-      
-                      <label class="block mb-2 text-sm font-bold text-black">Lieu de Naissance</label>
-                      <input type="text" 
-                        class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                        placeholder="Saisir Lieu de Naissance du Declarante " />
-      
-                    </div>
-      
-                  </div>
-                  <div class="lg:grid md:grid-flow-col grid-cols-2 mt-2  gap-4">
-                 
-                    <div class="mb-4 w-4/5">
-                      <label class="block mb-2 text-sm font-bold text-black">Adresse Exacte</label>
-                      <input type="text" 
-                        class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                        placeholder="Saisir Adresse du Declarante" />
-                    </div>
-      
-                  </div>
-                  <div class="flex p-2 mt-4">
-                    <button mat-button matStepperPrevious class="text-md hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
-                hover:bg-gray-200  
-                bg-gray-100 
-                text-gray-700 
-                border duration-200 ease-in-out 
-                border-gray-600 transition">Prècedent</button>
-                    <div class="flex-auto flex flex-row-reverse">
-                        <button  mat-button matStepperNext class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
-                hover:bg-teal-600  
-                bg-teal-600 
-                text-teal-100 
-                border duration-200 ease-in-out 
-                border-teal-600 transition">Suivant</button>
-                        
-                    </div>
-                </div>
-              </mat-step>
-              <mat-step>
-                  <ng-template matStepLabel> Maire <br>
-                    <span class="font-normal text-xs text-gray-400">Information personnel</span>
-                  </ng-template>
-                  <div class=" lg:grid md:grid-flow-col grid-cols-2 mt-2  gap-4">
-                    <div class="mb-4 w-4/5">
-      
-                      <mat-form-field appearance="fill">
-                        <mat-label>Nom du Maire</mat-label>
-                        <mat-select  name="Nom du Maire">
-                          <mat-option>teset maire</mat-option>
-                          <mat-option>teset maire</mat-option>
-                          <mat-option>teset maire</mat-option>
-                        </mat-select>
-                      </mat-form-field>
-                    
-                    </div>
-                    <div class="mb-4 w-4/5">
-      
-                      <label class="block mb-2 text-sm font-bold text-black">Prenoms </label>
-                      <input type="text"   readonly
-                        class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                        placeholder="Saisir Prènoms du Maire" />
-      
-                    </div>
-      
-                  </div>
-                  <div class="lg:grid md:grid-flow-col grid-cols-2 mt-2  gap-4">
-                    <div class="mb-4 w-4/5">
-      
-                      <label class="block mb-2 text-sm font-bold text-black">Fonction</label>
-                      <input type="text" id="fonction" readonly
-                        class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
-                        placeholder="Saisir Fonction du Maire" />
-      
-                    </div>
-                  </div>
-      
-                  <div class="flex p-2 mt-4">
-                    <button mat-button matStepperPrevious class="text-md hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
-                hover:bg-gray-200  
-                bg-gray-100 
-                text-gray-700 
-                border duration-200 ease-in-out 
-                border-gray-600 transition">Prècedent</button>
-                    <div class="flex-auto flex flex-row-reverse">
-                        <button 
-                        mat-button matStepperNext class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
-                hover:bg-blue-600  
-                bg-blue-600 
-                text-blue-100 
-                border duration-200 ease-in-out 
-                border-blue-600 transition">Sauvegarder</button>
-                        
-                    </div>
-                </div>
-              </mat-step> -->
+        <div *ngIf="typePressonne==='externe'">
+          <mat-step>
+            <ng-template matStepLabel> Parent <br>
+              <span class="font-normal text-xs text-gray-400">Information du parent</span>
+            </ng-template>
+
+
+            <div class=" lg:grid md:grid-flow-col grid-cols-2  mt-2 gap-4">
+              <div class="mb-4 w-4/5">
+
+                <label class="block mb-2 text-sm font-bold text-black">Nom du mère </label>
+                <input type="text" name="nomMere" [(ngModel)]="acteCelibataire.nomMere" id="nomEnfant"
+                  class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                  placeholder="Saisir Nom du mère" />
+
+              </div>
+              <div class="mb-4 w-4/5">
+
+                <label class="block mb-2 text-sm font-bold text-black">Nom du père</label>
+                <input type="text" name="nomPere" [(ngModel)]="acteCelibataire.nomPere" id="nomEnfant"
+                  class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
+                  placeholder="Saisir nom du père" />
+
+              </div>
+
+            </div>
+            <div class="flex p-2 mt-4">
+              <button mat-button matStepperPrevious class="text-md hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
+                  hover:bg-gray-200  
+                  bg-gray-100 
+                  text-gray-700 
+                  border duration-200 ease-in-out 
+                  border-gray-600 transition">Prècedent</button>
+              <div class="flex-auto flex flex-row-reverse">
+                <button (click)="saveActeCelibataire()" [disabled]="addForm.invalid" class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
+                            hover:bg-blue-600  
+                            bg-blue-600 
+                            text-blue-100 
+                            border duration-200 ease-in-out 
+                            border-blue-600 transition">Sauvegarder</button>
+
+              </div>
+            </div>
+
+          </mat-step>
+        </div>
       </form>
     </mat-horizontal-stepper>
-    <!-- <survey [model]="surveyModel"></survey>
-      <survey-creator [model]="surveyCreatorModel"></survey-creator> -->
   </div>
 </div>

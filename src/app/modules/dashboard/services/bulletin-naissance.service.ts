@@ -21,7 +21,12 @@ export class BulletinNaissanceService {
   getAllBulletin(size: number, page: number): Observable<any> {
     return this.http.get(`${this.baseURl}?page=${page}&size=${size}`);
   }
-  getBulletinByActeId(idPremierCopie: number): Observable<any> {
-    return this.http.get(`${this.baseURl}/numcopie/${idPremierCopie}`);
+
+  getBulletinByActeId(idPremierCopie: string): Observable<any> {
+    return this.http.get(`${this.baseURl}/${idPremierCopie}`);
+  }
+
+  getBulletinById(id: string):Observable<any>{
+    return this.http.get(`${this.baseURl}/${id}`);
   }
 }

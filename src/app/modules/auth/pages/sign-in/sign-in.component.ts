@@ -53,7 +53,7 @@ export class SignInComponent implements OnInit {
       },
       () => {
         this.loginForm.reset();
-        this.router.navigate(['demande']);
+        this.router.navigate(['dashboard']);
       }
     );
   }

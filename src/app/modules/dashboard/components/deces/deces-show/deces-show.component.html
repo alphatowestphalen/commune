@@ -1,1 +1,329 @@
-<p>deces-show works!</p>
+
+<div class="mx-auto px-4 py-2 sm:px-8 lg:container">
+    <div class="mb-2 flex justify-between">
+      <div class="inline-block">
+        <button (click)="toggleModal()"
+          class="shadow-md inline-flex items-center px-4 py-2 bg-red-200 hover:bg-red-600 text-gray-800 text-sm font-medium rounded-md">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" />
+          </svg>
+  
+          {{'Cliquerpourafficher'|transloco}}
+        </button>
+      </div>
+      <div class="inline-block">
+        <button (click)="printPage()"
+          class="shadow-md inline-flex items-center px-4 py-2 bg-green-400 hover:bg-teal-600 text-gray-800 text-sm font-medium rounded-md">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
+          </svg>
+  
+          {{'Cliquerpourimprimer'|transloco}}
+        </button>
+      </div>
+      <div class="inline-block space-x-2">
+        <button
+          class="flex-none rounded-md bg-white px-4 py-0.5 text-xs font-semibold text-gray-500 hover:text-primary-500 dark:bg-night-600 dark:text-night-200 dark:hover:bg-night-500">
+          {{'Acceuil'|transloco}}
+        </button>
+        <span class="flex-none rounded-md py-0.5 text-xs font-semibold text-night-400">>></span>
+        <button
+          class="flex-none rounded-md bg-white px-4 py-0.5 text-xs font-semibold text-gray-500 hover:text-primary-500 dark:bg-night-600 dark:text-night-200 dark:hover:bg-night-500">
+          ...
+        </button>
+        <span class="flex-none rounded-md py-2.5 text-xs font-semibold text-night-400">>></span>
+        <button
+          class="flex-none rounded-md bg-primary-500 px-4 py-0.5 text-xs font-semibold text-white hover:bg-primary-600">
+          {{'VoirunePremièreCopie'|transloco}}
+        </button>
+      </div>
+    </div>
+  
+    <div *ngIf="certificates" class="flex-col rounded-lg bg-white mt-2 dark:bg-night-700">
+      <div class="flex  justify-between">
+        <div class="flex bg-white p-2">
+          <div class="flex-col items-center ">
+            <h3 class="text-xs inline-flex font-normal pl-5 text-gray-900 dark:text-night-50">
+              .{{'Informationdetailsdansladeclaration'|transloco}}
+            </h3>
+            <h3 class="text-xs  inline-flex font-normal pl-5 text-gray-900 dark:text-night-50">
+              {{'Créele'|transloco}} : <span class=" ml-1 font-bold">{{certificates.createdDate | date:'dd/MM/yyyy hh:mm'}}</span>.
+            </h3>
+            <h3 class="text-xs  inline-flex font-normal pl-5 text-gray-900 dark:text-night-50">
+              {{'par'|transloco}} : <span class=" ml-1 font-bold">{{certificates.createdBy.name}}</span>.
+            </h3>
+          </div>
+        </div>
+      </div>
+  
+  
+      <!-- component -->
+      <div class="relative block p-3 overflow-hidden border bg-white border-slate-100 rounded-lg mx-2" href="">
+        <span class="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-blue-700 via-blue-300 to-yellow-600"></span>
+  
+        <div class="justify-between sm:flex">
+          <div class=" sm:pr-8">
+            <p class="text-sm text-slate-700 underline">
+                Apropos de la declarante
+              <!-- {{'Aproposdelenfant'|transloco}} -->
+            </p>
+          </div>
+        </div>
+  
+        <dl class="flex mt-2">
+          <div class="flex flex-col-reverse">
+            <dt class="text-sm font-medium text-slate-800">{{certificates.nomDeclarant}}
+              {{certificates.prenomsDeclarant}}</dt>
+            <dd class="text-xs text-slate-500">{{'nomPrenom'|transloco}}</dd>
+          </div>
+  
+          <div class="flex flex-col-reverse ml-3 sm:ml-6">
+            <dt class="text-sm font-medium text-slate-800">{{certificates.dateNaissanceDeclarant}}</dt>
+            <dd class="text-xs text-slate-500">{{'DateNaissance'|transloco}}</dd>
+          </div>
+          <div class="flex flex-col-reverse ml-3 sm:ml-6">
+            <dt class="text-sm font-medium text-slate-800">{{certificates.lieuNaissanceDeclarant}}</dt>
+            <dd class="text-xs text-slate-500">{{'LieuNaissance'|transloco}}</dd>
+          </div>
+          <div class="flex flex-col-reverse ml-3 sm:ml-6">
+            <dt class="text-sm font-medium text-slate-800">{{certificates.adresseDeclarant}}</dt>
+            <dd class="text-xs text-slate-500">{{'LieuNaissance'|transloco}}</dd>
+          </div>
+          <div class="flex flex-col-reverse ml-3 sm:ml-6">
+            <dt class="text-sm font-medium text-slate-800">{{certificates.professionDeclarant}}</dt>
+            <dd class="text-xs text-slate-500">{{'LieuNaissance'|transloco}}</dd>
+          </div>
+          <div class="flex flex-col-reverse ml-3 sm:ml-6">
+            <dt class="text-sm font-medium text-slate-800">{{certificates.dateDeclaration}}</dt>
+            <dd class="text-xs text-slate-500">{{'Sexe'|transloco}}</dd>
+          </div>
+          <div class="flex flex-col-reverse ml-3 sm:ml-6">
+            <dt class="text-sm font-medium text-slate-800">{{certificates.heureDeclaration}}</dt>
+            <dd class="text-xs text-slate-500">{{'Heure de declaration'|transloco}} </dd>
+          </div>
+        </dl>
+  
+      </div>
+  
+      <div class="relative block p-3 overflow-hidden border bg-white border-slate-100 rounded-lg mx-2" href="">
+        <span class="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-blue-700 via-blue-300 to-yellow-600"></span>
+  
+        <div class="justify-between sm:flex">
+          <div class=" sm:pr-8">
+            <p class="text-sm text-slate-700 underline">
+                Apropos de la Defunt
+              <!-- {{'Aproposdelamère'|transloco}} -->
+            </p>
+          </div>
+        </div>
+  
+        <dl class="flex mt-2">
+          <div class="flex flex-col-reverse">
+            <dt class="text-sm font-medium text-slate-800"><span class="upperca
+          ">{{certificates.defunt.nomDefunt}}</span> {{certificates.defunt.prenomsDefunt}}</dt>
+            <dd class="text-xs text-slate-500">{{'nomPrenom'|transloco}}</dd>
+          </div>
+  
+          <div class="flex flex-col-reverse ml-3 sm:ml-6">
+            <dt class="text-sm font-medium text-slate-800">{{certificates.defunt.dateDeNaissDefunt}}</dt>
+            <dd class="text-xs text-slate-500">{{'DateNaissance'|transloco}}</dd>
+          </div>
+          <div class="flex flex-col-reverse ml-3 sm:ml-6">
+            <dt class="text-sm font-medium text-slate-800">{{certificates.defunt.lieuDeNaissDefunt}}</dt>
+            <dd class="text-xs text-slate-500">{{'LieuNaissance'|transloco}}</dd>
+          </div>
+  
+          <div class="flex flex-col-reverse ml-3 sm:ml-6">
+            <dt class="text-sm font-medium text-slate-800">{{certificates.defunt.professionDefunt}}</dt>
+            <dd class="text-xs text-slate-500">{{'Profession'|transloco}}</dd>
+          </div>
+          <div class="flex flex-col-reverse ml-3 sm:ml-6">
+            <dt class="text-sm font-medium text-slate-800">{{certificates.defunt.adresseDefunt}}</dt>
+            <dd class="text-xs text-slate-500">{{'Habiteà'|transloco}}</dd>
+          </div>
+          <div class="flex flex-col-reverse ml-3 sm:ml-6">
+            <dt class="text-sm font-medium text-slate-800">{{certificates.defunt.cinDefunt}}</dt>
+            <dd class="text-xs text-slate-500">{{'Numero CIN'|transloco}}</dd>
+          </div>
+          <div class="flex flex-col-reverse ml-3 sm:ml-6">
+            <dt class="text-sm font-medium text-slate-800">{{certificates.defunt.lieuCinDefunt}}</dt>
+            <dd class="text-xs text-slate-500">{{'Lieu CIN'|transloco}}</dd>
+          </div>
+          <div class="flex flex-col-reverse ml-3 sm:ml-6">
+            <dt class="text-sm font-medium text-slate-800">{{certificates.defunt.dateCinDefunt}}</dt>
+            <dd class="text-xs text-slate-500">{{'Date CIN'|transloco}}</dd>
+          </div>
+  
+  
+        </dl>
+  
+      </div>
+      <div class="relative block p-3 overflow-hidden border bg-white border-slate-100 rounded-lg mx-2" href="">
+        <span class="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-blue-700 via-blue-300 to-yellow-600"></span>
+  
+        <div class="justify-between sm:flex">
+          <div class=" sm:pr-8">
+            <p class="text-sm text-slate-700 underline">
+                Apropos du Parant
+              <!-- {{'Aproposdupère'|transloco}} -->
+            </p>
+          </div>
+        </div>
+  
+        <dl class="flex mt-2">
+          <div class="flex flex-col-reverse">
+            <dt class="text-sm font-medium text-slate-800">{{certificates.defunt.nomMereDefunt}} 
+            </dt>
+            <dd class="text-xs text-slate-500">{{'nomMaire'|transloco}}</dd>
+          </div>
+  
+          <div class="flex flex-col-reverse ml-3 sm:ml-6">
+            <dt class="text-sm font-medium text-slate-800">{{certificates.defunt.nomPereDefunt}} </dt>
+            <dd class="text-xs text-slate-500">{{'nomPere'|transloco}}</dd>
+          </div>
+         
+        </dl>
+  
+      </div>
+      <div class="relative block p-3 overflow-hidden border bg-white border-slate-100 rounded-lg mx-2" href="">
+        <span class="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-blue-700 via-blue-300 to-yellow-600"></span>
+  
+        <div class="justify-between sm:flex">
+          <div class=" sm:pr-8">
+            <p class="text-sm text-slate-700 underline">
+                Apropos decee 
+              <!-- {{'Aproposdeladeclarante'|transloco}} -->
+            </p>
+          </div>
+        </div>
+  
+        <dl class="flex mt-2">
+          <div class="flex flex-col-reverse">
+            <dt class="text-sm font-medium text-slate-800">{{certificates.defunt.dateDeces}}
+            <dd class="text-xs text-slate-500">{{'Date de Decce'|transloco}}</dd>
+          </div>
+  
+          <div class="flex flex-col-reverse ml-3 sm:ml-6">
+            <dt class="text-sm font-medium text-slate-800">{{certificates.defunt.heureDeces}} </dt>
+            <dd class="text-xs text-slate-500">{{'Heure de Decce'|transloco}}</dd>
+          </div>
+          <div class="flex flex-col-reverse ml-3 sm:ml-6">
+            <dt class="text-sm font-medium text-slate-800">{{certificates.defunt.lieuDeces}}</dt>
+            <dd class="text-xs text-slate-500">{{'Lieu Decce'|transloco}}</dd>
+          </div>
+        </dl>
+  
+      </div>
+      <div class="relative block p-3 overflow-hidden border bg-white border-slate-100 rounded-lg mx-2" href="">
+        <span class="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-blue-700 via-blue-300 to-yellow-600"></span>
+  
+        <div class="justify-between sm:flex">
+          <div class=" sm:pr-8">
+            <p class="text-sm text-slate-700 underline">
+                Apropos de Enterement
+              <!-- {{'Aproposdumaire'|transloco}} -->
+            </p>
+          </div>
+        </div>
+  
+        <dl class="flex mt-2">
+          <div class="flex flex-col-reverse">
+            <dt class="text-sm font-medium text-slate-800">{{certificates.defunt.dateEnterement}}
+            <dd class="text-xs text-slate-500">{{'Date de Enterement'|transloco}}</dd>
+          </div>
+          <div class="flex flex-col-reverse ml-3 sm:ml-6">
+            <dt class="text-sm font-medium text-slate-800">{{certificates.defunt.heureEnterement}}</dt>
+            <dd class="text-xs text-slate-500">{{'Heurs d Enterement'|transloco}}</dd>
+          </div>
+          <div class="flex flex-col-reverse ml-3 sm:ml-6">
+            <dt class="text-sm font-medium text-slate-800">{{certificates.defunt.lieuEnterement}}</dt>
+            <dd class="text-xs text-slate-500">{{'Lieu d Enterement'|transloco}}</dd>
+          </div>
+          <div class="flex flex-col-reverse ml-3 sm:ml-6">
+            <dt class="text-sm font-medium text-slate-800">{{certificates.defunt.communeEnterement}}</dt>
+            <dd class="text-xs text-slate-500">{{'Commune d Enterement'|transloco}}</dd>
+          </div>
+          <div class="flex flex-col-reverse ml-3 sm:ml-6">
+            <dt class="text-sm font-medium text-slate-800">{{certificates.defunt.regionEnterement}}</dt>
+            <dd class="text-xs text-slate-500">{{'Region d Enterement'|transloco}}</dd>
+          </div>    
+        </dl>
+  
+      </div>
+      <div class="relative block p-3 overflow-hidden border bg-white border-slate-100 rounded-lg mx-2" href="">
+        <span class="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-blue-700 via-blue-300 to-yellow-600"></span>
+  
+        <div class="justify-between sm:flex">
+          <div class=" sm:pr-8">
+            <p class="text-sm text-slate-700 underline">
+                Apropos de Maire
+              <!-- {{'Aproposdumaire'|transloco}} -->
+            </p>
+          </div>
+        </div>
+  
+        <dl class="flex mt-2">
+          <div class="flex flex-col-reverse">
+            <dt class="text-sm font-medium text-slate-800">{{certificates.maire.nomMaire}}
+            <dd class="text-xs text-slate-500">{{'Nom maire'|transloco}}</dd>
+          </div>
+          <div class="flex flex-col-reverse ml-3 sm:ml-6">
+            <dt class="text-sm font-medium text-slate-800">{{certificates.maire.prenomsMaire}}</dt>
+            <dd class="text-xs text-slate-500">{{'Prenom Maire'|transloco}}</dd>
+          </div>
+          <div class="flex flex-col-reverse ml-3 sm:ml-6">
+            <dt class="text-sm font-medium text-slate-800">{{certificates.maire.fonction}}</dt>
+            <dd class="text-xs text-slate-500">{{'Foction'|transloco}}</dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  
+    <p *ngIf="!certificates || certificates.length === 0">{{'Nodataavailable'|transloco}}</p>
+  </div>
+  <div *ngIf="OpenCopie" class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="fixed inset-0 bg-gray-700 bg-opacity-75 transition-opacity">
+  
+      <div class="fixed overflow-y-auto inset-0 z-10 ">
+        <div class="flex max-h-full w-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+          <div class="inline-block items-center m-3 mx-10">
+            <button (click)="openPDF()"
+              class="shadow-md inline-flex items-center px-4 py-2 bg-red-200 hover:bg-red-600 text-gray-800 text-sm font-medium rounded-md">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" />
+              </svg>
+  
+              {{'TaperpourTélecharger'|transloco}}
+            </button>
+  
+            <button (click)="printPage()"
+              class="shadow-md inline-flex items-center px-4 py-2 mt-3 bg-green-400 hover:bg-teal-600 text-gray-800 text-sm font-medium rounded-md">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
+              </svg>
+  
+              {{'TaperpourImprimer'|transloco}}
+            </button>
+  
+          </div>
+  
+          <button
+            class=" hover:bg-red-500 text-white font-bold py-2 px-4 rounded-full absolute  bg-red-700 lg:h-10 lg:max-w-[8%] right-2 top-2"
+            (click)="toggleModal()">x</button>
+          <div class="mt-auto">
+            <app-copie [copie]="certificates" #htmlData></app-copie>
+          </div>
+  
+        </div>
+      </div>
+  
+    </div>
+  </div>

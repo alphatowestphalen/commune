@@ -31,6 +31,9 @@ import { DecesAddComponent } from './components/deces/deces-add/deces-add.compon
 import { DecesShowComponent } from './components/deces/deces-show/deces-show.component';
 import { CelibataireAddComponent } from './components/mariage/celibataire/celibataire-add/celibataire-add.component';
 import { AddMariageComponent } from './components/mariage/mariage/add-mariage/add-mariage.component';
+import { ScopedAComponent } from '../features/components/scoped-a/scoped-a.component';
+import { BulletinVoirComponent } from './components/naissance/bulletin/bulletin-voir/bulletin-voir.component';
+import { CelibataireShowComponent } from './components/mariage/celibataire/celibataire-show/celibataire-show.component';
 
 const routes: Routes = [
   {
@@ -42,6 +45,7 @@ const routes: Routes = [
       { path: 'naissance', component: NaissanceHomeComponent },
       { path: 'bulletin-naissance-add', component: BulletinComponent },
       { path: 'bulletin-naissance-list', component: BulletinListComponent },
+      { path: 'bulletin-naissance-voir/:id', component: BulletinVoirComponent },
       { path: 'add-naissance', component: NaissanceAddComponent },
       { path: 'add-adoption', component: AdoptionAddComponent },
       { path: 'add-jugement', component: JugementAddComponent },
@@ -49,20 +53,13 @@ const routes: Routes = [
       { path: 'adoption-naissance', component: AdoptionComponent },
       { path: 'reconnaissance-naissance', component: ReconnaissanceComponent },
       { path: 'jugement-naissance', component: JugementComponent },
-      {
-        path: 'premiere-copie-voir/:id',
-        component: PremiereCopieVoirComponent,
-      },
+      { path: 'scoped', component: ScopedAComponent},
+      {path: 'premiere-copie-voir/:id',component: PremiereCopieVoirComponent},
       { path: 'adoption-copie-voir/:id', component: AdoptionVoirComponent },
       { path: 'jugement-copie-voir/:id', component: JugementVoirComponent },
-      {
-        path: 'reconnaissance-copie-voir/:id',
-        component: ReconnaissanceVoirComponent,
-      },
+      { path: 'reconnaissance-copie-voir/:id',component: ReconnaissanceVoirComponent},
       { path: 'utilisateur-voir/:id', component: UtilisateurVoirComponent },
-
       { path: 'utilisateur-edit/:id', component: UtilisateurEditComponent },
-
       { path: 'mariage-list', component: MariageComponent },
       // { path: 'mariage-add', component: MariageAddComponent },
       { path: 'mariage-add', component: AddMariageComponent },
@@ -70,6 +67,7 @@ const routes: Routes = [
       { path: 'divorce-list', component: DivorceComponent },
       { path: 'celibat-list', component: CelibataireComponent },
       { path: 'celibataire-add', component: CelibataireAddComponent },
+      { path: 'celibataire-show/:id', component: CelibataireShowComponent },
       { path: 'deces-list', component: DecesListComponent },
       { path: 'add-deces', component: DecesAddComponent },
       { path: 'show-deces/:id', component: DecesShowComponent },

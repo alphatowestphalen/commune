@@ -1,0 +1,34 @@
+export interface DeceeInterface {
+    dateDeclaration: string;
+    idPremierCopie: string;
+    heureDeclaration: string;
+    nomDeclarant: string;
+    prenomsDeclarant: string;
+    professionDeclarant: string;
+    lieuNaissanceDeclarant: string;
+    adresseDeclarant: string;
+    dateNaissanceDeclarant: string;
+    date: string;
+    idMaire: 0;
+    nomDefunt: string;
+    dateDeNaissDefunt: string;
+    lieuDeNaissDefunt: string;
+    cinDefunt: string;
+    dateCinDefunt: string;
+    lieuCinDefunt: string;
+    professionDefunt: string;
+    adresseDefunt: string;
+    nomMereDefunt: string;
+    nomPereDefunt: string;
+    dateDeces: string;
+    lieuDeces: string;
+    heureDeces: string;
+    dateEnterement: string;
+    heureEnterement: string;
+    lieuEnterement: string;
+    communeEnterement: string;
+    regionEnterement: string;
+    nomPiece: true;
+    fasanDehibe: true;
+    prenomDefunt: string
+  }

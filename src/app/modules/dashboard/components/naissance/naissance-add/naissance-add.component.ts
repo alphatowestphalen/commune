@@ -15,17 +15,19 @@ import {
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf'
-import {PremiereCopie} from '../../../models/premiere-copie'
+import { PremiereCopie } from '../../../models/premiere-copie'
 
-import {PremiereCopieService} from '../../../services/premiere-copie.service'
+import { PremiereCopieService } from '../../../services/premiere-copie.service'
 import "../../../../../../assets/js/nombrelettre.js";
 import { MaireService } from '../../../services/maire.service';
 import { Router } from '@angular/router';
+import { DatePipe } from "@angular/common";
 
 
-declare function NombreEnLettre(params:number)  : any;
-declare function MoisMalgache(params: string) : any;
-declare function HeureEnLettre(params: number) : any;
+
+declare function NombreEnLettre(params: number): any;
+declare function MoisMalgache(params: string): any;
+declare function HeureEnLettre(params: number): any;
 declare function MinuteEnlettre(params: number): any;
 declare function LeraEnLettre(params: number): any;
 @Component({
@@ -42,45 +44,47 @@ export class NaissanceAddComponent implements OnInit {
   datenaissMere: string | null | undefined;
   datenaissPere: string | null | undefined;
   datenaissDeclarant: string | null | undefined;
-  dateCopie:string | null | undefined;
-  heureCopie: string | null |undefined;
-  heurenaiss:string |null | undefined;
+  dateCopie: string | null | undefined;
+  heureCopie: string | null | undefined;
+  heurenaiss: string | null | undefined;
   dateregistre: string | null | undefined;
-  MaireSelected: any= [];
+  MaireSelected: any = [];
   NumeroCopie: number;
-  heureregistre: string |null |undefined;
-  checked:boolean = true;
-  isPere:boolean = true;
+  heureregistre: string | null | undefined;
+  checked: boolean = true;
+  isPere: boolean = true;
 
 
-    NumCopie: any;
-    enableMeridian: boolean= true;
-  constructor(private _formBuilder: FormBuilder, public dialog: MatDialog, private maireservice: MaireService,  private premierecopieservice: PremiereCopieService  ) {}
+  NumCopie: any;
+  enableMeridian: boolean = true;
+  constructor(private datePipe: DatePipe, private _formBuilder: FormBuilder, public dialog: MatDialog, private maireservice: MaireService, private premierecopieservice: PremiereCopieService) { }
 
   PiecesFormGroup = this._formBuilder.group({
-      certificatAccouch: true,
-      livretFamille: true,
-      cinMere: true,
-      cinDeclarant: true
+    certificatAccouch: true,
+    livretFamille: true,
+    cinMere: true,
+    cinDeclarant: true
 
   });
   today = new Date();
   CopieFormGroup = this._formBuilder.group({
     idPremierCopie: 0,
     description: [''],
-    datePremierCopie: this.today.toLocaleDateString('fr-FR',{
-      year: 'numeric',
+    datePremierCopie: this.today.toLocaleDateString('fr-FR', {
+      day: 'numeric',
       month: 'numeric',
-      day: 'numeric'}),
-    heurePremierCopie: this.today.toLocaleTimeString('fr-FR',{
-        hour: 'numeric',
-        minute: 'numeric'}),
+      year: 'numeric',
+    }),
+    heurePremierCopie: this.today.toLocaleTimeString('fr-FR', {
+      hour: 'numeric',
+      minute: 'numeric'
+    }),
     mention: [''],
     createdDate: this.today,
-    lettreBirth: ['', ],
-    LettreRegistre: ['',  ],
+    lettreBirth: ['',],
+    LettreRegistre: ['',],
     avoirPere: true,
-    datePCopie: ['', ]
+    datePCopie: ['',]
   });
 
   EnfantFormGroup = this._formBuilder.group({
@@ -88,7 +92,7 @@ export class NaissanceAddComponent implements OnInit {
     prenomsEnfant: '',
     datenaissEnfant: [''],
     lieunaissEnfant: [''],
-    heurenaissEnfant: [''], 
+    heurenaissEnfant: [''],
     dateEnfant: [''],
     heureEnfant: [''],
     sexeEnfant: [''],
@@ -102,18 +106,19 @@ export class NaissanceAddComponent implements OnInit {
     lieuNaissPere: '',
     professionPere: '',
     adressePere: '',
-    avoirPere: true, 
+    avoirPere: true,
   });
 
   MereFormGroup = this._formBuilder.group({
     nomMere: [''],
     prenomsMere: '',
     datenaissMere: [''],
-    dateMere:[''],
+    dateMere: [''],
     lieuNaissMere: [''],
     professionMere: [''],
     adresseMere: [''],
   });
+
   DeclarantFormGroup = this._formBuilder.group({
     nomDeclarant: [''],
     prenomsDeclarant: '',
@@ -123,6 +128,7 @@ export class NaissanceAddComponent implements OnInit {
     lieuNaissDeclarant: [''],
     adressDeclarant: [''],
   });
+
   MaireFormGroup = this._formBuilder.group({
     idMaire: [''],
     nomMaire: [''],
@@ -130,11 +136,14 @@ export class NaissanceAddComponent implements OnInit {
     fonction: new FormControl(),
     dateregistre: ['']
   });
-  
+
   @ViewChild('htmlData') htmlData!: ElementRef;
   ngOnInit(): void {
-   this.getAllMaire();
-   this.getLastNumPremierCopie();
+    this.getAllMaire();
+    this.getLastNumPremierCopie();
+    console.log('==================local hostse==================');
+    console.log(this.CopieFormGroup.value.datePremierCopie + ' ' + this.CopieFormGroup.value.heurePremierCopie);
+    console.log('====================================');
   }
 
   openDialog() {
@@ -146,11 +155,11 @@ export class NaissanceAddComponent implements OnInit {
       this.PereFormGroup.valid &&
       this.PiecesFormGroup.valid
     ) {
-      this.EnfantFormGroup.value.dateEnfant =  this.datenaiss
+      this.EnfantFormGroup.value.dateEnfant = this.datenaiss
       this.EnfantFormGroup.value.heureEnfant = this.heurenaiss
-      this.MereFormGroup.value.dateMere =  this.datenaissMere
-      this.PereFormGroup.value.datePere =  this.datenaissPere
-      this.DeclarantFormGroup.value.dateDeclarant =  this.datenaissDeclarant
+      this.MereFormGroup.value.dateMere = this.datenaissMere
+      this.PereFormGroup.value.datePere = this.datenaissPere
+      this.DeclarantFormGroup.value.dateDeclarant = this.datenaissDeclarant
       this.MaireFormGroup.value.dateregistre = this.dateregistre
       this.CopieFormGroup.value.idPremierCopie = this.NumeroCopie
       this.CopieFormGroup.value.lettreBirth = this.lettrenaiss
@@ -164,7 +173,7 @@ export class NaissanceAddComponent implements OnInit {
         ...this.PereFormGroup.value,
         ...this.MereFormGroup.value,
         ...this.PiecesFormGroup.value,
-        
+
       };
       const dialogRef = this.dialog.open(AfficheCopieComponent, {
         maxWidth: '100vw',
@@ -172,70 +181,69 @@ export class NaissanceAddComponent implements OnInit {
         height: '90%',
         width: '85%',
         panelClass: 'full-screen-modal',
-        data : this.data
+        data: this.data
       });
     }
 
     console.log(this.data);
   }
+// Function to format the date
 
-  Step(){
-    console.log(this.CopieFormGroup.value.datePremierCopie)
-    const date:any = this.CopieFormGroup.value.datePremierCopie?.split("/")
-    this.dateCopie =  NombreEnLettre(date[0]).concat(' ', MoisMalgache(date[1])).concat(' ', NombreEnLettre(date[2]));
-   const heure:any = this.CopieFormGroup.value.heurePremierCopie?.split(':') 
-   const heureCopie = HeureEnLettre(heure[0]);
-   const minuteCopie = MinuteEnlettre(heure[1]);
-   const ora = LeraEnLettre(heure[0]);
-   this.heureCopie = heureCopie + minuteCopie + ora;
-   
+  Step() {
+    const date: any = this.CopieFormGroup.value.datePremierCopie?.split("/")
+    this.dateCopie = NombreEnLettre(date[0]).concat(' ', MoisMalgache(date[1])).concat(' ', NombreEnLettre(date[2]));
+    const heure: any = this.CopieFormGroup.value.heurePremierCopie?.split(':')
+    const heureCopie = HeureEnLettre(heure[0]);
+    const minuteCopie = MinuteEnlettre(heure[1]);
+    const ora = LeraEnLettre(heure[0]);
+    this.heureCopie = heureCopie + minuteCopie + ora;
+
   }
 
-  FirstStep( ) {
-    const date:any  = this.EnfantFormGroup.value.datenaissEnfant?.split("-") 
-    const heure:any = this.EnfantFormGroup.value.heurenaissEnfant?.split(":")
-    this.datenaiss = NombreEnLettre(date[2]).concat(' ',MoisMalgache(date[1])).concat(' ', NombreEnLettre(date[0]))
+  FirstStep() {
+    const date: any = this.EnfantFormGroup.value.datenaissEnfant?.split("-")
+    const heure: any = this.EnfantFormGroup.value.heurenaissEnfant?.split(":")
+    this.datenaiss = NombreEnLettre(date[2]).concat(' ', MoisMalgache(date[1])).concat(' ', NombreEnLettre(date[0]))
     const heurenaiss = HeureEnLettre(heure[0]);
     const minutenaiss = MinuteEnlettre(heure[1]);
     const oranaiss = LeraEnLettre(heure[0]);
     this.heurenaiss = heurenaiss + minutenaiss + oranaiss;
-    this.lettrenaiss = date[2].concat(' ',MoisMalgache(date[1])).concat(' ',date[0])
+    this.lettrenaiss = date[2].concat(' ', MoisMalgache(date[1])).concat(' ', date[0])
     console.log(this.heurenaiss, this.lettrenaiss)
- return this.datenaiss, this.lettrenaiss
+    return this.datenaiss, this.lettrenaiss
   }
 
-  SecondStep( ) {
-    const mere:any  = this.MereFormGroup.value.datenaissMere?.split("-") 
-   const datenaiss = NombreEnLettre(mere[2]).concat(' ',MoisMalgache(mere[1]))
-    this.datenaissMere = datenaiss.concat(' ',NombreEnLettre(mere[0]) )
-    console.log(this.datenaissMere )
- return this.datenaissMere
+  SecondStep() {
+    const mere: any = this.MereFormGroup.value.datenaissMere?.split("-")
+    const datenaiss = NombreEnLettre(mere[2]).concat(' ', MoisMalgache(mere[1]))
+    this.datenaissMere = datenaiss.concat(' ', NombreEnLettre(mere[0]))
+    console.log(this.datenaissMere)
+    return this.datenaissMere
   }
-  
-  ThirtyStep( ) {
-    const pere:any  = this.PereFormGroup.value.datenaissPere?.split("-") 
-   const datenaiss = NombreEnLettre(pere[2]).concat(' ',MoisMalgache(pere[1]))
-    this.datenaissPere = datenaiss.concat(' ',NombreEnLettre(pere[0]) )
-    console.log(this.datenaissPere )
- return this.datenaissPere
+
+  ThirtyStep() {
+    const pere: any = this.PereFormGroup.value.datenaissPere?.split("-")
+    const datenaiss = NombreEnLettre(pere[2]).concat(' ', MoisMalgache(pere[1]))
+    this.datenaissPere = datenaiss.concat(' ', NombreEnLettre(pere[0]))
+    console.log(this.datenaissPere)
+    return this.datenaissPere
   }
-  
-  FortyStep( ) {
-    const declarant:any  = this.DeclarantFormGroup.value.datenaissDeclarant?.split("-") 
-   const datenaiss = NombreEnLettre(declarant[2]).concat(' ',MoisMalgache(declarant[1]))
-    this.datenaissDeclarant = datenaiss.concat(' ',NombreEnLettre(declarant[0]) )
-    console.log(this.datenaissDeclarant )
- return this.datenaissDeclarant
+
+  FortyStep() {
+    const declarant: any = this.DeclarantFormGroup.value.datenaissDeclarant?.split("-")
+    const datenaiss = NombreEnLettre(declarant[2]).concat(' ', MoisMalgache(declarant[1]))
+    this.datenaissDeclarant = datenaiss.concat(' ', NombreEnLettre(declarant[0]))
+    console.log(this.datenaissDeclarant)
+    return this.datenaissDeclarant
   }
-  FiveStep( ) {
-    const date =new Date(Date.now()).toLocaleString().split(',')[0];
-    const enfant:any  = date.split(" ");
+  FiveStep() {
+    const date = new Date(Date.now()).toLocaleString().split(',')[0];
+    const enfant: any = date.split(" ");
     const currentdate = enfant[0].split("/");
     const currenthour = enfant[1].split(":");
-    this.heureregistre = HeureEnLettre(currenthour[0]).concat(' ',MinuteEnlettre(currenthour[1]).concat(' ', LeraEnLettre(currenthour[0])));
-   const datenaiss = NombreEnLettre(currentdate[0]).concat(' ',MoisMalgache(currentdate[1]))
-    this.dateregistre = datenaiss.concat(' ',NombreEnLettre(currentdate[2]) )
-    console.log(this.dateregistre)
+    this.heureregistre = HeureEnLettre(currenthour[0]).concat(' ', MinuteEnlettre(currenthour[1]).concat(' ', LeraEnLettre(currenthour[0])));
+    const datenaiss = NombreEnLettre(currentdate[0]).concat(' ', MoisMalgache(currentdate[1]))
+    this.dateregistre = datenaiss.concat(' ', NombreEnLettre(currentdate[2]))
     return this.dateregistre, this.heureregistre
   }
 
@@ -253,20 +261,20 @@ export class NaissanceAddComponent implements OnInit {
     });
   }
 
-  getAllMaire(){
-    this.maireservice.getAllMaire().subscribe(data=>{
+  getAllMaire() {
+    this.maireservice.getAllMaire().subscribe(data => {
       this.maire = data;
     })
   }
 
-  getLastNumPremierCopie(){
-    this.premierecopieservice.getLastIdCerticate().subscribe(data=>{
+  getLastNumPremierCopie() {
+    this.premierecopieservice.getLastIdCerticate().subscribe(data => {
       this.NumeroCopie = data
     })
     this.PereFormGroup.value.avoirPere = true;
     this.CopieFormGroup.value.idPremierCopie = this.NumeroCopie
-    }
-    
+  }
+
   printPage() {
     var printContents = document.getElementById('htmlData')!.innerHTML;
     var originalContents = document.body.innerHTML;
@@ -280,13 +288,13 @@ export class NaissanceAddComponent implements OnInit {
 
   onSelected(value: any) {
     this.maireservice.getMaireById(value)
-    .subscribe(data=>{
-      this.MaireFormGroup.value.prenomsMaire= data.prenomsMaire;
-      this.MaireFormGroup.value.fonction = data.fonction;
-      console.log(data);
-    })
+      .subscribe(data => {
+        this.MaireFormGroup.value.prenomsMaire = data.prenomsMaire;
+        this.MaireFormGroup.value.fonction = data.fonction;
+        console.log(data);
+      })
     this.MaireSelected = this.MaireSelected;
-   
+
 
   }
 
@@ -294,13 +302,13 @@ export class NaissanceAddComponent implements OnInit {
     this.checked = event.target.checked;
     if (this.checked) {
       this.isPere = true;
-     
+
     } else {
-      this.isPere =false
+      this.isPere = false
     }
   }
 
-  
+
 
 }
 
@@ -313,16 +321,31 @@ export class NaissanceAddComponent implements OnInit {
   templateUrl: 'affiche-copie.component.html',
 })
 export class AfficheCopieComponent {
-  constructor(@Inject (MAT_DIALOG_DATA) public data: any, private premierecopieservice: PremiereCopieService,
-   public dialog: MatDialog, private router:Router  ) {}
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private premierecopieservice: PremiereCopieService,
+    public dialog: MatDialog, private router: Router) { }
 
   ngOnInit() {
   }
-  saveCertificate(){
+
+  formatDateString(dateStr: string): string {
+    const parts = dateStr.split('/');
     console.log('====================================');
-    console.log(this.data);
+    console.log(parts);
     console.log('====================================');
-    this.premierecopieservice.addFirstCertificates(this.data).subscribe(data=>{
+    if (parts.length === 3) {
+      const day = parts[0];
+      const month = parts[1];
+      const year = parts[2];
+      return `${year}-${month}-${day}`;
+    } else {
+      return 'Invalid Date';
+    }
+  }
+  saveCertificate() {
+    const dateYMD = this.formatDateString(this.data.datePremierCopie) 
+    this.data.datePremierCopie = dateYMD;
+    
+    this.premierecopieservice.addFirstCertificates(this.data).subscribe(data => {
       const dialogRef = this.dialog.closeAll();
       this.router.navigate(['/dashboard/premiere-copie']);
     })

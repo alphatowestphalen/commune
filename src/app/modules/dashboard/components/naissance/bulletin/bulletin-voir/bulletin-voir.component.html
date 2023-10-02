@@ -78,27 +78,27 @@
 
       <dl class="flex mt-2">
         <div class="flex flex-col-reverse">
-          <dt class="text-sm font-medium text-slate-800">{{certificates.enfant.nomEnfant}}
-            {{certificates.enfant.prenomsEnfant}}</dt>
+          <dt class="text-sm font-medium text-slate-800">{{certificates.nomPersonne}}
+            {{certificates.prenomsPersonne}}</dt>
           <dd class="text-xs text-slate-500">{{'nomPrenom'|transloco}}</dd>
         </div>
 
         <div class="flex flex-col-reverse ml-3 sm:ml-6">
-          <dt class="text-sm font-medium text-slate-800">{{certificates.enfant.datenaissEnfant}}</dt>
+          <dt class="text-sm font-medium text-slate-800">{{certificates.dateNaissPersonne}}</dt>
           <dd class="text-xs text-slate-500">{{'DateNaissance'|transloco}}</dd>
         </div>
         <div class="flex flex-col-reverse ml-3 sm:ml-6">
-          <dt class="text-sm font-medium text-slate-800">{{certificates.enfant.lieunaissEnfant}}</dt>
+          <dt class="text-sm font-medium text-slate-800">{{certificates.lieuNaissPersonne}}</dt>
           <dd class="text-xs text-slate-500">{{'LieuNaissance'|transloco}}</dd>
         </div>
-        <div class="flex flex-col-reverse ml-3 sm:ml-6">
+        <!-- <div class="flex flex-col-reverse ml-3 sm:ml-6">
           <dt class="text-sm font-medium text-slate-800">{{certificates.enfant.heurenaissEnfant}}</dt>
           <dd class="text-xs text-slate-500">{{'HeureNaissance'|transloco}} </dd>
         </div>
         <div class="flex flex-col-reverse ml-3 sm:ml-6">
           <dt class="text-sm font-medium text-slate-800">{{certificates.enfant.sexeEnfant}}</dt>
           <dd class="text-xs text-slate-500">{{'Sexe'|transloco}}</dd>
-        </div>
+        </div> -->
 
 
       </dl>
@@ -118,12 +118,11 @@
 
       <dl class="flex mt-2">
         <div class="flex flex-col-reverse">
-          <dt class="text-sm font-medium text-slate-800"><span class="upperca
-        ">{{certificates.mere.nomMere}}</span> {{certificates.mere.prenoms}}</dt>
+          <dt class="text-sm font-medium text-slate-800"><span class="upperca">{{certificates.nomMere}}</span> {{certificates.prenomsMere}}</dt>
           <dd class="text-xs text-slate-500">{{'nomPrenom'|transloco}}</dd>
         </div>
 
-        <div class="flex flex-col-reverse ml-3 sm:ml-6">
+        <!-- <div class="flex flex-col-reverse ml-3 sm:ml-6">
           <dt class="text-sm font-medium text-slate-800">{{certificates.mere.dateNaissMere}}</dt>
           <dd class="text-xs text-slate-500">{{'DateNaissance'|transloco}}</dd>
         </div>
@@ -139,7 +138,7 @@
         <div class="flex flex-col-reverse ml-3 sm:ml-6">
           <dt class="text-sm font-medium text-slate-800">{{certificates.mere.adresseMere}}</dt>
           <dd class="text-xs text-slate-500">{{'Habiteà'|transloco}}</dd>
-        </div>
+        </div> -->
 
 
       </dl>
@@ -158,12 +157,12 @@
 
       <dl class="flex mt-2">
         <div class="flex flex-col-reverse">
-          <dt class="text-sm font-medium text-slate-800">{{certificates.pere.nomPere}} {{certificates.pere.prenomsPere}}
+          <dt class="text-sm font-medium text-slate-800">{{certificates.nomPere}} {{certificates.prenomsPere}}
           </dt>
           <dd class="text-xs text-slate-500">{{'nomPrenom'|transloco}}</dd>
         </div>
 
-        <div class="flex flex-col-reverse ml-3 sm:ml-6">
+        <!-- <div class="flex flex-col-reverse ml-3 sm:ml-6">
           <dt class="text-sm font-medium text-slate-800">{{certificates.pere.dateNaissPere}} </dt>
           <dd class="text-xs text-slate-500">{{'DateNaissance'|transloco}}</dd>
         </div>
@@ -178,69 +177,7 @@
         <div class="flex flex-col-reverse ml-3 sm:ml-6">
           <dt class="text-sm font-medium text-slate-800">{{certificates.pere.adressePere}}</dt>
           <dd class="text-xs text-slate-500">{{'Habiteà'|transloco}}</dd>
-        </div>
-
-      </dl>
-
-    </div>
-    <div class="relative block p-3 overflow-hidden border bg-white border-slate-100 rounded-lg mx-2" href="">
-      <span class="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-blue-700 via-blue-300 to-yellow-600"></span>
-
-      <div class="justify-between sm:flex">
-        <div class=" sm:pr-8">
-          <p class="text-sm text-slate-700 underline">
-            {{'Aproposdeladeclarante'|transloco}}
-          </p>
-        </div>
-      </div>
-
-      <dl class="flex mt-2">
-        <div class="flex flex-col-reverse">
-          <dt class="text-sm font-medium text-slate-800">{{certificates.declarant.nomDeclarant}}
-            {{certificates.declarant.prenomsDeclarant}}</dt>
-          <dd class="text-xs text-slate-500">{{'nomPrenom'|transloco}}</dd>
-        </div>
-
-        <div class="flex flex-col-reverse ml-3 sm:ml-6">
-          <dt class="text-sm font-medium text-slate-800">{{certificates.declarant.datenaissDeclarant}} </dt>
-          <dd class="text-xs text-slate-500">{{'DateNaissance'|transloco}}</dd>
-        </div>
-        <div class="flex flex-col-reverse ml-3 sm:ml-6">
-          <dt class="text-sm font-medium text-slate-800">{{certificates.declarant.lieuNaissDeclarant}}</dt>
-          <dd class="text-xs text-slate-500">{{'LieuNaissance'|transloco}}</dd>
-        </div>
-
-        <div class="flex flex-col-reverse ml-3 sm:ml-6">
-          <dt class="text-sm font-medium text-slate-800">{{certificates.declarant.professionDeclarant}}</dt>
-          <dd class="text-xs text-slate-500">{{'Profession'|transloco}}</dd>
-        </div>
-
-
-      </dl>
-
-    </div>
-    <div class="relative block p-3 overflow-hidden border bg-white border-slate-100 rounded-lg mx-2" href="">
-      <span class="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-blue-700 via-blue-300 to-yellow-600"></span>
-
-      <div class="justify-between sm:flex">
-        <div class=" sm:pr-8">
-          <p class="text-sm text-slate-700 underline">
-            {{'Aproposdumaire'|transloco}}
-          </p>
-        </div>
-      </div>
-
-      <dl class="flex mt-2">
-        <div class="flex flex-col-reverse">
-          <dt class="text-sm font-medium text-slate-800">{{certificates.maire.nomMaire}}
-            {{certificates.maire.prenomsMaire}}</dt>
-          <dd class="text-xs text-slate-500">{{'nomPrenom'|transloco}}</dd>
-        </div>
-        <div class="flex flex-col-reverse ml-3 sm:ml-6">
-          <dt class="text-sm font-medium text-slate-800">{{certificates.maire.fonction}}</dt>
-          <dd class="text-xs text-slate-500">{{'Fonction'|transloco}}</dd>
-        </div>
-
+        </div> -->
 
       </dl>
 

@@ -15,6 +15,18 @@ import { PageEvent } from '@angular/material/paginator';
 })
 export class PremiereCopieComponent implements OnInit {
 
+  formatDateString(dateStr: string): string {
+    const parts = dateStr.split('-');
+    if (parts.length === 3) {
+      const day = parts[2];
+      const month = parts[1];
+      const year = parts[0];
+      return `${day}/${month}/${year}`;
+      // return `${year}-${month}-${day}`;
+    } else {
+      return 'Invalid Date';
+    }
+  }
   tableColumns: Array<Column> = [
     {
       columnDef: 'idPremierCopie',
@@ -53,7 +65,8 @@ export class PremiereCopieComponent implements OnInit {
       header: 'Date Création Copie',
 
       cell: (element: Record<string, any>) => {
-        const datenaissEnfant = element['datePremierCopie'];
+        const dateDMY = this.formatDateString(element['datePremierCopie']);
+        const datenaissEnfant = dateDMY;
         // const dateObj = new Date(datenaissEnfant);
         // const formattedDate = `${dateObj.getDate().toString().padStart(2, '0')}/${(dateObj.getMonth() + 1).toString().padStart(2, '0')}/${dateObj.getFullYear()}`;
         // return formattedDate;
@@ -109,7 +122,6 @@ export class PremiereCopieComponent implements OnInit {
           d.descriptionRow = d.enfant.nomEnfant + ' ' + d.enfant.prenomsEnfant
         })
         this.size = data.length;
-        console.log(this.tableData, this.size)
       })
 
 

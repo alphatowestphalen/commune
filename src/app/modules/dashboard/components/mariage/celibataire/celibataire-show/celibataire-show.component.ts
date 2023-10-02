@@ -1,46 +1,38 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { PremiereCopieService } from '../../../services/premiere-copie.service';
-import { CopieComponent } from '../../../pages/copie/copie.component';
-import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
-import { DecesService } from '../../../services/deces.service';
+import jsPDF from 'jspdf';
+import { CopieComponent } from 'src/app/modules/dashboard/pages/copie/copie.component';
+import { ActeCellibataireService } from 'src/app/modules/dashboard/services/acteCellibataire.service';
+import { DecesService } from 'src/app/modules/dashboard/services/deces.service';
+import { CelibataireService } from 'src/app/service/celibataire/celibataire.service';
 
 @Component({
-  selector: 'app-deces-show',
-  templateUrl: './deces-show.component.html',
-  styleUrls: ['./deces-show.component.scss']
+  selector: 'app-celibataire-show',
+  templateUrl: './celibataire-show.component.html',
+  styleUrls: ['./celibataire-show.component.css']
 })
-export class DecesShowComponent implements OnInit {
-  id: any;
-  certificates: any;
-  
-
-  constructor(private activatedroute: ActivatedRoute, private router: Router, private deceService: DecesService) { }
+export class CelibataireShowComponent implements OnInit {
+  id:number;
+  certificates:any;
+  constructor(private activatedroute: ActivatedRoute, private router: Router, private acteCelibataireService: CelibataireService) { }
   @ViewChild('htmlData', { static: false }) copiecomponent: CopieComponent;
 
-  ngOnInit(): void {
-    this.activatedroute.paramMap.subscribe(params => {
+  ngOnInit() {
+    this.activatedroute.paramMap.subscribe((params: any) => {
       this.id = params.get('id');
-      this.getCertificatesbyID(this.id);
-    });
-  }
-  getCertificatesbyID(id: number) {
-    this.deceService.getDecesById(id)
-      .subscribe(data => {
-        this.certificates = data;
-        console.log(this.certificates);
-      })
+      this.getActeCelibatById(this.id) 
+    })
   }
 
-
-  // ngAfterViewInit(){
-  //   this.HtmlData = this.copiecomponent.HtmlData;
-  //   const htmlDataElement = this.HtmlData.nativeElement.querySelector('#htmlData');
-  //   console.log(htmlDataElement);
-
-  // }
-
+  getActeCelibatById(id:number){
+    this.acteCelibataireService.getAllCelibataireById(id).subscribe((data)=>{
+      this.certificates = data;
+      console.log('====================================');
+      console.log(this.certificates);
+      console.log('====================================');
+    })
+  } 
   OpenCopie = false;
   toggleModal() {
     this.OpenCopie = !this.OpenCopie;
@@ -101,7 +93,6 @@ export class DecesShowComponent implements OnInit {
 
     document.body.innerHTML = originalContents;
   }
-
 
 
 }

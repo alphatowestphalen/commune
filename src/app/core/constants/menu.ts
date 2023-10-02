@@ -1,21 +1,36 @@
+import { group } from '@angular/animations';
 import { MenuItem } from '../models/menu.model';
 
 export class Menu {
   public static pages: MenuItem[] = [
-
+    {
+      group: 'Tableau de Bord et States',
+      selected: false,
+      items: [
+        {
+          icon: 'assets/icons/outline/chart-pie.svg',
+          label: 'Tableau de Bord ',
+          route: '/dashboard/naissance',
+        },
+        {
+          icon: 'assets/icons/outline/chart-pie.svg',
+          label: 'Demande ',
+          route: '/dashboard/scoped',
+        },
+        
+      ],
+    },
     {
       group: 'Acte de Naissance',
       separator: false,
-      
       items: [
         {
           icon: 'assets/icons/outline/chart-pie.svg',
           label: 'Première Copie',
           route: '/dashboard/premiere-copie',
-         
         },
         {
-          icon: 'assets/icons/outline/view-grid.svg',
+          icon: 'assets/icons/outline/chart-pie.svg',
           label: 'Service Général',
           route: '/dashboard/adoption-naissance',
           children: [

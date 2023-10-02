@@ -27,11 +27,8 @@ export class MariageVoirComponent implements OnInit {
     this.mariageservice.getMariageById(this.id)
     // this.mariageservice.getAllMariage(1,2)
     .subscribe(data => {
-      console.log({data});
       this.mariage = data;
-     
-      
-
+      console.log(this.mariage);
     })
   }
   OpenCopie = false;

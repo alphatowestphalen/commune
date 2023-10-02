@@ -5,6 +5,9 @@ import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 
 import { DecesService } from '../../../services/deces.service';
+import { MaireService } from '../../../services/maire.service';
+import { MaireInterface } from 'src/app/model/mariage/MariageInterface.interface';
+import { DeceeInterface } from 'src/app/model/decee/decee.interface';
 
 
 declare function NombreEnLettre(params: number): any;
@@ -18,7 +21,42 @@ declare function MoisMalgache(params: string): any
 export class DecesAddComponent implements OnInit {
   deces: any;
   certificate: any;
+  maireInterface: any;
   idPremierCopie = new FormControl();
+  deceInterface: DeceeInterface = {
+    dateDeclaration: '',
+    idPremierCopie: '',
+    heureDeclaration: '',
+    nomDeclarant: '',
+    prenomsDeclarant: '',
+    professionDeclarant: '',
+    lieuNaissanceDeclarant: '',
+    adresseDeclarant: '',
+    dateNaissanceDeclarant: '',
+    date: '',
+    idMaire: 0,
+    nomDefunt: '',
+    dateDeNaissDefunt: '',
+    lieuDeNaissDefunt: '',
+    cinDefunt: '',
+    dateCinDefunt: '',
+    lieuCinDefunt: '',
+    professionDefunt: '',
+    adresseDefunt: '',
+    nomMereDefunt: '',
+    nomPereDefunt: '',
+    dateDeces: '',
+    lieuDeces: '',
+    heureDeces: '',
+    dateEnterement: '',
+    heureEnterement: '',
+    lieuEnterement: '',
+    communeEnterement: '',
+    regionEnterement: '',
+    nomPiece: true,
+    fasanDehibe: true,
+    prenomDefunt: ''
+  };
 
   filteredMovies: any = [];
   isLoading = false;
@@ -26,6 +64,7 @@ export class DecesAddComponent implements OnInit {
   minLengthTerm = 1;
   CopieSelected: any = "";
   data: any;
+  date:any;
 
   datenaiss: string | null | undefined;
   datenaissMere: string | null | undefined;
@@ -33,7 +72,7 @@ export class DecesAddComponent implements OnInit {
   datenaissDeclarant: string | null | undefined;
   dateregistre: string | null | undefined;
 
-  constructor(private _formBuilder: FormBuilder,private decesservice: DecesService, private premierecopie: PremiereCopieService, public dialog: MatDialog,private router: Router) { }
+  constructor(private maireService: MaireService , private _formBuilder: FormBuilder,private decesservice: DecesService, private premierecopie: PremiereCopieService, public dialog: MatDialog,private router: Router) { }
 
   PiecesFormGroup = this._formBuilder.group({});
 
@@ -65,32 +104,61 @@ export class DecesAddComponent implements OnInit {
   });
 
   ngOnInit(): void {
+    this.date = new Date();
+    this.deceInterface.date = this.date;
     this.getAllFirstCertificate();
+    this.getAllMaire();
   }
 
   getAllFirstCertificate() {
-    this.premierecopie.getFirstCertificates()
+    this.premierecopie.getAllPersonliving()
       .subscribe(data => {
-        this.deces = data.premierCopies
+        this.deces = data.data
         console.log(this.deces)
       })
+  }
+  private getAllMaire(){
+    this.maireService.getAllMaire().subscribe(data=>{
+      this.maireInterface = data
+      console.log(this.maireInterface)
+    })
+  }
+
+  onSelectedMaire(value: any) {
+    this.maireService.getMaireById(value).subscribe(data=>{
+      this.deceInterface.idMaire = data.idMaire;
+    })
   }
 
   Onchange($event: any) {
     this.premierecopie.getCertificateByID($event.value)
       .subscribe(data => {
-        this.certificate = data
-        console.log(this.certificate)
+        this.deceInterface.nomDefunt = data.enfant.nomEnfant;
+        this.deceInterface.prenomDefunt = data.enfant.prenomsEnfant;
+        this.deceInterface.dateDeNaissDefunt = data.enfant.datenaissEnfant;
+        this.deceInterface.lieuDeNaissDefunt = data.enfant.lieunaissEnfant;
+        this.deceInterface.nomMereDefunt = data.mere.prenomsMere;
+        this.deceInterface.nomPereDefunt = data.pere.prenomsPere;
+        console.log('====================================');
+        console.log(data.pere);
+        console.log('====================================');
 
       })
+  }
+  saveDecee() {
+    this.decesservice.addDeces(this.deceInterface).subscribe(data => {
+      console.log('================data saveDecee ====================');
+      console.log(data);
+      console.log('====================================');
+      const dialogRef = this.dialog.closeAll();
+      this.router.navigate(['/dashboard/deces-list']);
+    })
+    console.log(this.data)
+
   }
   closedDeces() {
     this.CopieSelected += "";
   }
-
-
-  
-
   spaceDeces() {
     this.CopieSelected = "";
   }
@@ -191,7 +259,7 @@ export class AdoptionCopieComponent {
   }
 
   saveCertificate() {
-    this.decesservice.addDeces(this.data, this.data.idPremierCopie).subscribe(data => {
+    this.decesservice.addDeces(this.data).subscribe(data => {
 
       const dialogRef = this.dialog.closeAll();
       this.router.navigate(['/dashboard/deces-list']);
