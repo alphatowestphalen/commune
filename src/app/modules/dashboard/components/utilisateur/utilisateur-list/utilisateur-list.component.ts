@@ -3,7 +3,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { PageEvent } from '@angular/material/paginator';
 import { Router } from '@angular/router';
 import { Column } from '../../../models/column';
-import { AdoptionService } from '../../../services/adoption.service';
 import { UtilisateurService } from '../../../services/utilisateur.service';
 import { MatTableDataSource } from '@angular/material/table';
 

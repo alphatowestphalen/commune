@@ -1,4 +1,4 @@
-import { Injectable, OnDestroy } from '@angular/core';
+import { Injectable, OnDestroy,OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { BehaviorSubject, Subscription } from 'rxjs';
 import { Menu } from 'src/app/core/constants/menu';
@@ -10,18 +10,16 @@ import { MenuItem, SubMenuItem } from 'src/app/core/models/menu.model';
 export class MenuService implements OnDestroy {
   private _showSidebar$ = new BehaviorSubject<boolean>(true);
   private _showMobileMenu$ = new BehaviorSubject<boolean>(false);
-  public _pagesMenu$ = new BehaviorSubject<MenuItem[]>([]);
+  public _pagesMenu$  : MenuItem[];
   private subscription = new Subscription();
 
   constructor(private router: Router) {
     /** Set dynamic menu */
-    this._pagesMenu$.next(Menu.pages);
-
+    this._pagesMenu$ = Menu.pages;
     let sub = this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         /** Expand menu base on active route */
-        this._pagesMenu$.forEach((menuItem) => {
-          menuItem.forEach((menu) => {
+        this._pagesMenu$.forEach((menu) => {
             let activeGroup = false;
             menu.items.forEach((subMenu) => {
               const active = this.isActive(subMenu.route);
@@ -33,7 +31,6 @@ export class MenuService implements OnDestroy {
               }
             });
             menu.active = activeGroup;
-          });
         });
       }
     });
@@ -48,7 +45,8 @@ export class MenuService implements OnDestroy {
     return this._showMobileMenu$.asObservable();
   }
   get pagesMenu$() {
-    return this._pagesMenu$.asObservable();
+    typeof(this._pagesMenu$);
+    return this._pagesMenu$;
   }
 
   set showSideBar(value: boolean) {
