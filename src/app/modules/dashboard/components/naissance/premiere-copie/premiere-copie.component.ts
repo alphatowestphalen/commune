@@ -139,6 +139,8 @@ export class PremiereCopieComponent implements OnInit {
 
 
   showRow(element: any) {
+    console.log(element);
+    
     this.router.navigate(['/dashboard/premiere-copie-voir', element.idPremierCopie])
 
   }

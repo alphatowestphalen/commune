@@ -60,7 +60,6 @@ export class ScopedAComponent implements OnInit {
   getallCertificates() {
     this.demandeservice.getAllCertificates().subscribe((data) => {
       this.demande = data.data;
-      console.log('data', this.demande);
     });
   }
 
@@ -75,29 +74,36 @@ export class ScopedAComponent implements OnInit {
   }
 
   Weddingcertif(id: string) {
-    this.router.navigate(['/dashboard/premiere-copie-voir', id]);
+    this.router.navigate(['/dashboard/mariage-add', id])
   }
 
-  Deadcertif(id: string) {}
-  NaissanceCertif(id: number) {
-    console.log(id)
-    this.premiercopieservice.getCertificateByID(id).subscribe((data) => {
-      this.bulletin = data;
-      this.Opendemande = !this.Opendemande;
-      this.bulletin.nomPersonne = data!.enfant.nomEnfant
-      this.bulletin.prenomsPersonne = data!.enfant.prenomsEnfant
-      this.bulletin.dateNaissPersonne = data!.enfant.datenaissEnfant
-      this.bulletin.lieuNaissPersonne = data!.enfant.lieunaissEnfant
-      this.bulletin.nomPere = data!.pere.nomPere
-      this.bulletin.prenomsPere = data!.pere.prenomsPere
-      this.bulletin.nomMere = data!.mere.nomMere
-      this.bulletin.prenomsMere = data!.mere.prenomsMere
-      this.bulletin.idPremierCopie = data!.idPremierCopie
-      this.bulletin.createdDate = data!.createdDate
-      console.log(data);
-    }
-    );
+  Deadcertif(id: string) {
+    this.router.navigate(['/dashboard/deces',id]) 
   }
+
+  NaissanceCertif(id: number){
+    this.router.navigate(['/dashboard/bulletin-naissance-add',id])
+  }
+
+  // NaissanceCertif(id: number) {
+  //   this.premiercopieservice.getCertificateByID(id).subscribe((data) => {
+  //     this.bulletin = data;
+  //     this.Opendemande = !this.Opendemande;
+  //     this.bulletin.nomPersonne = data!.enfant.nomEnfant
+  //     this.bulletin.prenomsPersonne = data!.enfant.prenomsEnfant
+  //     this.bulletin.dateNaissPersonne = data!.enfant.datenaissEnfant
+  //     this.bulletin.lieuNaissPersonne = data!.enfant.lieunaissEnfant
+  //     this.bulletin.nomPere = data!.pere.nomPere
+  //     this.bulletin.prenomsPere = data!.pere.prenomsPere
+  //     this.bulletin.nomMere = data!.mere.nomMere
+  //     this.bulletin.prenomsMere = data!.mere.prenomsMere
+  //     this.bulletin.idPremierCopie = data!.idPremierCopie
+  //     this.bulletin.createdDate = data!.createdDate
+  //     console.log(data);
+  //   }
+  //   );
+  // }
+
   // Search() {
   //   if (this.CopieSelected == ' ') {
   //     return this.getallCertificates();
