@@ -82,9 +82,6 @@ page = 1;
     if(this.search == '') {
       this.AllListMariages(this.size, this.page);
     }else{
-      console.log('====================================');
-      console.log(this.search);
-      console.log('====================================');
       this.mariageservice.Search(this.search).subscribe((data)=>{
         this.tableData = data.data;
       })

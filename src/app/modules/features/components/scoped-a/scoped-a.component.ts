@@ -126,15 +126,11 @@ export class ScopedAComponent implements OnInit {
         return this.getallCertificates();
     }else{
       this.demandeservice.SearchCertificate(this.serach).subscribe((data)=>{
-        console.log('====================================');
-        console.log(data);
-        console.log('====================================');
         this.demande = data.data;
       })
     }
   }
   containsOnlyNumbers(str: string) {
-    // console.log(str)
     return /^(\d+-)*(\d+)$/.test(str);
   }
 }
