@@ -17,7 +17,7 @@ export interface MariageInterface {
     heureMariage: string;
     idMaire: string;
     nationaliteHomme: string;
-    idPremierCopieHomme: string;
+    idPremierCopieHomme: any;
     nomHomme: string;
     prenomsHomme: string;
     professionHomme: string;
@@ -86,7 +86,7 @@ export interface MariageInterfaceInterneInterne{
         dateMariage: string;
         heureMariage: string;
         idMaire: string;
-        idPremierCopieHomme: string;
+        idPremierCopieHomme: any;
         idPremierCopieFemme: string;
 }
 

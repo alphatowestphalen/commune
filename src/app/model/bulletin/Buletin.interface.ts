@@ -1,5 +1,5 @@
 export interface BulletinNaicensse{
-  idPremierCopie: string;
+  idPremierCopie: any;
   type: string;
   nomPersonne: string;
   prenomsPersonne: string;

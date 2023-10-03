@@ -2,7 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { PremiereCopieService } from 'src/app/modules/dashboard/services/premiere-copie.service';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { DecesService } from '../../../services/deces.service';
 import { MaireService } from '../../../services/maire.service';
@@ -65,14 +65,14 @@ export class DecesAddComponent implements OnInit {
   CopieSelected: any = "";
   data: any;
   date:any;
-
+  params:any;
   datenaiss: string | null | undefined;
   datenaissMere: string | null | undefined;
   datenaissPere: string | null | undefined;
   datenaissDeclarant: string | null | undefined;
   dateregistre: string | null | undefined;
 
-  constructor(private maireService: MaireService , private _formBuilder: FormBuilder,private decesservice: DecesService, private premierecopie: PremiereCopieService, public dialog: MatDialog,private router: Router) { }
+  constructor(private maireService: MaireService ,private activeRoute:ActivatedRoute , private _formBuilder: FormBuilder,private decesservice: DecesService, private premierecopie: PremiereCopieService, public dialog: MatDialog,private router: Router) { }
 
   PiecesFormGroup = this._formBuilder.group({});
 
@@ -103,7 +103,8 @@ export class DecesAddComponent implements OnInit {
     adressDeclarant: [''],
   });
 
-  ngOnInit(): void {
+  ngOnInit(): void { 
+    this.getParams();
     this.date = new Date();
     this.deceInterface.date = this.date;
     this.getAllFirstCertificate();
@@ -114,9 +115,15 @@ export class DecesAddComponent implements OnInit {
     this.premierecopie.getAllPersonliving()
       .subscribe(data => {
         this.deces = data.data
-        console.log(this.deces)
       })
   }
+
+   getParams(){
+    this.activeRoute.paramMap.subscribe(param => {
+        this.params = param.get('id');
+        this.getPremierCopieById(this.params);
+    })
+   }
   private getAllMaire(){
     this.maireService.getAllMaire().subscribe(data=>{
       this.maireInterface = data
@@ -139,17 +146,27 @@ export class DecesAddComponent implements OnInit {
         this.deceInterface.lieuDeNaissDefunt = data.enfant.lieunaissEnfant;
         this.deceInterface.nomMereDefunt = data.mere.prenomsMere;
         this.deceInterface.nomPereDefunt = data.pere.prenomsPere;
-        console.log('====================================');
-        console.log(data.pere);
-        console.log('====================================');
 
       })
   }
+
+  getPremierCopieById(id:string) {
+    this.premierecopie.getCertificateByID(id)
+      .subscribe(data => {
+        this.deceInterface.idPremierCopie = id;
+        this.deceInterface.nomDefunt = data.enfant.nomEnfant;
+        this.deceInterface.prenomDefunt = data.enfant.prenomsEnfant;
+        this.deceInterface.dateDeNaissDefunt = data.enfant.datenaissEnfant;
+        this.deceInterface.lieuDeNaissDefunt = data.enfant.lieunaissEnfant;
+        this.deceInterface.nomMereDefunt = data.mere.prenomsMere;
+        this.deceInterface.nomPereDefunt = data.pere.prenomsPere;
+        
+        
+      })
+  }
+
   saveDecee() {
     this.decesservice.addDeces(this.deceInterface).subscribe(data => {
-      console.log('================data saveDecee ====================');
-      console.log(data);
-      console.log('====================================');
       const dialogRef = this.dialog.closeAll();
       this.router.navigate(['/dashboard/deces-list']);
     })

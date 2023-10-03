@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MaireInterface, MariageInterface, MariageInterfaceExterneInterne, MariageInterfaceInterneExterne, MariageInterfaceInterneInterne} from 'src/app/model/mariage/MariageInterface.interface';
 import { ObjectMariageService } from 'src/app/modules/dashboard/services/ObjectMariage.service';
 import { MaireService } from 'src/app/modules/dashboard/services/maire.service';
@@ -191,9 +191,10 @@ typeHomme:string = "";
 typeFemme:string = "";
 interfaces:any[] = [];
 
-  constructor(private maireService:MaireService,private route:Router , private premierCopier:PremiereCopieService, private mariageService: MariageService, private objectMariage:ObjectMariageService) { }
+  constructor(private maireService:MaireService,private premierecopie: PremiereCopieService, private activeRoute: ActivatedRoute, private route:Router , private premierCopier:PremiereCopieService, private mariageService: MariageService, private objectMariage:ObjectMariageService) { }
 
   ngOnInit() {
+    this.getParamse();
     this.getAllMaire();
     this.getAllPremierCopier(this.size,this.page);
   }
@@ -203,12 +204,18 @@ interfaces:any[] = [];
       this.maires = data;
     });
   }
+  getParamse(){
+    this.activeRoute.paramMap.subscribe(param => {
+      this.mariageInterfaceInterneInterne.idPremierCopieHomme = param.get('id');
+      console.log('====================================');
+      console.log(this.mariageInterfaceInterneInterne.idPremierCopieHomme);
+      console.log('====================================');
+    })
+  }
+
   public getAllPremierCopier(size:number,page:number){
     this.premierCopier.getCertificates(size, page).subscribe(data => {
       this.premierCopiers = data.data;
-      console.log('=================^ppo===================');
-      console.log(this.premierCopiers);
-      console.log('====================================');
     });
   }
   ClickOptionCopierHome(){
@@ -225,33 +232,21 @@ interfaces:any[] = [];
   sauvegarderMariage(){
     this.objectMariage.InterneInterne(this.mariageInterface,this.mariageInterfaceInterneInterne);
     if (this.typeHomme == "interne" && this.typeFemme == "interne") {
-      console.log('===============interne interne=====================');
-      console.log(this.mariageInterfaceInterneInterne);
-      console.log('====================================');
       this.mariageService.addMariage(this.mariageInterfaceInterneInterne,this.typeFemme,this.typeHomme).subscribe(data =>{
         this.route.navigate(['/dashboard/mariage-list']);
       });      
     }
     else if  (this.typeHomme == "interne" && this.typeFemme == "externe") {
-      console.log('====================================');
-      console.log("interneExterne");
-      console.log('====================================');
       this.mariageService.addMariage(this.mariageInterfaceInterneExterne,this.typeHomme,this.typeFemme).subscribe(data =>{
         this.route.navigate(['/dashboard/mariage-list']);
       });      
     }
     else if(this.typeHomme == "externe" && this.typeFemme == "interne"){
-      console.log('====================================');
-      console.log("externeInterne");
-      console.log('====================================');
       this.mariageService.addMariage(this.mariageIterfaceExterneInterne,this.typeFemme,this.typeHomme).subscribe(data =>{
         this.route.navigate(['/dashboard/mariage-list']);
       });      
     }
     else if(this.typeFemme == "externe" && this.typeHomme == "externe"){
-      console.log('====================================');
-      console.log("externeExterne");
-      console.log('====================================');
       this.mariageService.addMariage(this.mariageInterface,this.typeFemme,this.typeHomme).subscribe(data =>{
         this.route.navigate(['/dashboard/mariage-list']);
       });      

@@ -4,7 +4,7 @@ import { SurveyCreatorModel } from 'survey-creator-core';
 import { Model } from 'survey-core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { PageEvent } from '@angular/material/paginator';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Column } from '../../../models/column';
 import { BulletinNaissanceService } from '../../../services/bulletin-naissance.service';
 import { BulletinNaicensse } from 'src/app/model/bulletin/Buletin.interface';
@@ -23,8 +23,10 @@ export class BulletinComponent implements OnInit {
   surveyModel: any;
   surveyCreatorModel: any;
   premierCopie: any;
-  typePressonne: string="";
+  typePressonne: string = 'interne';
   readonly: boolean=false;
+  interne:string;
+  externe : string;
 
   // variable alphato
   buletinNaissance:BulletinNaicensse = {
@@ -43,8 +45,9 @@ export class BulletinComponent implements OnInit {
   // end
   size= 10;
   page = 1;
-
+  id:string | null;
   search: any;
+  demande:boolean ;
 
   tableColumns: Array<Column> = [
     {
@@ -82,6 +85,7 @@ export class BulletinComponent implements OnInit {
     private bulletinService: BulletinNaissanceService,
     private formService: FormService,
     private router: Router,
+    private activateRoute : ActivatedRoute,
     private bulletinservice: BulletinService,
     private premierCopieService: PremiereCopieService
   ) {}
@@ -89,12 +93,26 @@ export class BulletinComponent implements OnInit {
   @ViewChild('htmlData') htmlData!: ElementRef;
 
   ngOnInit(): void {
+    this.getParams();
     this.getAllBulletinNaissance(this.size, this.page);
     this.getAllPremierCopier(this.size,this.page);
+    if (this.id != null) {
+      console.log('====================================');
+      console.log(this.typePressonne);
+      console.log('====================================');
+      this.demande = false
+    }else{
+      this.demande = true;
+    }
   }
-  
+  getParams() {
+    this.activateRoute.paramMap.subscribe(params => {
+      this.id = params.get('id');
+      this.changerId(this.id);
+    })
+  }
+
   handleSelectedValue(value:any) {
-    const valeursType = value;
     this.typePressonne=value;
     if (this.typePressonne == "interne") {
       this.buletinNaissance = {
@@ -130,6 +148,7 @@ export class BulletinComponent implements OnInit {
     }
     
   }
+
   public getAllPremierCopier(size:number,page:number){
     this.premierCopieService.getCertificates(size, page).subscribe(data => {
       this.premierCopie = data.data;
@@ -147,9 +166,21 @@ export class BulletinComponent implements OnInit {
       this.buletinNaissance.nomMere = data.mere.nomMere;
       this.buletinNaissance.prenomsMere = data.mere.prenomsMere;
       this.buletinNaissance.dateCopie = data.datePremierCopie;
-      console.log('================ changerId ====================');
-      console.log(this.buletinNaissance);
-      console.log('================ changerId ====================');
+      
+    })
+  }
+  getAllPremierByParams(value:any){
+    this.premierCopieService.getCertificateByID(value).subscribe(data=>{
+      this.buletinNaissance.idPremierCopie = data.idPremierCopie;
+      this.buletinNaissance.nomPersonne = data.enfant.nomEnfant;
+      this.buletinNaissance.prenomsPersonne = data.enfant.prenomsEnfant;
+      this.buletinNaissance.dateNaissPersonne = data.enfant.datenaissEnfant;
+      this.buletinNaissance.lieuNaissPersonne = data.enfant.lieunaissEnfant;
+      this.buletinNaissance.nomPere = data.pere.nomPere;
+      this.buletinNaissance.prenomsPere = data.pere.prenomsPere;
+      this.buletinNaissance.nomMere = data.mere.nomMere;
+      this.buletinNaissance.prenomsMere = data.mere.prenomsMere;
+      this.buletinNaissance.dateCopie = data.datePremierCopie;
     })
   }
   OpenDialog(){

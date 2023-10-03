@@ -72,7 +72,6 @@ page = 1;
 
   showRow(element: any) {
     this.router.navigate(['/dashboard/mariage-show', element.idMariage])
-
   }
 
   applyFilter(filterValue: string) {

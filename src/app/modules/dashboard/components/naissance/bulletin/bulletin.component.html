@@ -65,16 +65,18 @@
                         <span class="label-text">Informationf du pere</span>
       
                       </label>
-                    </div>
-                    <div class="mb-4 w-60 flex gap-10">
-                      <label class="flex items-center">
-                        <input type="radio" class="form-radio text-green-700 h-5 w-5 "  (ngModelChange)="handleSelectedValue($event)" [(ngModel)]="typePressonne" name="type" value="interne">
-                        <span class="ml-2 text-gray-700">Interne</span>
-                      </label>
-                      <label class="flex items-center ">
-                        <input type="radio" class="form-radio text-green-700 h-5 w-5" (ngModelChange)="handleSelectedValue($event)" name="type" [(ngModel)]="typePressonne" value="externe">
-                        <span class="ml-2 text-gray-700">Externe</span>
-                      </label>
+                    </div >
+                    <div *ngIf="demande">
+                      <div class="mb-4 w-60 flex gap-10">
+                        <label class="flex items-center">
+                          <input type="radio" class="form-radio text-green-700 h-5 w-5 "  (ngModelChange)="handleSelectedValue($event)" [(ngModel)]="typePressonne" name="type" value="interne">
+                          <span class="ml-2 text-gray-700">Interne</span>
+                        </label>
+                        <label class="flex items-center ">
+                          <input type="radio" class="form-radio text-green-700 h-5 w-5" (ngModelChange)="handleSelectedValue($event)" name="type" [(ngModel)]="typePressonne" value="externe">
+                          <span class="ml-2 text-gray-700">Externe</span>
+                        </label>
+                      </div>
                     </div>
       
                   </div>
@@ -130,7 +132,7 @@
                     <span class="font-normal text-xs text-gray-400">Information personnel </span>
                   </ng-template>
                   <div class="lg:grid md:grid-flow-col grid-cols-2 mt-2 gap-4">
-                    <div class="mb-4 w-4/5" *ngIf="typePressonne === 'interne' ">
+                    <div class="mb-4 w-4/5" *ngIf="typePressonne === 'interne' && demande ">
                       <label class="block mb-2 text-sm font-bold text-black">Code Premier Copie</label>
                       <select [(ngModel)]="premierCopie.idPremierCopieFemme" name="idPremierCopieFemme" (ngModelChange)="changerId($event)" class="w-full ml-auto p-2.5  border-gray-300 rounded-lg bg-gray-50 text-md border">
                         <option *ngFor="let copiers of premierCopie" class="p-6 "  [value]="copiers.idPremierCopie">{{copiers.idPremierCopie}}- {{copiers.enfant.nomEnfant}} {{copiers.enfant.prenomsEnfant}}</option>
