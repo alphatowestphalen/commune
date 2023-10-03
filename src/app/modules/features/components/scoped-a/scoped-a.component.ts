@@ -127,6 +127,8 @@ export class ScopedAComponent implements OnInit {
     }else{
       this.demandeservice.SearchCertificate(this.serach).subscribe((data)=>{
         this.demande = data.data;
+        console.log(this.demande);
+        
       })
     }
   }
