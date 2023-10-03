@@ -18,10 +18,11 @@ export class JugementService {
   getJugements(size: number, page: number ): Observable<any> {
     return this.http.get(`${this.baseURl}?page=${page}&size=${size}`);
   }
-  
+  getSearchJugements(size: number, page: number, query:string ): Observable<any> {
+    return this.http.get(`${this.baseURl}?page=${page}&size=${size}&q=${query}`);
+  }
   getAlljugement():Observable<any>{
     return this.http.get(`${this.baseURl}`)
-    
   }
   getAllPremierCopieNotIn(size: number, page: number ): Observable<any> {
     return this.http.get(`${this.baseURl}/premierCopies?page=${page}&size=${size}&haveJugement=false`);

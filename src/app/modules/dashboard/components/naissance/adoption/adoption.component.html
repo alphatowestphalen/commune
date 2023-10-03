@@ -56,9 +56,16 @@
       
 
 
-        <app-mat-table *ngIf="tableData && tableData.length >0" [search]="search"
+        <app-mat-table 
+          *ngIf="tableData && tableData.length >0" 
+          [search]="search"
           [tableColumns]="tableColumns"
-          [tableData]="tableData" (editEvent)="editRow($event)" (pageChange)="handlePageChange($event)" (deleteEvent)="deleteRow($event)"  (showEvent)="showRow($event)" >
+          [tableData]="tableData" 
+          (editEvent)="editRow($event)" 
+          (pageChange)="handlePageChange($event)" 
+          (deleteEvent)="deleteRow($event)"  
+          (showEvent)="showRow($event)" 
+          >
         </app-mat-table>
         <p *ngIf="!tableData || tableData.length === 0" class="text-gray-500 my-5 flex text-sm text-center items-center justify-center">Aucun valeur dans cette tableau ! <br> Veuillez ajouter le bulletin de naissance.</p>
 

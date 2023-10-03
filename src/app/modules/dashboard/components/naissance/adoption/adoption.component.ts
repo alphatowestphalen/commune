@@ -44,11 +44,8 @@ search: any;
     header: 'Date et Heure d\'Adoption ',
     cell: (element: Record<string, any>) => {
       const datenaissEnfant = element['dateAdoption'];
-      console.log('====================================');
-      console.log(datenaissEnfant);
-      console.log('====================================');
       const heurenaissEnfant = element['heureAdoption'];
-      const dateObj = new Date(`${datenaissEnfant}T${heurenaissEnfant}:00`); 
+      const dateObj = new Date(`${datenaissEnfant}T${heurenaissEnfant}:00`);
       const formattedDate = `${dateObj.getDate().toString().padStart(2, '0')}/${(dateObj.getMonth() + 1).toString().padStart(2, '0')}/${dateObj.getFullYear()}`;
       const formattedTime = `${dateObj.getHours().toString().padStart(2, '0')}:${dateObj.getMinutes().toString().padStart(2, '0')}`;
       return `${formattedDate} ${formattedTime}`;
@@ -73,20 +70,21 @@ search: any;
 tableData: any = [];
 
   constructor( public dialog: MatDialog, private adoptionservice: AdoptionService,  private router:Router,private translocoService: TranslocoService) {
+  }
 
-  
-  } 
-  
 
   ngOnInit(): void {
     this.getAllAdoptions(this.size, this.page );
-
-  
-  const translatedText = this.translocoService.translate('nom');
+    const translatedText = this.translocoService.translate('nom');
   }
+
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
-
+    if(filterValue){
+      this.getSearchAllAdoptions(filterValue)
+    }else{
+      this.getAllAdoptions(this.size, this.page );
+    }
   }
 
 
@@ -94,9 +92,13 @@ tableData: any = [];
     this.adoptionservice.getAdoptions(size, page)
     .subscribe(data=>{
       this.tableData = data.data;
-      console.log('==============getAllAdoptions======================');
-      console.log(this.tableData);
-      console.log('====================================');
+    })
+  }
+
+  getSearchAllAdoptions(query: string){
+    this.adoptionservice.getSearchAdoptions(this.size, this.page,query)
+    .subscribe(data=>{
+      this.tableData = data.data;
     })
   }
   showRow(element: any) {
@@ -109,17 +111,15 @@ tableData: any = [];
     this.adoptionservice.updateAdoption(element.idAdoption, element)
       .subscribe(data=> {
         this.getAllAdoptions(this.size, this.page );
-        
       })
   }
 
   deleteRow(element: any) {
     this.adoptionservice.deleteAdoption(element.idAdoption)
-      .subscribe(data=> { 
+      .subscribe(data=> {
         this.getAllAdoptions(this.size, this.page );
         console.log('Delete row', data);
       })
-  
   }
 
 

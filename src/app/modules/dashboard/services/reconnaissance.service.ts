@@ -15,6 +15,11 @@ private baseURl = environment.baseUrl+'/reconnaissances'
   getReconnaissances(size: number, page: number ): Observable<any> {
     return this.http.get(`${this.baseURl}?page=${page}&size=${size}`);
   }
+
+  getSearchReconnaissances(size: number, page: number, query:string ): Observable<any> {
+    return this.http.get(`${this.baseURl}?page=${page}&size=${size}&q=${query}`);
+  }
+
   getAllReconnaissance(): Observable<any>{
     return this.http.get(`${this.baseURl}`)
   }

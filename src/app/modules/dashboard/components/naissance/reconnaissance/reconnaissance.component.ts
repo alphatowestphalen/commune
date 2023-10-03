@@ -14,7 +14,6 @@ import { ReconnaissanceService } from '../../../services/reconnaissance.service'
 export class ReconnaissanceComponent implements OnInit {
 
   reconnaissance: any;
-  
   tableColumns: Array<Column> = [
     {
       columnDef: 'idReconnaissance',
@@ -25,7 +24,6 @@ export class ReconnaissanceComponent implements OnInit {
       columnDef: 'nom',
       header: 'Nom et Prénoms',
       cell: (element: Record<string, any>) => `${element['premierecopie']['enfant']['nomEnfant']} ${element ['premierecopie']['enfant']['prenomsEnfant']}`,
-    
     },
     {
       columnDef: 'dateReconnaissance',
@@ -41,7 +39,7 @@ export class ReconnaissanceComponent implements OnInit {
       }
       }
   ];
-  
+
   tableData: any = [];
 
   size=5;
@@ -51,33 +49,40 @@ export class ReconnaissanceComponent implements OnInit {
   search: any;
 
   constructor( public dialog: MatDialog, private router:Router, private reconnaissanceservice: ReconnaissanceService) {
-    
     }
 
-  
     @ViewChild('htmlData') htmlData!: ElementRef;
 
-  
     applyFilter(filterValue: string) {
       filterValue = filterValue.trim(); // Remove whitespace
-  
+      if(filterValue){
+        this.getSearchAllReconnaissances(filterValue)
+      }else{
+        this.getAllReconnaissances(this.size, this.page)
+      }
     }
-  
 
-  ngOnInit(): void {
-   this.getAllReconnaissances(this.size, this.page)
-  }
+    ngOnInit(): void {
+    this.getAllReconnaissances(this.size, this.page);
+    }
+
+    getSearchAllReconnaissances(query: string) {
+      this.reconnaissanceservice.getSearchReconnaissances(this.size, this.page, query)
+      .subscribe(data=>{
+        this.tableData = data.data;
+        console.log(this.tableData)
+      })
+    }
 
 
+    getAllReconnaissances(size: number, page: number) {
+      this.reconnaissanceservice.getReconnaissances(size, page)
+      .subscribe(data=>{
+        this.tableData = data.data;
+        console.log(this.tableData)
+      })
 
-  getAllReconnaissances(size: number, page: number) {
-    this.reconnaissanceservice.getReconnaissances(size, page)
-    .subscribe(data=>{
-      this.tableData = data.data;
-      console.log(this.tableData)
-    })
-
-  }
+    }
 
   showRow(element: any) {
     this.router.navigate(['/dashboard/reconnaissance-copie-voir', element.idReconnaissance ])
@@ -89,22 +94,19 @@ export class ReconnaissanceComponent implements OnInit {
     this.reconnaissanceservice.updateReconnaissance(element.idReconnaissance, element)
       .subscribe((data: any)=> {
         this.getAllReconnaissances(this.size, this.page)
-        
       })
   }
 
   deleteRow(element: any) {
     this.reconnaissanceservice.deleteReconnaissance(element.idReconnaissance)
-      .subscribe((data: any)=> { 
+      .subscribe((data: any)=> {
         this.getAllReconnaissances(this.size, this.page)
         console.log('Delete row', data);
       })
-  
   }
   handlePageChange(event: PageEvent) {
     console.log(event)
     this.getAllReconnaissances(event.pageSize, event.pageIndex)
   }
-  
 }
 
