@@ -5,10 +5,17 @@
 export const environment = {
   production: false,
   // local
+<<<<<<< HEAD
   baseUrl: 'http://192.168.3.150:8080/api',
   modulesUrl: 'http://192.168.3.150:8080/api',
   // baseUrl: 'http://localhost:8080/api',
   // modulesUrl: 'http://localhost:8000/api',
+=======
+  // baseUrl: 'http://192.168.243.150:8080/api',
+  // modulesUrl: 'http://192.168.243.150:8080/api',
+  baseUrl: 'http://127.0.0.1:8080/api',
+  modulesUrl: 'http://127.0.0.1:8000/api',
+>>>>>>> fc89aa6 (Afficher nouveau copie)
 };
 
 /*
