@@ -18,9 +18,9 @@ export class UtilisateurListComponent implements OnInit {
   users: any;
   id: any;
 
-  size: any = '';
+  size: any = 10;
 
-  page = 0;
+  page = 1;
 
   search: any;
 
@@ -54,12 +54,8 @@ export class UtilisateurListComponent implements OnInit {
       cell: (element: Record<string, any>) => `${element['poste']}`
     }
   ];
-
   tableData: any = [];
-
   constructor(public dialog: MatDialog, private utilisateurservice: UtilisateurService, private router: Router) {
-
-
   }
 
 
@@ -73,8 +69,18 @@ export class UtilisateurListComponent implements OnInit {
   ListAllUsers(size: number, page: number) {
     this.utilisateurservice.getAllUsers(size, page)
       .subscribe(data => {
-        this.tableData = data.users;
-        console.log(data.users);
+        this.tableData = data.data;
+        this.page = data.page
+        console.log(data);
+
+      })
+  }
+  ListSearchAllUsers(query:string) {
+    this.utilisateurservice.getSearchAllUsers(this.size, this.page, query)
+      .subscribe(data => {
+        this.tableData = data.data;
+        this.page = data.page;
+        console.log(data);
 
       })
   }
@@ -113,7 +119,11 @@ export class UtilisateurListComponent implements OnInit {
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
     filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
-    this.dataSource.filter = filterValue;
+    if(filterValue){
+      this.ListSearchAllUsers(filterValue)
+    }else{
+      this.ListAllUsers(this.size, this.page);
+    }
   }
 }
 

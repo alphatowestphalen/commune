@@ -42,7 +42,7 @@ export class CelibataireComponent implements OnInit {
 
   tableData: any;
 
-  size = 5;
+  size = 10;
   page = 1;
   nombre: number = 0;
   constructor(private acteCelibataire: CelibataireService, private router: Router) { }
@@ -65,7 +65,13 @@ export class CelibataireComponent implements OnInit {
       .subscribe(data => {
         this.tableData = data.data;
       })
+  }
 
+  getSearchAllService(query:string) {
+    this.acteCelibataire.getSearchAllCellibataire(this.size, this.page, query)
+      .subscribe(data => {
+        this.tableData = data.data;
+      })
   }
   showRow(element: any) {
     this.router.navigate(['/dashboard/celibataire-show', element.idActeCelibataire ])
@@ -76,15 +82,10 @@ export class CelibataireComponent implements OnInit {
   
   }
   applyFilter(filterValue: string) {
-    filterValue = filterValue.trim(); // Remove whitespace
-    filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
-    this.search = filterValue
     if(this.search == '') {
       this.getAllService(this.size, this.page);
     }else{
-      this.acteCelibataire.Search(this.search).subscribe((data)=>{
-        this.tableData = data.data;
-      })
+      this.getSearchAllService(filterValue.trim())
     }
   }
 }

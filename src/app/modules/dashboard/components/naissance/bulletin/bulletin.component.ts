@@ -41,7 +41,7 @@ export class BulletinComponent implements OnInit {
     dateCopie: "",
   }
   // end
-  size= 5;
+  size= 10;
   page = 1;
 
   search: any;
@@ -165,7 +165,7 @@ export class BulletinComponent implements OnInit {
   } 
   public getAllBulletinNaissance(size:number, page:number) {
     this.bulletinService.getAllBulletin(size,page).subscribe((data: any) => {
-      this.tableData = data;
+      this.tableData = data.data;
     });
   }
 

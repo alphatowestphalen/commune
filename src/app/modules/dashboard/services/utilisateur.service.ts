@@ -17,6 +17,9 @@ export class UtilisateurService {
     getAllUsers(size: number, page: number): Observable<any> {
         return this.http.get(`${this.baseURl}?page=${page}&size=${size}`)
     }
+    getSearchAllUsers(size: number, page: number, query:string): Observable<any> {
+        return this.http.get(`${this.baseURl}?page=${page}&size=${size}&q=${query}`)
+    }
 
     addUser(user: Object): Observable<any> {
         return this.http.post(`${this.baseURl}`, user)

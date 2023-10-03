@@ -24,8 +24,6 @@
           </button>
         </div>
       </div>
-    
-    
 
       <div class="flex-col rounded-lg bg-white mt-5 px-3 py-3 dark:bg-night-700 sm:flex-row">
         <div class="mb-1 flex items-center justify-between">
@@ -33,7 +31,7 @@
             <h3 class="text-md font-bold pl-5 text-gray-900 dark:text-night-50 ">{{'ListedetouslesUtilisateurs'|transloco}} </h3>
           </div>
           <mat-form-field >
-           
+
             <mat-label>{{'recherche'|transloco}}...</mat-label>
             <input  matInput  (keyup)="applyFilter($any($event.target).value)" />
             <mat-icon matSuffix> <div class="absolute inset-y-0 -left-2 bottom-3 flex items-center pointer-events-none">
@@ -41,30 +39,25 @@
             </div></mat-icon>
           </mat-form-field>
 
-     
           <div class=" flex bg-white p-4">
             <button  routerLink="/dashboard/utilisateur-add" class="shadow-md inline-flex items-center px-4 py-4 bg-amber-400 hover:bg-amber-700 text-gray-800 text-sm font-medium rounded-md">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
             </svg>
-          
             {{'NouvelleUtilisateur'|transloco}}
             </button>
-        
           </div>
         </div>
-      
-
-
         <app-mat-table *ngIf="tableData && tableData.length >0" [search]="search"
-          [tableColumns]="tableColumns" 
-          [tableData]="tableData" (editEvent)="editRow($event)" (pageChange)="handlePageChange($event)" (deleteEvent)="deleteRow($event)"  (showEvent)="showRow($event)" >
+          [tableColumns]="tableColumns"
+          [tableData]="tableData"
+          (editEvent)="editRow($event)"
+          (pageChange)="handlePageChange($event)"
+          (deleteEvent)="deleteRow($event)"
+          (showEvent)="showRow($event)"
+          >
         </app-mat-table>
           <p *ngIf="!tableData || tableData.length === 0"><app-loading></app-loading></p>
 
         </div>
         </div>
-    
-
-    
-    

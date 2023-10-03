@@ -18,12 +18,8 @@
   <ng-container matColumnDef="actions">
     <th mat-header-cell *matHeaderCellDef> Actions </th>
     <td mat-cell *matCellDef="let element">
-    
       <button mat-icon-button
       class="btn btn-sm font-normal lowercase modal-button text-xs bg-blue-600 px-4 py-2 text-white rounded-md mr-2" (click)="showRow(element)">voir</button>
-     
-     
-               
       <button mat-icon-button
       class="btn btn-sm font-normal lowercase text-xs bg-green-600 px-4 py-2 text-white rounded-md mr-2" (click)="editRow(element)">editer</button>
       <!-- <button mat-icon-button

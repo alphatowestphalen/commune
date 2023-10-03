@@ -24,9 +24,9 @@ export class MatTableComponent implements OnInit {
   @Output() showEvent = new EventEmitter<any>();
   // @Output() deleteEvent = new EventEmitter<any>();
   @Output() askEvent = new EventEmitter<any>();
-  // @Output() 
+  // @Output()
 
- 
+
   @Output() pageChange = new EventEmitter<PageEvent>();
 
 
@@ -35,11 +35,6 @@ export class MatTableComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-
-
-
-
-
 
   constructor() { }
 
@@ -70,10 +65,8 @@ export class MatTableComponent implements OnInit {
   //   this.deleteEvent.emit(element);
   //   this.pageChange.emit(element);
   // }
-
  ngOnChanges(change: any){
-  this.dataSource.filter = change.search.currentValue.toLowerCase();
-  
+  this.dataSource = new MatTableDataSource(this.tableData);
  }
 
  onAskEvent(parameter: any) {

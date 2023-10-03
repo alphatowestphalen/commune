@@ -45,33 +45,38 @@ export class BulletinListComponent implements OnInit {
     },
   ];
   tableData: any;
-  size:any = '';
-  page = 0;
+  size:any = 10;
+  page = 1;
   nombre: number = 0;
 
 
   constructor( private router: Router, public dialog: MatDialog, private bulletinservice: BulletinNaissanceService) { }
 
-
-
-
   ngOnInit(): void {
-    this.getAllService(this.size, this.page);
-   
+    this.getAllBulletin(this.size, this.page);
   }
 
-  getAllService(size: number, page: number){
+  getAllBulletin(size: number, page: number){
     this.bulletinservice.getAllBulletin(size, page)
     .subscribe(data=>{
-      this.tableData = data.data 
-      
+      this.tableData = data.data
     })
 
+  }
+  getSearchAllBulletin(query:string){
+    this.bulletinservice.getSearchAllBulletin(this.size, this.page, query)
+    .subscribe(data=>{
+      this.tableData = data.data
+    })
   }
 
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
-    filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
+    if(filterValue){
+      this.getSearchAllBulletin(filterValue)
+    }else{
+      this.getAllBulletin(this.size, this.page)
+    }
   }
 
   showRow(element: any) {
@@ -82,10 +87,8 @@ export class BulletinListComponent implements OnInit {
 
   }
   handlePageChange(event: PageEvent){
-    this.getAllService(event.pageSize, event.pageIndex)
-  
+    this.getAllBulletin(event.pageSize, event.pageIndex)
   }
-  
 
   // editRow(element: any) {
   //   console.log('Edit row', element);
@@ -127,29 +130,20 @@ export class BulletinListComponent implements OnInit {
   pageChange(event: PageEvent) {
     console.log(event)
     // this.size = event.pageSize
-    this.getAllService(event.pageSize, event.pageIndex)
+    this.getAllBulletin(event.pageSize, event.pageIndex)
     }
 
-
   AskRow(row:any ){
-  
    this.bulletin = row;
     this.Opendemande = !this.Opendemande;
-  
-
-  }  
+  }
 
   nextDialog(nombre: any){
     console.log(nombre)
    this.Opendemande = ! this.Opendemande
-    
   }
-
   exitDialog(){
     this.nombre = 0;
     this.Opendemande = false;
   }
-
- 
-
 }

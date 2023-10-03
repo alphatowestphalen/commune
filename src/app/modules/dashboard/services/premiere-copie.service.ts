@@ -18,6 +18,9 @@ export class PremiereCopieService {
   getCertificates(size: number, page: number ): Observable<any> {
     return this.http.get(`${this.baseUrl}?page=${page}&size=${size}`);
   }
+  getSearchCertificates(size: number, page: number, query:string ): Observable<any> {
+    return this.http.get(`${this.baseUrl}?page=${page}&size=${size}&q=${query}`);
+  }
 
   getFirstCertificates( ): Observable<any> {
     return this.http.get(`${this.baseUrl}`);

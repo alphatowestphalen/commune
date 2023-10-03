@@ -100,8 +100,11 @@ export class PremiereCopieComponent implements OnInit {
 
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
-    filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
-    this.search = filterValue
+    if(filterValue){
+      this.getSearchfirstCertificates(filterValue)
+    }else{
+      this.getfirstCertificates(this.size, this.page)
+    }
   }
   openDialog() {
     this.dialog.open(PremiereCopieComponent);
@@ -121,10 +124,17 @@ export class PremiereCopieComponent implements OnInit {
         this.tableData.map((d: any) => {
           d.descriptionRow = d.enfant.nomEnfant + ' ' + d.enfant.prenomsEnfant
         })
-        this.size = data.length;
       })
+  }
 
-
+  getSearchfirstCertificates(query:string) {
+    this.premierecopieservice.getSearchCertificates(this.size, this.page, query)
+      .subscribe(data => {
+        this.tableData = data.data;
+        this.tableData.map((d: any) => {
+          d.descriptionRow = d.enfant.nomEnfant + ' ' + d.enfant.prenomsEnfant
+        })
+      })
   }
 
 
