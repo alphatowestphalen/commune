@@ -4,7 +4,7 @@ import { SurveyCreatorModel } from 'survey-creator-core';
 import { Model } from 'survey-core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { PageEvent } from '@angular/material/paginator';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Data, Router } from '@angular/router';
 import { Column } from '../../../models/column';
 import { BulletinNaissanceService } from '../../../services/bulletin-naissance.service';
 import { BulletinNaicensse } from 'src/app/model/bulletin/Buletin.interface';
@@ -171,7 +171,9 @@ export class BulletinComponent implements OnInit {
   }
   getAllPremierByParams(value:any){
     this.premierCopieService.getCertificateByID(value).subscribe(data=>{
+      
       this.buletinNaissance.idPremierCopie = data.idPremierCopie;
+      
       this.buletinNaissance.nomPersonne = data.enfant.nomEnfant;
       this.buletinNaissance.prenomsPersonne = data.enfant.prenomsEnfant;
       this.buletinNaissance.dateNaissPersonne = data.enfant.datenaissEnfant;
@@ -183,6 +185,7 @@ export class BulletinComponent implements OnInit {
       this.buletinNaissance.dateCopie = data.datePremierCopie;
     })
   }
+
   OpenDialog(){
     const dialogRef = this.dialog.open(AfficheCopieComponent, {
       maxWidth: '100vw',
@@ -216,32 +219,37 @@ export class BulletinComponent implements OnInit {
 export class AfficheCopieComponent {
   constructor(@Inject (MAT_DIALOG_DATA) public data: any, private bulletinservice: BulletinNaissanceService,
    public dialog: MatDialog, private router:Router  ) {}
-sender:any; options: any;
-  ngOnInit() {
-  this.sender = this.data[0],
-  this.options = this.data[1]
- console.log(this.sender.valuesHash)
+sender:any; 
+option: any;
+options: any;
+today = new Date();
+jour:any;
+mois:any;
+moisString:any;
+annee:any;
+dateCreation:any;
+
+  ngOnInit() {  
+  
+	  this.sender = this.data[0],
+	  this.options = this.data[1],
+	  this.option = { month: 'long' };
+	  this.mois = this.today.toLocaleString('fr-FR', this.option);
+
+		this.jour = this.today.getDate();
+		this.moisString = this.mois;
+		this.annee = this.today.getFullYear();	
   }
 
   saveBulletin(){
     console.log('=============== saveBulletin =====================');
     console.log(this.data[0]);
+    
     console.log('====================================');
     this.bulletinservice.addBuletinNessanace(this.data[0]).subscribe(data=>{
       const dialogRef = this.dialog.closeAll();
       this.router.navigate(['/dashboard/bulletin-naissance-list']);
     })
-  //   this.bulletinservice.saveBulletin(this.sender, this.options).subscribe(
-  //     (data) => {
-  //       this.options.showDataSavingSuccess();   
-  //       const dialogRef = this.dialog.closeAll();
-  //        this.router.navigate(['/dashboard/bulletin-naissance-list']);  
-  //     },
-  //     (error) => {
-  //       this.options.showDataSavingError();
-  //     }
-  //   );
-  //   console.log(this.data)
-
+  
   }
 }

@@ -75,7 +75,7 @@
 
 
           </div>
-          <form [formGroup]="MaireFormGroup">
+          <form #f="ngForm" [formGroup]="MaireFormGroup">
             <p class="underline text-sm text-gray-500"> {{ 'InformationdeMaire'|transloco}} :</p>
             <div class=" lg:grid md:grid-flow-col grid-cols-3 mt-5  gap-4">
 
@@ -184,7 +184,7 @@
             <div class="mb-4 w-4/5">
 
               <label class="block mb-2 text-sm font-bold text-black"> {{'Nom'|transloco}}</label>
-              <input type="text" formControlName="nomHomme"
+              <input ngModel required type="text" formControlName="nomHomme"
                 class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
                 placeholder="  {{'SaisirNom'|transloco}}" />
 
@@ -192,7 +192,7 @@
             <div class="mb-4 w-4/5">
 
               <label class="block mb-2 text-sm font-bold text-black"> {{'Prenoms'|transloco}}</label>
-              <input type="text" formControlName="prenomsHomme"
+              <input type="text" ngModel required formControlName="prenomsHomme"
                 class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
                 placeholder="{{'SaisirPrenoms'|transloco}}" />
 
@@ -265,7 +265,7 @@
           <div class="wrapper">
             <mat-form-field class="example-full-width">
               <mat-label>{{'RechercheparNumèrodeCopie'|transloco}}</mat-label>
-              <input matInput [(ngModel)]="CopieSelected" [matAutocomplete]="auto" [formControl]="searchCopie"
+              <input matInput [(ngModel)]="CopieSelected" ngModel required [matAutocomplete]="auto" [formControl]="searchCopie"
                 placeholder="Saisir la Numèro de Copie">
               <button *ngIf="CopieSelected" matSuffix mat-icon-button aria-label="Clear" (click)="clearSelection()">
 
@@ -1134,7 +1134,7 @@
           border duration-200 ease-in-out 
           border-gray-600 transition"> {{'Prècedent'|transloco}}</button>
           <div class="flex-auto flex flex-row-reverse">
-            <button (click)="OpenActeMariage()" mat-button matStepperNext class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
+            <button  [disabled]="f.invalid" (click)="OpenActeMariage()" mat-button matStepperNext class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
     hover:bg-blue-600  
     bg-blue-600 
     text-blue-100 

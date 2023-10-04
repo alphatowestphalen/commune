@@ -56,25 +56,14 @@ export class PremiereCopieVoirComponent implements OnInit {
   public openPDF(): void {
 
     let DATA: any = document.getElementById('htmlData')!.innerHTML;
-    console.log(DATA);
-    // console.log(DATA);
-    // html2canvas(DATA).then((canvas) => {
-    //   let fileWidth = 208;
-    //   let fileHeight = (canvas.height * fileWidth) / canvas.width;
-    //   const FILEURI = canvas.toDataURL('image/png');
-    //   let PDF = new jsPDF('p', 'mm', 'a4');
-    //   let position = 0;
-    //   PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight);
-    //   PDF.save('angular-demo.pdf');
-    // });
+    
 
     const doc = new jsPDF();
-    // const content = this.content.nativeElement;
-    html2canvas(DATA).then(canvas => {
-      const imgData = canvas.toDataURL('image/png');
+    html2canvas(DATA).then(canevas => {
+      const imgData = canevas.toDataURL('image/png');
       const imgWidth = 210;
       const pageHeight = 295;
-      const imgHeight = canvas.height * imgWidth / canvas.width;
+      const imgHeight = canevas.height * imgWidth / canevas.width;
       let heightLeft = imgHeight;
 
       let position = 0;
@@ -89,7 +78,10 @@ export class PremiereCopieVoirComponent implements OnInit {
         doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
         heightLeft -= pageHeight;
       }
-      doc.save('pdfName.pdf');
+      if(imgData){
+      	console.log("canevas generer !")
+      }
+      //doc.save('pdfName.pdf');
     });
   }
 

@@ -97,20 +97,7 @@
       </div>
     </div>
 
-    <!-- <app-mat-table *ngIf="tableData && tableData.length >0" [search]="search"
-    [tableColumns]="tableColumns"
-    [tableData]="tableData" >
-
-      <button mat-icon-button
-      class="btn btn-sm font-normal lowercase modal-button text-xs bg-green-700 px-4 py-2 text-white rounded-md mr-2" (click)="AskRow($event)">Demande</button>
-     
-  </app-mat-table>
-     <p *ngIf="!tableData || tableData.length === 0"><app-loading></app-loading></p>-->
-
-     <!-- <app-mat-table *ngIf="tableData && tableData.length >0" [search]="search"
-      [tableColumns]="tableColumns"
-      [tableData]="tableData" (editEvent)="editRow($event)" (pageChange)="handlePageChange($event)" (deleteEvent)="deleteRow($event)"  (showEvent)="showRow($event)" >
-    </app-mat-table> -->
+    
      <app-mat-table *ngIf="tableData && tableData.length >0" [search]="search"
       [tableColumns]="tableColumns"
       [tableData]="tableData" (pageChange)="handlePageChange($event)" (showEvent)="showRow($event)" >
