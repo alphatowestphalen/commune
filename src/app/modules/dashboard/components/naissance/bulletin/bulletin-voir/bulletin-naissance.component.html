@@ -3,18 +3,16 @@
     .width{
      max-width: 75%;
  }
- 
+ .page{
+ 	width:100%;
+ 	height:50%;
+ }
  form{
    font-family: 'Roboto', 'Merriweather', sans-serif;
    font-size: 16px;
    color: #333;
    padding: 0;
    box-sizing: border-box;
- }
- .page{
-   position: relative;
-   width: auto;
-   padding: 0mm 8mm 0mm 20mm;
  }
  .heading{
    display: inline-block;
@@ -158,37 +156,38 @@
                       <tbody>
                         <tr>
                           <td  class="px-6 py-4 font-medium whitespace-nowrap"> NOM</td>
-                          <td class="uppercase"> : {{sender.nomPersonne}} </td>
+                          <td class="uppercase"> : {{nomPersonne}} </td>
                         </tr>
                         <tr>
                           <td  class="px-6 py-4 font-medium whitespace-nowrap"> PRENOM</td>
-                          <td class="capitalize">: {{sender.prenomsPersonne}}</td>
+                          <td class="capitalize">: {{prenomsPersonne}}</td>
                          
                         </tr>
                         <tr>
                           <td  class="px-6 py-4 font-medium whitespace-nowrap"> NE(E) LE</td>
-                          <td>: {{sender.dateNaissPersonne}}</td>
+                          <td>: {{dateNaissPersonne}}</td>
 
                         </tr>
                         <tr>
                           <td  class="px-6 py-4 font-medium whitespace-nowrap"> A </td>
-                          <td>: {{sender.lieuNaissPersonne}}</td>
+                          <td>: {{lieuNaissPersonne}}</td>
 
                         </tr>
                         <tr>
                           <td  class="px-6 py-4 font-medium whitespace-nowrap">  FILS(LE)</td>
-                          <td>: <span class="uppercase"> {{sender.nomPere}}</span> <span class="capitalize"> {{sender.prenomsPere}}</span> </td>
+                          <td>: <span class="uppercase"> {{nomPere}}</span>
+                           <span class="capitalize"> {{prenomsPere}}</span> </td>
 
                         </tr>
                         <tr>
                           <td  class="px-6 py-4 font-medium whitespace-nowrap">  ET DE </td>
-                          <td>: <span class="uppercase">  {{sender.nomMere}}</span> <span class="capitalize"></span> {{sender.prenomsMere}}</td>
+                          <td>: <span class="uppercase">  {{nomMere}}</span> <span class="capitalize"></span> {{prenomsMere}}</td>
 
                         </tr>
                         
                         <tr>
                           <td  class="px-6 py-4 font-medium whitespace-nowrap">    N° DE REGISTRE  </td>
-                          <td>{{sender.idPremierCopie}}</td>
+                          <td>{{idBulletinNaissance}}</td>
 
                         </tr>
                       </tbody>
@@ -221,29 +220,17 @@
     
     
         </form>
-    
+
       </div>
+      <button (click)="downloadPdf()"
+        class="shadow-md inline-flex items-center px-4 py-2 bg-red-200 hover:bg-red-600 text-gray-800 text-sm font-medium rounded-md">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" />
+        </svg>
+
+        Cliquer pour imprimer
+      </button>
  </div>
 
- <div mat-dialog-actions align="end">
- 
-    <button mat-button mat-dialog-close
-            
-    class="shadow-md inline-flex items-center px-4 py-2 bg-red-200 hover:bg-red-600 text-gray-800 text-sm font-medium rounded-md"
-  >
-  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" />
-  </svg>
-  
-  Cliquer pour modifier 
-  </button>
-  <button  mat-button (click)="saveBulletin()" cdkFocusInitial
-  class="shadow-md inline-flex items-center ml-2 px-4 py-2 bg-green-400 hover:bg-teal-600 text-gray-800 text-sm font-medium rounded-md"
-  >
-  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
-  </svg>
-  
-  Cliquer pour sauvegarder 
-  </button>
-</div>

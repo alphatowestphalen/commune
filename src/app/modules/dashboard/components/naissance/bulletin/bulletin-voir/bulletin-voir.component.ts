@@ -1,10 +1,11 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 import { CopieComponent } from 'src/app/modules/dashboard/pages/copie/copie.component';
 import { BulletinNaissanceService } from 'src/app/modules/dashboard/services/bulletin-naissance.service';
 import { PremiereCopieService } from 'src/app/modules/dashboard/services/premiere-copie.service';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-bulletin-voir',
@@ -15,7 +16,7 @@ export class BulletinVoirComponent implements OnInit {
   id: any;
   certificates: any;
 
-  constructor(private activatedroute: ActivatedRoute, private router: Router, private bulletinNaissanceService: BulletinNaissanceService) { }
+  constructor(private activatedroute: ActivatedRoute, private router: Router, private bulletinNaissanceService: BulletinNaissanceService, public dialog: MatDialog) { }
   @ViewChild('htmlData', { static: false }) copiecomponent: CopieComponent;
 
   ngOnInit(): void {
@@ -37,64 +38,102 @@ export class BulletinVoirComponent implements OnInit {
   toggleModal() {
     this.OpenCopie = !this.OpenCopie;
   }
+  
+OpenDialog(){
+    const dialogRef = this.dialog.open(AfficheCopieComponent, {
+      maxWidth: '100vw',
+      maxHeight: '100vh',
+      height: '90%',
+      width: '85%',
+      panelClass: 'full-screen-modal',
+      data : [this.certificates]
+    });
 
-
-
-  downloadPdf() {
-
-    // this.copiecomponent.generatePDF();
   }
 
-  public openPDF(): void {
+}
 
-    let DATA: any = document.getElementById('htmlData')!.innerHTML;
-    console.log(DATA);
-    // console.log(DATA);
-    // html2canvas(DATA).then((canvas) => {
-    //   let fileWidth = 208;
-    //   let fileHeight = (canvas.height * fileWidth) / canvas.width;
-    //   const FILEURI = canvas.toDataURL('image/png');
-    //   let PDF = new jsPDF('p', 'mm', 'a4');
-    //   let position = 0;
-    //   PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight);
-    //   PDF.save('angular-demo.pdf');
-    // });
+@Component({
+  selector: 'bulletin-naissance',
+  templateUrl: 'bulletin-naissance.component.html',
+})
+export class AfficheCopieComponent {
+  constructor(@Inject (MAT_DIALOG_DATA) public data: any, private bulletinservice: BulletinNaissanceService,
+   public dialog: MatDialog, private router:Router  ) {}
+option: any;
 
-    const doc = new jsPDF();
-    // const content = this.content.nativeElement;
-    html2canvas(DATA).then(canvas => {
-      const imgData = canvas.toDataURL('image/png');
-      const imgWidth = 210;
-      const pageHeight = 295;
-      const imgHeight = canvas.height * imgWidth / canvas.width;
-      let heightLeft = imgHeight;
+today:any;
+jour:any;
+mois:any;
+moisString:any;
+annee:any;
+dateCreation:any;
 
-      let position = 0;
-      doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-      heightLeft -= pageHeight;
-      doc.setFont('times', 'normal');
-      //  doc.text(DATA.innerHTML, 10, 10);
+idPremierCopie: any;
+prenomsMere: any;
+nomMere: any;
+prenomsPere: any;
+nomPere: any;
+lieuNaissPersonne: any;
+dateNaissPersonne: any;
+prenomsPersonne: any;
+nomPersonne: any;
+idBulletinNaissance: any;
+  ngOnInit() {  
+  		this.idBulletinNaissance = this.data[0].idBulletinNaissance;
+	  this.nomPersonne = this.data[0].nomPersonne;
+	  this.prenomsPersonne = this.data[0].prenomsPersonne;
+	  this.dateNaissPersonne = this.data[0].dateNaissPersonne;
+	  this.lieuNaissPersonne = this.data[0].lieuNaissPersonne;
+	  this.nomPere = this.data[0].nomPere;
+	  this.prenomsPere = this.data[0].prenomsPere;
+	  this.nomMere = this.data[0].nomMere;
+	  this.idPremierCopie = this.data[0].idPremierCopie;	  
+	  console.log(this.data[0].createdDate)
+	  this.today = new Date(this.data[0].createdDate);
+	  this.option = { month: 'long' };
+	  this.mois = this.today.toLocaleString('fr-FR', this.option);
 
-      while (heightLeft >= 0) {
-        position = heightLeft - imgHeight;
-        doc.addPage();
+		this.jour = this.today.getDate();
+		this.moisString = this.mois;
+		this.annee = this.today.getFullYear();	
+  }
+
+    downloadPdf() {
+this.genererCanevas()
+  }
+  
+   genererCanevas() {
+    const doc = new jsPDF({
+    orientation: 'landscape', // Spécifiez l'orientation comme paysage
+    unit: 'mm',
+    format: 'a4'
+    });
+    const element = document.querySelector('.page#htmlData') as HTMLElement;
+    if (element) {
+      html2canvas(element).then((canevas) => {
+        // console.log("Canevas genereeee !");
+
+        const imgData = canevas.toDataURL('image/png');
+        const imgWidth = 320;
+        const pageHeight = 500;
+        const imgHeight = canevas.height * imgWidth / canevas.width;
+        let heightLeft = imgHeight;
+
+        let position = 0;
         doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
         heightLeft -= pageHeight;
-      }
-      doc.save('pdfName.pdf');
+
+        while (heightLeft >= 0) {
+          position = heightLeft - imgHeight;
+          doc.addPage();
+          doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+          heightLeft -= pageHeight;
+        }
+
+        doc.save("Bulletin_de_Naissance"+this.nomPersonne+" "+this.prenomsPersonne+".pdf");
+        // console.log("PDF enregistré !");
     });
   }
-
-  printPage() {
-    var printContents = document.getElementById('htmlData')!.innerHTML;
-    var originalContents = document.body.innerHTML;
-
-    document.body.innerHTML = printContents;
-
-    window.print();
-
-    document.body.innerHTML = originalContents;
-  }
-
-
+}
 }
