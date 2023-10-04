@@ -223,6 +223,9 @@ interfaces:any[] = [];
   public getAllPremierCopierFemme(){
     // recherche fille
     this.premierCopier.getCelibataireWithSexe(this.size, this.page,"fille").subscribe(data => {
+      console.log('=================getAllPremierCopierFemme===================');
+      console.log(data.data);
+      console.log('====================================');
       this.premierCopiers = data.data;
     });
   }
@@ -249,6 +252,8 @@ interfaces:any[] = [];
 
   selectTypeFemme(value:string){
     this.typeFemme=value;
+    console.log(this.typeFemme);
+    
     if(value ==="interne" && this.premierCopieState !== "femme"){
       this.getAllPremierCopierFemme();
       this.premierCopieState = "femme";
