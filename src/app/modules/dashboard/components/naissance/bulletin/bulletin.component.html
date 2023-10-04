@@ -40,7 +40,7 @@
     <div id="surveyCreator"  class="mat-elevation-z4  ">
       <h3 _ngcontent-soh-c348="" class="bg-white pr-5 pt-7 text-md font-semibold pl-5 text-gray-900 ">Formulaire à remplir pour l'ajoute de la bulettin de naissance</h3>
       <mat-horizontal-stepper [linear]="true" #stepper>
-          <form #addForm="ngForm">
+          <form #f="ngForm">
               <mat-step >
                   <ng-template matStepLabel> Dossier <br>
                     <span class="font-normal text-xs text-gray-400">Liste Information</span>
@@ -156,7 +156,7 @@
                     </div>
                     <div class="mb-4 w-4/5">
                       <label class="block mb-2 text-sm font-bold text-black">Date Premier Copie</label>
-                    <input type="date" name="dateCopie" [(ngModel)]="buletinNaissance.dateCopie" [readonly]="readonly" id="heureEnfant"
+                    <input type="date" name="dateCopie" required ngModel [(ngModel)]="buletinNaissance.dateCopie" [readonly]="readonly" id="heureEnfant"
                         class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border "
                         placeholder="Saisir heure de Naissance de l'enfant" />
                     </div>
@@ -165,7 +165,7 @@
                     <div class="mb-4 w-4/5">
       
                       <label class="block mb-2 text-sm font-bold text-black">Nom de la Personne</label>
-                      <input type="text" name="nomPersonne" [readonly]="readonly" [(ngModel)]="buletinNaissance.nomPersonne"  id="nomEnfant"
+                      <input type="text" name="nomPersonne" required ngModel [readonly]="readonly" [(ngModel)]="buletinNaissance.nomPersonne"  id="nomEnfant"
                         class="bg-gray-50 block w-full p-2.5 border-gray-300 rounded-lg text-md border"
                         placeholder="Saisir nom de la Personne" />
       
@@ -272,7 +272,7 @@
                 border duration-200 ease-in-out 
                 border-gray-600 transition">Prècedent</button>
                 <div class="flex-auto flex flex-row-reverse">
-                          <button  [disabled]="addForm.invalid"  (click)="OpenDialog()"
+                          <button  [disabled]="f.invalid"  (click)="OpenDialog()"
                           class="text-sm  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
                           hover:bg-blue-600  
                           bg-blue-600 

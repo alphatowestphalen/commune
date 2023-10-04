@@ -4,7 +4,7 @@ import { SurveyCreatorModel } from 'survey-creator-core';
 import { Model } from 'survey-core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { PageEvent } from '@angular/material/paginator';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Data, Router } from '@angular/router';
 import { Column } from '../../../models/column';
 import { BulletinNaissanceService } from '../../../services/bulletin-naissance.service';
 import { BulletinNaicensse } from 'src/app/model/bulletin/Buletin.interface';
@@ -183,6 +183,7 @@ export class BulletinComponent implements OnInit {
       this.buletinNaissance.dateCopie = data.datePremierCopie;
     })
   }
+
   OpenDialog(){
     const dialogRef = this.dialog.open(AfficheCopieComponent, {
       maxWidth: '100vw',
@@ -216,11 +217,19 @@ export class BulletinComponent implements OnInit {
 export class AfficheCopieComponent {
   constructor(@Inject (MAT_DIALOG_DATA) public data: any, private bulletinservice: BulletinNaissanceService,
    public dialog: MatDialog, private router:Router  ) {}
-sender:any; options: any;
+  sender:any;
+  options: any;
+  today:any
   ngOnInit() {
-  this.sender = this.data[0],
+    this.today = new Date();
+    
+    this.sender = this.data[0],
+    console.log('====================================');
+    console.log(this.today.getDate());
+    console.log(this.today.getMonth());
+    console.log(this.today.getFullYear());
+    console.log('====================================');
   this.options = this.data[1]
- console.log(this.sender.valuesHash)
   }
 
   saveBulletin(){

@@ -3,7 +3,7 @@
     <div class="inline-block">
       <h3 class="font-semibold text-gray-900 dark:text-white uppercase">{{ 'Naissance' | transloco }}</h3>
       <div class="space-x-1 text-xs font-medium text-gray-400 dark:text-night-300">
-        <a href="" class="hover:text-primary-500"> {{ 'BureauEtatCivil' | transloco }}</a>
+        <a routerLink="/dashboard/premiere-copie" class="hover:text-primary-500"> {{ 'BureauEtatCivil' | transloco }}</a>
         <span>- {{ 'serviceActeNaiss' | transloco }}</span>
       </div>
     </div>
@@ -15,7 +15,7 @@
       <span class="flex-none rounded-md py-2.5 text-xs font-semibold text-night-400">>></span>
       <button
         class="flex-none rounded-md bg-primary-500 px-4 py-2.5 text-xs font-semibold text-white hover:bg-primary-600">
-
+        Tableau de bord
       </button>
     </div>
   </div>
@@ -34,7 +34,7 @@
           </a>
 
           <div class="flex  flex-col">
-            <a href="" class="text-5xl font-semibold text-red-400 hover:text-primary-500 dark:text-night-100">
+            <a routerLink="/dashboard/premiere-copie"  class="text-5xl font-semibold text-red-400 hover:text-primary-500 dark:text-night-100">
               {{statistiquePremierCopie}}
             </a>
             <h2 class="text-xs  font-semibold text-gray-500 dark:text-night-300">{{ '1ereCopie' | transloco }}</h2>
@@ -55,7 +55,7 @@
           </a>
 
           <div class="flex  flex-col">
-            <a href="" class="text-5xl font-semibold text-yellow-400 hover:text-primary-500 dark:text-night-100">
+            <a routerLink="/dashboard/adoption-naissance" class="text-5xl font-semibold text-yellow-400 hover:text-primary-500 dark:text-night-100">
               {{statistiqueAdoption}}
             </a>
             <h2 class="text-xs  font-semibold text-gray-500 dark:text-night-300">{{ 'Adoption' | transloco }}</h2>
@@ -76,7 +76,7 @@
           </a>
 
           <div class="flex  flex-col">
-            <a href="" class="text-5xl font-semibold text-green-400 hover:text-primary-500 dark:text-night-100">
+            <a routerLink="/dashboard/jugement-naissance" class="text-5xl font-semibold text-green-400 hover:text-primary-500 dark:text-night-100">
               {{statistiqueJugement}}
             </a>
             <h2 class="text-xs  font-semibold text-gray-500 dark:text-night-300">{{ 'Jugement' | transloco }}</h2>
@@ -97,7 +97,7 @@
           </a>
 
           <div class="flex  flex-col">
-            <a href="" class="text-5xl font-semibold text-blue-400 hover:text-primary-500 dark:text-night-100">
+            <a routerLink="/dashboard/reconnaissance-naissance" class="text-5xl font-semibold text-blue-400 hover:text-primary-500 dark:text-night-100">
               {{statistiqueReconaissance}}
             </a>
             <h2 class="text-xs  font-semibold text-gray-500 dark:text-night-300">{{ 'Reconnaissance' | transloco }}</h2>
@@ -110,8 +110,8 @@
 
   </div>
   
-  <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-5">
-    <div class="flex h-[100%] flex-col rounded-lg bg-white mt-2 py-6 px-3 dark:bg-night-700 sm:flex-row">
+  <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4">
+    <div  class="flex h-[100%] flex-col rounded-lg bg-white mt-2 py-6 px-3 dark:bg-night-700 sm:flex-row">
       <!-- Details  -->
       <div class=" flex flex-col justify-between sm:ml-6 md:mt-0">
 
@@ -123,7 +123,7 @@
           </a>
 
           <div class="flex  flex-col">
-            <a href="" class="text-5xl font-semibold text-red-400 hover:text-primary-500 dark:text-night-100">
+            <a routerLink="/dashboard/bulletin-naissance-list" class="text-5xl font-semibold text-red-400 hover:text-primary-500 dark:text-night-100">
               {{statistiqueDece}}
             </a>
             <h2 class="text-xs  font-semibold text-gray-500 dark:text-night-300">{{ ' Décés' | transloco }}</h2>
@@ -144,7 +144,7 @@
           </a>
 
           <div class="flex  flex-col">
-            <a href="" class="text-5xl font-semibold text-red-400 hover:text-primary-500 dark:text-night-100">
+            <a routerLink="/dashboard/celibat-list" class="text-5xl font-semibold text-red-400 hover:text-primary-500 dark:text-night-100">
               {{statistiqueCelibat}}
             </a>
             <h2 class="text-xs  font-semibold text-gray-500 dark:text-night-300">{{ ' Celibataire' | transloco }}</h2>
@@ -153,40 +153,20 @@
         </div>
       </div>
     </div>
+  
     <div class="flex h-[100%] flex-col rounded-lg bg-white mt-2 py-6 px-3 dark:bg-night-700 sm:flex-row">
       <!-- Details  -->
       <div class=" flex flex-col justify-between sm:ml-6 md:mt-0">
 
         <div class="flex items-center space-x-4">
 
-          <a
+          <a 
             class="flex h-[100%] items-center flex-shrink-0 justify-center rounded bg-red-500 p-2 focus:outline-none focus:ring-1">
             <svg-icon src="assets/icons/logo.svg"> </svg-icon>
           </a>
 
           <div class="flex  flex-col">
-            <a href="" class="text-5xl font-semibold text-red-400 hover:text-primary-500 dark:text-night-100">
-              {{statistiqueDivorce}}
-            </a>
-            <h2 class="text-xs  font-semibold text-gray-500 dark:text-night-300">{{ ' Divorce' | transloco }}</h2>
-          </div>
-
-        </div>
-      </div>
-    </div>
-    <div class="flex h-[100%] flex-col rounded-lg bg-white mt-2 py-6 px-3 dark:bg-night-700 sm:flex-row">
-      <!-- Details  -->
-      <div class=" flex flex-col justify-between sm:ml-6 md:mt-0">
-
-        <div class="flex items-center space-x-4">
-
-          <a
-            class="flex h-[100%] items-center flex-shrink-0 justify-center rounded bg-red-500 p-2 focus:outline-none focus:ring-1">
-            <svg-icon src="assets/icons/logo.svg"> </svg-icon>
-          </a>
-
-          <div class="flex  flex-col">
-            <a href="" class="text-5xl font-semibold text-red-400 hover:text-primary-500 dark:text-night-100">
+            <a routerLink="/dashboard/mariage-list" class="text-5xl font-semibold text-red-400 hover:text-primary-500 dark:text-night-100">
               {{statistiqueMariage}}
             </a>
             <h2 class="text-xs  font-semibold text-gray-500 dark:text-night-300">{{ ' Mariage' | transloco }}</h2>
@@ -207,7 +187,7 @@
           </a>
 
           <div class="flex  flex-col">
-            <a href="" class="text-5xl font-semibold text-red-400 hover:text-primary-500 dark:text-night-100">
+            <a routerLink="/dashboard/bulletin-naissance-list" class="text-5xl font-semibold text-red-400 hover:text-primary-500 dark:text-night-100">
               {{statistiqueBulletinDeNaiss}}
             </a>
             <h2 class="text-xs  font-semibold text-gray-500 dark:text-night-300">{{ 'Bulletin' | transloco }}</h2>

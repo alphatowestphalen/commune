@@ -6,6 +6,7 @@ import { TranslocoService } from '@ngneat/transloco';
 import { MatTableDataSource } from '@angular/material/table';
 import { UtilisateurService } from '../../../services/utilisateur.service';
 import { DashboardService } from '../../../services/dashboard.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -16,7 +17,7 @@ import { DashboardService } from '../../../services/dashboard.service';
 export class NaissanceHomeComponent implements OnInit {
   
 
-  constructor(private  UserService:UtilisateurService,private dashboardService:DashboardService , public translocoService: TranslocoService){}
+  constructor(private routing: Router,private  UserService:UtilisateurService,private dashboardService:DashboardService , public translocoService: TranslocoService){}
 
   historique:any = "";
   displayedColumns = [
@@ -84,6 +85,7 @@ export class NaissanceHomeComponent implements OnInit {
     })
   }
 
+  
   } 
   
   

@@ -122,12 +122,10 @@
        height: 100%
  }  
  </style>
- 
-   <h2 mat-dialog-title>BUELLETIN DE NAISSANCE</h2>
 
  <div mat-dialog-content class="font-poppins">
-    <div class="relative transform overflow-auto rounded-lg bg-white text-left  lg:h-full lg:max-w-[100%] shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
-        <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+    <div class="relative transform overflow-auto rounded-lg bg-white text-left  lg:h-full lg:max-w-[100%]  transition-all sm:my-8 sm:w-full sm:max-w-lg">
+        <form class="bg-white rounded px-8 pt-6 pb-8 mb-4">
           <div class="page" id="htmlData">
             <header>
               <h1 class="heading">Teny midina faha-788-MJ/CAB <br> tamin'ny 29 Desambra 1961 nataon'ny <br> Ministry ny
@@ -197,7 +195,8 @@
                 <section class="section">
                  
                   <div class=" text-center timeline__title mb-10 mt-10 ">
-                    <span>BULLETIN DE NAISSANCE</span>
+                    <!-- <span>BULLETIN DE NAISSANCE</span> -->
+                    <span class="ml-[25%] mr-[5%] text-md font-dancing">BULLETIN DE NAISSANCE</span>
                   </div>
                   <div class="section__contentt">
                     <div class="timeline">
@@ -210,37 +209,37 @@
                       <tbody>
                         <tr>
                           <td  class="px-6 py-4 font-medium whitespace-nowrap"> NOM</td>
-                          <td class="uppercase"> : {{sender.valuesHash.nomPersonne}} </td>
+                          <td class="uppercase"> : {{sender.nomPersonne}} </td>
                         </tr>
                         <tr>
                           <td  class="px-6 py-4 font-medium whitespace-nowrap"> PRENOM</td>
-                          <td class="capitalize">: {{sender.valuesHash.prenomsPersonne}}</td>
+                          <td class="capitalize">: {{sender.prenomsPersonne}}</td>
                          
                         </tr>
                         <tr>
                           <td  class="px-6 py-4 font-medium whitespace-nowrap"> NE(E) LE</td>
-                          <td>: {{sender.valuesHash.dateNaissPersonne}}</td>
+                          <td>: {{sender.dateNaissPersonne}}</td>
 
                         </tr>
                         <tr>
                           <td  class="px-6 py-4 font-medium whitespace-nowrap"> A </td>
-                          <td>: {{sender.valuesHash.lieuNaissPersonne}}</td>
+                          <td>: {{sender.lieuNaissPersonne}}</td>
 
                         </tr>
                         <tr>
                           <td  class="px-6 py-4 font-medium whitespace-nowrap">  FILS(LE)</td>
-                          <td>: <span class="uppercase"> {{sender.valuesHash.nomPere}}</span> <span class="capitalize"> {{sender.valuesHash.prenomsPere}}</span> </td>
+                          <td>: <span class="uppercase"> {{sender.nomPere}}</span> <span class="capitalize"> {{sender.prenomsPere}}</span> </td>
 
                         </tr>
                         <tr>
                           <td  class="px-6 py-4 font-medium whitespace-nowrap">  ET DE </td>
-                          <td>: <span class="uppercase">  {{sender.valuesHash.nomMere}}</span> <span class="capitalize"></span> {{sender.valuesHash.prenomsMere}}</td>
+                          <td>: <span class="uppercase">  {{sender.nomMere}}</span> <span class="capitalize"></span> {{sender.prenomsMere}}</td>
 
                         </tr>
                         
                         <tr>
                           <td  class="px-6 py-4 font-medium whitespace-nowrap">    N° ET DATE DE L'ACTE </td>
-                          <td>{{sender.valuesHash.idPremierCopie}} du {{sender.valuesHash.createdDate}}</td>
+                          <td>{{sender.idPremierCopie}} du </td>
 
                         </tr>
                       </tbody>
@@ -257,7 +256,7 @@
                   <div class="section__contentt text-center">
                  
                         <p class="mb-5">
-                          <span class="pl-10  font-normal text-sm">ANKADINONDRY le 14 Decembre 2022
+                          <span class="pl-10  font-normal text-sm">ANKADINONDRY le {{ today }} 
                           </span>
                         </p>
                     
@@ -281,7 +280,7 @@
  
     <button mat-button mat-dialog-close
             
-    class="shadow-md inline-flex items-center px-4 py-2 bg-red-200 hover:bg-red-600 text-gray-800 text-sm font-medium rounded-md"
+    class="inline-flex items-center px-4 py-2 bg-red-200 hover:bg-red-600 text-gray-800 text-sm font-medium rounded-md"
   >
   <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" />
@@ -290,7 +289,7 @@
   Cliquer pour modifier 
   </button>
   <button  mat-button (click)="saveBulletin()" cdkFocusInitial
-  class="shadow-md inline-flex items-center ml-2 px-4 py-2 bg-green-400 hover:bg-teal-600 text-gray-800 text-sm font-medium rounded-md"
+  class="inline-flex items-center ml-2 px-4 py-2 bg-green-400 hover:bg-teal-600 text-gray-800 text-sm font-medium rounded-md"
   >
   <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
