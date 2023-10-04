@@ -1,103 +1,67 @@
 <div
   class="relative transform overflow-auto rounded-lg bg-white text-left lg:h-full lg:max-w-[75%] shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg "
+	style="margin: 0 auto;"
 >
   <form class="bg-white p-3 shadow-md rounded ">
     <div class="page" id="htmlData">
-      <header class="grid grid-rows-2 grid-flow-col gap-2">
-       
-        <div class="subhead row-start-2 row-span-2">
-          <table>
-           <tr>
-            <td>FARITRA </td>
-            <td>: BONGOLAVA</td>
-            <tr>
-              <td>PREFEKTIORA </td>
-              <td>: TSIROAMANDIDY</td>
-            </tr>
-          <tr>
-            <td>KAOMININA </td>
-            <td>: ANKADINONDRY SAKAY</td>
-           </tr>
-          </table>
-          <p class="pl-[25%]">------------------</p>
-        </div>
-        <div class="repoblika row-end-2 pt-5 ">
-          <h3 class="ml-[4%]">REPOBLIKAN'NY MADAGASIKARA</h3>
-          <p class="italic">Fitiavana-Tanindrazana-Fandrosoana</p>
-          <p class="pl-[20%]">------------------</p>
-          
-        </div>
-        <div class="row-start-2 row-end-3 pt-7" >
-          <h1 class="heading">
-            Teny midina faha-788-MJ/CAB 
-            tamin'ny 29 Desambra 1961 nataon'ny 
-            Ministry ny Fitsarana sy ny Mpitahiry ny Kasem-panjakana
-          </h1>
-        </div>
-        <div class="row-start-1 row-end-4 mr-5">
-          <img 
-          class="bongolava"
-          src="@/../../../../../../../assets/images/bongolava-logo.jpg"
+      <header>
+        <div class="center-div">
+          <img id="RM"
+          src="@/../../../../../../../assets/images/Repoblika.jpg"
           alt=""
         />
-          
+        <h1 class="italic-small-font">KOPIAN'NY SORAM-PIANKOHONANA</h1>
         </div>
-       
-
-     
-       
       </header>
 
-      <div class="text-4xl font-bold py-3">
-        <h1 class="ml-[25%] mr-[5%] font-dancing">Kopian'ny Soram-piankohonana</h1>
+      <div class="center-div">
+        <p style="font: bolder;">------------------</p>
       </div>
+
       <main class="main">
-        
+
         <aside class="main__left">
           <section class="section">
-          
 
-            <p class="section__title my-5">Faha : {{ copie.idPremierCopie | removenumber }}</p>
-
-            <p class="section__title mt-5">
-              Tamin'ny <br />
-              <span class="ml-0 pr-10">{{ lettrenaiss }}</span>
-            </p>
+            <p style="font-weight:bold;" class="section__title">FAHA : -{{ copie.idPremierCopie | removenumber }}.-</p>
 
             <div class="section__content">
-              <div class="section__entry">
-                <div class="section_title">Fahaterahana</div>
+		<div class="section__entry">
+                <div class="section_title">FAHATERAHAN'I :</div>
+
               </div>
-              <div class="section__entry">
-                <div  class="section_content font-medium justify-items-center">
+
+              <div  class="section_content font-medium justify-items-center" style="margin-bottom: 15px">
                 <span class="uppercase">{{ copie.enfant.nomEnfant }}</span> {{ copie.enfant.prenomsEnfant }}
                 </div>
-              </div>
 
-              <div class="section__entry">
-                <div class="section_content ml-5 my-20">
+              <div class="pd-10 section_date">
                   {{ lettrenaiss }}
                 </div>
-              </div>
-            </div>
+		</div>
           </section>
 
-       
+          <div class="section">
+            <span class="text-sm font-bold" style="font-style:italic"> <u>Soratra antsisiny</u> </span>
+
+
+          </div>
+
+
         </aside>
 
         <div class="main__right">
           <section class="section">
-      
+
             <div class="section__contentt">
               <div class="timeline">
                 <div class="timeline__content">
                   <p class="mb-5">
                     <span class="pl-10"
-                      >Nalaina tamin'ny bokim-pianakaviana , tamin'ny taona roa
+                      >Nalaina tamin'ny bokim-piankohonana Taona roa
                       sy roa arivo ,</span
                     >
-                    voatahiry ato amin'ny Kaominina Ambanivohitra Ankadinondy Sakay
-                    izao soratra manaraka izao:
+                    tao Ankadinondy Sakay izao soratra manaraka izao:
                   </p>
                 </div>
               </div>
@@ -106,17 +70,18 @@
                   <p class="mb-5">
                     <span class="pl-10"
                       >Tamin'ny {{ copie.enfant.dateEnfant }} </span
-                    >, tamin'ny {{heurenaiss}}, no teraka
-                    tao amin'ny {{ copie.enfant.lieunaissEnfant }},
-                   <span class="uppercase">{{ copie.enfant.nomEnfant }}</span> 
-                    {{ copie.enfant.prenomsEnfant }},
+                    >, tamin'ny {{ heurenaiss }}, no teraka
+                    tao {{ copie.enfant.lieunaissEnfant }},
+                   <span style="font-weight: bold;"><span class="uppercase">{{ copie.enfant.nomEnfant }}</span>
+                    {{ copie.enfant.prenomsEnfant }}
+                    </span>,
                     {{ sexe }}, zanak'i
                   <span class="uppercase"> {{ copie.pere.nomPere }}</span> {{ copie.pere.prenomsPere }} ,{{
                       copie.pere.professionPere
-                    }}, teraka tamin'ny {{ copie.pere.datePere }} tao
+                    }}, teraka tamin'ny {{ dateNaissPere }} tao
                     {{ copie.pere.lieuNaissPere }} , sy
                     <span class="uppercase">  {{ copie.mere.nomMere }}</span> {{ copie.mere.prenomsMere }},
-                    teraka tamin'ny {{ copie.mere.dateMere }} tao
+                    teraka tamin'ny {{ dateNaissMere }} tao
                     {{ copie.mere.lieuNaissMere }} , samy monina ao
                     {{ copie.mere.adresseMere }}
                   </p>
@@ -126,27 +91,26 @@
                 <div class="timeline__content">
                   <p class="mb-5">
                     <span class="pl-10"
-                      >Nosoratana androany {{ lettrenaiss }}
+                      >----Nosoratana androany {{ copie.enfant.dateEnfant }}
                     </span>
-                    tamin'ny valo ora maraina sy folo minitra, araka ny
+                    tamin'ny {{ hCreation }}, araka ny
                     fanamabarana nataon'i  <span class="uppercase">{{ copie.declarant.nomDeclarant }}</span> ,
-                    Mampivelona, teraka tamin'ny
-                    {{ copie.declarant.dateDeclarant }} tao Antsirabe, monina ao
-                    {{ copie.declarant.adresseDeclarant }}, izay miaraka manao
+                    {{ copie.declarant.professionDeclarant }} teraka tamin'ny
+                    {{ datenaissDeclarant }} tao {{ copie.declarant.lieuNaissDeclarant }}, monina ao
+                    {{ copie.declarant.adressDeclarant }}, izay miaraka manao
                     sonia aminay. <span class="uppercase">{{ copie.maire.nomMaire }}</span> ,{{
                       copie.maire.fonction
                     }}
-                    ao amin'ny Commune Rurale d'Ankadinondry, rehefa novakiana
-                    ity soratra ity.
+                    ao amin'ny Commune Rurale d'Ankadinondry, rehefa novakiana tamin'ity soratra ity.
                   </p>
                 </div>
               </div>
             </div>
 
-            <div class="text-sm font-normal ml-48 mb-3">
-              <span>-MANARAKA NY SONIA-</span>
+            <div class="text-sm font-normal">
+              <span class = "pl-20" style="font-weight:bold">-------MANARAKA IREO SONIA-------</span>
             </div>
-            <span class="pl-10 text-sm font-normal">-SORATRA AN-TSISINY </span>
+
             <div *ngFor="let mention of copie.mentions">
               <app-mention [mention]="mention"></app-mention>
             </div>
@@ -164,12 +128,25 @@
               </div>
             </div>
 
-            <div class="text-sm font-normal ml-20">
-              <span>NY MPIANDRAIKITRA NY SORAM-PIANKOHONANA</span>
+            <div class="text-sm font-bold ml-20 mb-60">
+              <span><u>NY MPIANDRAIKITRA NY SORAM-PIANKOHONANA</u></span>
             </div>
           </section>
+
+              <p><u></u></p>
         </div>
       </main>
     </div>
   </form>
+  
+  <button (click)="genererCanevas()"
+            class="shadow-md inline-flex items-center px-4 py-2 bg-green-400 hover:bg-teal-600 text-gray-800 text-sm font-medium rounded-md w-full">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
+            </svg>
+
+            {{'TaperpourImprimer'|transloco}}
+          </button>
 </div>

@@ -22,6 +22,10 @@ export class PremiereCopieService {
     return this.http.get(`${this.baseUrl}?page=${page}&size=${size}&q=${query}`);
   }
 
+  getCelibataireWithSexe(size: number, page: number ,sexe:string): Observable<any> {
+    return this.http.get(`${this.baseUrl}/celibataires?page=${page}&size=${size}&sexeEnfant=${sexe}`);
+  }
+
   getFirstCertificates( ): Observable<any> {
     return this.http.get(`${this.baseUrl}`);
   }

@@ -198,12 +198,13 @@ export class MariageAddComponent implements OnInit {
   }
 
   HommeStep() {
+    console.log("homme step")
     if (this.PiecesFormGroup.value.typeHomme == 'interne') {
       this.isTypeHomme = false;
+      console.log("homme step")
     }
     else
       this.isTypeHomme = true;
-
   }
 
   FemmeStep() {

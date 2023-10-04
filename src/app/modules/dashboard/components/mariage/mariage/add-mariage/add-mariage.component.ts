@@ -13,6 +13,7 @@ import { PremiereCopieService } from 'src/app/modules/dashboard/services/premier
 })
 export class AddMariageComponent implements OnInit {
 maires:MaireInterface[] = [];
+premierCopieState : String;
 
 mariageInterface:MariageInterface= {
   nomTemoinHomme: "John",
@@ -196,7 +197,7 @@ interfaces:any[] = [];
   ngOnInit() {
     this.getParamse();
     this.getAllMaire();
-    this.getAllPremierCopier(this.size,this.page);
+    // this.getAllPremierCopier(this.size,this.page);
   }
 
   getAllMaire() {
@@ -213,21 +214,45 @@ interfaces:any[] = [];
     })
   }
 
-  public getAllPremierCopier(size:number,page:number){
-    this.premierCopier.getCertificates(size, page).subscribe(data => {
+  // public getAllPremierCopier(size:number,page:number){
+  //   this.premierCopier.getCertificates(size, page).subscribe(data => {
+  //     this.premierCopiers = data.data;
+  //   });
+  // }
+
+  public getAllPremierCopierFemme(){
+    // recherche fille
+    this.premierCopier.getCelibataireWithSexe(this.size, this.page,"fille").subscribe(data => {
       this.premierCopiers = data.data;
     });
   }
+
+  public getAllPremierCopierHomme(){
+    // recherche garcon
+    this.premierCopier.getCelibataireWithSexe(this.size, this.page,"garcon").subscribe(data => {
+      this.premierCopiers = data.data;
+    });
+  }
+
   ClickOptionCopierHome(){
     this.optionCopieHomme = !this.optionCopieHomme;
   }
 
   onSelectChange(value:string){
     this.typeHomme = value;
+    console.log(value);
+    if(value ==="interne" && this.premierCopieState !== "homme"){
+      this.getAllPremierCopierHomme();
+      this.premierCopieState = "homme";
+    }
   }
 
   selectTypeFemme(value:string){
-    this.typeFemme=value;    
+    this.typeFemme=value;
+    if(value ==="interne" && this.premierCopieState !== "femme"){
+      this.getAllPremierCopierFemme();
+      this.premierCopieState = "femme";
+    }
   }
   sauvegarderMariage(){
     this.objectMariage.InterneInterne(this.mariageInterface,this.mariageInterfaceInterneInterne);

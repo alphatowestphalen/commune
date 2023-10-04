@@ -5,6 +5,7 @@ import { ThemeService } from 'src/app/core/services/theme.service';
 import { TranslocoService } from '@ngneat/transloco';
 import { MenuService } from '../../services/menu.service';
 import { DashboardService } from 'src/app/modules/dashboard/services/dashboard.service';
+import { TokenService } from 'src/app/core/services/token.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -13,13 +14,11 @@ import { DashboardService } from 'src/app/modules/dashboard/services/dashboard.s
 })
 export class SidebarComponent implements OnInit {
   public showSideBar$: Observable<boolean> = new Observable<boolean>();
-  public pagesMenu$: Observable<MenuItem[]> = new Observable<MenuItem[]>();
+  public pagesMenu$:MenuItem[] ;
   show: boolean = false;
   
 
-  constructor(public themeService: ThemeService, private menuService: MenuService,public translocoService: TranslocoService) {
-    this.showSideBar$ = this.menuService.showSideBar$;
-    this.pagesMenu$ = this.menuService.pagesMenu$;
+  constructor(public themeService: ThemeService, private menuService: MenuService,public translocoService: TranslocoService,private tokenService: TokenService) {
   }
 
   switchLanguage(lang: string) {
@@ -27,7 +26,14 @@ export class SidebarComponent implements OnInit {
     // location.reload();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.showSideBar$ = this.menuService.showSideBar$;
+    if(!this.tokenService.hasRole("maire")){
+      this.pagesMenu$ = this.menuService.pagesMenu$.slice(0, 4) as Array<MenuItem>;
+    }else{
+      this.pagesMenu$ = this.menuService.pagesMenu$ as Array<MenuItem>;
+    }
+  }
 
   public toggleSidebar() {
     this.menuService.toggleSidebar();

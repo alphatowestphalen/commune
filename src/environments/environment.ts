@@ -5,10 +5,11 @@
 export const environment = {
   production: false,
   // local
-  baseUrl: 'http://192.168.43.150:8080/api',
-  modulesUrl: 'http://192.168.43.150:8080/api',
+  baseUrl: 'http://192.168.3.150:8080/api',
+  modulesUrl: 'http://192.168.3.150:8080/api',
   // baseUrl: 'http://localhost:8080/api',
   // modulesUrl: 'http://localhost:8000/api',
+
 };
 
 /*

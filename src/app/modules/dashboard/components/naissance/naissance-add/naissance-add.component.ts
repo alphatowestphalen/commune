@@ -37,10 +37,11 @@ declare function LeraEnLettre(params: number): any;
 })
 export class NaissanceAddComponent implements OnInit {
   isLinear = true;
-  data: any;
+  data: any = [];
   maire: any;
   datenaiss: string | null | undefined;
   lettrenaiss: string | null | undefined;
+  sexe: any;
   datenaissMere: string | null | undefined;
   datenaissPere: string | null | undefined;
   datenaissDeclarant: string | null | undefined;
@@ -157,6 +158,7 @@ export class NaissanceAddComponent implements OnInit {
     ) {
       this.EnfantFormGroup.value.dateEnfant = this.datenaiss
       this.EnfantFormGroup.value.heureEnfant = this.heurenaiss
+      this.EnfantFormGroup.value.sexeEnfant = this.sexe
       this.MereFormGroup.value.dateMere = this.datenaissMere
       this.PereFormGroup.value.datePere = this.datenaissPere
       this.DeclarantFormGroup.value.dateDeclarant = this.datenaissDeclarant
@@ -197,6 +199,12 @@ export class NaissanceAddComponent implements OnInit {
     const minuteCopie = MinuteEnlettre(heure[1]);
     const ora = LeraEnLettre(heure[0]);
     this.heureCopie = heureCopie + minuteCopie + ora;
+    
+    
+    this.heureregistre = HeureEnLettre(heure[0]).concat(' ', MinuteEnlettre(heure[1]).concat(' ', LeraEnLettre(heure[0])));
+    const datenaiss = NombreEnLettre(date[0]).concat(' ', MoisMalgache(date[1]))
+    this.dateregistre = datenaiss.concat(' ', NombreEnLettre(date[2]))
+    return this.dateregistre, this.heureregistre
 
   }
 
@@ -210,7 +218,14 @@ export class NaissanceAddComponent implements OnInit {
     this.heurenaiss = heurenaiss + minutenaiss + oranaiss;
     this.lettrenaiss = date[2].concat(' ', MoisMalgache(date[1])).concat(' ', date[0])
     console.log(this.heurenaiss, this.lettrenaiss)
-    return this.datenaiss, this.lettrenaiss
+       if (this.EnfantFormGroup.value.sexeEnfant == "fille") {
+
+   	this.sexe = "zazavavy";
+
+   } else {
+    	this.sexe = "zazalahy";
+   }
+    return this.datenaiss, this.lettrenaiss, this.sexe
   }
 
   SecondStep() {
@@ -238,13 +253,7 @@ export class NaissanceAddComponent implements OnInit {
   }
   FiveStep() {
     const date = new Date(Date.now()).toLocaleString().split(',')[0];
-    const enfant: any = date.split(" ");
-    const currentdate = enfant[0].split("/");
-    const currenthour = enfant[1].split(":");
-    this.heureregistre = HeureEnLettre(currenthour[0]).concat(' ', MinuteEnlettre(currenthour[1]).concat(' ', LeraEnLettre(currenthour[0])));
-    const datenaiss = NombreEnLettre(currentdate[0]).concat(' ', MoisMalgache(currentdate[1]))
-    this.dateregistre = datenaiss.concat(' ', NombreEnLettre(currentdate[2]))
-    return this.dateregistre, this.heureregistre
+    
   }
 
   public openPDF(): void {

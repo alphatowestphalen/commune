@@ -9,7 +9,7 @@ import { MenuService } from '../../../services/menu.service';
   styleUrls: ['./navbar-menu.component.scss'],
 })
 export class NavbarMenuComponent implements OnInit {
-  public pagesMenu$: Observable<MenuItem[]> = new Observable<MenuItem[]>();
+  public pagesMenu$: MenuItem[];
 
   private showMenuClass = ['scale-100', 'animate-fade-in-up', 'opacity-100', 'pointer-events-auto'];
   private hideMenuClass = ['scale-95', 'animate-fade-out-down', 'opacity-0', 'pointer-events-none'];
