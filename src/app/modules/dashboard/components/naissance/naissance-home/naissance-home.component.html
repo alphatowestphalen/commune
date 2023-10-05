@@ -252,64 +252,119 @@
       </div>
     </div>
   </div>
-    
-    <div
-      class="flex-col rounded-lg bg-white mt-5 px-3 py-3 dark:bg-night-700 sm:flex-row"
-    >
-      <div class="mb-1 flex items-center justify-between">
-        <div class="flex-col items-center">
-          <h3
-            class="text-md font-bold pl-5 text-gray-500 dark:text-night-50 uppercase"
-          >
-            {{ "historiqueAct" | transloco }}
-          </h3>
-        </div>
+</div>
+<div class="flex gap-1 w-full mx-2 mb-5">
+  <div
+    class="flex-co w-full  rounded-lg bg-white mt-5 px-3 py-3 dark:bg-night-700 sm:flex-row"
+  >
+    <div class="mb-1 flex items-center justify-between">
+      <div class="flex-col items-center">
+        <h3
+          class="text-md font-bold text-gray-500 dark:text-night-50 uppercase"
+        >
+          {{ "historiqueAct" | transloco }}
+        </h3>
       </div>
-      <mat-table [dataSource]="dataSource" matSort>
-        <!-- ID Column -->
-        <ng-container matColumnDef="id">
-          <mat-header-cell *matHeaderCellDef mat-sort-header>
-            {{ "Entité" | transloco }}
-          </mat-header-cell>
-          <mat-cell *matCellDef="let row">
-            {{ row.entity }}
-          </mat-cell>
-        </ng-container>
-
-        <!-- Progress Column -->
-        <ng-container matColumnDef="datenaiss">
-          <mat-header-cell *matHeaderCellDef mat-sort-header>
-            {{ "Opération" | transloco }}
-          </mat-header-cell>
-          <mat-cell *matCellDef="let row"> {{ row.operation }} </mat-cell>
-        </ng-container>
-
-        <!-- Name Column -->
-        <ng-container matColumnDef="name">
-          <mat-header-cell *matHeaderCellDef mat-sort-header>
-            {{ "modifiepar" | transloco }}
-          </mat-header-cell>
-          <mat-cell *matCellDef="let row">{{ row.modifiedBy }} </mat-cell>
-        </ng-container>
-
-        <!-- Color Column -->
-        <ng-container matColumnDef="dateenregistrement">
-          <mat-header-cell *matHeaderCellDef mat-sort-header>
-            {{ "modifieLe" | transloco }}
-          </mat-header-cell>
-          <mat-cell *matCellDef="let row">
-            {{ row.modifiedAt | date : "dd/MM/yyyy hh:mm" }}
-          </mat-cell>
-        </ng-container>
-
-        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns"> </mat-row>
-      </mat-table>
-
-      <!-- <mat-paginator
-      (page)="pageChange($event)"
-      [pageSizeOptions]="[10, 20, 1, 5, 50]"
-      showFirstLastButtons
-    ></mat-paginator> -->
     </div>
+      <!-- Color Column -->
+      <div class="card mt-3">
+        <table class="h-full">
+          <thead>
+            <tr>
+              <th>Entité</th>
+              <th>Modifié par</th>
+              <th>Opération</th>
+              <th>Modifier le</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr >
+              <td class="mb-5">Deccé</td>
+              <td>String</td>
+              <td>creation Acte</td>
+              <td>5 octobre 2023</td>
+            </tr>
+            <tr >
+              <td class="mb-5">Premier Copier</td>
+              <td>jhon</td>
+              <td>creation Premier Copie</td>
+              <td>5 octobre 2023</td>
+            </tr>
+            <tr >
+              <td class="mb-5">Deccé</td>
+              <td>String</td>
+              <td>creation Acte</td>
+              <td>5 octobre 2023</td>
+            </tr>
+           
+          </tbody>
+        </table>
+    </div>
+    <!-- <mat-table [dataSource]="dataSource" matSort>
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ "Entité" | transloco }}
+        </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          {{ row.entity }}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="datenaiss">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ "Opération" | transloco }}
+        </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{ row.operation }} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ "modifiepar" | transloco }}
+        </mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.modifiedBy }} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="dateenregistrement">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ "modifieLe" | transloco }}
+        </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          {{ row.modifiedAt | date : "dd/MM/yyyy hh:mm" }}
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"> </mat-row>
+    </mat-table> -->
+
+    <!-- <mat-paginator
+    (page)="pageChange($event)"
+    [pageSizeOptions]="[10, 20, 1, 5, 50]"
+    showFirstLastButtons
+  ></mat-paginator> -->
+  </div>
+  <div
+    class="flex-col w-full  rounded-lg bg-white mt-5 px-3 py-3 dark:bg-night-700 sm:flex-row"
+  >
+    <div class="mb-1 flex items-center justify-between">
+      <div class="flex-col items-center">
+        <h3
+          class="text-md font-bold text-gray-500 dark:text-night-50 uppercase"
+        >
+          {{ "Statistique" | transloco }}
+        </h3>
+      </div>
+    </div>
+    <select  [(ngModel)]="typeState" (ngModelChange)="ngModelChange($event)" class="w-full ml-auto p-2.5  border-gray-300 rounded-lg bg-gray-50 text-md border">
+      <option value="Celibataire">Celibataire</option>
+      <option value="Jugement">Jugement</option>
+      <option value="Reconnaissance">Reconnaissance</option>
+      <option value="Deccé">Décés</option>
+      <option value="Mariage">Mariage</option>
+      <option value="Bulletin">Bulletin</option>
+    </select>
+
+    <img *ngIf="typeStateJugement" src="assets/chart.png" alt="" >
+    <img *ngIf="typeStateCelibat" src="assets/chart1.png" alt="" >
+  </div>
 </div>

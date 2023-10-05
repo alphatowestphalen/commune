@@ -39,7 +39,9 @@ export class NaissanceHomeComponent implements OnInit {
 
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  
+  typeStateCelibat:boolean = true;
+  typeStateJugement:boolean
+  typeState:any;
   tableData: any;
   size:any = '';
   page = 0;
@@ -67,16 +69,32 @@ export class NaissanceHomeComponent implements OnInit {
 
   getAllHistorique(){
     this.historique = this.static;
-    // console.log('====================================');
-    // console.log(this.historique);
-    // console.log('====================================');
+    console.log('====================================');
+    console.log(this.historique);
+    console.log('====================================');
     this.dashboardService.getAllStatus().subscribe(data=>{
       this.historique = data.acteCalibataire.nombreParUtilisateur.user
       this.dataSource = new MatTableDataSource(this.historique);
       this.dataSource.paginator = this.paginator;
     })
   }
-
+  ngModelChange(value:string){
+  console.log('====================================');
+  console.log(this.typeState=value);
+  console.log('====================================');
+  if (this.typeState === "Celibataire") {
+    this.typeStateCelibat = true;
+    this.typeStateJugement = false
+  }
+  else if (this.typeState === "Jugement"){
+    this.typeStateCelibat = false;
+    this.typeStateJugement = true;
+  }
+  else{
+    this.typeStateCelibat = true;
+    this.typeStateJugement = false
+  }
+  }
   /**
    * name
    */
