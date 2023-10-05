@@ -220,10 +220,10 @@ export class NaissanceAddComponent implements OnInit {
     console.log(this.heurenaiss, this.lettrenaiss)
        if (this.EnfantFormGroup.value.sexeEnfant == "fille") {
 
-   	this.sexe = "zazavavy";
+   	this.sexe = "fille";
 
    } else {
-    	this.sexe = "zazalahy";
+    	this.sexe = "garçon";
    }
     return this.datenaiss, this.lettrenaiss, this.sexe
   }

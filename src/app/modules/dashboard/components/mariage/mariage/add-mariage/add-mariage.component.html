@@ -203,6 +203,7 @@
               <div class="pl-80  w-full ">
                   <label name="typeHomme" class="block mb-2 text-sm font-bold text-black">Numero de Copie de Homme</label>
                   <select  name="idPremierCopie" [(ngModel)]="mariageInterface.idPremierCopieHomme" class="w-2/4 ml-auto p-2.5  border-gray-300 rounded-lg bg-gray-50 text-md border">
+                    <option >  </option>
                     <option *ngFor="let copiers of premierCopiers" class="p-6 "  [value]="copiers.idPremierCopie">{{copiers.idPremierCopie}}- {{copiers.enfant.nomEnfant}} {{copiers.enfant.prenomsEnfant}}</option>
                   </select>
                   <!-- <div class=" w-2/4">
@@ -585,6 +586,7 @@
               <div class="pl-80  w-full ">
                   <label name="typeHomme" class="block mb-2 text-sm font-bold text-black">Numero de Copie de Femme</label>
                   <select [(ngModel)]="mariageInterface.idPremierCopieFemme" name="idPremierCopieFemme" class="w-2/4 ml-auto p-2.5  border-gray-300 rounded-lg bg-gray-50 text-md border">
+                    <option >  </option>
                     <option *ngFor="let copiers of premierCopiers" class="p-6 "  [value]="copiers.idPremierCopie">{{copiers.idPremierCopie}}- {{copiers.enfant.nomEnfant}} {{copiers.enfant.prenomsEnfant}}</option>
                   </select>
                   <!-- <div class=" w-2/4">

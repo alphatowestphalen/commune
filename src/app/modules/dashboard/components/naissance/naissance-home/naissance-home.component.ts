@@ -20,6 +20,15 @@ export class NaissanceHomeComponent implements OnInit {
   constructor(private routing: Router,private  UserService:UtilisateurService,private dashboardService:DashboardService , public translocoService: TranslocoService){}
 
   historique:any = "";
+  static = [
+    {
+      'id': '1',
+      'name': 'String',
+      'datenaiss': '23-07-1998',
+      'dateenregistrement': '23-07-23',
+    },
+
+  ]
   displayedColumns = [
     'id',
     'name',
@@ -57,8 +66,12 @@ export class NaissanceHomeComponent implements OnInit {
   }
 
   getAllHistorique(){
-    this.UserService.historiqueUser().subscribe(data=>{
-      this.historique = data
+    this.historique = this.static;
+    // console.log('====================================');
+    // console.log(this.historique);
+    // console.log('====================================');
+    this.dashboardService.getAllStatus().subscribe(data=>{
+      this.historique = data.acteCalibataire.nombreParUtilisateur.user
       this.dataSource = new MatTableDataSource(this.historique);
       this.dataSource.paginator = this.paginator;
     })

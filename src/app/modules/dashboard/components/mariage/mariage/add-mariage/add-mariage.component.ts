@@ -208,9 +208,6 @@ interfaces:any[] = [];
   getParamse(){
     this.activeRoute.paramMap.subscribe(param => {
       this.mariageInterfaceInterneInterne.idPremierCopieHomme = param.get('id');
-      console.log('====================================');
-      console.log(this.mariageInterfaceInterneInterne.idPremierCopieHomme);
-      console.log('====================================');
     })
   }
 
@@ -221,14 +218,15 @@ interfaces:any[] = [];
   // }
 
   public getAllPremierCopierFemme(){
-    // recherche fille
     this.premierCopier.getCelibataireWithSexe(this.size, this.page,"fille").subscribe(data => {
       this.premierCopiers = data.data;
+      console.log('==============getAllPremierCopierFemme======================');
+      console.log(this.premierCopiers);
+      console.log('====================================');
     });
   }
 
   public getAllPremierCopierHomme(){
-    // recherche garcon
     this.premierCopier.getCelibataireWithSexe(this.size, this.page,"garcon").subscribe(data => {
       this.premierCopiers = data.data;
     });
@@ -256,6 +254,9 @@ interfaces:any[] = [];
   }
   sauvegarderMariage(){
     this.objectMariage.InterneInterne(this.mariageInterface,this.mariageInterfaceInterneInterne);
+    console.log('====================================');
+    console.log(this.mariageInterfaceInterneInterne);
+    console.log('====================================');
     if (this.typeHomme == "interne" && this.typeFemme == "interne") {
       this.mariageService.addMariage(this.mariageInterfaceInterneInterne,this.typeFemme,this.typeHomme).subscribe(data =>{
         this.route.navigate(['/dashboard/mariage-list']);
