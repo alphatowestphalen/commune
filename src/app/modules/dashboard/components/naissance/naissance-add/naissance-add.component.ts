@@ -217,7 +217,7 @@ export class NaissanceAddComponent implements OnInit {
     const oranaiss = LeraEnLettre(heure[0]);
     this.heurenaiss = heurenaiss + minutenaiss + oranaiss;
     this.lettrenaiss = date[2].concat(' ', MoisMalgache(date[1])).concat(' ', date[0])
-    console.log(this.heurenaiss, this.lettrenaiss)
+  //   console.log(this.heurenaiss, this.lettrenaiss)
        if (this.EnfantFormGroup.value.sexeEnfant == "fille") {
 
    	this.sexe = "fille";

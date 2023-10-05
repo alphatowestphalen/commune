@@ -39,7 +39,7 @@ export class NaissanceHomeComponent implements OnInit {
 
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  typeStateCelibat:boolean = true;
+  typeStateCelibat:boolean = true
   typeStateJugement:boolean
   typeState:any;
   tableData: any;

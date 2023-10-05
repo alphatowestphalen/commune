@@ -219,6 +219,9 @@ interfaces:any[] = [];
 
   public getAllPremierCopierFemme(){
     this.premierCopier.getCelibataireWithSexe(this.size, this.page,"fille").subscribe(data => {
+      console.log('=================getAllPremierCopierFemme===================');
+      console.log(data.data);
+      console.log('====================================');
       this.premierCopiers = data.data;
       console.log('==============getAllPremierCopierFemme======================');
       console.log(this.premierCopiers);
@@ -247,6 +250,8 @@ interfaces:any[] = [];
 
   selectTypeFemme(value:string){
     this.typeFemme=value;
+    console.log(this.typeFemme);
+    
     if(value ==="interne" && this.premierCopieState !== "femme"){
       this.getAllPremierCopierFemme();
       this.premierCopieState = "femme";
