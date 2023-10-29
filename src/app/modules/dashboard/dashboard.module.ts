@@ -1,5 +1,5 @@
 import { SurveyModule } from 'survey-angular-ui';
-import { SurveyCreatorModule } from 'survey-creator-angular';
+import { SidebarComponent, SurveyCreatorModule } from 'survey-creator-angular';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -114,10 +114,11 @@ import { CelibataireShowComponent } from './components/mariage/celibataire/celib
     DecesAddComponent,
     DecesShowComponent,
     UtilisateurVoirComponent,
-    UtilisateurEditComponent
+    UtilisateurEditComponent,
   ],
   imports: [
     CommonModule,
+    
     DashboardRoutingModule,
     SharedModule,
     HttpClientModule,

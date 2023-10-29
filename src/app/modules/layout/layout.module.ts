@@ -38,9 +38,6 @@ import { ProfilComponent } from './components/profil/profil.component';
     NavbarMobileMenuComponent,
     NavbarMobileSubmenuComponent,
     ProfilComponent,
-    
- 
-  
   ],
   imports: [CommonModule, LayoutRoutingModule, HttpClientModule, AngularSvgIconModule.forRoot(), SharedModule,TranslocoModule],
   exports: [NavbarComponent, SidebarComponent],

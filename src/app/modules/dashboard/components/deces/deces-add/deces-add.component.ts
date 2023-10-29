@@ -124,6 +124,7 @@ export class DecesAddComponent implements OnInit {
         this.getPremierCopieById(this.params);
     })
    }
+   
   private getAllMaire(){
     this.maireService.getAllMaire().subscribe(data=>{
       this.maireInterface = data
